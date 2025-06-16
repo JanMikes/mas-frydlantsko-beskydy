@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tagies",
+  "info": {
+    "singularName": "tagy",
+    "pluralName": "tagies",
+    "displayName": "Tagy",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Tag": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Tag",
+      "required": true
+    }
+  }
+}

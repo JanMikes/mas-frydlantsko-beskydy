@@ -1,0 +1,36 @@
+<div class="d-flex flex-wrap gap-4 mt-3 mb-5 align-items-stretch">
+    {% for karta in data.Karty %}
+        <div class="column-karta align-items-center justify-content-center flex-wrap text-center">
+            {% if karta.Obrazek %}
+                <img class="img-fluid" src="{{ karta.Obrazek.url }}" alt="">
+            {% endif %}
+
+            <h4 class="my-3">{{ karta.Nazev }}</h4>
+
+            <p class="mb-2">
+                {% if karta.Adresa %}
+                    {% if karta.OdkazNaMapu %}
+                        <a href="{{ karta.OdkazNaMapu }}" target="_blank" class="mt-2">{{ karta.Adresa }}</a><br>
+                    {% else %}
+                        {{ karta.Adresa }}<br>
+                    {% endif %}
+                {% endif %}
+
+                {% if karta.Telefon %}
+                    {{ karta.Telefon }}<br>
+                {% endif %}
+
+                {% if karta.Email %}
+                    <a href="mailto:{{ karta.Email }}">{{ karta.Email }}</a><br>
+                {% endif %}
+
+            </p>
+
+            {% if karta.Odkaz %}
+                <a href="{{ karta.Odkaz }}" target="_blank" class="custom-badge custon-badge-btn-full mt-2">Navštívit web</a>
+            {% endif %}
+
+        </div>
+    {% endfor %}
+</div>
+

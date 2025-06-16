@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_elementy_obrazek_galeries",
+  "info": {
+    "displayName": "Obrázek galerie",
+    "icon": "file-image",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Obrazek": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Popis": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+volumes:
+    caddy_data:
+    caddy_config:
+    postgres_data:
+
+services:
+    frontend:
+        image: ghcr.io/thedevs-cz/php:8.4
+        restart: unless-stopped
+        tty: true
+        volumes:
+            - ./frontend:/app
+            - ./frontend/docker-entrypoint.sh:/usr/local/bin/docker-php-entrypoint
+            - ./strapi/public/uploads:/app/public/uploads
+            - caddy_data:/data
+            - caddy_config:/config
+        ports:
+            - "8080:80"
+        depends_on:
+            - postgres
+        environment:
+            XDEBUG_CONFIG: "client_host=host.docker.internal"
+            XDEBUG_MODE: debug
+            PHP_IDE_CONFIG: "serverName=localhost"
+            SERVER_NAME: :80
+
+    strapi:
+        image: masfb-strapi
+        build:
+            context: ./strapi
+            target: dev
+        environment:
+            DATABASE_CLIENT: postgres
+            DATABASE_NAME: masfb_strapi
+            DATABASE_HOST: postgres
+            DATABASE_PORT: 5432
+            DATABASE_USERNAME: postgres
+            DATABASE_PASSWORD: postgres
+        volumes:
+            - ./strapi:/app
+        ports:
+            - '1337:1337'
+        depends_on:
+            - postgres
+
+    postgres:
+        image: postgres:17.0
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: masfb
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+
+    adminer:
+        image: adminer:5.3.0
+        ports:
+            - "8000:8080"
+        environment:
+            ADMINER_DEFAULT_SERVER: postgres
+        depends_on:
+            - postgres

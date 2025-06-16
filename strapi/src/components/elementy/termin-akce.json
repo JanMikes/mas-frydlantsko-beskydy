@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_elementy_termin_akces",
+  "info": {
+    "displayName": "Termín akce",
+    "icon": "calendar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Termin": {
+      "type": "datetime",
+      "required": true
+    },
+    "Zivy_prenos": {
+      "type": "string"
+    },
+    "Zaznam": {
+      "type": "string"
+    },
+    "Nazev": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_elementy_vizitkas",
+  "info": {
+    "displayName": "Vizitka",
+    "icon": "briefcase",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Adresa": {
+      "type": "string"
+    },
+    "Odkaz": {
+      "type": "string"
+    },
+    "Oteviraci_doba": {
+      "type": "text"
+    },
+    "Lekari": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elementy.lekar"
+    },
+    "Telefony": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elementy.telefon"
+    },
+    "Odkaz_na_mapu": {
+      "type": "string"
+    }
+  }
+}

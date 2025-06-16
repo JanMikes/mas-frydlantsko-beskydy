@@ -1,0 +1,28 @@
+{#
+{{ data.Kategorie.value }}
+{{ data.Kategorie.slug }}
+#}
+
+<div class="row my-4">
+    {% for uredni_deska_dokument in this.getItems(data.Pocet, data.Kategorie) %}
+        {% if loop.index <= data.Pocet %}
+            <article class="col-sm-6 col-md-4 my-3">
+                <div class="d-flex">
+                    <span class="article-icon me-3"></span>
+                    <div>
+                        <a href="{{ path('detail_uredni_desky', {'slug': uredni_deska_dokument.slug}) }}" class="text-decoration-none">
+                            <time class="text-secondary fw-bold">{{ uredni_deska_dokument.Datum_zverejneni|date('d.m.Y') }}</time> {% if uredni_deska_dokument.Datum_stazeni %}- <time class="text-secondary fw-bold">{{ uredni_deska_dokument.Datum_stazeni|date('d.m.Y') }}</time>{% endif %}
+                            <h2 class="h6 mt-1 fw-bold">{{ uredni_deska_dokument.Nadpis }}</h2>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{#
+<p class="button-style-1 my-4">
+    <a href="#">Zobrazit více</a>
+</p>
+#}

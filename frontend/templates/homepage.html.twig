@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    {% if aktuality %}
+        <div class="container">
+            <section class="py-5">
+                <div class="row">
+                    {% for aktualita in aktuality %}
+                        <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+                            <a href="{{ path('detail_aktuality', {'slug': aktualita.slug}) }}" class="text-decoration-none">
+                                {% if aktualita.Obrazek %}
+                                    <img class="img-fluid mb-2" src="{{ aktualita.Obrazek.url }}" alt="" aria-labelledby="aktualita-{{ aktualita.slug }}">
+                                {% endif %}
+
+                                {% if aktualita.Tagy %}
+                                    <span class="d-block text-secondary">
+                                        {% for Tag in aktualita.Tagy %}
+                                            {% if not loop.first %}
+                                                |
+                                            {% endif %}
+                                            {{ Tag.Tag }}
+                                        {% endfor %}
+                                    </span>
+                                {% endif %}
+
+                                <h3 class="h5 border-top mt-2 pt-2 fw-bold">{{ aktualita.Nadpis }}</h3>
+                                <time class="small text-primary-emphasis">{{ aktualita.DatumZverejneni|date('d.m.Y') }}</time>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <p class="text-end mt-3">
+                    <a href="{{ path('aktuality') }}" class="text-secondary text-decoration-none">Všechny příspěvky &raquo;</a>
+                </p>
+            </section>
+        </div>
+    {% endif %}
+
+    {% if uredni_deska %}
+        <div class="container pt-3 pb-5">
+            <section class="row">
+                <h2 class="mb-4"><span class="text-secondary">Úřední</span> <span class="fw-lighter">deska</span></h2>
+
+                {% for uredni_deska_dokument in uredni_deska %}
+                    <article class="col-sm-6 col-md-4 my-4">
+                        <div class="d-flex">
+                            <span class="article-icon me-3"></span>
+                            <div>
+                                <a href="{{ path('detail_uredni_desky', {'slug': uredni_deska_dokument.slug}) }}" class="text-decoration-none">
+                                    <time class="text-secondary fw-bold">{{ uredni_deska_dokument.Datum_zverejneni|date('d.m.Y') }}</time> {% if uredni_deska_dokument.Datum_stazeni %}- <time class="text-secondary fw-bold">{{ uredni_deska_dokument.Datum_stazeni|date('d.m.Y') }}</time>{% endif %}
+                                    <h2 class="h6 mt-1 fw-bold">{{ uredni_deska_dokument.Nadpis }}</h2>
+                                </a>
+                                {#
+                                {% if uredni_deska_dokument.Kategorie %}
+                                    {% for Kategorie in uredni_deska_dokument.Kategorie %}
+                                        <a class="custom-badge small" href="{{ path('uredni_deska_kategorie_filter', {'kategorie': Kategorie.slug}) }}">{{ Kategorie.Nazev }}</a>
+                                    {% endfor %}
+                                {% endif %}
+                                #}
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </section>
+
+            <p class="text-end mt-3">
+                <a href="{{ path('uredni_deska') }}" class="text-secondary text-decoration-none">Všechny příspěvky &raquo;</a>
+            </p>
+        </div>
+    {% endif %}
+{% endblock %}

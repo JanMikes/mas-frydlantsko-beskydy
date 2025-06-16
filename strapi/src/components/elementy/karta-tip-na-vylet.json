@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_elementy_karta_tip_na_vylets",
+  "info": {
+    "displayName": "Karta tip na výlet",
+    "icon": "car",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Obrazek": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Nadpis": {
+      "type": "string"
+    },
+    "Umisteni_nadpisu": {
+      "type": "enumeration",
+      "enum": [
+        "pod obrázkem",
+        "nad obrázkem"
+      ],
+      "default": "pod obrázkem"
+    },
+    "Text": {
+      "type": "richtext"
+    },
+    "Tlacitko": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementy.tlacitko"
+    },
+    "Stuzka": {
+      "type": "string"
+    },
+    "Ikonky": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ikonky.ikonky"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_komponenty_textove_poles",
+  "info": {
+    "displayName": "Textové pole",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Text": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

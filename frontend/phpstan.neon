@@ -1,0 +1,37 @@
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-symfony/rules.neon
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-doctrine/rules.neon
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - bin
+        - tests
+        - config
+    scanDirectories:
+        - var/cache/dev/Symfony
+    scanFiles:
+        - vendor/symfony/dependency-injection/Loader/Configurator/ContainerConfigurator.php
+    excludePaths:
+        - tests/bootstrap.php
+        - tests/object-manager.php
+    symfony:
+        containerXmlPath: var/cache/dev/MASFB_Web_SymfonyApplicationKernelDevDebugContainer.xml
+    doctrine:
+        objectManagerLoader: tests/object-manager.php
+    checkUninitializedProperties: true
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - "#^Call to an undefined method Symfony\\\\Config\\\\Framework\\\\Messenger#"
+        -
+            message: "#^Parameter \\#1 \\$data of static method MASFB\\\\Web\\\\Value\\\\Content\\\\Data\\\\#"
+            paths:
+                - "src/Value/Content/Data/SekceData.php"
+                - "src/Value/Content/Data/FormularData.php"
+

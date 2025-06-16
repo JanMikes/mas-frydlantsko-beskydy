@@ -1,0 +1,27 @@
+{
+  "name": "masfm",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-color-picker": "^5.14.0",
+    "@strapi/plugin-users-permissions": "^5.8.0",
+    "@strapi/strapi": "^5.8.0",
+    "pg": "^8.6.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "strapi-v5-plugin-populate-deep": "^4.0.4",
+    "styled-components": "^6.0.0"
+  },
+  "author": {
+    "name": "Jan Mikeš"
+  },
+  "license": "MIT"
+}

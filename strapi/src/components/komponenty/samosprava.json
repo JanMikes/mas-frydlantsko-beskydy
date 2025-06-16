@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_samosprava_samospravas",
+  "info": {
+    "displayName": "Lidé",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Lide": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elementy.clovek-samospravy"
+    }
+  }
+}

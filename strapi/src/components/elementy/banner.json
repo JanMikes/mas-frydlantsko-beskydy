@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_komponenty_banners",
+  "info": {
+    "displayName": "Obrázek",
+    "icon": "allergies",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Obrazek": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Odkaz": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elementy.odkaz"
+    }
+  }
+}

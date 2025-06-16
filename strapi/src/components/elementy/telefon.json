@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elementy_telefons",
+  "info": {
+    "displayName": "Telefon",
+    "icon": "phone",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Telefon": {
+      "type": "string",
+      "required": true
+    },
+    "Nazev_telefonu": {
+      "type": "string"
+    }
+  }
+}
