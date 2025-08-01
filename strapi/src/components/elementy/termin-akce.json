@@ -11,14 +11,23 @@
       "type": "datetime",
       "required": true
     },
-    "Zivy_prenos": {
-      "type": "string"
-    },
-    "Zaznam": {
-      "type": "string"
-    },
     "Nazev": {
       "type": "string"
+    },
+    "Fotka": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Text": {
+      "type": "richtext"
+    },
+    "Galerie": {
+      "type": "component",
+      "component": "komponenty.galerie",
+      "repeatable": false
     }
   }
 }

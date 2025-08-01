@@ -10,24 +10,40 @@
     "Adresa": {
       "type": "string"
     },
+    "Email": {
+      "type": "email"
+    },
     "Odkaz": {
+      "type": "string"
+    },
+    "Nadpis_oteviraci_doby": {
       "type": "string"
     },
     "Oteviraci_doba": {
       "type": "text"
     },
-    "Lekari": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elementy.lekar"
-    },
     "Telefony": {
       "type": "component",
-      "repeatable": true,
-      "component": "elementy.telefon"
+      "component": "elementy.telefon",
+      "repeatable": true
     },
     "Odkaz_na_mapu": {
       "type": "string"
+    },
+    "Poznamka": {
+      "type": "richtext"
+    },
+    "Fotka": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "lides": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::lide.lide"
     }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_komponenty_mapas",
+  "info": {
+    "displayName": "Mapa",
+    "icon": "earth"
+  },
+  "options": {},
+  "attributes": {
+    "URL": {
+      "type": "text",
+      "default": "https://www.google.com/maps/embed?pb=",
+      "required": true
+    }
+  },
+  "config": {}
+}

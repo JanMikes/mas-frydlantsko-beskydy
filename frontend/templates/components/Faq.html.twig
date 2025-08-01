@@ -1,0 +1,16 @@
+<div class="faq-component margin-component">
+    {% for faq in data.items %}
+        {% set collapseId = 'faq-' ~ loop.index ~ '-' ~ random(1000000) %}
+
+        <div class="mb-3">
+            <div class="faq-question mb-3 collapse-toggle d-flex align-items-center justify-content-between collapsed w-100" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}" style="cursor: pointer;">
+                {{ faq.Otazka }}
+                <i class="bi bi-chevron-down"></i>
+            </div>
+
+            <div id="{{ collapseId }}" class="collapse">
+                {{ faq.Odpoved|markdown_to_html|newlines }}
+            </div>
+        </div>
+    {% endfor %}
+</div>

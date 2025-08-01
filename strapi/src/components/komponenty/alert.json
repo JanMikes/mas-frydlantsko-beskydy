@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_komponenty_alerts",
+  "info": {
+    "displayName": "Alert",
+    "icon": "bell"
+  },
+  "options": {},
+  "attributes": {
+    "Text": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

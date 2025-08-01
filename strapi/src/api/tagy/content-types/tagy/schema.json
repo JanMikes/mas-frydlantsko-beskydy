@@ -12,6 +12,9 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "rank": {
+      "type": "integer"
+    },
     "Tag": {
       "type": "string",
       "required": true

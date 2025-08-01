@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_komponenty_tabulkas",
+  "info": {
+    "displayName": "Tabulka",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "Nadpis_sloupec_1": {
+      "type": "string"
+    },
+    "Nadpis_sloupec_2": {
+      "type": "string"
+    },
+    "Nadpis_sloupec_3": {
+      "type": "string"
+    },
+    "Nadpis_sloupec_4": {
+      "type": "string"
+    },
+    "Radky": {
+      "type": "component",
+      "component": "elementy.tabulka-radek",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,26 @@
+<div class="margin-component historie-component">
+    {% for historie in data.items %}
+        <div class="history-wrapper">
+            {% set collapseId = 'history-' ~ loop.index ~ '-' ~ random(1000000) %}
+            <div class="mb-4">
+                <div class="historie-title mb-2 collapse-toggle d-inline-flex align-items-center justify-content-between collapsed" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}" style="cursor: pointer;">
+                    {{ historie.Nadpis }}
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+
+                <div id="{{ collapseId }}" class="collapse">
+                    <div class="pt-2">
+                        {{ historie.Text|markdown_to_html|newlines }}
+
+                        {% if historie.Fotka %}
+                            <p class="mt-3 mb-0">
+                                <img src="{{ historie.Fotka.url }}" alt="{{ historie.Nadpis }}" class="img-fluid">
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>

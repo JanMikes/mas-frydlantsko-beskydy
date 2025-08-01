@@ -1,0 +1,13 @@
+<div class="organizace-skolniho-roku-component margin-component">
+    {% for item in data.items %}
+        <div class="mb-3 organizace-skolniho-roku-item d-flex">
+            <div class="organizace-skolniho-roku-title me-3">
+                {{ item.Nadpis }}
+            </div>
+
+            <div class="organizace-skolniho-roku-text">
+                {{ item.Text }}
+            </div>
+        </div>
+    {% endfor %}
+</div>

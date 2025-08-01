@@ -24,6 +24,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::aktuality.aktuality"
+    },
+    "Fotka": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Popis": {
+      "type": "richtext"
     }
   }
 }

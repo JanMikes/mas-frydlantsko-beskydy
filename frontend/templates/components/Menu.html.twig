@@ -1,4 +1,4 @@
-{% for menuItem in this.items %}
+{% for menuItem in this.getItems(type) %}
     <li class="nav-item">
         <twig:Odkaz class="nav-link px-2" data="{{ menuItem.Odkaz }}">
             {{ menuItem.Nadpis }}

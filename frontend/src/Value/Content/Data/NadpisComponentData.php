@@ -8,6 +8,8 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-type NadpisComponentDataArray array{
  *     Nadpis: string,
  *     Typ: string,
+ *     Kotva: null|string,
+ *     Styl: null|string,
  * }
  */
 readonly final class NadpisComponentData
@@ -15,6 +17,8 @@ readonly final class NadpisComponentData
     public function __construct(
         public string $Nadpis,
         public string $Typ,
+        public null|string $Kotva,
+        public null|string $Styl,
     ) {}
 
     /**
@@ -23,8 +27,10 @@ readonly final class NadpisComponentData
     public static function createFromStrapiResponse(array $data): self
     {
         return new self(
-            $data['Nadpis'],
-            $data['Typ'],
+            Nadpis: $data['Nadpis'],
+            Typ: $data['Typ'],
+            Kotva: $data['Kotva'],
+            Styl: $data['Styl'],
         );
     }
 }

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_elementy_historie_polozkas",
+  "info": {
+    "displayName": "Historie - Položka",
+    "icon": "globe"
+  },
+  "options": {},
+  "attributes": {
+    "Nadpis": {
+      "type": "string",
+      "required": true
+    },
+    "Text": {
+      "type": "richtext"
+    },
+    "Fotka": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

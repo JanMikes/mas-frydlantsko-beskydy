@@ -23,9 +23,17 @@ final class Odkaz
         assert($this->data !== null);
 
         if ($this->data->sekceSlug !== null) {
-            return $this->strapiLinkHelper->getLinkForSlug($this->data->sekceSlug);
+            $url = $this->strapiLinkHelper->getLinkForSlug($this->data->sekceSlug);
+        } else {
+            $url = $this->data->url ?? '#';
         }
 
-        return $this->data->url ?? '#';
+        if ($this->data->Kotva !== null) {
+            $url .= '#' . $this->data->Kotva;
+        }
+
+        $url = str_replace('##', '#', $url);
+
+        return $url;
     }
 }

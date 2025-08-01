@@ -22,10 +22,22 @@
       "default": 1,
       "min": 1
     },
+    "Navbar": {
+      "type": "boolean",
+      "default": true
+    },
+    "Footer": {
+      "type": "boolean",
+      "default": true
+    },
+    "Sidebar": {
+      "type": "boolean",
+      "default": true
+    },
     "Odkaz": {
       "type": "component",
-      "repeatable": false,
       "component": "elementy.odkaz",
+      "repeatable": false,
       "required": true
     }
   }

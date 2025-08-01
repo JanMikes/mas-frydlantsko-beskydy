@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_elementy_tabulka_radeks",
+  "info": {
+    "displayName": "Tabulka - řádek",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "Sloupec_1": {
+      "type": "component",
+      "component": "elementy.tabulka-bunka",
+      "repeatable": false
+    },
+    "Sloupec_2": {
+      "type": "component",
+      "component": "elementy.tabulka-bunka",
+      "repeatable": false
+    },
+    "Sloupec_3": {
+      "type": "component",
+      "component": "elementy.tabulka-bunka",
+      "repeatable": false
+    },
+    "Sloupec_4": {
+      "type": "component",
+      "component": "elementy.tabulka-bunka",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

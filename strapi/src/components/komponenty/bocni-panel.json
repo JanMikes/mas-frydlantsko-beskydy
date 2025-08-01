@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_komponenty_bocni_panels",
+  "info": {
+    "displayName": "Šablona bočního panelu",
+    "icon": "television"
+  },
+  "options": {},
+  "attributes": {
+    "bocni_panel": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bocni-panel.bocni-panel"
+    }
+  },
+  "config": {}
+}

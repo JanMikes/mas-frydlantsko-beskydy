@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elementy_faq_polozkas",
+  "info": {
+    "displayName": "FAQ - položka",
+    "icon": "discuss"
+  },
+  "options": {},
+  "attributes": {
+    "Otazka": {
+      "type": "string",
+      "required": true
+    },
+    "Odpoved": {
+      "type": "richtext",
+      "required": true
+    }
+  },
+  "config": {}
+}

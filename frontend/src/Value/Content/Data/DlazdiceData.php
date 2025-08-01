@@ -9,7 +9,7 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-import-type OdkazDataArray from OdkazData
  * @phpstan-type DlazdiceDataArray array{
  *     Ikona: null|ImageDataArray,
- *     Nadpis_dlazdice: string,
+ *     Nadpis_dlazdice: null|string,
  *     Odkaz: OdkazDataArray,
  * }
  */
@@ -20,7 +20,7 @@ readonly final class DlazdiceData
 
     public function __construct(
         public null|ImageData $Ikona,
-        public string $Nadpis_dlazdice,
+        public null|string $Nadpis_dlazdice,
         public OdkazData $Odkaz,
     ) {
     }

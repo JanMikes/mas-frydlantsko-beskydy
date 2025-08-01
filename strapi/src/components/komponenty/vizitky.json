@@ -8,8 +8,8 @@
   "attributes": {
     "Vizitky": {
       "type": "component",
-      "repeatable": true,
-      "component": "elementy.vizitka"
+      "component": "elementy.vizitka",
+      "repeatable": true
     }
   }
 }

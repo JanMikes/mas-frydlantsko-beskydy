@@ -3,72 +3,149 @@
 {% block title %}Homepage{% endblock %}
 
 {% block content %}
-    {% if aktuality %}
-        <div class="container">
-            <section class="py-5">
-                <div class="row">
-                    {% for aktualita in aktuality %}
-                        <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                            <a href="{{ path('detail_aktuality', {'slug': aktualita.slug}) }}" class="text-decoration-none">
-                                {% if aktualita.Obrazek %}
-                                    <img class="img-fluid mb-2" src="{{ aktualita.Obrazek.url }}" alt="" aria-labelledby="aktualita-{{ aktualita.slug }}">
-                                {% endif %}
+    {% if homepage and homepage.Slider %}
+        <div class="carousel-wrapper position-relative">
+            <div class="container position-relative">
+                <div id="home-carousel" class="carousel slide carousel-fade">
+                    <div class="carousel-inner">
+                        {% for slide in homepage.Slider %}
+                            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                <div class="row h-100">
+                                    <div class="col-6 d-flex flex-column justify-content-center pe-5">
+                                        {% if slide.Titulek %}
+                                            <p class="slide-title mb-4">{{ slide.Titulek }}</p>
+                                        {% endif %}
 
-                                {% if aktualita.Tagy %}
-                                    <span class="d-block text-secondary">
-                                        {% for Tag in aktualita.Tagy %}
-                                            {% if not loop.first %}
-                                                |
-                                            {% endif %}
-                                            {{ Tag.Tag }}
-                                        {% endfor %}
-                                    </span>
-                                {% endif %}
+                                        {% if slide.Nadpis %}
+                                            <p class="slide-heading mb-4">{{ slide.Nadpis }}</p>
+                                        {% endif %}
 
-                                <h3 class="h5 border-top mt-2 pt-2 fw-bold">{{ aktualita.Nadpis }}</h3>
-                                <time class="small text-primary-emphasis">{{ aktualita.DatumZverejneni|date('d.m.Y') }}</time>
-                            </a>
-                        </div>
-                    {% endfor %}
+                                        {% if slide.Text %}
+                                            <div class="slide-text">{{ slide.Text|markdown_to_html|newlines }}</div>
+                                        {% endif %}
+
+                                        {% if slide.Tlacitko %}
+                                            <p class="mb-0 mt-4">
+                                                <span class="d-inline-block my-2 button-style-1">
+                                                    <twig:Odkaz data="{{ slide.Tlacitko.Odkaz }}">{{ slide.Tlacitko.Text }}</twig:Odkaz>
+                                                </span>
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-6 overflow-hidden p-0">
+                                        {% if slide.Obrazek %}
+                                            <img src="{{ slide.Obrazek.url }}" class="slide-image w-100 h-100" alt="{{ slide.Nadpis }}">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
-
-                <p class="text-end mt-3">
-                    <a href="{{ path('aktuality') }}" class="text-secondary text-decoration-none">Všechny příspěvky &raquo;</a>
-                </p>
-            </section>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#home-carousel" data-bs-slide="prev">
+                <i class="bi-chevron-left bi-large" aria-hidden="true"></i>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#home-carousel" data-bs-slide="next">
+                <i class="bi-chevron-right bi-large" aria-hidden="true"></i>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     {% endif %}
 
-    {% if uredni_deska %}
-        <div class="container pt-3 pb-5">
-            <section class="row">
-                <h2 class="mb-4"><span class="text-secondary">Úřední</span> <span class="fw-lighter">deska</span></h2>
+    {% if homepage and homepage.Karty %}
+        <div class="container">
+            <div class="row gx-0 homepage-karty mb-4 align-items-stretch">
+                {% for karta in homepage.Karty %}
+                    <div class="col-12 col-md-4 d-flex">
+                        {% if karta.Tlacitko %}
+                            <twig:Odkaz data="{{ karta.Tlacitko.Odkaz }}" class="d-flex flex-row h-100 w-100">
+                                <div class="column-homepage-karta w-100 h-100">
+                                    <div class="column-homepage-karta-inner d-flex align-items-start text-start p-4 h-100 w-100">
+                                        {% if karta.Obrazek %}
+                                            <img class="img-fluid me-3" src="{{ karta.Obrazek.url }}" alt="">
+                                        {% endif %}
 
-                {% for uredni_deska_dokument in uredni_deska %}
-                    <article class="col-sm-6 col-md-4 my-4">
-                        <div class="d-flex">
-                            <span class="article-icon me-3"></span>
-                            <div>
-                                <a href="{{ path('detail_uredni_desky', {'slug': uredni_deska_dokument.slug}) }}" class="text-decoration-none">
-                                    <time class="text-secondary fw-bold">{{ uredni_deska_dokument.Datum_zverejneni|date('d.m.Y') }}</time> {% if uredni_deska_dokument.Datum_stazeni %}- <time class="text-secondary fw-bold">{{ uredni_deska_dokument.Datum_stazeni|date('d.m.Y') }}</time>{% endif %}
-                                    <h2 class="h6 mt-1 fw-bold">{{ uredni_deska_dokument.Nadpis }}</h2>
-                                </a>
-                                {#
-                                {% if uredni_deska_dokument.Kategorie %}
-                                    {% for Kategorie in uredni_deska_dokument.Kategorie %}
-                                        <a class="custom-badge small" href="{{ path('uredni_deska_kategorie_filter', {'kategorie': Kategorie.slug}) }}">{{ Kategorie.Nazev }}</a>
-                                    {% endfor %}
+                                        <div class="card-content flex-fill d-flex flex-column justify-content-center">
+                                            {% if karta.Nadpis %}
+                                                <h4 class="h5 mt-0 mb-2 fw-bold">{{ karta.Nadpis }}</h4>
+                                            {% endif %}
+
+                                            {% if karta.Text %}
+                                                <p class="small mb-0">
+                                                    {{ karta.Text|nl2br }}
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </twig:Odkaz>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if kalendar_akci %}
+        <div class="container my-5">
+            <h2 class="with-border mb-4 fw-heading">Akce</h2>
+
+            <div class="row">
+                {% for akce in kalendar_akci %}
+                    <div class="col-sm-6 col-md-4">
+                        <div class="homepage-akce">
+                            {% if akce.Fotka %}
+                                <div class="homepage-akce-image">
+                                    <img class="img-fluid me-3" src="{{ akce.Fotka.url }}" alt="">
+                                </div>
+                            {% endif %}
+
+                            <div class="homepage-akce-content p-4">
+                                {% if akce.Nazev %}
+                                    <h4 class="fw-bold h5">{{ akce.Nazev }}</h4>
                                 {% endif %}
-                                #}
+
+                                {% if akce.Datum %}
+                                    <p class="mb-0 small">{{ akce.Datum|date('d.m.Y') }}</p>
+                                {% endif %}
                             </div>
                         </div>
-                    </article>
+                    </div>
                 {% endfor %}
-            </section>
+            </div>
+        </div>
+    {% endif %}
 
-            <p class="text-end mt-3">
-                <a href="{{ path('uredni_deska') }}" class="text-secondary text-decoration-none">Všechny příspěvky &raquo;</a>
-            </p>
+    {% if section %}
+        <div class="container pt-3 pb-5 section-content">
+            <div class="row">
+                <div class="{{ section.Komponenty_panel ? 'col-md-8' : 'col-md-12' }}">
+                    <div class="section-content-wrapper">
+                        {% for komponenta in section.Komponenty %}
+                            {{ component(komponenta.type, {
+                                hasPanel: section.Komponenty_panel|length > 0,
+                                isPanel: false,
+                                data: komponenta.data,
+                            }) }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {% if section.Komponenty_panel %}
+                    <div class="col-md-4 side-panel">
+                        {% for komponenta in section.Komponenty_panel %}
+                            {{ component(komponenta.type, {
+                                hasPanel: section.Komponenty_panel|length > 0,
+                                isPanel: true,
+                                data: komponenta.data,
+                            }) }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
         </div>
     {% endif %}
 {% endblock %}

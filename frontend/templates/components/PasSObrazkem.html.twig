@@ -1,7 +1,7 @@
-<div class="mt-2 mb-5" style="{% if data.Pozadi %}background: url('{{ data.Pozadi.url }}') center center no-repeat;background-size: contain;{% endif %}{% if data.Pozadi_barva %}background-color: {{ data.Pozadi_barva }};{% endif %}">
+<div class="margin-component" style="{% if data.Pozadi %}background: url('{{ data.Pozadi.url }}') center center no-repeat;background-size: contain;{% endif %}{% if data.Pozadi_barva %}background-color: {{ data.Pozadi_barva }};{% endif %}">
     <div class="row gx-0">
         {% if data.Umisteni_fotky == 'vlevo' %}
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <div class="pb-3 pe-3">
                     {% if data.Fotka %}
                         <img class="img-fluid" src="{{ data.Fotka.url }}" alt="">
@@ -10,7 +10,7 @@
             </div>
         {% endif %}
 
-        <div class="col-sm-4">
+        <div class="col-sm-5">
             {% if data.Nadpis %}
                 <h4 class="my-3">{{ data.Nadpis }}</h4>
             {% endif %}
@@ -29,7 +29,7 @@
         </div>
 
         {% if data.Umisteni_fotky == 'vpravo' %}
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <div class="pb-3 ps-3">
                     {% if data.Fotka %}
                         <img class="img-fluid" src="{{ data.Fotka.url }}" alt="">

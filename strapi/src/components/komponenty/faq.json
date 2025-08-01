@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_komponenty_faqs",
+  "info": {
+    "displayName": "FAQ",
+    "icon": "discuss"
+  },
+  "options": {},
+  "attributes": {
+    "FAQ": {
+      "type": "component",
+      "component": "elementy.faq-polozka",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

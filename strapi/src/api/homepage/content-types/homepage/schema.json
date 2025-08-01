@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Slider": {
+      "type": "component",
+      "component": "elementy.slide",
+      "repeatable": true
+    },
+    "Karty": {
+      "type": "component",
+      "component": "elementy.karta-s-argumenty",
+      "repeatable": true
+    }
+  }
+}

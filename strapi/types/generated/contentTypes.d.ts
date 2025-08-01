@@ -417,6 +417,65 @@ export interface ApiAktualityAktuality extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBocniPanelBocniPanel extends Struct.CollectionTypeSchema {
+  collectionName: 'bocni_panels';
+  info: {
+    displayName: 'Bo\u010Dn\u00ED panel';
+    pluralName: 'bocni-panels';
+    singularName: 'bocni-panel';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    komponenty: Schema.Attribute.DynamicZone<
+      [
+        'komponenty.vizitky',
+        'komponenty.uredni-deska',
+        'komponenty.tlacitka',
+        'komponenty.tipy-na-vylet',
+        'komponenty.textove-pole',
+        'komponenty.terminy-akci',
+        'komponenty.soubory-ke-stazeni',
+        'komponenty.sekce-s-dlazdicema',
+        'komponenty.samosprava',
+        'komponenty.rozdelovnik',
+        'komponenty.program-kina',
+        'komponenty.pas-s-obrazkem',
+        'komponenty.pas-karet-s-argumenty',
+        'komponenty.obrazek',
+        'komponenty.nadpis',
+        'komponenty.karty',
+        'komponenty.historie',
+        'komponenty.galerie',
+        'komponenty.formular',
+        'komponenty.faq',
+        'komponenty.aktuality',
+        'komponenty.organizace-skolniho-roku',
+        'komponenty.filtr-tagu',
+        'komponenty.bakalari',
+        'komponenty.tabulka',
+        'komponenty.mapa',
+        'komponenty.alert',
+      ]
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::bocni-panel.bocni-panel'
+    > &
+      Schema.Attribute.Private;
+    Nazev: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFormularFormular extends Struct.CollectionTypeSchema {
   collectionName: 'formulars';
   info: {
@@ -456,6 +515,35 @@ export interface ApiFormularFormular extends Struct.CollectionTypeSchema {
     Zobrazovat_nazev: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
+  };
+}
+
+export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
+  collectionName: 'homepages';
+  info: {
+    displayName: 'Homepage';
+    pluralName: 'homepages';
+    singularName: 'homepage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Karty: Schema.Attribute.Component<'elementy.karta-s-argumenty', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::homepage.homepage'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Slider: Schema.Attribute.Component<'elementy.slide', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -509,6 +597,7 @@ export interface ApiKalendarAkciKalendarAkci
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Datum: Schema.Attribute.DateTime;
+    Fotka: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -516,6 +605,7 @@ export interface ApiKalendarAkciKalendarAkci
     > &
       Schema.Attribute.Private;
     Nazev: Schema.Attribute.String;
+    Popis: Schema.Attribute.RichText;
     Poradatel: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -601,10 +691,12 @@ export interface ApiMenuMenu extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Footer: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::menu.menu'> &
       Schema.Attribute.Private;
     Nadpis: Schema.Attribute.String & Schema.Attribute.Required;
+    Navbar: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     Odkaz: Schema.Attribute.Component<'elementy.odkaz', false> &
       Schema.Attribute.Required;
     Poradi: Schema.Attribute.Integer &
@@ -617,6 +709,7 @@ export interface ApiMenuMenu extends Struct.CollectionTypeSchema {
       > &
       Schema.Attribute.DefaultTo<1>;
     publishedAt: Schema.Attribute.DateTime;
+    Sidebar: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -635,6 +728,38 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    bocni_panel: Schema.Attribute.DynamicZone<
+      [
+        'komponenty.vizitky',
+        'komponenty.uredni-deska',
+        'komponenty.tlacitka',
+        'komponenty.tipy-na-vylet',
+        'komponenty.textove-pole',
+        'komponenty.terminy-akci',
+        'komponenty.tabulka',
+        'komponenty.soubory-ke-stazeni',
+        'komponenty.sekce-s-dlazdicema',
+        'komponenty.samosprava',
+        'komponenty.rozdelovnik',
+        'komponenty.program-kina',
+        'komponenty.pas-s-obrazkem',
+        'komponenty.pas-karet-s-argumenty',
+        'komponenty.organizace-skolniho-roku',
+        'komponenty.obrazek',
+        'komponenty.nadpis',
+        'komponenty.mapa',
+        'komponenty.karty',
+        'komponenty.historie',
+        'komponenty.galerie',
+        'komponenty.formular',
+        'komponenty.filtr-tagu',
+        'komponenty.faq',
+        'komponenty.bocni-panel',
+        'komponenty.bakalari',
+        'komponenty.alert',
+        'komponenty.aktuality',
+      ]
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -659,6 +784,14 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.pas-s-obrazkem',
         'komponenty.pas-karet-s-argumenty',
         'komponenty.tipy-na-vylet',
+        'komponenty.historie',
+        'komponenty.faq',
+        'komponenty.organizace-skolniho-roku',
+        'komponenty.tabulka',
+        'komponenty.mapa',
+        'komponenty.filtr-tagu',
+        'komponenty.bakalari',
+        'komponenty.alert',
       ]
     > &
       Schema.Attribute.Required &
@@ -681,6 +814,8 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
     parent: Schema.Attribute.Relation<'oneToOne', 'api::sekce.sekce'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
+    Umisteni_panelu: Schema.Attribute.Enumeration<['Vpravo', 'Vlevo']> &
+      Schema.Attribute.DefaultTo<'Vpravo'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -706,6 +841,7 @@ export interface ApiTagyTagy extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tagy.tagy'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    rank: Schema.Attribute.Integer;
     slug: Schema.Attribute.UID<'Tag'> & Schema.Attribute.Required;
     Tag: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -1272,7 +1408,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::aktuality.aktuality': ApiAktualityAktuality;
+      'api::bocni-panel.bocni-panel': ApiBocniPanelBocniPanel;
       'api::formular.formular': ApiFormularFormular;
+      'api::homepage.homepage': ApiHomepageHomepage;
       'api::ikonky.ikonky': ApiIkonkyIkonky;
       'api::kalendar-akci.kalendar-akci': ApiKalendarAkciKalendarAkci;
       'api::kategorie-uredni-desky.kategorie-uredni-desky': ApiKategorieUredniDeskyKategorieUredniDesky;

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace MASFB\Web\Services\Strapi;
 
+use MASFB\Web\Value\Content\Data\HomepageData;
+use MASFB\Web\Value\Content\Data\KalendarAkciData;
 use Psr\Clock\ClockInterface;
 use MASFB\Web\Value\Content\Data\AktualitaData;
-use MASFB\Web\Value\Content\Data\KategorieUredniDesky;
 use MASFB\Web\Value\Content\Data\KategorieUredniDeskyData;
 use MASFB\Web\Value\Content\Data\MenuData;
 use MASFB\Web\Value\Content\Data\SekceData;
 use MASFB\Web\Value\Content\Data\UredniDeskaData;
-use MASFB\Web\Value\Content\Exception\InvalidKategorie;
 use MASFB\Web\Value\Content\Exception\NotFound;
 use MASFB\Web\Value\Content\Data\ClovekData;
 use MASFB\Web\Value\Content\Data\DlazdiceData;
@@ -27,9 +27,11 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type ImageDataArray from ImageData
  * @phpstan-import-type MenuDataArray from MenuData
  * @phpstan-import-type SekceDataArray from SekceData
+ * @phpstan-import-type HomepageDataArray from HomepageData
  * @phpstan-import-type TagDataArray from TagData
  * @phpstan-import-type UredniDeskaDataArray from UredniDeskaData
  * @phpstan-import-type KategorieUredniDeskyDataArray from KategorieUredniDeskyData
+ * @phpstan-import-type KalendarAkciDataArray from KalendarAkciData
  */
 readonly final class StrapiContent
 {
@@ -192,7 +194,7 @@ readonly final class StrapiContent
     public function getTagy(): array
     {
         /** @var array{data: array<TagDataArray>} $strapiResponse */
-        $strapiResponse = $this->strapiClient->getApiResource('tagies');
+        $strapiResponse = $this->strapiClient->getApiResource('tagies', sort: ['rank']);
 
         return TagData::createManyFromStrapiResponse($strapiResponse['data']);
     }
@@ -219,6 +221,37 @@ readonly final class StrapiContent
 
         return SekceData::createFromStrapiResponse(
             $strapiResponse['data'][0] ?? throw new NotFound
+        );
+    }
+
+    public function getHomepageData(): HomepageData
+    {
+        /** @var array{data: HomepageDataArray} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('homepage',
+            populateLevel: 5,
+        );
+
+        return HomepageData::createFromStrapiResponse(
+            $strapiResponse['data']
+        );
+    }
+
+    /**
+     * @return array<KalendarAkciData>
+     */
+    public function getKalendarAkciData(): array
+    {
+        /** @var array{data: array<KalendarAkciDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('kalendar-akcis',
+            populateLevel: 5,
+            pagination: [
+                'limit' => 3,
+                'start' => 0,
+            ],
+        );
+
+        return KalendarAkciData::createManyFromStrapiResponse(
+            $strapiResponse['data']
         );
     }
 }

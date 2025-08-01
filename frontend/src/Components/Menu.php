@@ -19,8 +19,24 @@ readonly final class Menu
     /**
      * @return array<MenuData>
      */
-    public function getItems(): array
+    public function getItems(string $type): array
     {
-        return $this->content->getMenu();
+        $items = $this->content->getMenu();
+
+        foreach ($items as $i => $item) {
+            if ($type === 'navbar' && $item->Navbar !== true) {
+                unset($items[$i]);
+            }
+
+            if ($type === 'sidebar' && $item->Sidebar !== true) {
+                unset($items[$i]);
+            }
+
+            if ($type === 'footer' && $item->Footer !== true) {
+                unset($items[$i]);
+            }
+        }
+
+        return $items;
     }
 }

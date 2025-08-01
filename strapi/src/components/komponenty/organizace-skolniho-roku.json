@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_komponenty_organizace_skolniho_rokus",
+  "info": {
+    "displayName": "Organizace školního roku",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "Polozky": {
+      "type": "component",
+      "component": "elementy.organizace-skolniho-roku-polozka",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

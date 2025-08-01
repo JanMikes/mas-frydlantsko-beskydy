@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elementy_organizace_skolniho_roku_polozkas",
+  "info": {
+    "displayName": "Organizace školního roku - položka",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "Nadpis": {
+      "type": "string",
+      "required": true
+    },
+    "Text": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

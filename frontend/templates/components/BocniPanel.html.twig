@@ -1,0 +1,7 @@
+{% for komponenta in data.Komponenty %}
+    {{ component(komponenta.type, {
+        hasPanel: true,
+        isPanel: true,
+        data: komponenta.data,
+    }) }}
+{% endfor %}

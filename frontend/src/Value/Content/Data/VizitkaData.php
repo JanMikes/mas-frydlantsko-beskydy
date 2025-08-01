@@ -5,15 +5,18 @@ declare(strict_types=1);
 namespace MASFB\Web\Value\Content\Data;
 
 /**
+ * @phpstan-import-type ClovekDataArray from ClovekData
  * @phpstan-import-type TelefonDataArray from TelefonData
- * @phpstan-import-type LekarDataArray from LekarData
  * @phpstan-type VizitkaDataArray array{
  *     Adresa: null|string,
  *     Odkaz_na_mapu: null|string,
  *     Odkaz: null|string,
+ *     Nadpis_oteviraci_doby: null|string,
  *     Oteviraci_doba: null|string,
+ *     Email: null|string,
+ *     Poznamka: null|string,
  *     Telefony: array<TelefonDataArray>,
- *     Lekari: array<LekarDataArray>,
+ *     lides: array<ClovekDataArray>,
  * }
  */
 readonly final class VizitkaData
@@ -26,8 +29,11 @@ readonly final class VizitkaData
         public null|string $OdkazNaMapu,
         public null|string $Odkaz,
         public null|string $OteviraciDoba,
-        /** @var array<LekarData> */
-        public array $Lekari,
+        public null|string $NadpisOteviraciDoby,
+        public null|string $Email,
+        public null|string $Poznamka,
+        /** @var array<ClovekData> */
+        public array $lides,
         /** @var array<TelefonData> */
         public array $Telefony,
     ) {}
@@ -42,7 +48,10 @@ readonly final class VizitkaData
             OdkazNaMapu: $data['Odkaz_na_mapu'],
             Odkaz: $data['Odkaz'],
             OteviraciDoba: $data['Oteviraci_doba'],
-            Lekari: LekarData::createManyFromStrapiResponse($data['Lekari']),
+            Email: $data['Email'],
+            Poznamka: $data['Poznamka'],
+            NadpisOteviraciDoby: $data['Nadpis_oteviraci_doby'],
+            lides: ClovekData::createManyFromStrapiResponse($data['lides']),
             Telefony: TelefonData::createManyFromStrapiResponse($data['Telefony']),
         );
     }

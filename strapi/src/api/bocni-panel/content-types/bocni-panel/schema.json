@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bocni_panels",
+  "info": {
+    "singularName": "bocni-panel",
+    "pluralName": "bocni-panels",
+    "displayName": "Boční panel"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nazev": {
+      "type": "string",
+      "required": true
+    },
+    "komponenty": {
+      "type": "dynamiczone",
+      "components": [
+        "komponenty.vizitky",
+        "komponenty.uredni-deska",
+        "komponenty.tlacitka",
+        "komponenty.tipy-na-vylet",
+        "komponenty.textove-pole",
+        "komponenty.terminy-akci",
+        "komponenty.soubory-ke-stazeni",
+        "komponenty.sekce-s-dlazdicema",
+        "komponenty.samosprava",
+        "komponenty.rozdelovnik",
+        "komponenty.program-kina",
+        "komponenty.pas-s-obrazkem",
+        "komponenty.pas-karet-s-argumenty",
+        "komponenty.obrazek",
+        "komponenty.nadpis",
+        "komponenty.karty",
+        "komponenty.historie",
+        "komponenty.galerie",
+        "komponenty.formular",
+        "komponenty.faq",
+        "komponenty.aktuality",
+        "komponenty.organizace-skolniho-roku",
+        "komponenty.filtr-tagu",
+        "komponenty.bakalari",
+        "komponenty.tabulka",
+        "komponenty.mapa",
+        "komponenty.alert"
+      ]
+    }
+  }
+}

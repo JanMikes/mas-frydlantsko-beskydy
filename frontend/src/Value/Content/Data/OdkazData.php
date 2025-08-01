@@ -8,6 +8,7 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-type OdkazDataArray array{
  *     sekce: null|array{slug: string},
  *     URL: null|string,
+ *     Kotva: null|string,
  * }
  */
 readonly final class OdkazData
@@ -15,6 +16,7 @@ readonly final class OdkazData
     public function __construct(
         public null|string $sekceSlug,
         public null|string $url,
+        public null|string $Kotva,
     ) {
     }
 
@@ -39,8 +41,9 @@ readonly final class OdkazData
         }
 
         return new self(
-            $slug,
-            $url,
+            sekceSlug: $slug,
+            url: $url,
+            Kotva: $data['Kotva'],
         );
     }
 }

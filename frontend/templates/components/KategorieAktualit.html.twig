@@ -1,0 +1,9 @@
+<div class="actuality-filter-panel margin-component">
+    <h3 class="mb-3 mt-0">Kategorie aktualit</h3>
+
+    {% for tag in this.getItems() %}
+        <a href="{{ path('aktuality_tag_filter', {'tag': tag.slug}) }}" class="custom-badge me-2 mt-2">
+            {{ tag.Tag }}
+        </a>
+    {% endfor %}
+</div>

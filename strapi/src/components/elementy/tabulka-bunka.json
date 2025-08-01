@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_elementy_tabulka_bunkas",
+  "info": {
+    "displayName": "Tabulka - buňka",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "Hodnota": {
+      "type": "text"
+    },
+    "Styl": {
+      "type": "enumeration",
+      "default": "Normální",
+      "enum": [
+        "Normální",
+        "Zelené pozadí"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -9,6 +9,9 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-type MenuDataArray array{
  *     Nadpis: string,
  *     Odkaz: OdkazDataArray,
+ *     Navbar: null|bool,
+ *     Footer: null|bool,
+ *     Sidebar: null|bool,
  * }
  */
 readonly final class MenuData
@@ -19,6 +22,9 @@ readonly final class MenuData
     public function __construct(
         public string $Nadpis,
         public OdkazData $Odkaz,
+        public bool $Navbar,
+        public bool $Footer,
+        public bool $Sidebar,
     ) {
     }
 
@@ -30,6 +36,9 @@ readonly final class MenuData
         return new self(
             Nadpis: $data['Nadpis'],
             Odkaz: OdkazData::createFromStrapiResponse($data['Odkaz']),
+            Navbar: $data['Navbar'] ?? false,
+            Footer: $data['Footer'] ?? false,
+            Sidebar: $data['Sidebar'] ?? false,
         );
     }
 }
