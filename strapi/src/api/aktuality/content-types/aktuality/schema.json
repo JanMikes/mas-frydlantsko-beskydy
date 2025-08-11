@@ -49,8 +49,8 @@
     },
     "Zobrazovat": {
       "type": "boolean",
-      "default": true,
-      "required": true
+      "required": true,
+      "default": true
     },
     "tags": {
       "type": "relation",

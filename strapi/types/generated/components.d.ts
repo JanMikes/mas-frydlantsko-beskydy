@@ -639,6 +639,15 @@ export interface KomponentyRozdelovnik extends Struct.ComponentSchema {
   };
 }
 
+export interface KomponentyRozklikavaciBody extends Struct.ComponentSchema {
+  collectionName: 'components_komponenty_rozklikavaci_bodies';
+  info: {
+    displayName: 'Rozklik\u00E1vac\u00ED body';
+    icon: 'filter';
+  };
+  attributes: {};
+}
+
 export interface KomponentySamosprava extends Struct.ComponentSchema {
   collectionName: 'components_samosprava_samospravas';
   info: {
@@ -823,6 +832,7 @@ declare module '@strapi/strapi' {
       'komponenty.pas-s-obrazkem': KomponentyPasSObrazkem;
       'komponenty.program-kina': KomponentyProgramKina;
       'komponenty.rozdelovnik': KomponentyRozdelovnik;
+      'komponenty.rozklikavaci-body': KomponentyRozklikavaciBody;
       'komponenty.samosprava': KomponentySamosprava;
       'komponenty.sekce-s-dlazdicema': KomponentySekceSDlazdicema;
       'komponenty.soubory-ke-stazeni': KomponentySouboryKeStazeni;
