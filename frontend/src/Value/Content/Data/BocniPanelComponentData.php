@@ -27,7 +27,13 @@ readonly final class BocniPanelComponentData
         $components = [];
 
         foreach ($data['bocni_panel']['komponenty'] ?? [] as $componentInfo) {
-            $components[] = SekceData::createComponent($componentInfo);
+            $component = SekceData::createComponent($componentInfo);
+
+            if ($component === null) {
+                continue;
+            }
+
+            $components[] = $component;
         }
 
         return new self(

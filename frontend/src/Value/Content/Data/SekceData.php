@@ -58,11 +58,23 @@ readonly final class SekceData
         $componentsPanel = [];
 
         foreach ($data['Komponenty'] as $componentInfo) {
-            $components[] = self::createComponent($componentInfo);
+            $component = self::createComponent($componentInfo);
+
+            if ($component === null) {
+                continue;
+            }
+
+            $components[] = $component;
         }
 
         foreach ($data['bocni_panel'] as $componentInfo) {
-            $componentsPanel[] = self::createComponent($componentInfo);
+            $component = self::createComponent($componentInfo);
+
+            if ($component === null) {
+                continue;
+            }
+
+            $componentsPanel[] = $component;
         }
 
         return new self(
@@ -79,7 +91,7 @@ readonly final class SekceData
     /**
      * @param array{__component: string} $componentInfo
      */
-    public static function createComponent(array $componentInfo): Component
+    public static function createComponent(array $componentInfo): null|Component
     {
         $componentName = $componentInfo['__component'];
 
@@ -112,7 +124,7 @@ readonly final class SekceData
             'komponenty.tabulka' => new Component('Tabulka', TabulkaComponentData::createFromStrapiResponse($componentInfo)),
             'komponenty.historie' => new Component('Historie', HistorieComponentData::createFromStrapiResponse($componentInfo)),
             'komponenty.bocni-panel' => new Component('BocniPanel', BocniPanelComponentData::createFromStrapiResponse($componentInfo)),
-            default => throw new \Exception("Unknown component type '$componentName'."),
+            default => null,
         };
     }
 }
