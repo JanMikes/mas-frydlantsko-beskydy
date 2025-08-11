@@ -28,7 +28,7 @@ parameters:
     checkUninitializedProperties: true
     reportUnmatchedIgnoredErrors: false
     ignoreErrors:
-        - "#^Call to an undefined method Symfony\\\\Config\\\\Framework\\\\Messenger#"
+        - "#Symfony\\\\Config\\\\Framework\\\\Messenger\\\\TransportConfig::options#"
         -
             message: "#^Parameter \\#1 \\$data of static method MASFB\\\\Web\\\\Value\\\\Content\\\\Data\\\\#"
             paths:
