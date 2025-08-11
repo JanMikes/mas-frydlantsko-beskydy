@@ -35,15 +35,20 @@
 
     {% block full_content %}
         <header>
+            <div class="main-logo-shadow"></div>
             <nav class="navbar navbar-light bg-light navbar-expand-md fixed-top py-3">
-                <div class="container-fluid d-flex align-items-center">
+                <div class="main-logo">
+                    <img src="{{ asset('images/logo.svg') }}" alt="Logo">
+                </div>
+
+                <div class="container-fluid d-flex align-items-center pe-0">
                     <!-- Menu links (tablet and up) -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-none d-md-flex flex-row">
+                    <ul class="navbar-nav w-100 justify-content-center mx-auto mb-2 mb-lg-0 d-none d-md-flex flex-row">
                         <twig:Menu type="navbar" />
                     </ul>
 
                     <!-- Hamburger menu trigger -->
-                    <button class="btn p-0 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <button class="sidebar-toggler btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>

@@ -1,0 +1,129 @@
+/* Geologica */
+@font-face {
+    font-family: 'Geologica';
+    src: url('/fonts/Geologica-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geologica';
+    src: url('/fonts/Geologica-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geologica';
+    src: url('/fonts/Geologica-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geologica';
+    src: url('/fonts/Geologica-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geologica';
+    src: url('/fonts/Geologica-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geologica';
+    src: url('/fonts/Geologica-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geologica';
+    src: url('/fonts/Geologica-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geologica';
+    src: url('/fonts/Geologica-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geologica';
+    src: url('/fonts/Geologica-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    --bs-font-sans-serif: 'Geologica', sans-serif;
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-primary: #132F4D;
+    --bs-primary-rgb: 19, 47, 77;
+    --bs-secondary: #9CB523;
+    --bs-secondary-rgb: 156, 181, 35;
+    --bs-secondary-color-rgb: 156, 181, 35;
+    --bs-heading-color: var(--bs-primary);
+    --bs-link-color-rgb: var(--bs-primary);
+    --bs-breadcrumb-font-size: 12px;
+    --bs-link-hover-color: var(--bs-primary);
+    --bs-link-hover-color-rgb: var(--bs-primary-rgb);
+    background-color: #ffffff;
+    padding-top: 143px;
+}
+
+.navbar {
+    box-shadow: 0 4px 23px 0 #0000001A;
+    background: #fff !important;
+}
+
+.sidebar-toggler {
+    background: var(--bs-primary);
+    border-radius: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 22px 40px;
+}
+
+.navbar a {
+    font-weight: bold;
+    color: var(--bs-primary);
+}
+
+.navbar-toggler-icon {
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.95%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.main-logo {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    background: #fff;
+    padding: 30px;
+    z-index: 1031;
+}
+
+.main-logo-shadow {
+    width: 344px;
+    height: 143px;
+    position: absolute;
+    left: 30px;
+    top: 0;
+    z-index: 1029;
+    box-shadow: 0 4px 23px 0 #0000001A;
+}
+
+.heading-border {
+    display: inline-block;
+    padding-bottom: 15px;
+    border-bottom: 7px solid var(--bs-secondary);
+}
