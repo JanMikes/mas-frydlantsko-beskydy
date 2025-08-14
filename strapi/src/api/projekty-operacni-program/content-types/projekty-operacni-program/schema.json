@@ -4,7 +4,7 @@
   "info": {
     "singularName": "projekty-operacni-program",
     "pluralName": "projekty-operacni-programs",
-    "displayName": "Projekty - Operační program"
+    "displayName": "Výzvy - Operační program"
   },
   "options": {
     "draftAndPublish": false

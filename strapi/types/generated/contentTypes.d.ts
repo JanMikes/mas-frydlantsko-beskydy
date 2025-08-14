@@ -782,7 +782,7 @@ export interface ApiProjektyOperacniProgramProjektyOperacniProgram
   extends Struct.CollectionTypeSchema {
   collectionName: 'projekty_operacni_programs';
   info: {
-    displayName: 'Projekty - Opera\u010Dn\u00ED program';
+    displayName: 'V\u00FDzvy - Opera\u010Dn\u00ED program';
     pluralName: 'projekty-operacni-programs';
     singularName: 'projekty-operacni-program';
   };
@@ -838,10 +838,6 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
       'api::projekty-obec.projekty-obec'
     >;
     Obrazek: Schema.Attribute.Media<'images'>;
-    Operacni_program: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::projekty-operacni-program.projekty-operacni-program'
-    >;
     Prijemce_dotace: Schema.Attribute.String;
     Projekt_mas_fb: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
@@ -855,6 +851,7 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Vyse_dotace: Schema.Attribute.Integer;
+    Vyzva: Schema.Attribute.Relation<'oneToOne', 'api::vyzvy.vyzvy'>;
   };
 }
 
@@ -932,6 +929,7 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.projekty',
         'komponenty.sdileni',
         'komponenty.rozjizdeci-obsah',
+        'komponenty.vyzvy',
       ]
     > &
       Schema.Attribute.Required &

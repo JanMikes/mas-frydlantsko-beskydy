@@ -7,10 +7,13 @@
   },
   "options": {},
   "attributes": {
+    "Nadpis": {
+      "type": "string"
+    },
     "Lide": {
       "type": "component",
-      "repeatable": true,
-      "component": "elementy.clovek-samospravy"
+      "component": "elementy.clovek-samospravy",
+      "repeatable": true
     }
   }
 }

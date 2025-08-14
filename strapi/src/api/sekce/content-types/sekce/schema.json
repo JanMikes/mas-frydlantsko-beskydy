@@ -60,7 +60,8 @@
         "komponenty.rozklikavaci-body",
         "komponenty.projekty",
         "komponenty.sdileni",
-        "komponenty.rozjizdeci-obsah"
+        "komponenty.rozjizdeci-obsah",
+        "komponenty.vyzvy"
       ],
       "required": true,
       "min": 1

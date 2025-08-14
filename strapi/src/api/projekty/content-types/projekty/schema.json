@@ -29,10 +29,10 @@
       "relation": "oneToOne",
       "target": "api::projekty-obec.projekty-obec"
     },
-    "Operacni_program": {
+    "Vyzva": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::projekty-operacni-program.projekty-operacni-program"
+      "target": "api::vyzvy.vyzvy"
     },
     "Prijemce_dotace": {
       "type": "string"

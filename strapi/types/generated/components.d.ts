@@ -721,6 +721,7 @@ export interface KomponentySamosprava extends Struct.ComponentSchema {
   };
   attributes: {
     Lide: Schema.Attribute.Component<'elementy.clovek-samospravy', true>;
+    Nadpis: Schema.Attribute.String;
   };
 }
 
@@ -860,6 +861,15 @@ export interface KomponentyVizitky extends Struct.ComponentSchema {
   };
 }
 
+export interface KomponentyVyzvy extends Struct.ComponentSchema {
+  collectionName: 'components_komponenty_vyzvies';
+  info: {
+    displayName: 'V\u00FDzvy';
+    icon: 'bell';
+  };
+  attributes: {};
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -922,6 +932,7 @@ declare module '@strapi/strapi' {
       'komponenty.tlacitka': KomponentyTlacitka;
       'komponenty.uredni-deska': KomponentyUredniDeska;
       'komponenty.vizitky': KomponentyVizitky;
+      'komponenty.vyzvy': KomponentyVyzvy;
     }
   }
 }
