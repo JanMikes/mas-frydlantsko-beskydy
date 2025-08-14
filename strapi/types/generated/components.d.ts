@@ -692,15 +692,6 @@ export interface KomponentyRozjizdeciObsah extends Struct.ComponentSchema {
   };
 }
 
-export interface KomponentyRozklikavaciBody extends Struct.ComponentSchema {
-  collectionName: 'components_komponenty_rozklikavaci_bodies';
-  info: {
-    displayName: 'Rozklik\u00E1vac\u00ED body';
-    icon: 'filter';
-  };
-  attributes: {};
-}
-
 export interface KomponentyRychleOdkazySIkonkou extends Struct.ComponentSchema {
   collectionName: 'components_komponenty_rychle_odkazy_s_ikonkous';
   info: {
@@ -919,7 +910,6 @@ declare module '@strapi/strapi' {
       'komponenty.projekty': KomponentyProjekty;
       'komponenty.rozdelovnik': KomponentyRozdelovnik;
       'komponenty.rozjizdeci-obsah': KomponentyRozjizdeciObsah;
-      'komponenty.rozklikavaci-body': KomponentyRozklikavaciBody;
       'komponenty.rychle-odkazy-s-ikonkou': KomponentyRychleOdkazySIkonkou;
       'komponenty.samosprava': KomponentySamosprava;
       'komponenty.sdileni': KomponentySdileni;

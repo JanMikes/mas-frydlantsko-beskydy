@@ -925,7 +925,6 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.filtr-tagu',
         'komponenty.alert',
         'komponenty.rychle-odkazy-s-ikonkou',
-        'komponenty.rozklikavaci-body',
         'komponenty.projekty',
         'komponenty.sdileni',
         'komponenty.rozjizdeci-obsah',
@@ -1041,7 +1040,7 @@ export interface ApiUredniDeskaUredniDeska extends Struct.CollectionTypeSchema {
 export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
   collectionName: 'vyzvies';
   info: {
-    displayName: 'Vyzvy';
+    displayName: 'V\u00FDzvy';
     pluralName: 'vyzvies';
     singularName: 'vyzvy';
   };
