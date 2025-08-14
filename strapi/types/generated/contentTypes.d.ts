@@ -405,6 +405,10 @@ export interface ApiAktualityAktuality extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    Souvisejici_aktuality: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::aktuality.aktuality'
+    >;
     tags: Schema.Attribute.Relation<'oneToMany', 'api::tagy.tagy'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -842,6 +846,10 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
     Projekt_mas_fb: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
+    Souvisejici_projekty: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::projekty.projekty'
+    >;
     Text: Schema.Attribute.RichText;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

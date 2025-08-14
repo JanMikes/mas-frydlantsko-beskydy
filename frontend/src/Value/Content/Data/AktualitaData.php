@@ -7,6 +7,7 @@ namespace MASFB\Web\Value\Content\Data;
 use DateTimeImmutable;
 
 /**
+ * @phpstan-import-type AktualitaDataArray from AktualitaData
  * @phpstan-import-type ImageDataArray from ImageData
  * @phpstan-import-type FileDataArray from FileData
  * @phpstan-import-type TagDataArray from TagData
@@ -23,6 +24,7 @@ use DateTimeImmutable;
  *      Zverejnil: null|ClovekDataArray,
  *      tags: array<TagDataArray>,
  *      Soubory: null|array<FileDataArray>,
+ *      Souvisejici_aktuality: array<AktualitaDataArray>,
  *  }
  */
 readonly final class AktualitaData
@@ -34,6 +36,7 @@ readonly final class AktualitaData
      * @param array<ImageData> $Galerie
      * @param array<TagData> $Tagy
      * @param array<FileData> $Soubory
+     * @param array<AktualitaData> $SouvisejiciAktuality
      */
     public function __construct(
         public string $Nadpis,
@@ -46,6 +49,7 @@ readonly final class AktualitaData
         public string $Popis,
         public null|string $slug,
         public array $Soubory,
+        public array $SouvisejiciAktuality,
     ) {}
 
     /**
@@ -59,6 +63,7 @@ readonly final class AktualitaData
         $soubory = FileData::createManyFromStrapiResponse($data['Soubory'] ?? []);
         $galerie = ImageData::createManyFromStrapiResponse($data['Galerie'] ?? []);
         $obrazek = $data['Obrazek'] !== null ? ImageData::createFromStrapiResponse($data['Obrazek']) : null;
+        $souvisejiciAktuality = self::createManyFromStrapiResponse($data['Souvisejici_aktuality'] ?? []);
 
         return new self(
             $data['Nadpis'],
@@ -71,6 +76,7 @@ readonly final class AktualitaData
             $data['Popis'] ?? '',
             $data['slug'],
             $soubory,
+            $souvisejiciAktuality,
         );
     }
 }

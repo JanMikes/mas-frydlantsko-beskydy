@@ -55,6 +55,11 @@
     },
     "Text": {
       "type": "richtext"
+    },
+    "Souvisejici_projekty": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::projekty.projekty"
     }
   }
 }

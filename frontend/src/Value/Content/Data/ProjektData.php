@@ -21,12 +21,17 @@ namespace MASFB\Web\Value\Content\Data;
  *      Doba_realizace: null|string,
  *      Obrazek: null|ImageDataArray,
  *      Text: null|string,
+ *      Souvisejici_projekty: null|array<mixed>,
  *  }
  */
 readonly final class ProjektData
 {
     /** @use CanCreateManyFromStrapiResponse<ProjektDataArray> */
     use CanCreateManyFromStrapiResponse;
+
+    /**
+     * @param array<ProjektData> $SouvisejiciProjekty
+     */
 
     public function __construct(
         public null|string $Nazev,
@@ -40,6 +45,7 @@ readonly final class ProjektData
         public null|string $DobaRealizace,
         public null|ImageData $Obrazek,
         public null|string $Text,
+        public array $SouvisejiciProjekty,
     ) {}
 
     /**
@@ -51,6 +57,7 @@ readonly final class ProjektData
         $operacniProgram = $data['Operacni_program'] !== null ? ProjektyOperacniProgramData::createFromStrapiResponse($data['Operacni_program']) : null;
         $obec = $data['Obec'] !== null ? ProjektyObecData::createFromStrapiResponse($data['Obec']) : null;
         $kategorie = $data['Kategorie'] !== null ? ProjektyKategorieData::createFromStrapiResponse($data['Kategorie']) : null;
+        $souvisejiciProjekty = self::createManyFromStrapiResponse($data['Souvisejici_projekty'] ?? []);
 
         return new self(
             Nazev: $data['Nazev'],
@@ -64,6 +71,7 @@ readonly final class ProjektData
             DobaRealizace: $data['Doba_realizace'],
             Obrazek: $obrazek,
             Text: $data['Text'],
+            SouvisejiciProjekty: $souvisejiciProjekty,
         );
     }
 }
