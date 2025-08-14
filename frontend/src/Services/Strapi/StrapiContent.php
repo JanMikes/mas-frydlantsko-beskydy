@@ -18,6 +18,9 @@ use MASFB\Web\Value\Content\Data\DlazdiceData;
 use MASFB\Web\Value\Content\Data\FileData;
 use MASFB\Web\Value\Content\Data\ImageData;
 use MASFB\Web\Value\Content\Data\ProjektData;
+use MASFB\Web\Value\Content\Data\ProjektyKategorieData;
+use MASFB\Web\Value\Content\Data\ProjektyObecData;
+use MASFB\Web\Value\Content\Data\ProjektyOperacniProgramData;
 use MASFB\Web\Value\Content\Data\TagData;
 
 /**
@@ -28,6 +31,9 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type ImageDataArray from ImageData
  * @phpstan-import-type MenuDataArray from MenuData
  * @phpstan-import-type ProjektDataArray from ProjektData
+ * @phpstan-import-type ProjektyKategorieDataArray from ProjektyKategorieData
+ * @phpstan-import-type ProjektyObecDataArray from ProjektyObecData
+ * @phpstan-import-type ProjektyOperacniProgramDataArray from ProjektyOperacniProgramData
  * @phpstan-import-type SekceDataArray from SekceData
  * @phpstan-import-type HomepageDataArray from HomepageData
  * @phpstan-import-type TagDataArray from TagData
@@ -279,5 +285,38 @@ readonly final class StrapiContent
         return ProjektData::createFromStrapiResponse(
             $strapiResponse['data'][0] ?? throw new NotFound
         );
+    }
+
+    /**
+     * @return array<ProjektyObecData>
+     */
+    public function getProjektyObce(): array
+    {
+        /** @var array{data: array<ProjektyObecDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('projekty-obecs');
+
+        return ProjektyObecData::createManyFromStrapiResponse($strapiResponse['data']);
+    }
+
+    /**
+     * @return array<ProjektyKategorieData>
+     */
+    public function getProjektyKategorie(): array
+    {
+        /** @var array{data: array<ProjektyKategorieDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('projekty-kategories');
+
+        return ProjektyKategorieData::createManyFromStrapiResponse($strapiResponse['data']);
+    }
+
+    /**
+     * @return array<ProjektyOperacniProgramData>
+     */
+    public function getProjektyOperacniProgramy(): array
+    {
+        /** @var array{data: array<ProjektyOperacniProgramDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('projekty-operacni-programs');
+
+        return ProjektyOperacniProgramData::createManyFromStrapiResponse($strapiResponse['data']);
     }
 }

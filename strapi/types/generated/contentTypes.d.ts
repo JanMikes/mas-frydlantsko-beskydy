@@ -725,7 +725,7 @@ export interface ApiProjektyKategorieProjektyKategorie
     singularName: 'projekty-kategorie';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -783,7 +783,7 @@ export interface ApiProjektyOperacniProgramProjektyOperacniProgram
     singularName: 'projekty-operacni-program';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -811,7 +811,7 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
     singularName: 'projekty';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;

@@ -7,7 +7,7 @@
     "displayName": "Projekty - Operační program"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
