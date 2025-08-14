@@ -32,9 +32,6 @@
     "Maximalni_vyse_nakladu": {
       "type": "integer"
     },
-    "Zdroj_financovani": {
-      "type": "string"
-    },
     "Opatreni_sclld": {
       "type": "richtext"
     },
