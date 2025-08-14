@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_komponenty_rychle_odkazy_s_ikonkous",
+  "info": {
+    "displayName": "Rychlé odkazy s ikonkou",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "Odkazy": {
+      "type": "component",
+      "component": "elementy.ikonka-s-odkazem",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

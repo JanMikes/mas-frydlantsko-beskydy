@@ -133,3 +133,55 @@ h1 .heading-border,
     padding-bottom: 15px;
     border-bottom: 7px solid var(--bs-secondary);
 }
+
+.component-fast-links-panel {
+    border: 1px solid #CCCCCC;
+}
+
+
+.section-content-wrapper > h2:first-child,
+.section-content-wrapper > h3:first-child,
+.section-content-wrapper > h4:first-child,
+.section-content-wrapper > .my-5:first-child,
+.section-content-wrapper > .margin-component:first-child,
+.section-content-wrapper > .margin-heading:first-child,
+.side-panel > h2:first-child,
+.side-panel > h3:first-child,
+.side-panel > h4:first-child,
+.side-panel > .my-5:first-child,
+.side-panel > .margin-component:first-child,
+.side-panel > .margin-heading:first-child {
+    margin-top: 0 !important;
+}
+
+.section-content-wrapper > .my-5:last-child,
+.section-content-wrapper > .margin-component:last-child,
+.side-panel > .my-5:last-child,
+.side-panel > .margin-component:last-child,
+.side-panel > .margin-heading:last-child {
+    margin-bottom: 0 !important;
+}
+
+.section-content-wrapper > h2:last-child,
+.section-content-wrapper > h3:last-child,
+.section-content-wrapper > h4:last-child,
+.section-content-wrapper > .my-5:last-child,
+.side-panel > h2:last-child,
+.side-panel > h3:last-child,
+.side-panel > h4:last-child,
+.side-panel > .my-5:last-child {
+    margin-bottom: 0 !important;
+}
+
+.margin-component {
+    margin-bottom: 3rem;
+    margin-top: 1.5rem;
+}
+
+.margin-heading,
+.section-content h2, .section-content h3, .section-content h4, .section-content h5, .section-content h6,
+.side-panel h2, .side-panel h3, .side-panel h4, .side-panel h5, .side-panel h6
+{
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}

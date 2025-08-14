@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_elementy_ikonka_s_odkazems",
+  "info": {
+    "displayName": "Ikonka s odkazem",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "Ikonka": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ikonky.ikonky"
+    },
+    "Text": {
+      "type": "string"
+    },
+    "Odkaz": {
+      "type": "component",
+      "component": "elementy.odkaz",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

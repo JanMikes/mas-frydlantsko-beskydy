@@ -758,6 +758,7 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.bakalari',
         'komponenty.alert',
         'komponenty.aktuality',
+        'komponenty.rychle-odkazy-s-ikonkou',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -792,6 +793,8 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.filtr-tagu',
         'komponenty.bakalari',
         'komponenty.alert',
+        'komponenty.rychle-odkazy-s-ikonkou',
+        'komponenty.rozklikavaci-body',
       ]
     > &
       Schema.Attribute.Required &

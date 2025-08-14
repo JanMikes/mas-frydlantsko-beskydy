@@ -60,7 +60,9 @@
         "komponenty.mapa",
         "komponenty.filtr-tagu",
         "komponenty.bakalari",
-        "komponenty.alert"
+        "komponenty.alert",
+        "komponenty.rychle-odkazy-s-ikonkou",
+        "komponenty.rozklikavaci-body"
       ],
       "required": true,
       "min": 1
@@ -103,7 +105,8 @@
         "komponenty.bocni-panel",
         "komponenty.bakalari",
         "komponenty.alert",
-        "komponenty.aktuality"
+        "komponenty.aktuality",
+        "komponenty.rychle-odkazy-s-ikonkou"
       ]
     }
   }

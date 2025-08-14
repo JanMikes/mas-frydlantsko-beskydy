@@ -1,0 +1,17 @@
+<div class="margin-component">
+    {% for odkaz in data.Odkazy %}
+        {% if odkaz.Odkaz %}
+            <twig:Odkaz data="{{ odkaz.Odkaz }}" class="text-decoration-none">
+                <div class="d-flex gap-3 align-items-center component-fast-links-panel p-3">
+                    {% if odkaz.Ikonka and odkaz.Ikonka.Ikonka %}
+                        <img src="{{ odkaz.Ikonka.Ikonka.url }}" alt="" class="icon-small" style="width: 120px; height: 120px;">
+                    {% endif %}
+
+                    <span class="h4">
+                        {{ odkaz.Text }}
+                    </span>
+                </div>
+            </twig:Odkaz>
+        {% endif %}
+    {% endfor %}
+</div>

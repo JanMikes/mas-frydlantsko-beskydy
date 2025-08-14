@@ -84,12 +84,19 @@ npm run start
 - Live Components for interactive features (filtering, etc.)
 - Uses Bootstrap 5 for styling
 - Asset management via Symfony Asset Mapper (importmap) - no build step required
+- Dynamic pages (sections) are usually built dynamically through `SekceData` (see `section.html.twig`) - it includes twig components
 
 ### Content Types
 The project uses a component-based content system where pages are built from reusable components like:
 - `Aktuality` (News/Articles)
 - `UredniDeska` (Official Notice Board)
 - Various UI components (forms, galleries, maps, etc.)
+
+### Components
+- Component always have postfix "ComponentData"
+- Component always have corresponding template in `templates/components`
+- Components has never `CanCreateManyFromStrapiResponse` trait
+- Component must always be added to the `SekceData` list of components
 
 ### Development Patterns
 

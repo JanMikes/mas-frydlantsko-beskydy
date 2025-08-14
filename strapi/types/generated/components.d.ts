@@ -91,6 +91,19 @@ export interface ElementyHistoriePolozka extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementyIkonkaSOdkazem extends Struct.ComponentSchema {
+  collectionName: 'components_elementy_ikonka_s_odkazems';
+  info: {
+    displayName: 'Ikonka s odkazem';
+    icon: 'code';
+  };
+  attributes: {
+    Ikonka: Schema.Attribute.Relation<'oneToOne', 'api::ikonky.ikonky'>;
+    Odkaz: Schema.Attribute.Component<'elementy.odkaz', false>;
+    Text: Schema.Attribute.String;
+  };
+}
+
 export interface ElementyKarta extends Struct.ComponentSchema {
   collectionName: 'components_elementy_kartas';
   info: {
@@ -648,6 +661,17 @@ export interface KomponentyRozklikavaciBody extends Struct.ComponentSchema {
   attributes: {};
 }
 
+export interface KomponentyRychleOdkazySIkonkou extends Struct.ComponentSchema {
+  collectionName: 'components_komponenty_rychle_odkazy_s_ikonkous';
+  info: {
+    displayName: 'Rychl\u00E9 odkazy s ikonkou';
+    icon: 'dashboard';
+  };
+  attributes: {
+    Odkazy: Schema.Attribute.Component<'elementy.ikonka-s-odkazem', true>;
+  };
+}
+
 export interface KomponentySamosprava extends Struct.ComponentSchema {
   collectionName: 'components_samosprava_samospravas';
   info: {
@@ -797,6 +821,7 @@ declare module '@strapi/strapi' {
       'elementy.faq-polozka': ElementyFaqPolozka;
       'elementy.film': ElementyFilm;
       'elementy.historie-polozka': ElementyHistoriePolozka;
+      'elementy.ikonka-s-odkazem': ElementyIkonkaSOdkazem;
       'elementy.karta': ElementyKarta;
       'elementy.karta-s-argumenty': ElementyKartaSArgumenty;
       'elementy.karta-tip-na-vylet': ElementyKartaTipNaVylet;
@@ -833,6 +858,7 @@ declare module '@strapi/strapi' {
       'komponenty.program-kina': KomponentyProgramKina;
       'komponenty.rozdelovnik': KomponentyRozdelovnik;
       'komponenty.rozklikavaci-body': KomponentyRozklikavaciBody;
+      'komponenty.rychle-odkazy-s-ikonkou': KomponentyRychleOdkazySIkonkou;
       'komponenty.samosprava': KomponentySamosprava;
       'komponenty.sekce-s-dlazdicema': KomponentySekceSDlazdicema;
       'komponenty.soubory-ke-stazeni': KomponentySouboryKeStazeni;
