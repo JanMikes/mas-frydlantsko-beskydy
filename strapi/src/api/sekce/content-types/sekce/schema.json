@@ -63,7 +63,9 @@
         "komponenty.alert",
         "komponenty.rychle-odkazy-s-ikonkou",
         "komponenty.rozklikavaci-body",
-        "komponenty.projekty"
+        "komponenty.projekty",
+        "komponenty.sdileni",
+        "komponenty.rozjizdeci-obsah"
       ],
       "required": true,
       "min": 1

@@ -938,6 +938,8 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.rychle-odkazy-s-ikonkou',
         'komponenty.rozklikavaci-body',
         'komponenty.projekty',
+        'komponenty.sdileni',
+        'komponenty.rozjizdeci-obsah',
       ]
     > &
       Schema.Attribute.Required &
@@ -1041,6 +1043,46 @@ export interface ApiUredniDeskaUredniDeska extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
     Zodpovedna_osoba: Schema.Attribute.Relation<'oneToOne', 'api::lide.lide'>;
+  };
+}
+
+export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
+  collectionName: 'vyzvies';
+  info: {
+    displayName: 'Vyzvy';
+    pluralName: 'vyzvies';
+    singularName: 'vyzvy';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Dokumenty: Schema.Attribute.Component<
+      'komponenty.soubory-ke-stazeni',
+      false
+    >;
+    Financni_alokace: Schema.Attribute.Integer;
+    Informace: Schema.Attribute.RichText;
+    Konec_vyzvy: Schema.Attribute.DateTime;
+    Lide: Schema.Attribute.Component<'komponenty.samosprava', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::vyzvy.vyzvy'> &
+      Schema.Attribute.Private;
+    Maximalni_vyse_nakladu: Schema.Attribute.Integer;
+    Minimalni_vyse_nakladu: Schema.Attribute.Integer;
+    Nazev: Schema.Attribute.String;
+    Opatreni_sclld: Schema.Attribute.RichText;
+    Opravneni_zadatele: Schema.Attribute.RichText;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Zahajeni_prijmu_zadosti: Schema.Attribute.DateTime;
+    Zahajeni_vyzvy: Schema.Attribute.DateTime;
+    Zdroj_financovani: Schema.Attribute.String;
   };
 }
 
@@ -1569,6 +1611,7 @@ declare module '@strapi/strapi' {
       'api::sekce.sekce': ApiSekceSekce;
       'api::tagy.tagy': ApiTagyTagy;
       'api::uredni-deska.uredni-deska': ApiUredniDeskaUredniDeska;
+      'api::vyzvy.vyzvy': ApiVyzvyVyzvy;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

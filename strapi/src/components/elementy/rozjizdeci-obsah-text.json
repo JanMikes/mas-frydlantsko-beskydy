@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_elementy_rozjizdeci_obsah_texts",
+  "info": {
+    "displayName": "Rozjížděcí obsah - Text",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "Nadpis": {
+      "type": "string"
+    },
+    "Text": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

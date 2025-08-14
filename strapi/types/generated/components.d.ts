@@ -257,6 +257,18 @@ export interface ElementyPoleFormulareSMoznostmi
   };
 }
 
+export interface ElementyRozjizdeciObsahText extends Struct.ComponentSchema {
+  collectionName: 'components_elementy_rozjizdeci_obsah_texts';
+  info: {
+    displayName: 'Rozj\u00ED\u017Ed\u011Bc\u00ED obsah - Text';
+    icon: 'bulletList';
+  };
+  attributes: {
+    Nadpis: Schema.Attribute.String;
+    Text: Schema.Attribute.RichText;
+  };
+}
+
 export interface ElementySlide extends Struct.ComponentSchema {
   collectionName: 'components_elementy_slides';
   info: {
@@ -661,6 +673,23 @@ export interface KomponentyRozdelovnik extends Struct.ComponentSchema {
   };
 }
 
+export interface KomponentyRozjizdeciObsah extends Struct.ComponentSchema {
+  collectionName: 'components_komponenty_rozjizdeci_obsahs';
+  info: {
+    displayName: 'Rozj\u00ED\u017Ed\u011Bc\u00ED obsah';
+    icon: 'layer';
+  };
+  attributes: {
+    Dokumenty: Schema.Attribute.Component<
+      'komponenty.soubory-ke-stazeni',
+      false
+    >;
+    Lide: Schema.Attribute.Component<'komponenty.samosprava', false>;
+    Text: Schema.Attribute.Component<'elementy.rozjizdeci-obsah-text', false>;
+    Vyzva: Schema.Attribute.Relation<'oneToOne', 'api::vyzvy.vyzvy'>;
+  };
+}
+
 export interface KomponentyRozklikavaciBody extends Struct.ComponentSchema {
   collectionName: 'components_komponenty_rozklikavaci_bodies';
   info: {
@@ -848,6 +877,7 @@ declare module '@strapi/strapi' {
       'elementy.organizace-skolniho-roku-polozka': ElementyOrganizaceSkolnihoRokuPolozka;
       'elementy.pole-formulare': ElementyPoleFormulare;
       'elementy.pole-formulare-s-moznostmi': ElementyPoleFormulareSMoznostmi;
+      'elementy.rozjizdeci-obsah-text': ElementyRozjizdeciObsahText;
       'elementy.slide': ElementySlide;
       'elementy.soubor': ElementySoubor;
       'elementy.tabulka-bunka': ElementyTabulkaBunka;
@@ -876,6 +906,7 @@ declare module '@strapi/strapi' {
       'komponenty.program-kina': KomponentyProgramKina;
       'komponenty.projekty': KomponentyProjekty;
       'komponenty.rozdelovnik': KomponentyRozdelovnik;
+      'komponenty.rozjizdeci-obsah': KomponentyRozjizdeciObsah;
       'komponenty.rozklikavaci-body': KomponentyRozklikavaciBody;
       'komponenty.rychle-odkazy-s-ikonkou': KomponentyRychleOdkazySIkonkou;
       'komponenty.samosprava': KomponentySamosprava;
