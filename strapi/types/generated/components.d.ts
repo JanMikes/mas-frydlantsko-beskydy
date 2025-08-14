@@ -294,6 +294,7 @@ export interface ElementySoubor extends Struct.ComponentSchema {
     Nadpis: Schema.Attribute.String & Schema.Attribute.Required;
     Soubor: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
+    Tag: Schema.Attribute.Relation<'oneToOne', 'api::tagy.tagy'>;
   };
 }
 
@@ -685,6 +686,7 @@ export interface KomponentyRozjizdeciObsah extends Struct.ComponentSchema {
       false
     >;
     Lide: Schema.Attribute.Component<'komponenty.samosprava', false>;
+    Nadpis: Schema.Attribute.String;
     Text: Schema.Attribute.Component<'elementy.rozjizdeci-obsah-text', false>;
     Vyzva: Schema.Attribute.Relation<'oneToOne', 'api::vyzvy.vyzvy'>;
   };

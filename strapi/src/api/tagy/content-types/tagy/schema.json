@@ -23,6 +23,10 @@
       "type": "uid",
       "targetField": "Tag",
       "required": true
+    },
+    "Zobrazovat_v_aktualitach": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

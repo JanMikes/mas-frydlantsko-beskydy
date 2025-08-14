@@ -883,10 +883,8 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.sekce-s-dlazdicema',
         'komponenty.samosprava',
         'komponenty.rozdelovnik',
-        'komponenty.program-kina',
         'komponenty.pas-s-obrazkem',
         'komponenty.pas-karet-s-argumenty',
-        'komponenty.organizace-skolniho-roku',
         'komponenty.obrazek',
         'komponenty.nadpis',
         'komponenty.mapa',
@@ -897,7 +895,6 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.filtr-tagu',
         'komponenty.faq',
         'komponenty.bocni-panel',
-        'komponenty.bakalari',
         'komponenty.alert',
         'komponenty.aktuality',
         'komponenty.rychle-odkazy-s-ikonkou',
@@ -919,21 +916,16 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.soubory-ke-stazeni',
         'komponenty.textove-pole',
         'komponenty.tlacitka',
-        'komponenty.uredni-deska',
         'komponenty.vizitky',
         'komponenty.terminy-akci',
-        'komponenty.program-kina',
         'komponenty.karty',
         'komponenty.pas-s-obrazkem',
         'komponenty.pas-karet-s-argumenty',
-        'komponenty.tipy-na-vylet',
         'komponenty.historie',
         'komponenty.faq',
-        'komponenty.organizace-skolniho-roku',
         'komponenty.tabulka',
         'komponenty.mapa',
         'komponenty.filtr-tagu',
-        'komponenty.bakalari',
         'komponenty.alert',
         'komponenty.rychle-odkazy-s-ikonkou',
         'komponenty.rozklikavaci-body',
@@ -995,6 +987,8 @@ export interface ApiTagyTagy extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Zobrazovat_v_aktualitach: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
   };
 }
 

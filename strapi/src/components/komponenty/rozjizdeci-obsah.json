@@ -6,6 +6,9 @@
   },
   "options": {},
   "attributes": {
+    "Nadpis": {
+      "type": "string"
+    },
     "Text": {
       "type": "component",
       "component": "elementy.rozjizdeci-obsah-text",
