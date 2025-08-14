@@ -21,7 +21,7 @@ namespace MASFB\Web\Value\Content\Data;
  *      Doba_realizace: null|string,
  *      Obrazek: null|ImageDataArray,
  *      Text: null|string,
- *      Souvisejici_projekty: null|array<mixed>,
+ *      Souvisejici_projekty: array<mixed>,
  *  }
  */
 readonly final class ProjektData
@@ -57,6 +57,8 @@ readonly final class ProjektData
         $operacniProgram = $data['Operacni_program'] !== null ? ProjektyOperacniProgramData::createFromStrapiResponse($data['Operacni_program']) : null;
         $obec = $data['Obec'] !== null ? ProjektyObecData::createFromStrapiResponse($data['Obec']) : null;
         $kategorie = $data['Kategorie'] !== null ? ProjektyKategorieData::createFromStrapiResponse($data['Kategorie']) : null;
+
+        /** @phpstan-ignore-next-line */
         $souvisejiciProjekty = self::createManyFromStrapiResponse($data['Souvisejici_projekty'] ?? []);
 
         return new self(
