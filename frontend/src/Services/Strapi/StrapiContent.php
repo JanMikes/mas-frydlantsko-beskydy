@@ -17,6 +17,7 @@ use MASFB\Web\Value\Content\Data\ClovekData;
 use MASFB\Web\Value\Content\Data\DlazdiceData;
 use MASFB\Web\Value\Content\Data\FileData;
 use MASFB\Web\Value\Content\Data\ImageData;
+use MASFB\Web\Value\Content\Data\ProjektData;
 use MASFB\Web\Value\Content\Data\TagData;
 
 /**
@@ -26,6 +27,7 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type FileDataArray from FileData
  * @phpstan-import-type ImageDataArray from ImageData
  * @phpstan-import-type MenuDataArray from MenuData
+ * @phpstan-import-type ProjektDataArray from ProjektData
  * @phpstan-import-type SekceDataArray from SekceData
  * @phpstan-import-type HomepageDataArray from HomepageData
  * @phpstan-import-type TagDataArray from TagData
@@ -252,6 +254,30 @@ readonly final class StrapiContent
 
         return KalendarAkciData::createManyFromStrapiResponse(
             $strapiResponse['data']
+        );
+    }
+
+    /**
+     * @return array<ProjektData>
+     */
+    public function getProjektyData(): array
+    {
+        /** @var array{data: array<ProjektDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('projekties');
+
+        return ProjektData::createManyFromStrapiResponse($strapiResponse['data']);
+    }
+
+    public function getProjektData(string $slug): ProjektData
+    {
+        /** @var array{data: array<ProjektDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('projekties',
+            filters: [
+                'slug' => ['$eq' => $slug]
+            ]);
+
+        return ProjektData::createFromStrapiResponse(
+            $strapiResponse['data'][0] ?? throw new NotFound
         );
     }
 }

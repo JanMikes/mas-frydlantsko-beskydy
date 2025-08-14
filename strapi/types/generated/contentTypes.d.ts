@@ -716,6 +716,42 @@ export interface ApiMenuMenu extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
+  collectionName: 'projekties';
+  info: {
+    displayName: 'Projekty';
+    pluralName: 'projekties';
+    singularName: 'projekty';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Doba_realizace: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::projekty.projekty'
+    > &
+      Schema.Attribute.Private;
+    Nazev: Schema.Attribute.String;
+    Obrazek: Schema.Attribute.Media<'images'>;
+    Operacni_program: Schema.Attribute.String;
+    Prijemce_dotace: Schema.Attribute.String;
+    Projekt_mas_fb: Schema.Attribute.Boolean;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
+    Text: Schema.Attribute.RichText;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Vyse_dotace: Schema.Attribute.Integer;
+  };
+}
+
 export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
   collectionName: 'sekces';
   info: {
@@ -1419,6 +1455,7 @@ declare module '@strapi/strapi' {
       'api::kategorie-uredni-desky.kategorie-uredni-desky': ApiKategorieUredniDeskyKategorieUredniDesky;
       'api::lide.lide': ApiLideLide;
       'api::menu.menu': ApiMenuMenu;
+      'api::projekty.projekty': ApiProjektyProjekty;
       'api::sekce.sekce': ApiSekceSekce;
       'api::tagy.tagy': ApiTagyTagy;
       'api::uredni-deska.uredni-deska': ApiUredniDeskaUredniDeska;

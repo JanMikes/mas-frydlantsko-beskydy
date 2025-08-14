@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projekties",
+  "info": {
+    "singularName": "projekty",
+    "pluralName": "projekties",
+    "displayName": "Projekty"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nazev": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Nazev",
+      "required": true
+    },
+    "Operacni_program": {
+      "type": "string"
+    },
+    "Prijemce_dotace": {
+      "type": "string"
+    },
+    "Vyse_dotace": {
+      "type": "integer"
+    },
+    "Projekt_mas_fb": {
+      "type": "boolean"
+    },
+    "Doba_realizace": {
+      "type": "string"
+    },
+    "Obrazek": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Text": {
+      "type": "richtext"
+    }
+  }
+}
