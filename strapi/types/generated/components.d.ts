@@ -693,6 +693,15 @@ export interface KomponentySamosprava extends Struct.ComponentSchema {
   };
 }
 
+export interface KomponentySdileni extends Struct.ComponentSchema {
+  collectionName: 'components_komponenty_sdileni';
+  info: {
+    displayName: 'Sd\u00EDlen\u00ED';
+    icon: 'twitter';
+  };
+  attributes: {};
+}
+
 export interface KomponentySekceSDlazdicema extends Struct.ComponentSchema {
   collectionName: 'components_dlazdice_sekce_s_dlazdicemas';
   info: {
@@ -870,6 +879,7 @@ declare module '@strapi/strapi' {
       'komponenty.rozklikavaci-body': KomponentyRozklikavaciBody;
       'komponenty.rychle-odkazy-s-ikonkou': KomponentyRychleOdkazySIkonkou;
       'komponenty.samosprava': KomponentySamosprava;
+      'komponenty.sdileni': KomponentySdileni;
       'komponenty.sekce-s-dlazdicema': KomponentySekceSDlazdicema;
       'komponenty.soubory-ke-stazeni': KomponentySouboryKeStazeni;
       'komponenty.tabulka': KomponentyTabulka;

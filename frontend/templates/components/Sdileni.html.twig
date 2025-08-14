@@ -1,0 +1,14 @@
+<div class="sdileni-panel margin-component">
+    <h3>Sdílení</h3>
+    <div class="social-share-buttons">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri|url_encode }}" target="_blank" class="btn btn-primary me-2">
+            <i class="fab fa-facebook-f"></i> Facebook
+        </a>
+        <a href="https://twitter.com/intent/tweet?url={{ app.request.uri|url_encode }}&text={{ 'Podívejte se na tuto stránku'|url_encode }}" target="_blank" class="btn btn-info me-2">
+            <i class="fab fa-twitter"></i> Twitter
+        </a>
+        <a href="mailto:?subject={{ 'Zajímavá stránka'|url_encode }}&body={{ app.request.uri|url_encode }}" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i> Email
+        </a>
+    </div>
+</div>
