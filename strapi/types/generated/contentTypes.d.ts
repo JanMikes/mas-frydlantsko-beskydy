@@ -1073,6 +1073,10 @@ export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Zahajeni_prijmu_zadosti: Schema.Attribute.DateTime;
     Zahajeni_vyzvy: Schema.Attribute.DateTime;
+    Zdroj_financovani: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::projekty-operacni-program.projekty-operacni-program'
+    >;
   };
 }
 
