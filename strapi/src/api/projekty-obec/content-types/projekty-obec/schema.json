@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projekty_obecs",
+  "info": {
+    "singularName": "projekty-obec",
+    "pluralName": "projekty-obecs",
+    "displayName": "Projekty - Obec"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nazev": {
+      "type": "string"
+    }
+  }
+}

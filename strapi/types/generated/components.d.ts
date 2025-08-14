@@ -633,6 +633,15 @@ export interface KomponentyProgramKina extends Struct.ComponentSchema {
   };
 }
 
+export interface KomponentyProjekty extends Struct.ComponentSchema {
+  collectionName: 'components_komponenty_projekties';
+  info: {
+    displayName: 'Projekty';
+    icon: 'briefcase';
+  };
+  attributes: {};
+}
+
 export interface KomponentyRozdelovnik extends Struct.ComponentSchema {
   collectionName: 'components_komponenty_rozdelovniks';
   info: {
@@ -856,6 +865,7 @@ declare module '@strapi/strapi' {
       'komponenty.pas-karet-s-argumenty': KomponentyPasKaretSArgumenty;
       'komponenty.pas-s-obrazkem': KomponentyPasSObrazkem;
       'komponenty.program-kina': KomponentyProgramKina;
+      'komponenty.projekty': KomponentyProjekty;
       'komponenty.rozdelovnik': KomponentyRozdelovnik;
       'komponenty.rozklikavaci-body': KomponentyRozklikavaciBody;
       'komponenty.rychle-odkazy-s-ikonkou': KomponentyRychleOdkazySIkonkou;

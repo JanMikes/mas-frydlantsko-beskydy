@@ -1,0 +1,37 @@
+<div class="margin-component">
+    <div class="row">
+        {% for projekt in computed.getItems() %}
+            <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+                {% if projekt.slug %}
+                    <a href="{{ path('detail_projektu', {'slug': projekt.slug}) }}" class="text-decoration-none">
+                {% endif %}
+                
+                    {% if projekt.Obrazek %}
+                        <img class="img-fluid mb-2" src="{{ projekt.Obrazek.url }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
+                    {% endif %}
+
+                    <h3 class="h5 border-top mt-2 mb-1 pt-2 fw-bold" id="projekt-{{ projekt.slug }}">{{ projekt.Nazev }}</h3>
+                    
+                    {% if projekt.Operacniprogram %}
+                        <p class="small text-secondary mb-1">{{ projekt.Operacniprogram }}</p>
+                    {% endif %}
+                    
+                    {% if projekt.Prijemcedotace %}
+                        <p class="small mb-1"><strong>Příjemce:</strong> {{ projekt.Prijemcedotace }}</p>
+                    {% endif %}
+                    
+                    {% if projekt.Vysedotace %}
+                        <p class="small mb-1"><strong>Výše dotace:</strong> {{ projekt.Vysedotace|number_format(0, ',', ' ') }} Kč</p>
+                    {% endif %}
+                    
+                    {% if projekt.Dobarealizace %}
+                        <p class="small text-secondary">{{ projekt.Dobarealizace }}</p>
+                    {% endif %}
+
+                {% if projekt.slug %}
+                    </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

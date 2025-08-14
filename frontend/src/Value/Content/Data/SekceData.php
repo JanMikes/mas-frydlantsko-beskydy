@@ -125,6 +125,7 @@ readonly final class SekceData
             'komponenty.historie' => new Component('Historie', HistorieComponentData::createFromStrapiResponse($componentInfo)),
             'komponenty.bocni-panel' => new Component('BocniPanel', BocniPanelComponentData::createFromStrapiResponse($componentInfo)),
             'komponenty.rychle-odkazy-s-ikonkou' => new Component('RychleOdkazySIkonkou', RychleOdkazySIkonkouComponentData::createFromStrapiResponse($componentInfo)),
+            'komponenty.projekty' => new Component('Projekty', ProjektyComponentData::createFromStrapiResponse($componentInfo)),
             default => null,
         };
     }

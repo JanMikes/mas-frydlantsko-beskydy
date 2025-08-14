@@ -716,6 +716,93 @@ export interface ApiMenuMenu extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiProjektyKategorieProjektyKategorie
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'projekty_kategories';
+  info: {
+    displayName: 'Projekty - Kategorie';
+    pluralName: 'projekty-kategories';
+    singularName: 'projekty-kategorie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::projekty-kategorie.projekty-kategorie'
+    > &
+      Schema.Attribute.Private;
+    Nazev: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProjektyObecProjektyObec
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'projekty_obecs';
+  info: {
+    displayName: 'Projekty - Obec';
+    pluralName: 'projekty-obecs';
+    singularName: 'projekty-obec';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::projekty-obec.projekty-obec'
+    > &
+      Schema.Attribute.Private;
+    Nazev: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProjektyOperacniProgramProjektyOperacniProgram
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'projekty_operacni_programs';
+  info: {
+    displayName: 'Projekty - Opera\u010Dn\u00ED program';
+    pluralName: 'projekty-operacni-programs';
+    singularName: 'projekty-operacni-program';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::projekty-operacni-program.projekty-operacni-program'
+    > &
+      Schema.Attribute.Private;
+    Nazev: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
   collectionName: 'projekties';
   info: {
@@ -731,6 +818,10 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Doba_realizace: Schema.Attribute.String;
+    Kategorie: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::projekty-kategorie.projekty-kategorie'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -738,8 +829,15 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Nazev: Schema.Attribute.String;
+    Obec: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::projekty-obec.projekty-obec'
+    >;
     Obrazek: Schema.Attribute.Media<'images'>;
-    Operacni_program: Schema.Attribute.String;
+    Operacni_program: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::projekty-operacni-program.projekty-operacni-program'
+    >;
     Prijemce_dotace: Schema.Attribute.String;
     Projekt_mas_fb: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
@@ -831,6 +929,7 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.alert',
         'komponenty.rychle-odkazy-s-ikonkou',
         'komponenty.rozklikavaci-body',
+        'komponenty.projekty',
       ]
     > &
       Schema.Attribute.Required &
@@ -1455,6 +1554,9 @@ declare module '@strapi/strapi' {
       'api::kategorie-uredni-desky.kategorie-uredni-desky': ApiKategorieUredniDeskyKategorieUredniDesky;
       'api::lide.lide': ApiLideLide;
       'api::menu.menu': ApiMenuMenu;
+      'api::projekty-kategorie.projekty-kategorie': ApiProjektyKategorieProjektyKategorie;
+      'api::projekty-obec.projekty-obec': ApiProjektyObecProjektyObec;
+      'api::projekty-operacni-program.projekty-operacni-program': ApiProjektyOperacniProgramProjektyOperacniProgram;
       'api::projekty.projekty': ApiProjektyProjekty;
       'api::sekce.sekce': ApiSekceSekce;
       'api::tagy.tagy': ApiTagyTagy;

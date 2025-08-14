@@ -19,9 +19,6 @@
       "targetField": "Nazev",
       "required": true
     },
-    "Operacni_program": {
-      "type": "string"
-    },
     "Prijemce_dotace": {
       "type": "string"
     },
@@ -43,6 +40,21 @@
     },
     "Text": {
       "type": "richtext"
+    },
+    "Kategorie": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::projekty-kategorie.projekty-kategorie"
+    },
+    "Obec": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::projekty-obec.projekty-obec"
+    },
+    "Operacni_program": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::projekty-operacni-program.projekty-operacni-program"
     }
   }
 }

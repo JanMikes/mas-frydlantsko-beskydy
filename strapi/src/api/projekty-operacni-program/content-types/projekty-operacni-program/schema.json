@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projekty_operacni_programs",
+  "info": {
+    "singularName": "projekty-operacni-program",
+    "pluralName": "projekty-operacni-programs",
+    "displayName": "Projekty - Operační program"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nazev": {
+      "type": "string"
+    }
+  }
+}
