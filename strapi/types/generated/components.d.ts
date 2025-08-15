@@ -526,6 +526,20 @@ export interface KomponentyHistorie extends Struct.ComponentSchema {
   };
 }
 
+export interface KomponentyKalendarAkci extends Struct.ComponentSchema {
+  collectionName: 'components_komponenty_kalendar_akci';
+  info: {
+    displayName: 'Kalend\u00E1\u0159 akc\u00ED';
+    icon: 'calendar';
+  };
+  attributes: {
+    Kategorie: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kalendar-akci-kategorie.kalendar-akci-kategorie'
+    >;
+  };
+}
+
 export interface KomponentyKarty extends Struct.ComponentSchema {
   collectionName: 'components_komponenty_karties';
   info: {
@@ -899,6 +913,7 @@ declare module '@strapi/strapi' {
       'komponenty.formular': KomponentyFormular;
       'komponenty.galerie': KomponentyGalerie;
       'komponenty.historie': KomponentyHistorie;
+      'komponenty.kalendar-akci': KomponentyKalendarAkci;
       'komponenty.karty': KomponentyKarty;
       'komponenty.mapa': KomponentyMapa;
       'komponenty.nadpis': KomponentyNadpis;

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_komponenty_kalendar_akci",
+  "info": {
+    "displayName": "Kalendář akcí",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "Kategorie": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::kalendar-akci-kategorie.kalendar-akci-kategorie"
+    }
+  },
+  "config": {}
+}

@@ -60,7 +60,8 @@
         "komponenty.projekty",
         "komponenty.sdileni",
         "komponenty.rozjizdeci-obsah",
-        "komponenty.vyzvy"
+        "komponenty.vyzvy",
+        "komponenty.kalendar-akci"
       ],
       "required": true,
       "min": 1
@@ -101,7 +102,8 @@
         "komponenty.bocni-panel",
         "komponenty.alert",
         "komponenty.aktuality",
-        "komponenty.rychle-odkazy-s-ikonkou"
+        "komponenty.rychle-odkazy-s-ikonkou",
+        "komponenty.kalendar-akci"
       ]
     }
   }

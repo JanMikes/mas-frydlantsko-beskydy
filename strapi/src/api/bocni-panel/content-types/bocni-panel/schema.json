@@ -42,7 +42,8 @@
         "komponenty.mapa",
         "komponenty.alert",
         "komponenty.rychle-odkazy-s-ikonkou",
-        "komponenty.sdileni"
+        "komponenty.sdileni",
+        "komponenty.kalendar-akci"
       ]
     }
   }

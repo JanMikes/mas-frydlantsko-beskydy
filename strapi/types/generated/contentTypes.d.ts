@@ -462,6 +462,7 @@ export interface ApiBocniPanelBocniPanel extends Struct.CollectionTypeSchema {
         'komponenty.alert',
         'komponenty.rychle-odkazy-s-ikonkou',
         'komponenty.sdileni',
+        'komponenty.kalendar-akci',
       ]
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -929,6 +930,7 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.alert',
         'komponenty.aktuality',
         'komponenty.rychle-odkazy-s-ikonkou',
+        'komponenty.kalendar-akci',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -963,6 +965,7 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.sdileni',
         'komponenty.rozjizdeci-obsah',
         'komponenty.vyzvy',
+        'komponenty.kalendar-akci',
       ]
     > &
       Schema.Attribute.Required &
