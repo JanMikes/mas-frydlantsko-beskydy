@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace MASFB\Web\Value\Content\Data;
 
 /**
- * @phpstan-type ProjektyOperacniProgramDataArray array{
+ * @phpstan-type VyzvyOperacniProgramDataArray array{
  *     Nazev: null|string,
  * }
  */
-readonly final class ProjektyOperacniProgramData
+readonly final class VyzvyOperacniProgramData
 {
-    /** @use CanCreateManyFromStrapiResponse<ProjektyOperacniProgramDataArray> */
+    /** @use CanCreateManyFromStrapiResponse<VyzvyOperacniProgramDataArray> */
     use CanCreateManyFromStrapiResponse;
 
     public function __construct(
@@ -20,7 +20,7 @@ readonly final class ProjektyOperacniProgramData
     }
 
     /**
-     * @param ProjektyOperacniProgramDataArray $data
+     * @param VyzvyOperacniProgramDataArray $data
      */
     public static function createFromStrapiResponse(array $data): self
     {

@@ -6,7 +6,7 @@ namespace MASFB\Web\Components;
 
 use MASFB\Web\Value\Content\Data\ProjektyKategorieData;
 use MASFB\Web\Value\Content\Data\ProjektyObecData;
-use MASFB\Web\Value\Content\Data\ProjektyOperacniProgramData;
+use MASFB\Web\Value\Content\Data\VyzvyOperacniProgramData;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use MASFB\Web\Services\Strapi\StrapiContent;
 use MASFB\Web\Value\Content\Data\ProjektData;
@@ -44,10 +44,10 @@ readonly final class Projekty
     }
 
     /**
-     * @return array<ProjektyOperacniProgramData>
+     * @return array<VyzvyOperacniProgramData>
      */
     public function getOperacniProgramy(): array
     {
-        return $this->content->getProjektyOperacniProgramy();
+        return $this->content->getVyzvyOperacniProgramy();
     }
 }

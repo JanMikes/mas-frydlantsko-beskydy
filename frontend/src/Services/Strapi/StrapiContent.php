@@ -20,7 +20,7 @@ use MASFB\Web\Value\Content\Data\ImageData;
 use MASFB\Web\Value\Content\Data\ProjektData;
 use MASFB\Web\Value\Content\Data\ProjektyKategorieData;
 use MASFB\Web\Value\Content\Data\ProjektyObecData;
-use MASFB\Web\Value\Content\Data\ProjektyOperacniProgramData;
+use MASFB\Web\Value\Content\Data\VyzvyOperacniProgramData;
 use MASFB\Web\Value\Content\Data\TagData;
 
 /**
@@ -33,7 +33,7 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type ProjektDataArray from ProjektData
  * @phpstan-import-type ProjektyKategorieDataArray from ProjektyKategorieData
  * @phpstan-import-type ProjektyObecDataArray from ProjektyObecData
- * @phpstan-import-type ProjektyOperacniProgramDataArray from ProjektyOperacniProgramData
+ * @phpstan-import-type VyzvyOperacniProgramDataArray from VyzvyOperacniProgramData
  * @phpstan-import-type SekceDataArray from SekceData
  * @phpstan-import-type HomepageDataArray from HomepageData
  * @phpstan-import-type TagDataArray from TagData
@@ -310,13 +310,13 @@ readonly final class StrapiContent
     }
 
     /**
-     * @return array<ProjektyOperacniProgramData>
+     * @return array<VyzvyOperacniProgramData>
      */
-    public function getProjektyOperacniProgramy(): array
+    public function getVyzvyOperacniProgramy(): array
     {
-        /** @var array{data: array<ProjektyOperacniProgramDataArray>} $strapiResponse */
+        /** @var array{data: array<VyzvyOperacniProgramDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('projekty-operacni-programs');
 
-        return ProjektyOperacniProgramData::createManyFromStrapiResponse($strapiResponse['data']);
+        return VyzvyOperacniProgramData::createManyFromStrapiResponse($strapiResponse['data']);
     }
 }

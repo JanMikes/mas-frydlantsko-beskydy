@@ -8,11 +8,11 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-import-type ImageDataArray from ImageData
  * @phpstan-import-type ProjektyKategorieDataArray from ProjektyKategorieData
  * @phpstan-import-type ProjektyObecDataArray from ProjektyObecData
- * @phpstan-import-type ProjektyOperacniProgramDataArray from ProjektyOperacniProgramData
+ * @phpstan-import-type VyzvyOperacniProgramDataArray from VyzvyOperacniProgramData
  * @phpstan-type ProjektDataArray array{
  *      Nazev: null|string,
  *      slug: null|string,
- *      Operacni_program: null|ProjektyOperacniProgramDataArray,
+ *      Operacni_program: null|VyzvyOperacniProgramDataArray,
  *      Obec: null|ProjektyObecDataArray,
  *      Kategorie: null|ProjektyKategorieDataArray,
  *      Prijemce_dotace: null|string,
@@ -36,7 +36,7 @@ readonly final class ProjektData
     public function __construct(
         public null|string $Nazev,
         public null|string $slug,
-        public null|ProjektyOperacniProgramData $OperacniProgram,
+        public null|VyzvyOperacniProgramData $OperacniProgram,
         public null|ProjektyObecData $Obec,
         public null|ProjektyKategorieData $Kategorie,
         public null|string $PrijemceDotace,
@@ -54,7 +54,7 @@ readonly final class ProjektData
     public static function createFromStrapiResponse(array $data): self
     {
         $obrazek = $data['Obrazek'] !== null ? ImageData::createFromStrapiResponse($data['Obrazek']) : null;
-        $operacniProgram = $data['Operacni_program'] !== null ? ProjektyOperacniProgramData::createFromStrapiResponse($data['Operacni_program']) : null;
+        $operacniProgram = $data['Operacni_program'] !== null ? VyzvyOperacniProgramData::createFromStrapiResponse($data['Operacni_program']) : null;
         $obec = $data['Obec'] !== null ? ProjektyObecData::createFromStrapiResponse($data['Obec']) : null;
         $kategorie = $data['Kategorie'] !== null ? ProjektyKategorieData::createFromStrapiResponse($data['Kategorie']) : null;
 

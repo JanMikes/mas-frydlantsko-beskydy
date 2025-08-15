@@ -31,7 +31,7 @@
 
         {% block custom_styles %}{% endblock %}
     </head>
-    <body class="d-flex flex-column min-vh-100 {% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %}">
 
     {% block full_content %}
         <header>
@@ -68,13 +68,13 @@
             </div>
         </header>
 
-        <div class="content-wrapper flex-fill py-3">
+        <div class="content-wrapper py-3">
             {{ include('_flashes.html.twig') }}
 
             {% block content %}{% endblock %}
         </div>
 
-        <footer class="pt-5 mt-4">
+        <footer class="mt-4">
             <div class="container footer-upper py-5">
                 <div class="row">
                     <div class="col">
@@ -137,7 +137,7 @@
                 </div>
             </div>
 
-            <div class="colored-footer py-4 text-center">
+            <div class="colored-footer py-5 text-center">
                 <div class="container">
                     <ul>
                         <li><a href="#">Okdaz</a></li>
@@ -148,7 +148,7 @@
                         <li><a href="#">Okdaz</a></li>
                     </ul>
 
-                    <p>Web &amp; design <a href="https://wantoo.cz" target="_blank">Wantoo</a></p>
+                    <p class="mb-0">Web &amp; design <a href="https://wantoo.cz" target="_blank">Wantoo</a></p>
                 </div>
             </div>
         </footer>

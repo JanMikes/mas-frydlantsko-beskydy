@@ -96,7 +96,7 @@ The project uses a component-based content system where pages are built from reu
 - Component always have postfix "ComponentData"
 - Component always have corresponding template in `templates/components`
 - Components has never `CanCreateManyFromStrapiResponse` trait
-- Component must always be added to the `SekceData` list of components
+- Component must always be added to the `SekceData` list of components (do NOT add here, if it is "element" and not "component")
 
 ### Development Patterns
 
@@ -112,3 +112,5 @@ Controllers gracefully handle Strapi API failures with try/catch blocks, showing
 
 **Asset Management:**
 The frontend uses Symfony Asset Mapper (importmap.php) for managing JavaScript and CSS dependencies without a build step. Assets are served directly and dependencies are managed via importmaps.
+
+- Prefer writing nullable types as `null|type` instead of `?type` 
