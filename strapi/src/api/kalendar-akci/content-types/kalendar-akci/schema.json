@@ -34,6 +34,11 @@
     },
     "Popis": {
       "type": "richtext"
+    },
+    "Kategorie": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::kalendar-akci-kategorie.kalendar-akci-kategorie"
     }
   }
 }

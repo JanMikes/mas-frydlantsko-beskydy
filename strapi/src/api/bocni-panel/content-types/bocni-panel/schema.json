@@ -28,7 +28,6 @@
         "komponenty.sekce-s-dlazdicema",
         "komponenty.samosprava",
         "komponenty.rozdelovnik",
-        "komponenty.program-kina",
         "komponenty.pas-s-obrazkem",
         "komponenty.pas-karet-s-argumenty",
         "komponenty.obrazek",
@@ -39,12 +38,11 @@
         "komponenty.formular",
         "komponenty.faq",
         "komponenty.aktuality",
-        "komponenty.organizace-skolniho-roku",
         "komponenty.filtr-tagu",
-        "komponenty.bakalari",
-        "komponenty.tabulka",
         "komponenty.mapa",
-        "komponenty.alert"
+        "komponenty.alert",
+        "komponenty.rychle-odkazy-s-ikonkou",
+        "komponenty.sdileni"
       ]
     }
   }

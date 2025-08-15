@@ -13,6 +13,10 @@
   "attributes": {
     "Nazev": {
       "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Nazev"
     }
   }
 }

@@ -447,7 +447,6 @@ export interface ApiBocniPanelBocniPanel extends Struct.CollectionTypeSchema {
         'komponenty.sekce-s-dlazdicema',
         'komponenty.samosprava',
         'komponenty.rozdelovnik',
-        'komponenty.program-kina',
         'komponenty.pas-s-obrazkem',
         'komponenty.pas-karet-s-argumenty',
         'komponenty.obrazek',
@@ -458,12 +457,11 @@ export interface ApiBocniPanelBocniPanel extends Struct.CollectionTypeSchema {
         'komponenty.formular',
         'komponenty.faq',
         'komponenty.aktuality',
-        'komponenty.organizace-skolniho-roku',
         'komponenty.filtr-tagu',
-        'komponenty.bakalari',
-        'komponenty.tabulka',
         'komponenty.mapa',
         'komponenty.alert',
+        'komponenty.rychle-odkazy-s-ikonkou',
+        'komponenty.sdileni',
       ]
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -581,6 +579,36 @@ export interface ApiIkonkyIkonky extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiKalendarAkciKategorieKalendarAkciKategorie
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'kalendar_akci_kategories';
+  info: {
+    displayName: 'Kalend\u00E1\u0159 akc\u00ED - kategorie';
+    pluralName: 'kalendar-akci-kategories';
+    singularName: 'kalendar-akci-kategorie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kalendar-akci-kategorie.kalendar-akci-kategorie'
+    > &
+      Schema.Attribute.Private;
+    Nazev: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiKalendarAkciKalendarAkci
   extends Struct.CollectionTypeSchema {
   collectionName: 'kalendar_akcis';
@@ -602,6 +630,10 @@ export interface ApiKalendarAkciKalendarAkci
       Schema.Attribute.Private;
     Datum: Schema.Attribute.DateTime;
     Fotka: Schema.Attribute.Media<'images'>;
+    Kategorie: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::kalendar-akci-kategorie.kalendar-akci-kategorie'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -743,6 +775,7 @@ export interface ApiProjektyKategorieProjektyKategorie
       Schema.Attribute.Private;
     Nazev: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Nazev'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -801,6 +834,7 @@ export interface ApiProjektyOperacniProgramProjektyOperacniProgram
       Schema.Attribute.Private;
     Nazev: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Nazev'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1594,6 +1628,7 @@ declare module '@strapi/strapi' {
       'api::formular.formular': ApiFormularFormular;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::ikonky.ikonky': ApiIkonkyIkonky;
+      'api::kalendar-akci-kategorie.kalendar-akci-kategorie': ApiKalendarAkciKategorieKalendarAkciKategorie;
       'api::kalendar-akci.kalendar-akci': ApiKalendarAkciKalendarAkci;
       'api::kategorie-uredni-desky.kategorie-uredni-desky': ApiKategorieUredniDeskyKategorieUredniDesky;
       'api::lide.lide': ApiLideLide;
