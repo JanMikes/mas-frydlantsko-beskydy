@@ -589,7 +589,7 @@ export interface ApiKalendarAkciKategorieKalendarAkciKategorie
     singularName: 'kalendar-akci-kategorie';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -601,7 +601,7 @@ export interface ApiKalendarAkciKategorieKalendarAkciKategorie
       'api::kalendar-akci-kategorie.kalendar-akci-kategorie'
     > &
       Schema.Attribute.Private;
-    Nazev: Schema.Attribute.String;
+    Nazev: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
