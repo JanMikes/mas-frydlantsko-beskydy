@@ -185,3 +185,15 @@ h1 .heading-border,
     margin-top: 3rem;
     margin-bottom: 1.5rem;
 }
+
+.column-karta-s-argumenty {
+    flex: 1 1 calc((100% - 6rem) / 4);
+    max-width: 400px;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+}
+
+.column-karta-s-argumenty img {
+    max-height: 150px;
+    width: 50%;
+}
