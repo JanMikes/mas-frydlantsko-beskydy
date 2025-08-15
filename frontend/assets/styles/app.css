@@ -120,7 +120,7 @@ body {
 .main-logo-shadow {
     width: 364px;
     height: 163px;
-    position: absolute;
+    position: fixed;
     left: 40px;
     top: 0;
     z-index: 1029;
@@ -196,4 +196,54 @@ h1 .heading-border,
 .column-karta-s-argumenty img {
     max-height: 150px;
     width: 50%;
+}
+
+footer {
+    line-height: 190%;
+}
+
+.footer-upper .delimiter {
+    display: block;
+    background: #E2D1BB;
+    height: 2px;
+    margin: 20px 0;
+    width: 40px;
+}
+
+footer ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+footer .colored-footer {
+    background: var(--bs-primary);
+    color: #fff;
+}
+
+footer .colored-footer ul {
+    list-style-type: none;
+}
+
+footer .colored-footer li {
+    display: inline-block;
+    padding: 3px 6px;
+}
+
+footer .colored-footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-upper a {
+    text-decoration: none;
+}
+
+.footer-upper a:hover {
+    text-decoration: underline;
+}
+
+.footer-upper li {
+    padding-left: 0;
+    margin-left: 0;
 }
