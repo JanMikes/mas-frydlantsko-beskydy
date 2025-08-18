@@ -257,6 +257,24 @@ export interface ElementyPoleFormulareSMoznostmi
   };
 }
 
+export interface ElementyRozjizdeciObsah extends Struct.ComponentSchema {
+  collectionName: 'components_elementy_rozjizdeci_obsahs';
+  info: {
+    displayName: 'Rozj\u00ED\u017Ed\u011Bc\u00ED obsah';
+    icon: 'layer';
+  };
+  attributes: {
+    Dokumenty: Schema.Attribute.Component<
+      'komponenty.soubory-ke-stazeni',
+      false
+    >;
+    Lide: Schema.Attribute.Component<'komponenty.samosprava', false>;
+    Nadpis: Schema.Attribute.String;
+    Text: Schema.Attribute.Component<'elementy.rozjizdeci-obsah-text', false>;
+    Vyzva: Schema.Attribute.Relation<'oneToOne', 'api::vyzvy.vyzvy'>;
+  };
+}
+
 export interface ElementyRozjizdeciObsahText extends Struct.ComponentSchema {
   collectionName: 'components_elementy_rozjizdeci_obsah_texts';
   info: {
@@ -688,24 +706,6 @@ export interface KomponentyRozdelovnik extends Struct.ComponentSchema {
   };
 }
 
-export interface KomponentyRozjizdeciObsah extends Struct.ComponentSchema {
-  collectionName: 'components_komponenty_rozjizdeci_obsahs';
-  info: {
-    displayName: 'Rozj\u00ED\u017Ed\u011Bc\u00ED obsah';
-    icon: 'layer';
-  };
-  attributes: {
-    Dokumenty: Schema.Attribute.Component<
-      'komponenty.soubory-ke-stazeni',
-      false
-    >;
-    Lide: Schema.Attribute.Component<'komponenty.samosprava', false>;
-    Nadpis: Schema.Attribute.String;
-    Text: Schema.Attribute.Component<'elementy.rozjizdeci-obsah-text', false>;
-    Vyzva: Schema.Attribute.Relation<'oneToOne', 'api::vyzvy.vyzvy'>;
-  };
-}
-
 export interface KomponentyRychleOdkazySIkonkou extends Struct.ComponentSchema {
   collectionName: 'components_komponenty_rychle_odkazy_s_ikonkous';
   info: {
@@ -894,6 +894,7 @@ declare module '@strapi/strapi' {
       'elementy.organizace-skolniho-roku-polozka': ElementyOrganizaceSkolnihoRokuPolozka;
       'elementy.pole-formulare': ElementyPoleFormulare;
       'elementy.pole-formulare-s-moznostmi': ElementyPoleFormulareSMoznostmi;
+      'elementy.rozjizdeci-obsah': ElementyRozjizdeciObsah;
       'elementy.rozjizdeci-obsah-text': ElementyRozjizdeciObsahText;
       'elementy.slide': ElementySlide;
       'elementy.soubor': ElementySoubor;
@@ -924,7 +925,6 @@ declare module '@strapi/strapi' {
       'komponenty.program-kina': KomponentyProgramKina;
       'komponenty.projekty': KomponentyProjekty;
       'komponenty.rozdelovnik': KomponentyRozdelovnik;
-      'komponenty.rozjizdeci-obsah': KomponentyRozjizdeciObsah;
       'komponenty.rychle-odkazy-s-ikonkou': KomponentyRychleOdkazySIkonkou;
       'komponenty.samosprava': KomponentySamosprava;
       'komponenty.sdileni': KomponentySdileni;
