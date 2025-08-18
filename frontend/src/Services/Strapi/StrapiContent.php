@@ -21,6 +21,7 @@ use MASFB\Web\Value\Content\Data\ProjektData;
 use MASFB\Web\Value\Content\Data\ProjektyKategorieData;
 use MASFB\Web\Value\Content\Data\ProjektyObecData;
 use MASFB\Web\Value\Content\Data\VyzvyOperacniProgramData;
+use MASFB\Web\Value\Content\Data\VyzvaData;
 use MASFB\Web\Value\Content\Data\TagData;
 
 /**
@@ -34,6 +35,7 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type ProjektyKategorieDataArray from ProjektyKategorieData
  * @phpstan-import-type ProjektyObecDataArray from ProjektyObecData
  * @phpstan-import-type VyzvyOperacniProgramDataArray from VyzvyOperacniProgramData
+ * @phpstan-import-type VyzvaDataArray from VyzvaData
  * @phpstan-import-type SekceDataArray from SekceData
  * @phpstan-import-type HomepageDataArray from HomepageData
  * @phpstan-import-type TagDataArray from TagData
@@ -318,5 +320,16 @@ readonly final class StrapiContent
         $strapiResponse = $this->strapiClient->getApiResource('projekty-operacni-programs');
 
         return VyzvyOperacniProgramData::createManyFromStrapiResponse($strapiResponse['data']);
+    }
+
+    /**
+     * @return array<VyzvaData>
+     */
+    public function getVyzvyData(): array
+    {
+        /** @var array{data: array<VyzvaDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('vyzvy');
+
+        return VyzvaData::createManyFromStrapiResponse($strapiResponse['data']);
     }
 }
