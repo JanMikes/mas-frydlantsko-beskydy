@@ -706,6 +706,17 @@ export interface KomponentyRozdelovnik extends Struct.ComponentSchema {
   };
 }
 
+export interface KomponentyRozjizdeciObsahy extends Struct.ComponentSchema {
+  collectionName: 'components_komponenty_rozjizdeci_obsahies';
+  info: {
+    displayName: 'Rozj\u00ED\u017Ed\u011Bc\u00ED obsahy';
+    icon: 'connector';
+  };
+  attributes: {
+    Polozky: Schema.Attribute.Component<'elementy.rozjizdeci-obsah', true>;
+  };
+}
+
 export interface KomponentyRychleOdkazySIkonkou extends Struct.ComponentSchema {
   collectionName: 'components_komponenty_rychle_odkazy_s_ikonkous';
   info: {
@@ -925,6 +936,7 @@ declare module '@strapi/strapi' {
       'komponenty.program-kina': KomponentyProgramKina;
       'komponenty.projekty': KomponentyProjekty;
       'komponenty.rozdelovnik': KomponentyRozdelovnik;
+      'komponenty.rozjizdeci-obsahy': KomponentyRozjizdeciObsahy;
       'komponenty.rychle-odkazy-s-ikonkou': KomponentyRychleOdkazySIkonkou;
       'komponenty.samosprava': KomponentySamosprava;
       'komponenty.sdileni': KomponentySdileni;

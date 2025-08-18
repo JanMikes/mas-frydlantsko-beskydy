@@ -127,6 +127,7 @@ readonly final class SekceData
             'komponenty.rychle-odkazy-s-ikonkou' => new Component('RychleOdkazySIkonkou', RychleOdkazySIkonkouComponentData::createFromStrapiResponse($componentInfo)),
             'komponenty.projekty' => new Component('Projekty', ProjektyComponentData::createFromStrapiResponse($componentInfo)),
             'komponenty.sdileni' => new Component('Sdileni', SdileniComponentData::createFromStrapiResponse($componentInfo)),
+            'komponenty.rozjizdeci-obsahy' => new Component('RozjizdeciObsahy', RozjizdeciObsahyComponentData::createFromStrapiResponse($componentInfo)),
             default => null,
         };
     }

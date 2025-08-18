@@ -6,11 +6,12 @@ namespace MASFB\Web\Value\Content\Data;
 
 /**
  * @phpstan-import-type ClovekSamospravyDataArray from ClovekSamospravyData
+ * @phpstan-import-type RozjizdeciObsahTextDataArray from RozjizdeciObsahTextData
  * @phpstan-import-type SouborDataArray from SouborData
  * @phpstan-import-type VyzvaDataArray from VyzvaData
  * @phpstan-type RozjizdeciObsahDataArray array{
  *     Nadpis: null|string,
- *     Text: null|string,
+ *     Text: null|RozjizdeciObsahTextDataArray,
  *     Lide: null|array{Lide: array<ClovekSamospravyDataArray>},
  *     Dokumenty: null|array{Pocet_sloupcu: string, Soubor: array<SouborDataArray>},
  *     Vyzva: null|VyzvaDataArray,
@@ -18,9 +19,12 @@ namespace MASFB\Web\Value\Content\Data;
  */
 readonly final class RozjizdeciObsahData
 {
+    /** @use CanCreateManyFromStrapiResponse<RozjizdeciObsahDataArray> */
+    use CanCreateManyFromStrapiResponse;
+
     public function __construct(
         public null|string $Nadpis,
-        public null|string $Text,
+        public null|RozjizdeciObsahTextData $Text,
         public null|SamospravaComponentData $Lide,
         public null|SouboryKeStazeniComponentData $Dokumenty,
         public null|VyzvaData $Vyzva,
@@ -34,7 +38,9 @@ readonly final class RozjizdeciObsahData
     {
         return new self(
             Nadpis: $data['Nadpis'],
-            Text: $data['Text'],
+            Text: $data['Text'] === null
+                ? null
+                : RozjizdeciObsahTextData::createFromStrapiResponse($data['Text']),
             Lide: $data['Lide'] === null 
                 ? null 
                 : SamospravaComponentData::createFromStrapiResponse($data['Lide']),

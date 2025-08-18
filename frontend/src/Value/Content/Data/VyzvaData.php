@@ -10,16 +10,16 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-import-type SouborDataArray from SouborData
  * @phpstan-type VyzvaDataArray array{
  *     Nazev: null|string,
- *     zahajeni_vyzvy: null|string,
- *     zahajeni_prijmu_zadosti: null|string,
- *     konec_vyzvy: null|string,
- *     financni_alokace: null|int,
- *     minimalni_vyse_nakladu: null|int,
- *     maximalni_vyse_nakladu: null|int,
- *     zdroj_financovani: null|VyzvyOperacniProgramDataArray,
- *     opatreni_sclld: null|string,
- *     opravneni_zadatele: null|string,
- *     informace: null|string,
+ *     Zahajeni_vyzvy: null|string,
+ *     Zahajeni_prijmu_zadosti: null|string,
+ *     Konec_vyzvy: null|string,
+ *     Financni_alokace: null|int,
+ *     Minimalni_vyse_nakladu: null|int,
+ *     Maximalni_vyse_nakladu: null|int,
+ *     Zdroj_financovani: null|VyzvyOperacniProgramDataArray,
+ *     Opatreni_sclld: null|string,
+ *     Opravneni_zadatele: null|string,
+ *     Informace: null|string,
  *     Lide: null|array{Lide: array<ClovekSamospravyDataArray>},
  *     Dokumenty: null|array{Pocet_sloupcu: string, Soubor: array<SouborDataArray>},
  * }
@@ -53,18 +53,18 @@ readonly final class VyzvaData
     {
         return new self(
             Nazev: $data['Nazev'],
-            ZahajeniVyzvy: $data['zahajeni_vyzvy'],
-            ZahajeniPrijmuZadosti: $data['zahajeni_prijmu_zadosti'],
-            KonecVyzvy: $data['konec_vyzvy'],
-            FinancniAlokace: $data['financni_alokace'],
-            MinimalniVyseNakladu: $data['minimalni_vyse_nakladu'],
-            MaximalniVyseNakladu: $data['maximalni_vyse_nakladu'],
-            ZdrojFinancovani: $data['zdroj_financovani'] === null 
+            ZahajeniVyzvy: $data['Zahajeni_vyzvy'],
+            ZahajeniPrijmuZadosti: $data['Zahajeni_prijmu_zadosti'],
+            KonecVyzvy: $data['Konec_vyzvy'],
+            FinancniAlokace: $data['Financni_alokace'],
+            MinimalniVyseNakladu: $data['Minimalni_vyse_nakladu'],
+            MaximalniVyseNakladu: $data['Maximalni_vyse_nakladu'],
+            ZdrojFinancovani: $data['Zdroj_financovani'] === null
                 ? null 
-                : VyzvyOperacniProgramData::createFromStrapiResponse($data['zdroj_financovani']),
-            OpatreniSclld: $data['opatreni_sclld'],
-            OpravneniZadatele: $data['opravneni_zadatele'],
-            Informace: $data['informace'],
+                : VyzvyOperacniProgramData::createFromStrapiResponse($data['Zdroj_financovani']),
+            OpatreniSclld: $data['Opatreni_sclld'],
+            OpravneniZadatele: $data['Opravneni_zadatele'],
+            Informace: $data['Informace'],
             Lide: $data['Lide'] === null 
                 ? null 
                 : SamospravaComponentData::createFromStrapiResponse($data['Lide']),

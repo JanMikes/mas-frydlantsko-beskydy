@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_komponenty_rozjizdeci_obsahies",
+  "info": {
+    "displayName": "Rozjížděcí obsahy",
+    "icon": "connector"
+  },
+  "options": {},
+  "attributes": {
+    "Polozky": {
+      "type": "component",
+      "component": "elementy.rozjizdeci-obsah",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

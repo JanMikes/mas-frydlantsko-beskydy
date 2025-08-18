@@ -964,7 +964,7 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.rychle-odkazy-s-ikonkou',
         'komponenty.projekty',
         'komponenty.sdileni',
-        'komponenty.rozjizdeci-obsah',
+        'komponenty.rozjizdeci-obsahy',
         'komponenty.vyzvy',
         'komponenty.kalendar-akci',
       ]
