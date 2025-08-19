@@ -247,3 +247,19 @@ footer .colored-footer a:hover {
     padding-left: 0;
     margin-left: 0;
 }
+
+.rozjizdeci-obsah-nadpis h4 {
+    color: #fff;
+    margin-top: 0;
+}
+
+.rozjizdeci-obsah-nadpis.collapsed {
+    background: var(--bs-primary);
+}
+
+.rozjizdeci-obsah-nadpis {
+    background: var(--bs-secondary);
+    transition: all .3s ease;
+    color: #fff;
+    padding: 15px 20px;
+}
