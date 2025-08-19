@@ -6,6 +6,14 @@
   },
   "options": {},
   "attributes": {
+    "Styl": {
+      "type": "enumeration",
+      "default": "Styl 1",
+      "enum": [
+        "Styl 1",
+        "Styl 2"
+      ]
+    },
     "Polozky": {
       "type": "component",
       "component": "elementy.rozjizdeci-obsah",

@@ -714,6 +714,8 @@ export interface KomponentyRozjizdeciObsahy extends Struct.ComponentSchema {
   };
   attributes: {
     Polozky: Schema.Attribute.Component<'elementy.rozjizdeci-obsah', true>;
+    Styl: Schema.Attribute.Enumeration<['Styl 1', 'Styl 2']> &
+      Schema.Attribute.DefaultTo<'Styl 1'>;
   };
 }
 
