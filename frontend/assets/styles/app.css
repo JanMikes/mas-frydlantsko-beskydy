@@ -204,7 +204,7 @@ footer {
 
 .footer-upper .delimiter {
     display: block;
-    background: #E2D1BB;
+    background: var(--bs-secondary);
     height: 2px;
     margin: 20px 0;
     width: 40px;
@@ -370,6 +370,10 @@ footer .colored-footer a:hover {
     pointer-events: none;
 }
 
+.carousel {
+    background: var(--bs-primary);
+}
+
 .carousel-control-prev,
 .carousel-control-next {
     background: #fff;
@@ -399,4 +403,9 @@ footer .colored-footer a:hover {
 .slide-title {
     font-size: 40px;
     font-weight: 900;
+}
+
+.slide-heading {
+    font-size: 28px;
+    font-weight: 800;
 }
