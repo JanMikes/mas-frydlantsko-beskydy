@@ -249,20 +249,49 @@ footer .colored-footer a:hover {
 }
 
 .rozjizdeci-obsah-nadpis h4 {
-    color: #fff;
-    margin-top: 0;
-    font-weight: bold;
+    color: var(--bs-primary);
+    margin: 0 !important;
 }
 
-.rozjizdeci-obsah-nadpis.collapsed {
-    background: var(--bs-primary);
+.rozjizdeci-obsah-nadpis-style-2 h4 {
+    color: #fff;
 }
 
 .rozjizdeci-obsah-nadpis {
-    background: var(--bs-secondary);
     transition: all .3s ease;
-    color: #fff;
     padding: 15px 20px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+.rozjizdeci-obsah-nadpis i {
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 58px;
+    line-height: 58px;
+    text-align: center;
+    right: 0;
+    top: 0;
+    background: var(--bs-primary);
+    color: #fff;
+}
+
+/*
+.rozjizdeci-obsahy-component > div:last-child .rozjizdeci-obsah-nadpis {
+    border-bottom: 1px solid #ccc;
+}
+*/
+
+.rozjizdeci-obsah-nadpis-style-2.collapsed {
+    background: var(--bs-primary);
+}
+
+.rozjizdeci-obsah-nadpis-style-2 {
+    background: var(--bs-secondary);
+    color: #fff;
+    border: 0 !important;
 }
 
 .vyzva-table {
@@ -279,7 +308,7 @@ footer .colored-footer a:hover {
 }
 
 .rozjizdeci-obsah-content {
-    padding: 10px 0 30px 0;
+    padding: 15px 0 30px 0;
 }
 
 .rozjizdeci-obsah-content > *:last-child {
