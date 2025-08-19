@@ -257,6 +257,24 @@ export interface ElementyPoleFormulareSMoznostmi
   };
 }
 
+export interface ElementyRozjizdeciObsah extends Struct.ComponentSchema {
+  collectionName: 'components_elementy_rozjizdeci_obsahs';
+  info: {
+    displayName: 'Rozj\u00ED\u017Ed\u011Bc\u00ED obsah';
+    icon: 'layer';
+  };
+  attributes: {
+    Dokumenty: Schema.Attribute.Component<
+      'komponenty.soubory-ke-stazeni',
+      false
+    >;
+    Lide: Schema.Attribute.Component<'komponenty.samosprava', false>;
+    Nadpis: Schema.Attribute.String;
+    Text: Schema.Attribute.Component<'elementy.rozjizdeci-obsah-text', false>;
+    Vyzva: Schema.Attribute.Relation<'oneToOne', 'api::vyzvy.vyzvy'>;
+  };
+}
+
 export interface ElementyRozjizdeciObsahText extends Struct.ComponentSchema {
   collectionName: 'components_elementy_rozjizdeci_obsah_texts';
   info: {
@@ -694,7 +712,9 @@ export interface KomponentyRozjizdeciObsahy extends Struct.ComponentSchema {
     displayName: 'Rozj\u00ED\u017Ed\u011Bc\u00ED obsahy';
     icon: 'connector';
   };
-  attributes: {};
+  attributes: {
+    Polozky: Schema.Attribute.Component<'elementy.rozjizdeci-obsah', true>;
+  };
 }
 
 export interface KomponentyRychleOdkazySIkonkou extends Struct.ComponentSchema {
@@ -885,6 +905,7 @@ declare module '@strapi/strapi' {
       'elementy.organizace-skolniho-roku-polozka': ElementyOrganizaceSkolnihoRokuPolozka;
       'elementy.pole-formulare': ElementyPoleFormulare;
       'elementy.pole-formulare-s-moznostmi': ElementyPoleFormulareSMoznostmi;
+      'elementy.rozjizdeci-obsah': ElementyRozjizdeciObsah;
       'elementy.rozjizdeci-obsah-text': ElementyRozjizdeciObsahText;
       'elementy.slide': ElementySlide;
       'elementy.soubor': ElementySoubor;

@@ -5,6 +5,12 @@
     "icon": "connector"
   },
   "options": {},
-  "attributes": {},
+  "attributes": {
+    "Polozky": {
+      "type": "component",
+      "component": "elementy.rozjizdeci-obsah",
+      "repeatable": true
+    }
+  },
   "config": {}
 }
