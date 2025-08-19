@@ -4,7 +4,7 @@
 
         <div>
             {% if item.Nadpis %}
-                <div class="rozjizdeci-obsah-nadpis mb-3 collapse-toggle d-flex align-items-center justify-content-between collapsed w-100" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}" style="cursor: pointer;">
+                <div class="rozjizdeci-obsah-nadpis mb-1 collapse-toggle d-flex align-items-center justify-content-between collapsed w-100" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}" style="cursor: pointer;">
                     <h4 class="mb-0">{{ item.Nadpis }}</h4>
                     <i class="bi bi-chevron-down"></i>
                 </div>
@@ -23,7 +23,7 @@
                     {% endif %}
 
                     {% if item.Lide %}
-                        <div class="mb-4">
+                        <div class="pt-3">
                             {{ component('Samosprava', {
                                 data: item.Lide,
                                 hasPanel: false,
@@ -32,7 +32,7 @@
                     {% endif %}
 
                     {% if item.Dokumenty %}
-                        <div class="mb-4">
+                        <div class="pt-3">
                             {{ component('SouboryKeStazeni', {
                                 data: item.Dokumenty,
                                 hasPanel: false,
@@ -41,9 +41,53 @@
                     {% endif %}
 
                     {% if item.Vyzva %}
-                        <div class="mb-4">
-                            {# Render Vyzva component when available #}
-                            {{ dump(item.Vyzva) }}
+                        <div class="pt-3">
+                            <div class="vyzva-table">
+                                {% if item.Vyzva.ZahajeniVyzvy %}
+                                    <div class="vyzva-table-row"><strong>Zahájení výzvy:</strong> {{ item.Vyzva.ZahajeniVyzvy|date('d.m.Y H:i') }}</div>
+                                {% endif %}
+
+                                {% if item.Vyzva.ZahajeniPrijmuZadosti %}
+                                    <div class="vyzva-table-row"><strong>Zahájení příjmu žádostí o podporu:</strong> {{ item.Vyzva.ZahajeniPrijmuZadosti|date('d.m.Y H:i') }}</div>
+                                {% endif %}
+
+                                {% if item.Vyzva.KonecVyzvy %}
+                                    <div class="vyzva-table-row"><strong>Konec výzvy:</strong> {{ item.Vyzva.KonecVyzvy|date('d.m.Y H:i') }}</div>
+                                {% endif %}
+
+                                {% if item.Vyzva.FinancniAlokace %}
+                                    <div class="vyzva-table-row"><strong>Finanční alokace:</strong> {{ item.Vyzva.FinancniAlokace }} Kč</div>
+                                {% endif %}
+
+                                {% if item.Vyzva.MinimalniVyseNakladu %}
+                                    <div class="vyzva-table-row"><strong>Minimální výše celkových způsobilých výdajů:</strong> {{ item.Vyzva.MinimalniVyseNakladu }} Kč</div>
+                                {% endif %}
+
+                                {% if item.Vyzva.MaximalniVyseNakladu %}
+                                    <div class="vyzva-table-row"><strong>Maximální výše celkových způsobilých výdajů na jeden projekt:</strong> {{ item.Vyzva.MaximalniVyseNakladu }} Kč</div>
+                                {% endif %}
+
+                                {% if item.Vyzva.OpravneniZadatele %}
+                                    <div class="vyzva-table-row">
+                                        <strong>Opravnění žadatelé:</strong>
+                                        {{ item.Vyzva.OpravneniZadatele|markdown_to_html|newlines }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            {% if item.Vyzva.Lide %}
+                                {{ component('Samosprava', {
+                                    data: item.Vyzva.Lide,
+                                    hasPanel: false,
+                                }) }}
+                            {% endif %}
+
+                            {% if item.Vyzva.Dokumenty %}
+                                {{ component('SouboryKeStazeni', {
+                                    data: item.Vyzva.Dokumenty,
+                                    hasPanel: false,
+                                }) }}
+                            {% endif %}
                         </div>
                     {% endif %}
                 </div>
