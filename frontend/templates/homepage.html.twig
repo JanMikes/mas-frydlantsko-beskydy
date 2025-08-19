@@ -54,34 +54,14 @@
         </div>
     {% endif %}
 
-    {% if homepage and homepage.Karty %}
+    {% if homepage and homepage.ZakladniInformace %}
         <div class="container">
-            <div class="row gx-0 homepage-karty mb-4 align-items-stretch">
-                {% for karta in homepage.Karty %}
-                    <div class="col-12 col-md-4 d-flex">
-                        {% if karta.Tlacitko %}
-                            <twig:Odkaz data="{{ karta.Tlacitko.Odkaz }}" class="d-flex flex-row h-100 w-100">
-                                <div class="column-homepage-karta w-100 h-100">
-                                    <div class="column-homepage-karta-inner d-flex align-items-start text-start p-4 h-100 w-100">
-                                        {% if karta.Obrazek %}
-                                            <img class="img-fluid me-3" src="{{ karta.Obrazek.url }}" alt="">
-                                        {% endif %}
-
-                                        <div class="card-content flex-fill d-flex flex-column justify-content-center">
-                                            {% if karta.Nadpis %}
-                                                <h4 class="h5 mt-0 mb-2 fw-bold">{{ karta.Nadpis }}</h4>
-                                            {% endif %}
-
-                                            {% if karta.Text %}
-                                                <p class="small mb-0">
-                                                    {{ karta.Text|nl2br }}
-                                                </p>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </twig:Odkaz>
+            <div class="d-flex homepage-karty my-5 align-items-stretch justify-content-between w-100">
+                {% for informace in homepage.ZakladniInformace %}
+                    <div>
+                        {% if informace.Nadpis %}
+                            <span class="home-info-title">{{ informace.Nadpis }}</span>
+                            <div class="home-info-text">{{ informace.Text|markdown_to_html|newlines }}</div>
                         {% endif %}
                     </div>
                 {% endfor %}

@@ -320,3 +320,16 @@ footer .colored-footer a:hover {
     max-width: 100%;
     margin-bottom: 10px;
 }
+
+.homepage-karty .home-info-title {
+    color: var(--bs-primary);
+    font-weight: bold;
+    font-size: 40px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.homepage-karty .home-info-text {
+    color: var(--bs-secondary);
+    font-size: 20px;
+}

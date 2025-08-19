@@ -12,6 +12,9 @@ namespace MASFB\Web\Value\Content\Data;
  */
 readonly final class RozjizdeciObsahTextData
 {
+    /** @use CanCreateManyFromStrapiResponse<RozjizdeciObsahTextDataArray> */
+    use CanCreateManyFromStrapiResponse;
+
     public function __construct(
         public null|string $Nadpis,
         public null|string $Text,

@@ -6,21 +6,21 @@ namespace MASFB\Web\Value\Content\Data;
 
 /**
  * @phpstan-import-type SlideDataArray from SlideData
- * @phpstan-import-type KartaSArgumentyDataArray from KartaSArgumentyData
+ * @phpstan-import-type RozjizdeciObsahTextDataArray from RozjizdeciObsahTextData
  * @phpstan-type HomepageDataArray array{
  *     Slider: array<SlideDataArray>,
- *     Karty: array<KartaSArgumentyDataArray>,
+ *     Zakladni_informace: array<RozjizdeciObsahTextDataArray>,
  *  }
  */
 readonly final class HomepageData
 {
     /**
      * @param array<SlideData> $Slider
-     * @param array<KartaSArgumentyData> $Karty
+     * @param array<RozjizdeciObsahTextData> $ZakladniInformace
      */
     public function __construct(
         public array $Slider,
-        public array $Karty,
+        public array $ZakladniInformace,
     ) {}
 
     /**
@@ -30,7 +30,7 @@ readonly final class HomepageData
     {
         return new self(
             Slider: SlideData::createManyFromStrapiResponse($data['Slider']),
-            Karty: KartaSArgumentyData::createManyFromStrapiResponse($data['Karty']),
+            ZakladniInformace: RozjizdeciObsahTextData::createManyFromStrapiResponse($data['Zakladni_informace']),
         );
     }
 }

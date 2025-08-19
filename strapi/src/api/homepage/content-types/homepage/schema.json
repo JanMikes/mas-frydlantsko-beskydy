@@ -16,9 +16,9 @@
       "component": "elementy.slide",
       "repeatable": true
     },
-    "Karty": {
+    "Zakladni_informace": {
       "type": "component",
-      "component": "elementy.karta-s-argumenty",
+      "component": "elementy.rozjizdeci-obsah-text",
       "repeatable": true
     }
   }
