@@ -121,7 +121,7 @@
 
     {% if section %}
         <div class="container pt-3 pb-3 section-content">
-            <div class="row">
+            <div class="row gx-5">
                 <div class="{{ section.Komponenty_panel ? 'col-md-8' : 'col-md-12' }}">
                     <div class="section-content-wrapper">
                         {% for komponenta in section.Komponenty %}
@@ -148,4 +148,61 @@
             </div>
         </div>
     {% endif %}
+
+    <div class="home-background-image">
+        <div class="container">
+            <h2 class="mt-5 mb-3">Zapojené obce</h2>
+
+            <ul class="znaky-obci justify-content-around">
+                <li>
+                    <img src="{{ asset('images/znak_baska.png') }}" alt="Obec Baška">
+                    <span>Baška</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_bila.png') }}" alt="Obec Bílá">
+                    <span>Baška</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_celadna.png') }}" alt="Obec Čeladná">
+                    <span>Čeladná</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_frydlant.png') }}" alt="Obec Frýdlant nad Ostravicí">
+                    <span>Frýdlant nad Ostravicí</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_janovice.png') }}" alt="Obec Janovice">
+                    <span>Janovice</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_kuncice.png') }}" alt="Obec Kunčice pod Ondřejníkem">
+                    <span>Kunčice pod Ondřejníkem</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_malenovice.png') }}" alt="Obec Malenovice">
+                    <span>Malenovice</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_ostravice.png') }}" alt="Obec Ostravice">
+                    <span>Ostravice</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_przno.png') }}" alt="Obec Pržno">
+                    <span>Pržno</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_pstruzi.png') }}" alt="Obec Pstruží">
+                    <span>Pstruží</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_stare_hamry.png') }}" alt="Obec Staré Hamry">
+                    <span>Staré Hamry</span>
+                </li>
+                <li>
+                    <img src="{{ asset('images/znak_lhotka.png') }}" alt="Obec Lhotka">
+                    <span>Lhotka</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}

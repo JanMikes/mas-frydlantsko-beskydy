@@ -293,3 +293,30 @@ footer .colored-footer a:hover {
 .rozjizdeci-obsah-content * + .margin-component {
     margin-top: 30px !important;
 }
+
+.home-background-image {
+    background: url('../images/home-background.jpg') center bottom no-repeat;
+    min-height: 650px;
+    background-size: cover;
+    padding-bottom: 350px;
+}
+
+.znaky-obci {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;;
+}
+
+.znaky-obci li {
+    width: 100px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.znaky-obci img {
+    max-width: 100%;
+    margin-bottom: 10px;
+}
