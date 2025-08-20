@@ -69,24 +69,42 @@
         <div class="container my-5">
             <h2 class="with-border mb-4 fw-heading">Akce</h2>
 
+            {% set czechMonths = ['Leden','Únor','Březen','Duben','Květen','Červen','Červenec','Srpen','Září','Říjen','Listopad','Prosinec'] %}
+
             <div class="row">
                 {% for akce in kalendar_akci %}
                     <div class="col-sm-6 col-md-4">
-                        <div class="homepage-akce">
-                            {% if akce.Fotka %}
-                                <div class="homepage-akce-image">
-                                    <img class="img-fluid me-3" src="{{ akce.Fotka.url }}" alt="">
-                                </div>
+                        <div class="kalendar-akci">
+                            <div class="kalendar-akci-image">
+                                {% if akce.Fotka %}
+                                    <img class="img-fluid" src="{{ akce.Fotka.url }}" alt="">
+                                {% endif %}
+                            </div>
+
+                            {% if akce.Datum %}
+
+                                <span class="kalendar-akci-date">
+                                    {% set monthName = czechMonths[akce.Datum|date('n') - 1] %}
+                                    <span class="day-number">{{ akce.Datum|date('d') }}</span>
+                                    <span class="month-name">{{ monthName }}</span>
+                                </span>
                             {% endif %}
 
-                            <div class="homepage-akce-content p-4">
+                            <div class="kalendar-akci-content p-4">
                                 {% if akce.Nazev %}
                                     <h4 class="fw-bold h5">{{ akce.Nazev }}</h4>
                                 {% endif %}
 
-                                {% if akce.Datum %}
-                                    <p class="mb-0 small">{{ akce.Datum|date('d.m.Y') }}</p>
+                                {% if akce.Popis %}
+                                    <p class="kalendar-akci-description">{{ akce.Popis }}</p>
                                 {% endif %}
+
+                                {% if akce.Poradatel %}
+                                    <p class="kalendar-akci-typ mb-0">
+                                        <strong>Typ události:</strong> {{ akce.Poradatel }}
+                                    </p>
+                                {% endif %}
+
                             </div>
                         </div>
                     </div>

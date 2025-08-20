@@ -259,10 +259,17 @@ footer .colored-footer a:hover {
 
 .rozjizdeci-obsah-nadpis {
     transition: all .3s ease;
-    padding: 15px 20px;
+    padding: 15px 20px 15px 0;
     border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
     position: relative;
+}
+
+.rozjizdeci-obsah-nadpis-style-2 {
+    padding-left: 20px;
+}
+
+.rozjizdeci-obsahy-component {
+    border-bottom: 1px solid #ccc;
 }
 
 .rozjizdeci-obsah-nadpis i {
@@ -277,12 +284,6 @@ footer .colored-footer a:hover {
     background: var(--bs-primary);
     color: #fff;
 }
-
-/*
-.rozjizdeci-obsahy-component > div:last-child .rozjizdeci-obsah-nadpis {
-    border-bottom: 1px solid #ccc;
-}
-*/
 
 .rozjizdeci-obsah-nadpis-style-2.collapsed {
     background: var(--bs-primary);
@@ -437,4 +438,56 @@ footer .colored-footer a:hover {
 .slide-heading {
     font-size: 28px;
     font-weight: 800;
+}
+
+.kalendar-akci {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+}
+
+.kalendar-akci-date {
+    position: absolute;
+    display: block;
+    width: 80px;
+    padding: 10px 5px;
+    left: 20px;
+    top: 20px;
+    background: rgba(255, 255, 255, .8);
+    color: var(--bs-primary);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.kalendar-akci-date .day-number {
+    display: block;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.kalendar-akci-date .month-name {
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.kalendar-akci-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 15px 15px 0 0;
+}
+
+.kalendar-akci-description {
+
+}
+
+.kalendar-akci-typ {
+    color: var(--bs-secondary);
+}
+
+.kalendar-akci-typ strong {
+    color: var(--bs-primary);
 }
