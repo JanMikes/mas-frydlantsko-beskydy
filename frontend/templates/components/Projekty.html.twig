@@ -12,20 +12,20 @@
 
                     <h3 class="h5 border-top mt-2 mb-1 pt-2 fw-bold" id="projekt-{{ projekt.slug }}">{{ projekt.Nazev }}</h3>
                     
-                    {% if projekt.Operacniprogram %}
-                        <p class="small text-secondary mb-1">{{ projekt.Operacniprogram }}</p>
+                    {% if projekt.Vyzva and projekt.Vyzva.ZdrojFinancovani %}
+                        <p class="small text-secondary mb-1">{{ projekt.Vyzva.ZdrojFinancovani.Nazev }}</p>
                     {% endif %}
                     
-                    {% if projekt.Prijemcedotace %}
-                        <p class="small mb-1"><strong>Příjemce:</strong> {{ projekt.Prijemcedotace }}</p>
+                    {% if projekt.PrijemceDotace %}
+                        <p class="small mb-1"><strong>Příjemce:</strong> {{ projekt.PrijemceDotace }}</p>
                     {% endif %}
                     
-                    {% if projekt.Vysedotace %}
-                        <p class="small mb-1"><strong>Výše dotace:</strong> {{ projekt.Vysedotace|number_format(0, ',', ' ') }} Kč</p>
+                    {% if projekt.VyseDotace %}
+                        <p class="small mb-1"><strong>Výše dotace:</strong> {{ projekt.VyseDotace|number_format(0, ',', ' ') }} Kč</p>
                     {% endif %}
                     
-                    {% if projekt.Dobarealizace %}
-                        <p class="small text-secondary">{{ projekt.Dobarealizace }}</p>
+                    {% if projekt.DobaRealizace %}
+                        <p class="small text-secondary">{{ projekt.DobaRealizace }}</p>
                     {% endif %}
 
                 {% if projekt.slug %}

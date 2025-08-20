@@ -312,7 +312,7 @@ readonly final class StrapiContent
     public function getProjektyData(): array
     {
         /** @var array{data: array<ProjektDataArray>} $strapiResponse */
-        $strapiResponse = $this->strapiClient->getApiResource('projekties');
+        $strapiResponse = $this->strapiClient->getApiResource('projekties', populateLevel: 6);
 
         return ProjektData::createManyFromStrapiResponse($strapiResponse['data']);
     }
