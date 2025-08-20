@@ -7,6 +7,7 @@ namespace MASFB\Web\Value\Content\Data;
 /**
  * @phpstan-type ProjektyKategorieDataArray array{
  *     Nazev: null|string,
+ *     slug: null|string,
  * }
  */
 readonly final class ProjektyKategorieData
@@ -16,6 +17,7 @@ readonly final class ProjektyKategorieData
 
     public function __construct(
         public null|string $Nazev,
+        public null|string $slug,
     ) {
     }
 
@@ -26,6 +28,7 @@ readonly final class ProjektyKategorieData
     {
         return new self(
             Nazev: $data['Nazev'],
+            slug: $data['slug'],
         );
     }
 }

@@ -1,6 +1,80 @@
-<div class="margin-component">
+<div {{ attributes.defaults({class: 'margin-component'}) }}>
+    <div class="mb-4">
+        <h4 class="h6 mb-2">Filtry</h4>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <select class="form-select form-select-sm" data-model="kategorie">
+                    <option value="">Všechny kategorie</option>
+                    {% for kategorieItem in this.getKategorieItems() %}
+                        <option value="{{ kategorieItem.slug }}">{{ kategorieItem.Nazev }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <select class="form-select form-select-sm" data-model="operacniProgram">
+                    <option value="">Všechny operační programy</option>
+                    {% for program in this.getOperacniProgramyItems() %}
+                        <option value="{{ program.slug }}">{{ program.Nazev }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <select class="form-select form-select-sm" data-model="obec">
+                    <option value="">Všechny obce</option>
+                    {% for obecItem in this.getObceItems() %}
+                        <option value="{{ obecItem.Nazev }}">{{ obecItem.Nazev }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <button type="button"
+                class="btn btn-outline-primary btn-sm {{ sortBy == 'Nejoblíbenější' ? 'active' : '' }}"
+                data-action="live#action"
+                data-live-action-param="sort"
+                data-live-sort-param="Nejoblíbenější">
+            Nejoblíbenější
+        </button>
+
+        <button type="button"
+                class="btn btn-outline-primary btn-sm {{ sortBy == 'Nejnovější' ? 'active' : '' }}"
+                data-action="live#action"
+                data-live-action-param="sort"
+                data-live-sort-param="Nejnovější">
+            Nejnovější
+        </button>
+
+        <button type="button"
+                class="btn btn-outline-primary btn-sm {{ sortBy == 'Nejstarší' ? 'active' : '' }}"
+                data-action="live#action"
+                data-live-action-param="sort"
+                data-live-sort-param="Nejstarší">
+            Nejstarší
+        </button>
+
+        <button type="button"
+                class="btn btn-outline-primary btn-sm {{ sortBy == 'Nejdražší' ? 'active' : '' }}"
+                data-action="live#action"
+                data-live-action-param="sort"
+                data-live-sort-param="Nejdražší">
+            Nejdražší
+        </button>
+
+        <button type="button"
+                class="btn btn-outline-primary btn-sm {{ sortBy == 'Nejlevnější' ? 'active' : '' }}"
+                data-action="live#action"
+                data-live-action-param="sort"
+                data-live-sort-param="Nejlevnější">
+            Nejlevnější
+        </button>
+    </div>
+
     <div class="row">
-        {% for projekt in computed.getItems() %}
+        {% for projekt in this.getItems() %}
             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                 {% if projekt.slug %}
                     <a href="{{ path('detail_projektu', {'slug': projekt.slug}) }}" class="text-decoration-none">

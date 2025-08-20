@@ -309,8 +309,27 @@ readonly final class StrapiContent
     /**
      * @return array<ProjektData>
      */
-    public function getProjektyData(): array
+    public function getProjektyData(
+        string $sortBy,
+        null|string $kategorieFilter,
+        null|string $operacniProgramFilter,
+        null|string $obecFilter,
+    ): array
     {
+        if ($sortBy === 'Nejoblíbenější') {
+            // TODO: Implement sorting by popularity
+        } elseif ($sortBy === 'Nejnovější') {
+            // TODO: Implement sorting by newest
+        } elseif ($sortBy === 'Nejstarší') {
+            // TODO: Implement sorting by oldest
+        } elseif ($sortBy === 'Nejdražší') {
+            // TODO: Implement sorting by highest price
+        } elseif ($sortBy === 'Nejlevnější') {
+            // TODO: Implement sorting by lowest price
+        } else {
+            // TODO: without sorting
+        }
+
         /** @var array{data: array<ProjektDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('projekties', populateLevel: 6);
 
