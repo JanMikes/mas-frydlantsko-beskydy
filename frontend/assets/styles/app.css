@@ -290,6 +290,10 @@ footer .colored-footer a:hover {
 }
 
 .rozjizdeci-obsah-nadpis-style-2 {
+    margin-top: 5px;
+}
+
+.rozjizdeci-obsah-nadpis-style-2 {
     background: var(--bs-secondary);
     color: #fff;
     border: 0 !important;
