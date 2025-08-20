@@ -128,6 +128,7 @@ readonly final class SekceData
             'komponenty.projekty' => new Component('Projekty', ProjektyComponentData::createFromStrapiResponse($componentInfo)),
             'komponenty.sdileni' => new Component('Sdileni', SdileniComponentData::createFromStrapiResponse($componentInfo)),
             'komponenty.rozjizdeci-obsahy' => new Component('RozjizdeciObsahy', RozjizdeciObsahyComponentData::createFromStrapiResponse($componentInfo)),
+            'komponenty.kalendar-akci' => new Component('KalendarAkci', KalendarAkciComponentData::createFromStrapiResponse($componentInfo)),
             default => null,
         };
     }

@@ -1,0 +1,43 @@
+<div class="margin-component">
+    {% set czechMonths = ['Leden','Únor','Březen','Duben','Květen','Červen','Červenec','Srpen','Září','Říjen','Listopad','Prosinec'] %}
+
+    <div class="row">
+        {% for akce in this.getItems(data.Kategorie) %}
+            <div class="col-sm-6 col-md-4">
+                <div class="kalendar-akci">
+                    <div class="kalendar-akci-image">
+                        {% if akce.Fotka %}
+                            <img class="img-fluid" src="{{ akce.Fotka.url }}" alt="">
+                        {% endif %}
+                    </div>
+
+                    {% if akce.Datum %}
+                        <span class="kalendar-akci-date">
+                            {% set monthName = czechMonths[akce.Datum|date('n') - 1] %}
+                            <span class="day-number">{{ akce.Datum|date('d') }}</span>
+                            <span class="month-name">{{ monthName }}</span>
+                        </span>
+                    {% endif %}
+
+                    <div class="kalendar-akci-content p-4">
+                        {% if akce.Nazev %}
+                            <h4 class="fw-bold h5 mt-0 mb-2">{{ akce.Nazev }}</h4>
+                        {% endif %}
+
+                        {% if akce.Popis %}
+                            <p class="kalendar-akci-description">{{ akce.Popis }}</p>
+                        {% endif %}
+
+                        {% if akce.Poradatel %}
+                            <p class="kalendar-akci-typ mb-0">
+                                <strong>Typ události:</strong> {{ akce.Poradatel }}
+                            </p>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+

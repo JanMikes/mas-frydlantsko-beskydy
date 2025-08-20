@@ -266,6 +266,44 @@ readonly final class StrapiContent
     }
 
     /**
+     * @return array<KalendarAkciData>
+     */
+    public function getKalendarAkciForCategoriesData(string|array $category, null|int $limit): array
+    {
+        $filters = [];
+
+        if (is_string($category)) {
+            $filters['Kategorie'] = ['slug' => ['$eq' => $category]];
+        }
+
+        if (is_array($category)) {
+            foreach ($category as $categoryName) {
+                $filters['Kategorie']['slug']['$in'][] = $categoryName;
+            }
+        }
+
+        $pagination = null;
+
+        if ($limit !== null) {
+            $pagination = [
+                'limit' => $limit,
+                'start' => 0,
+            ];
+        }
+
+        /** @var array{data: array<KalendarAkciDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('kalendar-akcis',
+            populateLevel: 5,
+            filters: $filters,
+            pagination: $pagination,
+        );
+
+        return KalendarAkciData::createManyFromStrapiResponse(
+            $strapiResponse['data']
+        );
+    }
+
+    /**
      * @return array<ProjektData>
      */
     public function getProjektyData(): array
