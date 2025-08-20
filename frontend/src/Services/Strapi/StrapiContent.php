@@ -6,6 +6,7 @@ namespace MASFB\Web\Services\Strapi;
 
 use MASFB\Web\Value\Content\Data\HomepageData;
 use MASFB\Web\Value\Content\Data\KalendarAkciData;
+use MASFB\Web\Value\Content\Data\KategorieKalendareData;
 use Psr\Clock\ClockInterface;
 use MASFB\Web\Value\Content\Data\AktualitaData;
 use MASFB\Web\Value\Content\Data\KategorieUredniDeskyData;
@@ -42,6 +43,7 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type UredniDeskaDataArray from UredniDeskaData
  * @phpstan-import-type KategorieUredniDeskyDataArray from KategorieUredniDeskyData
  * @phpstan-import-type KalendarAkciDataArray from KalendarAkciData
+ * @phpstan-import-type KategorieKalendareDataArray from KategorieKalendareData
  */
 readonly final class StrapiContent
 {
@@ -266,6 +268,7 @@ readonly final class StrapiContent
     }
 
     /**
+     * @param string|array<string> $category
      * @return array<KalendarAkciData>
      */
     public function getKalendarAkciForCategoriesData(string|array $category, null|int $limit): array
