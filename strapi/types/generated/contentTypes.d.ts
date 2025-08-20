@@ -1078,6 +1078,35 @@ export interface ApiUredniDeskaUredniDeska extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiVyzvyOboryVyzvyObory extends Struct.CollectionTypeSchema {
+  collectionName: 'vyzvy_obories';
+  info: {
+    displayName: 'V\u00FDzvy - Obory';
+    pluralName: 'vyzvy-obories';
+    singularName: 'vyzvy-obory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::vyzvy-obory.vyzvy-obory'
+    > &
+      Schema.Attribute.Private;
+    Nazev: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
   collectionName: 'vyzvies';
   info: {
@@ -1106,6 +1135,10 @@ export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
     Maximalni_vyse_nakladu: Schema.Attribute.Integer;
     Minimalni_vyse_nakladu: Schema.Attribute.Integer;
     Nazev: Schema.Attribute.String;
+    Obory: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::vyzvy-obory.vyzvy-obory'
+    >;
     Opatreni_sclld: Schema.Attribute.RichText;
     Opravneni_zadatele: Schema.Attribute.RichText;
     publishedAt: Schema.Attribute.DateTime;
@@ -1648,6 +1681,7 @@ declare module '@strapi/strapi' {
       'api::sekce.sekce': ApiSekceSekce;
       'api::tagy.tagy': ApiTagyTagy;
       'api::uredni-deska.uredni-deska': ApiUredniDeskaUredniDeska;
+      'api::vyzvy-obory.vyzvy-obory': ApiVyzvyOboryVyzvyObory;
       'api::vyzvy.vyzvy': ApiVyzvyVyzvy;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

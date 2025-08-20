@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vyzvy_obories",
+  "info": {
+    "singularName": "vyzvy-obory",
+    "pluralName": "vyzvy-obories",
+    "displayName": "Výzvy - Obory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nazev": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Nazev",
+      "required": true
+    }
+  }
+}

@@ -59,6 +59,11 @@
     "slug": {
       "type": "uid",
       "targetField": "Nazev"
+    },
+    "Obory": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vyzvy-obory.vyzvy-obory"
     }
   }
 }
