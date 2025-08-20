@@ -259,7 +259,7 @@ footer .colored-footer a:hover {
 
 .rozjizdeci-obsah-nadpis {
     transition: all .3s ease;
-    padding: 15px 20px 15px 0;
+    padding: 15px 78px 15px 0;
     border-top: 1px solid #ccc;
     position: relative;
 }
@@ -490,4 +490,15 @@ footer .colored-footer a:hover {
 
 .kalendar-akci-typ strong {
     color: var(--bs-primary);
+}
+
+
+.actuality-panel {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.collapse-toggle:not(.collapsed) .bi-chevron-down {
+    transform: rotate(180deg);
 }
