@@ -56,15 +56,15 @@
                                 {% endif %}
 
                                 {% if item.Vyzva.FinancniAlokace %}
-                                    <div class="vyzva-table-row"><strong>Finanční alokace:</strong> {{ item.Vyzva.FinancniAlokace }} Kč</div>
+                                    <div class="vyzva-table-row"><strong>Finanční alokace:</strong> {{ item.Vyzva.FinancniAlokace|number_format(0, '', ' ') }} Kč</div>
                                 {% endif %}
 
                                 {% if item.Vyzva.MinimalniVyseNakladu %}
-                                    <div class="vyzva-table-row"><strong>Minimální výše celkových způsobilých výdajů:</strong> {{ item.Vyzva.MinimalniVyseNakladu }} Kč</div>
+                                    <div class="vyzva-table-row"><strong>Minimální výše celkových způsobilých výdajů:</strong> {{ item.Vyzva.MinimalniVyseNakladu|number_format(0, '', ' ') }} Kč</div>
                                 {% endif %}
 
                                 {% if item.Vyzva.MaximalniVyseNakladu %}
-                                    <div class="vyzva-table-row"><strong>Maximální výše celkových způsobilých výdajů na jeden projekt:</strong> {{ item.Vyzva.MaximalniVyseNakladu }} Kč</div>
+                                    <div class="vyzva-table-row"><strong>Maximální výše celkových způsobilých výdajů na jeden projekt:</strong> {{ item.Vyzva.MaximalniVyseNakladu|number_format(0, '', ' ') }} Kč</div>
                                 {% endif %}
 
                                 {% if item.Vyzva.OpravneniZadatele %}
