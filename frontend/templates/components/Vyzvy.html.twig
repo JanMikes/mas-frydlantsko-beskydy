@@ -1,0 +1,67 @@
+<div class="rozjizdeci-obsahy-component margin-component">
+    {% for vyzva in this.getItems() %}
+        {% set collapseId = 'rozjizdeci-obsah-' ~ loop.index ~ '-' ~ random(1000000) %}
+
+        <div>
+            {% if vyzva.Nazev %}
+                <div class="rozjizdeci-obsah-nadpis mb-0 collapse-toggle d-flex align-items-center justify-content-between collapsed w-100 rozjizdeci-obsah-nadpis-style-2" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}" style="cursor: pointer;">
+                    <h4 class="mb-0">{{ vyzva.Nazev }}</h4>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+            {% endif %}
+
+            <div id="{{ collapseId }}" class="collapse">
+                <div class="rozjizdeci-obsah-content">
+                    <div class="pt-3">
+                        <div class="vyzva-table">
+                            {% if vyzva.ZahajeniVyzvy %}
+                                <div class="vyzva-table-row"><strong>Zahájení výzvy:</strong> {{ vyzva.ZahajeniVyzvy|date('d.m.Y H:i') }}</div>
+                            {% endif %}
+
+                            {% if vyzva.ZahajeniPrijmuZadosti %}
+                                <div class="vyzva-table-row"><strong>Zahájení příjmu žádostí o podporu:</strong> {{ vyzva.ZahajeniPrijmuZadosti|date('d.m.Y H:i') }}</div>
+                            {% endif %}
+
+                            {% if vyzva.KonecVyzvy %}
+                                <div class="vyzva-table-row"><strong>Konec výzvy:</strong> {{ vyzva.KonecVyzvy|date('d.m.Y H:i') }}</div>
+                            {% endif %}
+
+                            {% if vyzva.FinancniAlokace %}
+                                <div class="vyzva-table-row"><strong>Finanční alokace:</strong> {{ vyzva.FinancniAlokace }} Kč</div>
+                            {% endif %}
+
+                            {% if vyzva.MinimalniVyseNakladu %}
+                                <div class="vyzva-table-row"><strong>Minimální výše celkových způsobilých výdajů:</strong> {{ vyzva.MinimalniVyseNakladu }} Kč</div>
+                            {% endif %}
+
+                            {% if vyzva.MaximalniVyseNakladu %}
+                                <div class="vyzva-table-row"><strong>Maximální výše celkových způsobilých výdajů na jeden projekt:</strong> {{ vyzva.MaximalniVyseNakladu }} Kč</div>
+                            {% endif %}
+
+                            {% if vyzva.OpravneniZadatele %}
+                                <div class="vyzva-table-row">
+                                    <strong>Opravnění žadatelé:</strong>
+                                    {{ vyzva.OpravneniZadatele|markdown_to_html|newlines }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        {% if vyzva.Lide %}
+                            {{ component('Samosprava', {
+                                data: vyzva.Lide,
+                                hasPanel: false,
+                            }) }}
+                        {% endif %}
+
+                        {% if vyzva.Dokumenty %}
+                            {{ component('SouboryKeStazeni', {
+                                data: vyzva.Dokumenty,
+                                hasPanel: false,
+                            }) }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

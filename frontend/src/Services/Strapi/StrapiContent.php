@@ -366,10 +366,10 @@ readonly final class StrapiContent
     /**
      * @return array<VyzvaData>
      */
-    public function getVyzvyData(): array
+    public function getVyzvy(): array
     {
         /** @var array{data: array<VyzvaDataArray>} $strapiResponse */
-        $strapiResponse = $this->strapiClient->getApiResource('vyzvy');
+        $strapiResponse = $this->strapiClient->getApiResource('vyzvies', populateLevel: 6);
 
         return VyzvaData::createManyFromStrapiResponse($strapiResponse['data']);
     }
