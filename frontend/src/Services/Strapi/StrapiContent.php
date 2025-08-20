@@ -373,4 +373,32 @@ readonly final class StrapiContent
 
         return VyzvaData::createManyFromStrapiResponse($strapiResponse['data']);
     }
+
+    public function getVyzva(string $slug): VyzvaData
+    {
+        /** @var array{data: array<VyzvaDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('vyzvies',
+            populateLevel: 5,
+            filters: [
+                'slug' => ['$eq' => $slug]
+            ]);
+
+        return VyzvaData::createFromStrapiResponse(
+            $strapiResponse['data'][0] ?? throw new NotFound,
+        );
+    }
+
+    public function getProjekt(string $slug): ProjektData
+    {
+        /** @var array{data: array<ProjektDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('projekties',
+            populateLevel: 5,
+            filters: [
+                'slug' => ['$eq' => $slug]
+            ]);
+
+        return ProjektData::createFromStrapiResponse(
+            $strapiResponse['data'][0] ?? throw new NotFound,
+        );
+    }
 }

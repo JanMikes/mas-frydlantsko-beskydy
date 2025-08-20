@@ -558,3 +558,10 @@ footer .colored-footer a:hover {
     font-size: 1rem;
     font-weight: normal;
 }
+
+.detail-vyzvy-link {
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-weight: bold;
+    color: var(--bs-secondary);
+}

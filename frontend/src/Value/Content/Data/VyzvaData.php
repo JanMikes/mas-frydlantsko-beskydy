@@ -22,6 +22,7 @@ namespace MASFB\Web\Value\Content\Data;
  *     Informace: null|string,
  *     Lide: null|array{Lide: array<ClovekSamospravyDataArray>},
  *     Dokumenty: null|array{Pocet_sloupcu: string, Soubor: array<SouborDataArray>},
+ *     slug: null|string,
  * }
  */
 readonly final class VyzvaData
@@ -43,6 +44,7 @@ readonly final class VyzvaData
         public null|string $Informace,
         public null|SamospravaComponentData $Lide,
         public null|SouboryKeStazeniComponentData $Dokumenty,
+        public null|string $slug,
     ) {
     }
 
@@ -71,6 +73,7 @@ readonly final class VyzvaData
             Dokumenty: $data['Dokumenty'] === null 
                 ? null 
                 : SouboryKeStazeniComponentData::createFromStrapiResponse($data['Dokumenty']),
+            slug: $data['slug'],
         );
     }
 }

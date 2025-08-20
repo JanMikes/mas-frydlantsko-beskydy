@@ -76,18 +76,26 @@
                             </div>
 
                             {% if item.Vyzva.Lide %}
-                                {{ component('Samosprava', {
-                                    data: item.Vyzva.Lide,
-                                    hasPanel: false,
-                                }) }}
+                                <div class="vyzva-table-row">
+                                    {{ component('Samosprava', {
+                                        data: item.Vyzva.Lide,
+                                        hasPanel: false,
+                                    }) }}
+                                </div>
                             {% endif %}
 
                             {% if item.Vyzva.Dokumenty %}
-                                {{ component('SouboryKeStazeni', {
-                                    data: item.Vyzva.Dokumenty,
-                                    hasPanel: false,
-                                }) }}
+                                <div class="vyzva-table-row">
+                                    {{ component('SouboryKeStazeni', {
+                                        data: item.Vyzva.Dokumenty,
+                                        hasPanel: false,
+                                    }) }}
+                                </div>
                             {% endif %}
+
+                            <p class="detail-vyzvy-link">
+                                <a href="{{ path('detail_vyzvy', {'slug': item.Vyzva.slug}) }}">Detail výzvy <i class="bi-chevron-right"></i></a>
+                            </p>
                         </div>
                     {% endif %}
                 </div>

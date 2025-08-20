@@ -1109,6 +1109,7 @@ export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
     Opatreni_sclld: Schema.Attribute.RichText;
     Opravneni_zadatele: Schema.Attribute.RichText;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Nazev'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

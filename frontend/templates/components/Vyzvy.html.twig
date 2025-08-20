@@ -47,18 +47,26 @@
                         </div>
 
                         {% if vyzva.Lide %}
-                            {{ component('Samosprava', {
-                                data: vyzva.Lide,
-                                hasPanel: false,
-                            }) }}
+                            <div class="vyzva-table-row">
+                                {{ component('Samosprava', {
+                                    data: vyzva.Lide,
+                                    hasPanel: false,
+                                }) }}
+                            </div>
                         {% endif %}
 
                         {% if vyzva.Dokumenty %}
-                            {{ component('SouboryKeStazeni', {
-                                data: vyzva.Dokumenty,
-                                hasPanel: false,
-                            }) }}
+                            <div class="vyzva-table-row">
+                                {{ component('SouboryKeStazeni', {
+                                    data: vyzva.Dokumenty,
+                                    hasPanel: false,
+                                }) }}
+                            </div>
                         {% endif %}
+
+                        <p class="detail-vyzvy-link">
+                            <a href="{{ path('detail_vyzvy', {'slug': vyzva.slug}) }}">Detail výzvy <i class="bi-chevron-right"></i></a>
+                        </p>
                     </div>
                 </div>
             </div>

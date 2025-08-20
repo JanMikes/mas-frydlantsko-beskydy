@@ -55,6 +55,10 @@
       "type": "component",
       "component": "komponenty.soubory-ke-stazeni",
       "repeatable": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Nazev"
     }
   }
 }

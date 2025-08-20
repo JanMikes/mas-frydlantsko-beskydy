@@ -7,6 +7,7 @@ namespace MASFB\Web\Value\Content\Data;
 /**
  * @phpstan-type VyzvyOperacniProgramDataArray array{
  *     Nazev: null|string,
+ *     slug: null|string,
  * }
  */
 readonly final class VyzvyOperacniProgramData
@@ -16,6 +17,7 @@ readonly final class VyzvyOperacniProgramData
 
     public function __construct(
         public null|string $Nazev,
+        public null|string $slug,
     ) {
     }
 
@@ -26,6 +28,7 @@ readonly final class VyzvyOperacniProgramData
     {
         return new self(
             Nazev: $data['Nazev'],
+            slug: $data['slug'],
         );
     }
 }
