@@ -28,6 +28,10 @@ readonly final class KalendarAkci
             $categorySlugs[] = $category->slug;
         }
 
+        if ($kategorie === []) {
+            return $this->content->getKalendarAkciData();
+        }
+
         return $this->content->getKalendarAkciForCategoriesData(category: $categorySlugs, limit: 3);
     }
 }

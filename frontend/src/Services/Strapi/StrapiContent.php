@@ -294,6 +294,10 @@ readonly final class StrapiContent
             ];
         }
 
+        if ($filters === []) {
+            $filters = null;
+        }
+
         /** @var array{data: array<KalendarAkciDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('kalendar-akcis',
             populateLevel: 5,

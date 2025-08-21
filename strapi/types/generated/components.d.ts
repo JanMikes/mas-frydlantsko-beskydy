@@ -885,7 +885,12 @@ export interface KomponentyVyzvy extends Struct.ComponentSchema {
     displayName: 'V\u00FDzvy';
     icon: 'bell';
   };
-  attributes: {};
+  attributes: {
+    Obory: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::vyzvy-obory.vyzvy-obory'
+    >;
+  };
 }
 
 declare module '@strapi/strapi' {

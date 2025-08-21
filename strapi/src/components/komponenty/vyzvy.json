@@ -5,6 +5,12 @@
     "icon": "bell"
   },
   "options": {},
-  "attributes": {},
+  "attributes": {
+    "Obory": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vyzvy-obory.vyzvy-obory"
+    }
+  },
   "config": {}
 }
