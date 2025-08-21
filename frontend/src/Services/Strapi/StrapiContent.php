@@ -415,7 +415,7 @@ readonly final class StrapiContent
     {
         /** @var array{data: array<ProjektDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('projekties',
-            populateLevel: 5,
+            populateLevel: 6,
             filters: [
                 'slug' => ['$eq' => $slug]
             ]);

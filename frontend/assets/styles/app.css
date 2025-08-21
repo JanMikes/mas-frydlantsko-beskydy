@@ -663,8 +663,7 @@ a.actuality-item:hover {
 img.placeholder-image {
     object-fit: contain !important;
     background: #fff;
-    padding: 15px;
-    max-width: 50%;
+    padding: 15px 22%;
 }
 
 .tag {
