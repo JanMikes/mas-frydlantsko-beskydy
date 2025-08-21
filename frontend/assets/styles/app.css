@@ -78,6 +78,7 @@ body {
     --bs-link-hover-color-rgb: var(--bs-primary-rgb);
     background-color: #ffffff;
     padding-top: 163px;
+    font-weight: 300;
 }
 
 html {
