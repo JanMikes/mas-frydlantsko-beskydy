@@ -648,6 +648,10 @@ footer .colored-footer a:hover {
     border-radius: 15px 15px 0 0;
 }
 
+img.placeholder {
+    object-fit: contain !important;
+}
+
 .tag {
     display: inline-block;
     background: #ccc;
