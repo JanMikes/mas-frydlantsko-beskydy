@@ -6,7 +6,7 @@ namespace MASFB\Web\Value\Content\Data;
 
 /**
  * @phpstan-import-type VyzvyOperacniProgramDataArray from VyzvyOperacniProgramData
- * @phpstan-import-type ClovekSamospravyDataArray from ClovekSamospravyData
+ * @phpstan-import-type SamospravaComponentDataArray from SamospravaComponentData
  * @phpstan-import-type SouborDataArray from SouborData
  * @phpstan-type VyzvaDataArray array{
  *     Nazev: null|string,
@@ -20,7 +20,7 @@ namespace MASFB\Web\Value\Content\Data;
  *     Opatreni_sclld: null|string,
  *     Opravneni_zadatele: null|string,
  *     Informace: null|string,
- *     Lide: null|array{Lide: array<ClovekSamospravyDataArray>},
+ *     Lide: null|SamospravaComponentDataArray,
  *     Dokumenty: null|array{Pocet_sloupcu: string, Soubor: array<SouborDataArray>},
  *     slug: null|string,
  * }

@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace MASFB\Web\Value\Content\Data;
 
 /**
- * @phpstan-import-type ClovekSamospravyDataArray from ClovekSamospravyData
+ * @phpstan-import-type SamospravaComponentDataArray from SamospravaComponentData
  * @phpstan-import-type RozjizdeciObsahTextDataArray from RozjizdeciObsahTextData
  * @phpstan-import-type SouborDataArray from SouborData
  * @phpstan-import-type VyzvaDataArray from VyzvaData
  * @phpstan-type RozjizdeciObsahDataArray array{
  *     Nadpis: null|string,
  *     Text: null|RozjizdeciObsahTextDataArray,
- *     Lide: null|array{Lide: array<ClovekSamospravyDataArray>},
+ *     Lide: null|SamospravaComponentDataArray,
  *     Dokumenty: null|array{Pocet_sloupcu: string, Soubor: array<SouborDataArray>},
  *     Vyzva: null|VyzvaDataArray,
  * }
