@@ -80,9 +80,7 @@
                     <a href="{{ path('detail_projektu', {'slug': projekt.slug}) }}" class="text-decoration-none">
                 {% endif %}
                 
-                    {% if projekt.Obrazek %}
-                        <img class="img-fluid mb-2" src="{{ projekt.Obrazek.url }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
-                    {% endif %}
+                    <img class="img-fluid mb-2" src="{{ projekt.Obrazek.url ? projekt.Obrazek.url : asset('images/logo-symbol.svg') }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
 
                     <h3 class="h5 border-top mt-2 mb-1 pt-2 fw-bold" id="projekt-{{ projekt.slug }}">{{ projekt.Nazev }}</h3>
                     
