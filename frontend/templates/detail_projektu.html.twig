@@ -40,5 +40,8 @@
             <img class="img-fluid mb-4" src="{{ projekt.Obrazek.url }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
         {% endif %}
 
+        {% if projekt.Text %}
+            {{ projekt.Textmarkdown_to_html|newlines }}
+        {% endif %}
     </div>
 {% endblock %}
