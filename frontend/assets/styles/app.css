@@ -531,7 +531,7 @@ footer .colored-footer a:hover {
 
 .kalendar-akci-image img {
     width: 100%;
-    height: 220px;
+    height: 160px;
     object-fit: cover;
     object-position: center center;
     display: block;
@@ -641,7 +641,7 @@ footer .colored-footer a:hover {
 
 .actuality-item img {
     width: 100%;
-    height: 220px;
+    height: 160px;
     object-fit: cover;
     object-position: center center;
     display: block;
