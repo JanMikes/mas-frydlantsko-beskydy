@@ -108,6 +108,12 @@ html {
     background: var(--bs-secondary) !important;
 }
 
+.breadcrumb {
+    position: absolute;
+    top: 110px;
+    left: 450px;
+}
+
 .navbar a {
     font-weight: bold;
     color: var(--bs-primary);
