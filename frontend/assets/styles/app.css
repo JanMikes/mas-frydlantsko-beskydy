@@ -80,6 +80,14 @@ body {
     padding-top: 163px;
 }
 
+html {
+    scroll-padding-top: 180px;
+}
+
+:target {
+    scroll-margin-top: 180px;
+}
+
 .navbar {
     box-shadow: 0 4px 23px 0 #0000001A;
     background: #fff !important;
