@@ -32,7 +32,6 @@ readonly final class ProjektData
     /**
      * @param array<ProjektData> $SouvisejiciProjekty
      */
-
     public function __construct(
         public null|string $Nazev,
         public null|string $slug,

@@ -1,9 +1,8 @@
 <div {{ attributes.defaults({class: 'margin-component'}) }}>
     <div class="mb-4">
-        <h4 class="h6 mb-2">Filtry</h4>
         <div class="row g-3">
             <div class="col-md-4">
-                <select class="form-select form-select-sm" data-model="kategorie">
+                <select class="form-select" data-model="kategorie">
                     <option value="">Všechny kategorie</option>
                     {% for kategorieItem in this.getKategorieItems() %}
                         <option value="{{ kategorieItem.slug }}">{{ kategorieItem.Nazev }}</option>
@@ -12,7 +11,7 @@
             </div>
 
             <div class="col-md-4">
-                <select class="form-select form-select-sm" data-model="operacniProgram">
+                <select class="form-select" data-model="operacniProgram">
                     <option value="">Všechny operační programy</option>
                     {% for program in this.getOperacniProgramyItems() %}
                         <option value="{{ program.slug }}">{{ program.Nazev }}</option>
@@ -21,7 +20,7 @@
             </div>
 
             <div class="col-md-4">
-                <select class="form-select form-select-sm" data-model="obec">
+                <select class="form-select" data-model="obec">
                     <option value="">Všechny obce</option>
                     {% for obecItem in this.getObceItems() %}
                         <option value="{{ obecItem.Nazev }}">{{ obecItem.Nazev }}</option>
@@ -33,7 +32,7 @@
 
     <div class="mb-4">
         <button type="button"
-                class="btn btn-outline-primary btn-sm {{ sortBy == 'Nejoblíbenější' ? 'active' : '' }}"
+                class="btn btn-project btn-sm {{ sortBy == 'Nejoblíbenější' ? 'active' : '' }}"
                 data-action="live#action"
                 data-live-action-param="sort"
                 data-live-sort-param="Nejoblíbenější">
@@ -41,7 +40,7 @@
         </button>
 
         <button type="button"
-                class="btn btn-outline-primary btn-sm {{ sortBy == 'Nejnovější' ? 'active' : '' }}"
+                class="btn btn-project btn-sm {{ sortBy == 'Nejnovější' ? 'active' : '' }}"
                 data-action="live#action"
                 data-live-action-param="sort"
                 data-live-sort-param="Nejnovější">
@@ -49,7 +48,7 @@
         </button>
 
         <button type="button"
-                class="btn btn-outline-primary btn-sm {{ sortBy == 'Nejstarší' ? 'active' : '' }}"
+                class="btn btn-project btn-sm {{ sortBy == 'Nejstarší' ? 'active' : '' }}"
                 data-action="live#action"
                 data-live-action-param="sort"
                 data-live-sort-param="Nejstarší">
@@ -57,7 +56,7 @@
         </button>
 
         <button type="button"
-                class="btn btn-outline-primary btn-sm {{ sortBy == 'Nejdražší' ? 'active' : '' }}"
+                class="btn btn-project btn-sm {{ sortBy == 'Nejdražší' ? 'active' : '' }}"
                 data-action="live#action"
                 data-live-action-param="sort"
                 data-live-sort-param="Nejdražší">
@@ -65,7 +64,7 @@
         </button>
 
         <button type="button"
-                class="btn btn-outline-primary btn-sm {{ sortBy == 'Nejlevnější' ? 'active' : '' }}"
+                class="btn btn-project btn-sm {{ sortBy == 'Nejlevnější' ? 'active' : '' }}"
                 data-action="live#action"
                 data-live-action-param="sort"
                 data-live-sort-param="Nejlevnější">
@@ -75,33 +74,20 @@
 
     <div class="row">
         {% for projekt in this.getItems() %}
-            <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                {% if projekt.slug %}
-                    <a href="{{ path('detail_projektu', {'slug': projekt.slug}) }}" class="text-decoration-none">
-                {% endif %}
-                    <img class="img-fluid mb-2 {{ projekt.Obrazek ? '' : 'placeholder-image' }}" src="{{ projekt.Obrazek ? projekt.Obrazek.url : asset('images/logo-symbol.svg') }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
+            <div class="col-sm-6 col-md-4 my-3">
+                <a href="{{ path('detail_projektu', {'slug': projekt.slug}) }}" class="text-decoration-none project-item">
+                    <img class="img-fluid {{ projekt.Obrazek ? '' : 'placeholder-image' }}" src="{{ projekt.Obrazek ? projekt.Obrazek.url : asset('images/logo-symbol.svg') }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
 
-                    <h3 class="h5 border-top mt-2 mb-1 pt-2 fw-bold" id="projekt-{{ projekt.slug }}">{{ projekt.Nazev }}</h3>
-                    
-                    {% if projekt.Vyzva and projekt.Vyzva.ZdrojFinancovani %}
-                        <p class="small text-secondary mb-1">{{ projekt.Vyzva.ZdrojFinancovani.Nazev }}</p>
-                    {% endif %}
-                    
-                    {% if projekt.PrijemceDotace %}
-                        <p class="small mb-1"><strong>Příjemce:</strong> {{ projekt.PrijemceDotace }}</p>
-                    {% endif %}
-                    
-                    {% if projekt.VyseDotace %}
-                        <p class="small mb-1"><strong>Výše dotace:</strong> {{ projekt.VyseDotace|number_format(0, ',', ' ') }} Kč</p>
-                    {% endif %}
-                    
-                    {% if projekt.DobaRealizace %}
-                        <p class="small text-secondary">{{ projekt.DobaRealizace }}</p>
-                    {% endif %}
+                    <div class="project-item-inner p-3">
+                        {% if projekt.Kategorie %}
+                            <p class="mb-3">
+                                <span class="tag">{{ projekt.Kategorie.Nazev }}</span>
+                            </p>
+                        {% endif %}
 
-                {% if projekt.slug %}
-                    </a>
-                {% endif %}
+                        <h3 class="h6 m-0" id="projekt-{{ projekt.slug }}">{{ projekt.Nazev }}</h3>
+                    </div>
+                </a>
             </div>
         {% endfor %}
     </div>
