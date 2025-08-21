@@ -721,3 +721,41 @@ a.project-item:hover {
 .form-select {
     border-color: #ccc;
 }
+
+.project-grid {
+    display: grid;
+    /* 6 equal tracks: lets us do 50% (3/6) and 33% (2/6) */
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-areas:
+    "a a a b b b"
+    "c c d d e e";
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.project-grid .cell {
+    border: 1px solid #ccc; /* inner borders */
+    padding: 0.75rem;
+    box-sizing: border-box;
+}
+
+/* place cells */
+.project-grid .cell:nth-child(1) { grid-area: a;border-bottom: 0;border-right: 0; } /* 50% */
+.project-grid .cell:nth-child(2) { grid-area: b;border-bottom: 0; } /* 50% */
+.project-grid .cell:nth-child(3) { grid-area: c;border-right: 0; } /* 33% */
+.project-grid .cell:nth-child(4) { grid-area: d;border-right: 0; } /* 33% */
+.project-grid .cell:nth-child(5) { grid-area: e; } /* 33% */
+
+/* OPTIONAL: keep only one outer border (no double edge lines) */
+.project-grid .cell:nth-child(1),
+.project-grid .cell:nth-child(2) { border-top: none; }
+
+.project-grid .cell:nth-child(3),
+.project-grid .cell:nth-child(4),
+.project-grid .cell:nth-child(5) { border-bottom: none; }
+
+.project-grid .cell:nth-child(1),
+.project-grid .cell:nth-child(3) { border-left: none; }
+
+.project-grid .cell:nth-child(2),
+.project-grid .cell:nth-child(5) { border-right: none; }

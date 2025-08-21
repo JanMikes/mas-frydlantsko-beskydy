@@ -13,18 +13,32 @@
     <div class="container py-4 section-content">
         <h1 class="mb-3 mb-lg-5"><span class="heading-border">{{ projekt.Nazev }}</span></h1>
 
-        <strong>Operační program</strong>
-        {{ projekt.Vyzva.ZdrojFinancovani.Nazev }}
+        <div class="project-grid mb-4">
+            <div class="cell">
+                <strong>Operační program</strong><br>
+                {{ projekt.Vyzva.ZdrojFinancovani.Nazev }}
+            </div>
+            <div class="cell">
+                <strong>Příjemce dotace</strong><br>
+                {{ projekt.PrijemceDotace }}
+            </div>
+            <div class="cell">
+                <strong>Výše dotace</strong><br>
+                {{ projekt.VyseDotace|number_format(0, '', ' ') }} Kč
+            </div>
+            <div class="cell">
+                <strong>Projekt MAS-FB</strong><br>
+                {{ projekt.ProjektMasFb ? 'Ano' : 'ne' }}
+            </div>
+            <div class="cell">
+                <strong>Doba realizace</strong><br>
+                {{ projekt.DobaRealizace }}
+            </div>
+        </div>
 
-        <strong>Příjemce dotace</strong>
-        {{ projekt.PrijemceDotace }}
+        {% if projekt.Obrazek %}
+            <img class="img-fluid mb-4" src="{{ projekt.Obrazek.url }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
+        {% endif %}
 
-        <strong>Výše dotace</strong>
-        {{ projekt.VyseDotace|number_format(0, '', ' ') }} Kč }}
-
-        <strong>Projekt MAS-FB</strong>
-
-
-        <strong>Doba realizace</strong>
     </div>
 {% endblock %}
