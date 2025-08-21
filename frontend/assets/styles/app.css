@@ -157,6 +157,10 @@ h1 .heading-border,
     border: 1px solid #CCCCCC;
 }
 
+.component-fast-links-panel img {
+    width: 60px;
+}
+
 
 .section-content-wrapper > h2:first-child,
 .section-content-wrapper > h3:first-child,
@@ -213,7 +217,7 @@ h1 .heading-border,
 }
 
 .column-karta-s-argumenty img {
-    width: 50%;
+    width: 60px;
     max-height: 150px;
     height: auto;
     object-fit: contain;
@@ -236,7 +240,7 @@ h1 .heading-border,
 }
 
 .column-dlazdice img {
-    width: 50%;
+    width: 60px;
     max-height: 150px;
     height: auto;
     object-fit: contain;
