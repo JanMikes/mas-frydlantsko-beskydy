@@ -17,7 +17,7 @@ readonly final class SamospravaComponentData
      * @param array<ClovekSamospravyData> $lide
      */
     public function __construct(
-        public null|string $nadpis,
+        public null|string $Nadpis,
         public array $lide,
     ) {}
 
