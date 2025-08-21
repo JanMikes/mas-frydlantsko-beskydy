@@ -6,6 +6,10 @@ namespace MASFB\Web\Value\Content\Data;
 
 /**
  * @phpstan-import-type ClovekSamospravyDataArray from ClovekSamospravyData
+ * @phpstan-type SamospravaComponentDataArray array{
+ *     Nadpis: null|string,
+ *     Lide: array<ClovekSamospravyDataArray>,
+ * }
  */
 readonly final class SamospravaComponentData
 {
@@ -13,16 +17,18 @@ readonly final class SamospravaComponentData
      * @param array<ClovekSamospravyData> $lide
      */
     public function __construct(
+        public null|string $nadpis,
         public array $lide,
     ) {}
 
     /**
-     * @param array{Lide: array<ClovekSamospravyDataArray>} $data
+     * @param SamospravaComponentDataArray $data
      */
     public static function createFromStrapiResponse(array $data): self
     {
         return new self(
-            ClovekSamospravyData::createManyFromStrapiResponse($data['Lide']),
+            Nadpis: $data['Nadpis'],
+            lide: ClovekSamospravyData::createManyFromStrapiResponse($data['Lide']),
         );
     }
 }

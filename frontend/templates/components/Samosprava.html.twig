@@ -1,4 +1,8 @@
 <div class="margin-component">
+    {% if data.Nadpis %}
+        <h2 class="h3 mt-0 mb-3">{{ data.Nadpis }}</h2>
+    {% endif %}
+
     <div class="row g-3">
         {% for clovekSamospravy in data.lide %}
             <div class="my-3 {% if hasPanel %}col-xl-6{% else %}col-md-6 col-xl-4{% endif %}">
