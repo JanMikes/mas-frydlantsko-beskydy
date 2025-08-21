@@ -556,10 +556,16 @@ footer .colored-footer a:hover {
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 15px;
+    transition: all 0.3s ease;
 }
 
 .actuality-panel > a + a {
     margin-top: 15px;
+}
+
+.actuality-panel > a:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.025);
 }
 
 .collapse-toggle:not(.collapsed) .bi-chevron-down {
@@ -633,6 +639,12 @@ footer .colored-footer a:hover {
     text-align: center;
     display: block;
     padding-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+a.actuality-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.025);
 }
 
 .actuality-item time {
@@ -648,8 +660,10 @@ footer .colored-footer a:hover {
     border-radius: 15px 15px 0 0;
 }
 
-img.placeholder {
+img.placeholder-image {
     object-fit: contain !important;
+    background: #fff;
+    padding: 15px;
 }
 
 .tag {

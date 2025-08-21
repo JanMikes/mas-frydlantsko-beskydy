@@ -6,7 +6,7 @@
             <div class="col-sm-6 col-md-4">
                 <div class="kalendar-akci">
                     <div class="kalendar-akci-image">
-                        <img class="img-fluid {{ akce.Fotka ? '' : 'placeholder' }}" src="{{ akce.Fotka ? akce.Fotka.url : asset('images/logo-symbol.svg') }}" alt="">
+                        <img class="img-fluid {{ akce.Fotka ? '' : 'placeholder-image' }}" src="{{ akce.Fotka ? akce.Fotka.url : asset('images/logo-symbol.svg') }}" alt="">
                     </div>
 
                     {% if akce.Datum %}
