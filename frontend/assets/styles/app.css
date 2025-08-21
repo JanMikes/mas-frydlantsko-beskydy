@@ -664,6 +664,7 @@ img.placeholder-image {
     object-fit: contain !important;
     background: #fff;
     padding: 15px;
+    max-width: 50%;
 }
 
 .tag {
