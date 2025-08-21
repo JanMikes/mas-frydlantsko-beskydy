@@ -551,10 +551,15 @@ footer .colored-footer a:hover {
 }
 
 
-.actuality-panel {
+.actuality-panel > a {
+    display: block;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 15px;
+}
+
+.actuality-panel > a + a {
+    margin-top: 15px;
 }
 
 .collapse-toggle:not(.collapsed) .bi-chevron-down {
@@ -618,4 +623,43 @@ footer .colored-footer a:hover {
     margin-bottom: 0;
     font-weight: bold;
     color: var(--bs-secondary);
+}
+
+
+.actuality-item {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+    display: block;
+    padding-bottom: 15px;
+}
+
+.actuality-item time {
+    font-size: 13px;
+}
+
+.actuality-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    border-radius: 15px 15px 0 0;
+}
+
+.tag {
+    display: inline-block;
+    background: #ccc;
+    color: #333;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+a.tag:hover, .tag.active {
+    background: var(--bs-secondary);
 }
