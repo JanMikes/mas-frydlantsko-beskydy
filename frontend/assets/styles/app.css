@@ -119,17 +119,13 @@ html {
         position: relative;
         top: auto;
         left: auto;
-        margin: 10px 15px 0 15px;
+        margin: 10px 15px 0 15px !important;
     }
 }
 
 .navbar a {
     font-weight: bold;
     color: var(--bs-primary);
-}
-
-.navbar-nav {
-    margin-right: 135px;
 }
 
 .navbar-toggler-icon {

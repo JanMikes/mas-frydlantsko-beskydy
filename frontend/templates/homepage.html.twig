@@ -67,8 +67,8 @@
 
     {% if section %}
         <div class="container pt-3 pb-3 section-content">
-            <div class="row gx-md-5">
-                <div class="{{ section.Komponenty_panel ? 'col-md-8' : 'col-md-12' }}">
+            <div class="row gx-lg-5">
+                <div class="{{ section.Komponenty_panel ? 'col-lg-8' : 'col-lg-12' }}">
                     <div class="section-content-wrapper">
                         {% for komponenta in section.Komponenty %}
                             {{ component(komponenta.type, {
@@ -81,7 +81,7 @@
                 </div>
 
                 {% if section.Komponenty_panel %}
-                    <div class="col-md-4 mt-4 mt-md-0 side-panel">
+                    <div class="col-lg-4 mt-5 mt-lg-0 side-panel">
                         {% for komponenta in section.Komponenty_panel %}
                             {{ component(komponenta.type, {
                                 hasPanel: section.Komponenty_panel|length > 0,

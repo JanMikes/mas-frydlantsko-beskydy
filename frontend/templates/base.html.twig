@@ -36,7 +36,7 @@
     {% block full_content %}
         <header>
             <div class="main-logo-shadow"></div>
-            <nav class="navbar navbar-light bg-light navbar-expand-md fixed-top py-3">
+            <nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top py-3">
                 <div class="main-logo">
                     <a href="{{ path('homepage') }}">
                         <img src="{{ asset('images/logo.svg') }}" alt="Logo">
@@ -45,12 +45,12 @@
 
                 <div class="container-fluid d-flex align-items-center pe-0">
                     <!-- Menu links (tablet and up) -->
-                    <ul class="navbar-nav w-100 justify-content-end mb-2 mb-lg-0 d-none d-md-flex flex-row">
+                    <ul class="navbar-nav w-100 justify-content-end mb-2 mb-lg-0 d-none d-lg-flex flex-row">
                         <twig:Menu type="navbar" />
                     </ul>
 
                     <!-- Hamburger menu trigger -->
-                    <button class="sidebar-toggler btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <button class="sidebar-toggler btn d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>

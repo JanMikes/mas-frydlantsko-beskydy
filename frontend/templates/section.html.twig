@@ -17,8 +17,8 @@
     <div class="container py-4 section-content">
         <h1 class="mb-3 mb-lg-5"><span class="heading-border">{{ sekce.Nazev }}</span></h1>
 
-        <div class="row gx-md-5">
-            <div class="{{ sekce.Komponenty_panel ? 'col-md-8' : 'col-md-12' }}">
+        <div class="row gx-lg-5">
+            <div class="{{ sekce.Komponenty_panel ? 'col-lg-8' : 'col-lg-12' }}">
                 <div class="section-content-wrapper">
                     {% for komponenta in sekce.Komponenty %}
                         {{ component(komponenta.type, {
@@ -31,7 +31,7 @@
             </div>
 
             {% if sekce.Komponenty_panel %}
-                <div class="col-md-4 mt-5 mt-md-0 side-panel">
+                <div class="col-lg-4 mt-5 mt-lg-0 side-panel">
                     {% for komponenta in sekce.Komponenty_panel %}
                         {{ component(komponenta.type, {
                             hasPanel: sekce.Komponenty_panel|length > 0,
