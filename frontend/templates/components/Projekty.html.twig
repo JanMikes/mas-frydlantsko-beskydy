@@ -1,5 +1,5 @@
 <div {{ attributes.defaults({class: 'margin-component'}) }}>
-    <div class="mb-4">
+    <div class="mb-3">
         <div class="row g-3">
             <div class="col-md-4">
                 <select class="form-select" data-model="kategorie">
@@ -30,9 +30,9 @@
         </div>
     </div>
 
-    <div class="mb-4">
+    <div class="mb-3">
         <button type="button"
-                class="btn btn-project btn-sm {{ sortBy == 'Nejoblíbenější' ? 'active' : '' }}"
+                class="mb-2 me-2 btn btn-project btn-sm {{ sortBy == 'Nejoblíbenější' ? 'active' : '' }}"
                 data-action="live#action"
                 data-live-action-param="sort"
                 data-live-sort-param="Nejoblíbenější">
@@ -40,7 +40,7 @@
         </button>
 
         <button type="button"
-                class="btn btn-project btn-sm {{ sortBy == 'Nejnovější' ? 'active' : '' }}"
+                class="mb-2 me-2 btn btn-project btn-sm {{ sortBy == 'Nejnovější' ? 'active' : '' }}"
                 data-action="live#action"
                 data-live-action-param="sort"
                 data-live-sort-param="Nejnovější">
@@ -48,7 +48,7 @@
         </button>
 
         <button type="button"
-                class="btn btn-project btn-sm {{ sortBy == 'Nejstarší' ? 'active' : '' }}"
+                class="mb-2 me-2 btn btn-project btn-sm {{ sortBy == 'Nejstarší' ? 'active' : '' }}"
                 data-action="live#action"
                 data-live-action-param="sort"
                 data-live-sort-param="Nejstarší">
@@ -56,7 +56,7 @@
         </button>
 
         <button type="button"
-                class="btn btn-project btn-sm {{ sortBy == 'Nejdražší' ? 'active' : '' }}"
+                class="mb-2 me-2 btn btn-project btn-sm {{ sortBy == 'Nejdražší' ? 'active' : '' }}"
                 data-action="live#action"
                 data-live-action-param="sort"
                 data-live-sort-param="Nejdražší">
@@ -64,7 +64,7 @@
         </button>
 
         <button type="button"
-                class="btn btn-project btn-sm {{ sortBy == 'Nejlevnější' ? 'active' : '' }}"
+                class="mb-2 me-2 btn btn-project btn-sm {{ sortBy == 'Nejlevnější' ? 'active' : '' }}"
                 data-action="live#action"
                 data-live-action-param="sort"
                 data-live-sort-param="Nejlevnější">

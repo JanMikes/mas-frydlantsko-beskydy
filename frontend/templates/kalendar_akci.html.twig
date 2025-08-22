@@ -17,7 +17,7 @@
 
         <div class="row">
             {% for akce in kalendar_akci %}
-                <div class="col-sm-6 col-md-4">
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
                     <div class="kalendar-akci">
                         <div class="kalendar-akci-image">
                             <img class="img-fluid {{ akce.Fotka ? '' : 'placeholder-image' }}" src="{{ akce.Fotka ? akce.Fotka.url : asset('images/logo-symbol.svg') }}" alt="">
