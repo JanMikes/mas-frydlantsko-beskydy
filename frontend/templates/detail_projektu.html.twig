@@ -41,7 +41,7 @@
         {% endif %}
 
         {% if projekt.Text %}
-            {{ projekt.Textmarkdown_to_html|newlines }}
+            {{ projekt.Text|markdown_to_html|newlines }}
         {% endif %}
     </div>
 {% endblock %}

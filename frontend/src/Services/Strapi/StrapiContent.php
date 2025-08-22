@@ -256,10 +256,6 @@ readonly final class StrapiContent
         /** @var array{data: array<KalendarAkciDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('kalendar-akcis',
             populateLevel: 5,
-            pagination: [
-                'limit' => 3,
-                'start' => 0,
-            ],
         );
 
         return KalendarAkciData::createManyFromStrapiResponse(
