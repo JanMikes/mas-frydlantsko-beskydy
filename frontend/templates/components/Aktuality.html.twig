@@ -2,7 +2,7 @@
     <div class="actuality-panel margin-component">
         {% for aktualita in this.getItems(data.Pocet, data.kategorie) %}
             <a href="{{ path('detail_aktuality', {'slug': aktualita.slug}) }}" class="text-decoration-none">
-                <h3 class="h5 mb-1 fw-bold {{ loop.first == false ? 'mt-3' : 'mt-0' }}">{{ aktualita.Nadpis }}</h3>
+                <h3 class="h5 mb-1 fw-bold mt-0">{{ aktualita.Nadpis }}</h3>
                 <time class="small text-secondary">{{ aktualita.DatumZverejneni|date('d.m.Y') }}</time>
             </a>
         {% endfor %}
