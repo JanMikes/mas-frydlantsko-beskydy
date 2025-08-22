@@ -1086,7 +1086,7 @@ export interface ApiVyzvyOboryVyzvyObory extends Struct.CollectionTypeSchema {
     singularName: 'vyzvy-obory';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;

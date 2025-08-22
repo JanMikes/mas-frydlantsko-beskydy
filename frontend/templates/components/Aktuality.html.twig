@@ -8,7 +8,9 @@
         {% endfor %}
     </div>
 {% else %}
-    <div class="margin-component">
+    <div class="margin-component position-relative">
+        <a class="show-all-link button-style-1" href="{{ path('aktuality') }}">Všechny aktuality</a>
+
         <div class="row">
             {% for aktualita in this.getItems(data.Pocet, data.kategorie) %}
                 <div class="col-sm-6 col-md-4 my-3">

@@ -13,17 +13,8 @@
 
 <div class="container py-4">
     <section class="detail-aktuality-section">
-        {#
-        <nav>
-            <a href="{{ path('aktuality') }}">Všechny příspěvky</a>
-            <a href="{{ path('urad_dokumenty_formulare') }}">Formuláře</a>
-            <a href="{{ path('urad_dokumenty_odpady') }}">Odpady</a>
-            <a href="{{ path('urad_dokumenty_vyhlasky') }}">Vyhlášky</a>
-        </nav>
-        #}
-
         <article>
-            <h1 class="fw-bolder mb-4" id="aktualita-{{ aktualita.slug }}">{{ aktualita.Nadpis }}</h1>
+            <h1 class="mb-5" id="aktualita-{{ aktualita.slug }}"><span class="heading-border">{{ aktualita.Nadpis }}</span></h1>
 
             <p>
                 {% if aktualita.Zverejnil %}

@@ -146,6 +146,10 @@ html {
     box-shadow: 0 4px 23px 0 #0000001A;
 }
 
+h1 {
+    font-weight: 800;
+}
+
 h1 .heading-border,
 .with-border .heading-border {
     display: inline-block;
@@ -417,7 +421,7 @@ footer .colored-footer a:hover {
     font-size: 20px;
 }
 
-.button-style-1 a, button.button-style-1 {
+.button-style-1 a, button.button-style-1, a.button-style-1 {
     text-decoration: none;
     background: var(--bs-primary);
     padding: 15px 27px;
@@ -429,7 +433,7 @@ footer .colored-footer a:hover {
     transition: all 0.3s ease;
 }
 
-.button-style-1 a:hover, button.button-style-1:hover {
+.button-style-1 a:hover, button.button-style-1:hover, a.button-style-1:hover {
     background: var(--bs-secondary);
 }
 
@@ -663,7 +667,7 @@ a.actuality-item:hover {
 img.placeholder-image {
     object-fit: contain !important;
     background: #fff;
-    padding: 15px 22%;
+    padding: 15px 25%;
 }
 
 .tag {
@@ -759,3 +763,9 @@ a.project-item:hover {
 
 .project-grid .cell:nth-child(2),
 .project-grid .cell:nth-child(5) { border-right: none; }
+
+.show-all-link {
+    position: absolute;
+    right: 0;
+    top: -60px;
+}

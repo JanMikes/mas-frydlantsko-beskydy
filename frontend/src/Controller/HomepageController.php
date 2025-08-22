@@ -33,7 +33,6 @@ final class HomepageController extends AbstractController
         return $this->render('homepage.html.twig', [
             'section' => $section,
             'homepage' => $homepageData,
-            'kalendar_akci' => $this->content->getKalendarAkciData(),
         ]);
     }
 }
