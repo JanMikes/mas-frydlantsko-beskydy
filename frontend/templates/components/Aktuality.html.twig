@@ -4,6 +4,8 @@
             <a href="{{ path('detail_aktuality', {'slug': aktualita.slug}) }}" class="text-decoration-none">
                 <h3 class="h5 mb-1 fw-bold mt-0">{{ aktualita.Nadpis }}</h3>
                 <time class="small text-secondary">{{ aktualita.DatumZverejneni|date('d.m.Y') }}</time>
+
+                <p class="mb-0 mt-2 small">{{ aktualita.Popis|markdown_to_html|striptags|u.truncate(150, '…') }}</p>
             </a>
         {% endfor %}
     </div>
