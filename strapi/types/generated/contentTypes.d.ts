@@ -437,31 +437,15 @@ export interface ApiBocniPanelBocniPanel extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     komponenty: Schema.Attribute.DynamicZone<
       [
-        'komponenty.vizitky',
-        'komponenty.uredni-deska',
-        'komponenty.tlacitka',
-        'komponenty.tipy-na-vylet',
-        'komponenty.textove-pole',
-        'komponenty.terminy-akci',
         'komponenty.soubory-ke-stazeni',
-        'komponenty.sekce-s-dlazdicema',
         'komponenty.samosprava',
         'komponenty.rozdelovnik',
-        'komponenty.pas-s-obrazkem',
-        'komponenty.pas-karet-s-argumenty',
         'komponenty.obrazek',
         'komponenty.nadpis',
-        'komponenty.karty',
-        'komponenty.historie',
-        'komponenty.galerie',
-        'komponenty.formular',
-        'komponenty.faq',
         'komponenty.aktuality',
         'komponenty.filtr-tagu',
-        'komponenty.mapa',
         'komponenty.alert',
         'komponenty.rychle-odkazy-s-ikonkou',
-        'komponenty.sdileni',
         'komponenty.kalendar-akci',
       ]
     >;
@@ -472,6 +456,35 @@ export interface ApiBocniPanelBocniPanel extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Nazev: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFooterFooter extends Struct.SingleTypeSchema {
+  collectionName: 'footers';
+  info: {
+    displayName: 'Footer';
+    pluralName: 'footers';
+    singularName: 'footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::footer.footer'
+    > &
+      Schema.Attribute.Private;
+    Odkazy_sluzby: Schema.Attribute.Component<'elementy.odkaz-s-textem', true>;
+    Odkazy_vyzvy: Schema.Attribute.Component<'elementy.odkaz-s-textem', true>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -649,37 +662,6 @@ export interface ApiKalendarAkciKalendarAkci
     Popis: Schema.Attribute.RichText;
     Poradatel: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiKategorieUredniDeskyKategorieUredniDesky
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'kategorie_uredni_deskies';
-  info: {
-    description: '';
-    displayName: 'Kategorie \u00FA\u0159edn\u00ED desky';
-    pluralName: 'kategorie-uredni-deskies';
-    singularName: 'kategorie-uredni-desky';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::kategorie-uredni-desky.kategorie-uredni-desky'
-    > &
-      Schema.Attribute.Private;
-    Nazev: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -908,28 +890,11 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
   attributes: {
     bocni_panel: Schema.Attribute.DynamicZone<
       [
-        'komponenty.vizitky',
-        'komponenty.uredni-deska',
-        'komponenty.tlacitka',
-        'komponenty.tipy-na-vylet',
-        'komponenty.textove-pole',
-        'komponenty.terminy-akci',
-        'komponenty.tabulka',
         'komponenty.soubory-ke-stazeni',
-        'komponenty.sekce-s-dlazdicema',
         'komponenty.samosprava',
         'komponenty.rozdelovnik',
-        'komponenty.pas-s-obrazkem',
-        'komponenty.pas-karet-s-argumenty',
-        'komponenty.obrazek',
         'komponenty.nadpis',
-        'komponenty.mapa',
-        'komponenty.karty',
-        'komponenty.historie',
-        'komponenty.galerie',
-        'komponenty.formular',
         'komponenty.filtr-tagu',
-        'komponenty.faq',
         'komponenty.bocni-panel',
         'komponenty.alert',
         'komponenty.aktuality',
@@ -953,18 +918,10 @@ export interface ApiSekceSekce extends Struct.CollectionTypeSchema {
         'komponenty.soubory-ke-stazeni',
         'komponenty.textove-pole',
         'komponenty.tlacitka',
-        'komponenty.vizitky',
-        'komponenty.terminy-akci',
-        'komponenty.karty',
-        'komponenty.pas-s-obrazkem',
         'komponenty.pas-karet-s-argumenty',
-        'komponenty.historie',
-        'komponenty.faq',
         'komponenty.tabulka',
         'komponenty.mapa',
-        'komponenty.filtr-tagu',
         'komponenty.alert',
-        'komponenty.rychle-odkazy-s-ikonkou',
         'komponenty.projekty',
         'komponenty.sdileni',
         'komponenty.rozjizdeci-obsahy',
@@ -1027,54 +984,6 @@ export interface ApiTagyTagy extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Zobrazovat_v_aktualitach: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<true>;
-  };
-}
-
-export interface ApiUredniDeskaUredniDeska extends Struct.CollectionTypeSchema {
-  collectionName: 'uredni_deskas';
-  info: {
-    description: '';
-    displayName: '\u00DA\u0159edn\u00ED deska';
-    pluralName: 'uredni-deskas';
-    singularName: 'uredni-deska';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    categories: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::kategorie-uredni-desky.kategorie-uredni-desky'
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Datum_stazeni: Schema.Attribute.Date;
-    Datum_zverejneni: Schema.Attribute.Date & Schema.Attribute.Required;
-    Ikonka: Schema.Attribute.Media<'images' | 'files'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::uredni-deska.uredni-deska'
-    > &
-      Schema.Attribute.Private;
-    Nadpis: Schema.Attribute.String & Schema.Attribute.Required;
-    Popis: Schema.Attribute.RichText;
-    publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'Nadpis'> & Schema.Attribute.Required;
-    Soubory: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    tags: Schema.Attribute.Relation<'oneToMany', 'api::tagy.tagy'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Uvodni_obrazek: Schema.Attribute.Media<'images'>;
-    Zobrazovat: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    Zodpovedna_osoba: Schema.Attribute.Relation<'oneToOne', 'api::lide.lide'>;
   };
 }
 
@@ -1666,12 +1575,12 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::aktuality.aktuality': ApiAktualityAktuality;
       'api::bocni-panel.bocni-panel': ApiBocniPanelBocniPanel;
+      'api::footer.footer': ApiFooterFooter;
       'api::formular.formular': ApiFormularFormular;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::ikonky.ikonky': ApiIkonkyIkonky;
       'api::kalendar-akci-kategorie.kalendar-akci-kategorie': ApiKalendarAkciKategorieKalendarAkciKategorie;
       'api::kalendar-akci.kalendar-akci': ApiKalendarAkciKalendarAkci;
-      'api::kategorie-uredni-desky.kategorie-uredni-desky': ApiKategorieUredniDeskyKategorieUredniDesky;
       'api::lide.lide': ApiLideLide;
       'api::menu.menu': ApiMenuMenu;
       'api::projekty-kategorie.projekty-kategorie': ApiProjektyKategorieProjektyKategorie;
@@ -1680,7 +1589,6 @@ declare module '@strapi/strapi' {
       'api::projekty.projekty': ApiProjektyProjekty;
       'api::sekce.sekce': ApiSekceSekce;
       'api::tagy.tagy': ApiTagyTagy;
-      'api::uredni-deska.uredni-deska': ApiUredniDeskaUredniDeska;
       'api::vyzvy-obory.vyzvy-obory': ApiVyzvyOboryVyzvyObory;
       'api::vyzvy.vyzvy': ApiVyzvyVyzvy;
       'plugin::content-releases.release': PluginContentReleasesRelease;

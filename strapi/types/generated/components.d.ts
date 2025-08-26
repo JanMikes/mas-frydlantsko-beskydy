@@ -190,6 +190,18 @@ export interface ElementyOdkaz extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementyOdkazSTextem extends Struct.ComponentSchema {
+  collectionName: 'components_elementy_odkaz_s_textems';
+  info: {
+    displayName: 'Odkaz s textem';
+    icon: 'attachment';
+  };
+  attributes: {
+    Odkaz: Schema.Attribute.Component<'elementy.odkaz', false>;
+    Text: Schema.Attribute.String;
+  };
+}
+
 export interface ElementyOrganizaceSkolnihoRokuPolozka
   extends Struct.ComponentSchema {
   collectionName: 'components_elementy_organizace_skolniho_roku_polozkas';
@@ -851,10 +863,6 @@ export interface KomponentyUredniDeska extends Struct.ComponentSchema {
     icon: 'pin';
   };
   attributes: {
-    kategorie_uredni_deskies: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::kategorie-uredni-desky.kategorie-uredni-desky'
-    >;
     Pocet: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
@@ -909,6 +917,7 @@ declare module '@strapi/strapi' {
       'elementy.karta-tip-na-vylet': ElementyKartaTipNaVylet;
       'elementy.obrazek-galerie': ElementyObrazekGalerie;
       'elementy.odkaz': ElementyOdkaz;
+      'elementy.odkaz-s-textem': ElementyOdkazSTextem;
       'elementy.organizace-skolniho-roku-polozka': ElementyOrganizaceSkolnihoRokuPolozka;
       'elementy.pole-formulare': ElementyPoleFormulare;
       'elementy.pole-formulare-s-moznostmi': ElementyPoleFormulareSMoznostmi;

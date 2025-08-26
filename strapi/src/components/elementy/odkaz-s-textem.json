@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elementy_odkaz_s_textems",
+  "info": {
+    "displayName": "Odkaz s textem",
+    "icon": "attachment"
+  },
+  "options": {},
+  "attributes": {
+    "Text": {
+      "type": "string"
+    },
+    "Odkaz": {
+      "type": "component",
+      "component": "elementy.odkaz",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

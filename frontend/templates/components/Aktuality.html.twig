@@ -11,8 +11,6 @@
     </div>
 {% else %}
     <div class="margin-component position-relative">
-        <a class="show-all-link button-style-1" href="{{ path('aktuality') }}">Všechny aktuality</a>
-
         <div class="aktuality-carousel" data-controller="carousel">
             <div class="carousel-container" data-carousel-target="container">
                 {% for aktualita in this.getItems(data.Pocet, data.kategorie) %}
@@ -47,6 +45,8 @@
                     <i class="bi bi-arrow-right"></i>
                 </button>
             </div>
+
+            <a class="show-all-link button-style-1" href="{{ path('aktuality') }}">Všechny aktuality</a>
         </div>
     </div>
 {% endif %}

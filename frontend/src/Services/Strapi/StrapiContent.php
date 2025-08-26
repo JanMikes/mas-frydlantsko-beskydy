@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MASFB\Web\Services\Strapi;
 
+use MASFB\Web\Value\Content\Data\FooterData;
 use MASFB\Web\Value\Content\Data\HomepageData;
 use MASFB\Web\Value\Content\Data\KalendarAkciData;
 use MASFB\Web\Value\Content\Data\KategorieKalendareData;
@@ -39,6 +40,7 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type VyzvaDataArray from VyzvaData
  * @phpstan-import-type SekceDataArray from SekceData
  * @phpstan-import-type HomepageDataArray from HomepageData
+ * @phpstan-import-type FooterDataArray from HomepageData
  * @phpstan-import-type TagDataArray from TagData
  * @phpstan-import-type UredniDeskaDataArray from UredniDeskaData
  * @phpstan-import-type KategorieUredniDeskyDataArray from KategorieUredniDeskyData
@@ -244,6 +246,18 @@ readonly final class StrapiContent
         );
 
         return HomepageData::createFromStrapiResponse(
+            $strapiResponse['data']
+        );
+    }
+
+    public function getFooterData(): FooterData
+    {
+        /** @var array{data: FooterDataArray} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('footer',
+            populateLevel: 5,
+        );
+
+        return FooterData::createFromStrapiResponse(
             $strapiResponse['data']
         );
     }

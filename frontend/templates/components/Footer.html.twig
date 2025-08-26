@@ -1,0 +1,77 @@
+{% set footer = computed.getData() %}
+
+<footer class="{{ app.request.attributes.get('_route') == 'homepage' ? '' : 'mt-4' }}">
+    <div class="footer-upper">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <h4>Kontakty</h4>
+
+                    <span class="delimiter"></span>
+
+                    <p>
+                        <strong>Ing. Zuzana Pavlisková</strong><br><br>
+                        Manažerka MAS<br>
+                        Mobil: +420 731 161 081<br>
+                        E-mail: pavliskova@masfb.cz
+                    </p>
+                </div>
+
+                {% if footer %}
+                    <div class="col-md-6 col-lg-3">
+                        <h4>Služby</h4>
+
+                        <span class="delimiter"></span>
+
+                        <ul>
+                            {% for menuItem in footer.Odkazy_sluzby %}
+                                <li class="nav-item">
+                                    <twig:Odkaz class="nav-link px-3" data="{{ menuItem.Odkaz }}">
+                                        {{ menuItem.Nadpis }}
+                                    </twig:Odkaz>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <h4>Výzvy</h4>
+
+                        <span class="delimiter"></span>
+
+                        <ul>
+                            {% for menuItem in footer.Odkazy_vyzvy %}
+                                <li class="nav-item">
+                                    <twig:Odkaz class="nav-link px-3" data="{{ menuItem.Odkaz }}">
+                                        {{ menuItem.Nadpis }}
+                                    </twig:Odkaz>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <div class="col-md-6 col-lg-3">
+                    <h4>Rychlé odkazy</h4>
+
+                    <span class="delimiter"></span>
+
+                    <ul>
+                        <twig:Menu type="navbar" />
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="colored-footer py-5 text-center">
+        <div class="container">
+            <ul>
+                <li><a href="http://admin.masfb.thedevs.cz">Přihlášení</a></li>
+                <li><a href="{{ path('sitemap') }}">Mapa stránek</a></li>
+            </ul>
+
+            <p class="mb-0">Web &amp; design <a href="https://wantoo.cz" target="_blank">Wantoo</a></p>
+        </div>
+    </div>
+</footer>

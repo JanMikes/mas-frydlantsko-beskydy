@@ -100,7 +100,7 @@ html {
     position: absolute;
     right: 0;
     top: 0;
-    padding: 22px 40px;
+    padding: 22px 34px;
 }
 
 .sidebar-toggler:hover,
@@ -239,6 +239,7 @@ h1 .heading-border,
 {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
+
 }
 
 .column-karta-s-argumenty {
@@ -792,12 +793,6 @@ a.project-item:hover {
 .project-grid .cell:nth-child(2),
 .project-grid .cell:nth-child(5) { border-right: none; }
 
-.show-all-link {
-    position: absolute;
-    right: 0;
-    top: -60px;
-}
-
 /* Horizontal Scrolling Carousel */
 .aktuality-carousel {
     position: relative;
@@ -813,6 +808,10 @@ a.project-item:hover {
     -ms-overflow-style: none; /* IE and Edge */
     padding: 10px; /* Prevent cut-off shadows */
     margin: -10px -10px 0 -10px;
+}
+
+.navbar-nav {
+    margin-right: 120px;
 }
 
 .carousel-container::-webkit-scrollbar {
@@ -916,4 +915,28 @@ a.project-item:hover {
     height: 30px;
     background: #ccc;
     margin: 0 5px;
+}
+
+.alert-component {
+    background: #17375F;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+.alert-component p:last-child {
+    margin-bottom: 0;
+}
+
+.alert-component a {
+    color: var(--bs-secondary);
+    font-weight: bold;
+}
+
+footer .nav-link {
+    padding-left: 0 !important;
+}
+
+.footer-upper {
+    background: #ebebeb;
 }

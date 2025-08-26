@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Odkazy_sluzby": {
+      "type": "component",
+      "component": "elementy.odkaz-s-textem",
+      "repeatable": true
+    },
+    "Odkazy_vyzvy": {
+      "type": "component",
+      "component": "elementy.odkaz-s-textem",
+      "repeatable": true
+    }
+  }
+}
