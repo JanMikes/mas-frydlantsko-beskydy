@@ -20,14 +20,14 @@
                 {% if aktualita.Zverejnil %}
                     {{ aktualita.Zverejnil.Jmeno }}<br>
                 {% endif %}
-                <time>{{ aktualita.DatumZverejneni|date('d.m.Y') }}</time>
+                <time>Zveřejněno {{ aktualita.DatumZverejneni|date('d.m.Y') }}</time>
             </p>
 
 
             {% if aktualita.Tagy %}
-                <p class="tags">
+                <p class="tags my-3">
                     {% for Tag in aktualita.Tagy %}
-                        <a href="{{ path('aktuality_tag_filter', {'tag': Tag.slug}) }}" class="custom-badge">
+                        <a href="{{ path('aktuality_tag_filter', {'tag': Tag.slug}) }}" class="tag">
                             {{ Tag.Tag }}
                         </a>
                     {% endfor %}
@@ -40,14 +40,16 @@
                 </div>
             {% endif %}
 
-            {{ aktualita.Popis|markdown_to_html }}
+            <div class="my-3">
+                {{ aktualita.Popis|markdown_to_html }}
+            </div>
 
             {% if aktualita.Soubory %}
                 <ul class="files-list">
                     {% for file in aktualita.Soubory %}
                         <li>
                             <a class="file-link" href="{{ file.url }}">
-                                <span class="file-caption">{{ file.caption}}</span>
+                                <span class="file-caption">{{ file.caption ?? file.name }}</span>
                                 <span class="file-info">({{ file.size }}kb)</span>
                                 <span class="icon-download"></span>
                             </a>

@@ -333,15 +333,27 @@ readonly final class StrapiContent
         if ($sortBy === 'Nejoblíbenější') {
             // TODO: Implement sorting by popularity
         } elseif ($sortBy === 'Nejnovější') {
-            // TODO: Implement sorting by newest
+            /*
+            $sort = [
+                'Datum_zverejneni:desc'
+            ];
+            */
         } elseif ($sortBy === 'Nejstarší') {
-            // TODO: Implement sorting by oldest
+            /*
+            $sort = [
+                'Datum_zverejneni:desc'
+            ];
+            */
         } elseif ($sortBy === 'Nejdražší') {
-            // TODO: Implement sorting by highest price
+            $sort = [
+                'Vyse_dotace:desc'
+            ];
         } elseif ($sortBy === 'Nejlevnější') {
-            // TODO: Implement sorting by lowest price
+            $sort = [
+                'Vyse_dotace:asc'
+            ];
         } else {
-            // TODO: without sorting
+            $sort = null;
         }
 
         /** @var array{data: array<ProjektDataArray>} $strapiResponse */
