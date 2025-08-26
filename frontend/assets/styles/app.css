@@ -951,3 +951,11 @@ footer .nav-link {
 .hr-dotted {
     border-style: dashed !important;
 }
+
+.margin-heading,
+.text-content h2,
+.text-content h3,
+.text-content h4,
+.text-content h5 {
+    font-weight: 700 !important;
+}
