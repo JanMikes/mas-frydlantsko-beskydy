@@ -4,16 +4,35 @@ declare(strict_types=1);
 
 namespace MASFB\Web\Components;
 
+use MASFB\Web\Value\Content\Data\VyzvaComponentData;
 use MASFB\Web\Value\Content\Data\VyzvaData;
-use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
+use MASFB\Web\Value\Content\Data\VyzvyOborData;
+use Symfony\UX\LiveComponent\DefaultActionTrait;
+use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
+use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use MASFB\Web\Services\Strapi\StrapiContent;
 
-#[AsTwigComponent]
-readonly final class Vyzvy
+#[AsLiveComponent]
+final class Vyzvy
 {
+    use DefaultActionTrait;
+
+    #[LiveProp]
+    public null|string $obor = null;
+
+    public null|VyzvaComponentData $data = null;
+
     public function __construct(
-        private StrapiContent $content,
+        readonly private StrapiContent $content,
     ) {
+    }
+
+    /**
+     * @return array<VyzvyOborData>
+     */
+    public function getOboryItems(): array
+    {
+        return $this->content->getVyzvyObory();
     }
 
     /**
@@ -21,6 +40,6 @@ readonly final class Vyzvy
      */
     public function getItems(): array
     {
-        return $this->content->getVyzvy();
+        return $this->content->getVyzvy($this->obor);
     }
 }

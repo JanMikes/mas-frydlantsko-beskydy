@@ -8,6 +8,7 @@ use MASFB\Web\Value\Content\Data\FooterData;
 use MASFB\Web\Value\Content\Data\HomepageData;
 use MASFB\Web\Value\Content\Data\KalendarAkciData;
 use MASFB\Web\Value\Content\Data\KategorieKalendareData;
+use MASFB\Web\Value\Content\Data\VyzvyOborData;
 use Psr\Clock\ClockInterface;
 use MASFB\Web\Value\Content\Data\AktualitaData;
 use MASFB\Web\Value\Content\Data\KategorieUredniDeskyData;
@@ -37,6 +38,7 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type ProjektyKategorieDataArray from ProjektyKategorieData
  * @phpstan-import-type ProjektyObecDataArray from ProjektyObecData
  * @phpstan-import-type VyzvyOperacniProgramDataArray from VyzvyOperacniProgramData
+ * @phpstan-import-type VyzvyOborDataArray from VyzvyOborData
  * @phpstan-import-type VyzvaDataArray from VyzvaData
  * @phpstan-import-type SekceDataArray from SekceData
  * @phpstan-import-type HomepageDataArray from HomepageData
@@ -409,12 +411,32 @@ readonly final class StrapiContent
     }
 
     /**
+     * @return array<VyzvyOborData>
+     */
+    public function getVyzvyObory(): array
+    {
+        /** @var array{data: array<VyzvyOborDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('vyzvy-obories');
+
+        return VyzvyOborData::createManyFromStrapiResponse($strapiResponse['data']);
+    }
+
+    /**
      * @return array<VyzvaData>
      */
-    public function getVyzvy(): array
+    public function getVyzvy(null|string $Obor): array
     {
+        $filters = null;
+
+        if ($Obor !== null) {
+            $filters = [];
+        }
+
         /** @var array{data: array<VyzvaDataArray>} $strapiResponse */
-        $strapiResponse = $this->strapiClient->getApiResource('vyzvies', populateLevel: 6);
+        $strapiResponse = $this->strapiClient->getApiResource('vyzvies',
+            populateLevel: 6,
+            filters: $filters,
+        );
 
         return VyzvaData::createManyFromStrapiResponse($strapiResponse['data']);
     }

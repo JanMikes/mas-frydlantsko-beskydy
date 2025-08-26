@@ -1,4 +1,22 @@
-<div class="rozjizdeci-obsahy-component margin-component">
+<div {{ attributes.defaults({class: 'rozjizdeci-obsahy-component margin-component'}) }}>
+    <div class="mb-3">
+        <label for="obor" class="form-label">Filtrovat podle oboru:</label>
+        <select 
+            id="obor" 
+            name="obor" 
+            class="form-select" 
+            data-model="live" 
+            data-action="live#update"
+        >
+            <option value="">Všechny obory</option>
+            {% for oborItem in this.getOboryItems() %}
+                <option value="{{ oborItem.slug }}" {{ this.obor == oborItem.slug ? 'selected' : '' }}>
+                    {{ oborItem.Nazev }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
     {% for vyzva in this.getItems() %}
         {% set collapseId = 'rozjizdeci-obsah-' ~ loop.index ~ '-' ~ random(1000000) %}
 

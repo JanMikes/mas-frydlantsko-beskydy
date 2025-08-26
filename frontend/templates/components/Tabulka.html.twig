@@ -20,16 +20,16 @@
             {% for radek in data.Radky %}
                 <tr>
                     {% if radek.Sloupec1 %}
-                        <td class="text-nowrap {{ radek.Sloupec1.Styl == 'Zelené pozadí' ? 'green-cell' }}"><span>{{ radek.Sloupec1.Hodnota|newlines }}</span></td>
+                        <td class="text-nowrap {{ radek.Sloupec1.Styl == 'Šedé pozadí' ? 'gray-cell' }}"><span>{{ radek.Sloupec1.Hodnota|newlines }}</span></td>
                     {% endif %}
                     {% if radek.Sloupec2 %}
-                        <td class="text-nowrap {{ radek.Sloupec2.Styl == 'Zelené pozadí' ? 'green-cell' }}"><span>{{ radek.Sloupec2.Hodnota|newlines }}</span></td>
+                        <td class="text-nowrap {{ radek.Sloupec2.Styl == 'Šedé pozadí' ? 'gray-cell' }}"><span>{{ radek.Sloupec2.Hodnota|newlines }}</span></td>
                     {% endif %}
                     {% if radek.Sloupec3 %}
-                        <td class="text-nowrap {{ radek.Sloupec3.Styl == 'Zelené pozadí' ? 'green-cell' }}"><span>{{ radek.Sloupec3.Hodnota|newlines }}</span></td>
+                        <td class="text-nowrap {{ radek.Sloupec3.Styl == 'Šedé pozadí' ? 'gray-cell' }}"><span>{{ radek.Sloupec3.Hodnota|newlines }}</span></td>
                     {% endif %}
                     {% if radek.Sloupec4 %}
-                        <td class="text-nowrap {{ radek.Sloupec4.Styl == 'Zelené pozadí' ? 'green-cell' }}"><span>{{ radek.Sloupec4.Hodnota|newlines }}</span></td>
+                        <td class="text-nowrap {{ radek.Sloupec4.Styl == 'Šedé pozadí' ? 'gray-cell' }}"><span>{{ radek.Sloupec4.Hodnota|newlines }}</span></td>
                     {% endif %}
                 </tr>
             {% endfor %}

@@ -335,9 +335,9 @@ export interface ElementyTabulkaBunka extends Struct.ComponentSchema {
     icon: 'apps';
   };
   attributes: {
-    Hodnota: Schema.Attribute.Text;
+    Hodnota: Schema.Attribute.String;
     Styl: Schema.Attribute.Enumeration<
-      ['Norm\u00E1ln\u00ED', 'Zelen\u00E9 pozad\u00ED']
+      ['Norm\u00E1ln\u00ED', '\u0160ed\u00E9 pozad\u00ED']
     > &
       Schema.Attribute.DefaultTo<'Norm\u00E1ln\u00ED'>;
   };

@@ -7,14 +7,14 @@
   "options": {},
   "attributes": {
     "Hodnota": {
-      "type": "text"
+      "type": "string"
     },
     "Styl": {
       "type": "enumeration",
       "default": "Normální",
       "enum": [
         "Normální",
-        "Zelené pozadí"
+        "Šedé pozadí"
       ]
     }
   },
