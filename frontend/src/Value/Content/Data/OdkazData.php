@@ -10,7 +10,7 @@ namespace MASFB\Web\Value\Content\Data;
  *     sekce: null|array{slug: string},
  *     URL: null|string,
  *     Kotva: null|string,
- *     Soubor: null|
+ *     Soubor: null|FileDataArray
  * }
  */
 readonly final class OdkazData
