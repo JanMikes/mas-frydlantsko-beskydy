@@ -365,11 +365,11 @@ footer .colored-footer a:hover {
 
 .rozjizdeci-obsah-nadpis i {
     position: absolute;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     width: 58px;
-    line-height: 58px;
-    text-align: center;
     right: 0;
     top: 0;
     background: var(--bs-primary);
