@@ -24,7 +24,7 @@
                         <span class="delimiter"></span>
 
                         <ul>
-                            {% for menuItem in footer.Odkazy_sluzby %}
+                            {% for menuItem in footer.OdkazySluzby %}
                                 <li class="nav-item">
                                     <twig:Odkaz class="nav-link px-3" data="{{ menuItem.Odkaz }}">
                                         {{ menuItem.Nadpis }}
@@ -40,7 +40,7 @@
                         <span class="delimiter"></span>
 
                         <ul>
-                            {% for menuItem in footer.Odkazy_vyzvy %}
+                            {% for menuItem in footer.OdkazyVyzvy %}
                                 <li class="nav-item">
                                     <twig:Odkaz class="nav-link px-3" data="{{ menuItem.Odkaz }}">
                                         {{ menuItem.Nadpis }}
