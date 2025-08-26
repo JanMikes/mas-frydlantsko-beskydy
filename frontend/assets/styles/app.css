@@ -249,6 +249,15 @@ h1 .heading-border,
     border-radius: 10px;
 }
 
+.column-karta-s-argumenty .button-style-1 {
+    width: 85%;
+}
+
+.column-karta-s-argumenty a {
+    display: inline-block;
+    width: 100%;
+}
+
 .column-karta-s-argumenty img {
     width: 100px;
     max-height: 150px;
@@ -894,8 +903,6 @@ a.project-item:hover {
     justify-content: end;
     height: 40px;
     align-items: center;
-    margin-bottom: 15px;
-    margin-top: 10px;
 }
 
 .aktuality-carousel-nav-arrows button {

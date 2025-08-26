@@ -34,19 +34,21 @@
                 {% endfor %}
             </div>
 
-            <div class="aktuality-carousel-nav-arrows">
-                <button type="button" class="aktuality-carousel-nav-arrow carousel-nav-prev disabled" data-carousel-target="prevArrow" data-action="click->carousel#scrollPrev">
-                    <i class="bi bi-arrow-left"></i>
-                </button>
+            <div class="d-flex justify-content-end align-items-center my-2">
+                <div class="aktuality-carousel-nav-arrows me-3">
+                    <button type="button" class="aktuality-carousel-nav-arrow carousel-nav-prev disabled" data-carousel-target="prevArrow" data-action="click->carousel#scrollPrev">
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
 
-                <span class="divider"></span>
-                
-                <button type="button" class="aktuality-carousel-nav-arrow carousel-nav-next" data-carousel-target="nextArrow" data-action="click->carousel#scrollNext">
-                    <i class="bi bi-arrow-right"></i>
-                </button>
+                    <span class="divider"></span>
+
+                    <button type="button" class="aktuality-carousel-nav-arrow carousel-nav-next" data-carousel-target="nextArrow" data-action="click->carousel#scrollNext">
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+
+                <a class="show-all-link button-style-1" href="{{ path('aktuality') }}">Všechny aktuality</a>
             </div>
-
-            <a class="show-all-link button-style-1" href="{{ path('aktuality') }}">Všechny aktuality</a>
         </div>
     </div>
 {% endif %}
