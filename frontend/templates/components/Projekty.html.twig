@@ -1,17 +1,19 @@
 <div {{ attributes.defaults({class: 'margin-component'}) }}>
     <div class="mb-3">
         <div class="row g-3">
-            <div class="col-md-4">
-                <select class="form-select" data-model="kategorie">
-                    <option value="">Všechny kategorie</option>
+            <div class="col-md-4 mb-2">
+                <label for="kategorie-select" class="form-label">Kategorie</label>
+                <select id="kategorie-select" class="form-select" data-model="kategorie">
+                    <option value="">Všechny kategorie:</option>
                     {% for kategorieItem in this.getKategorieItems() %}
                         <option value="{{ kategorieItem.slug }}">{{ kategorieItem.Nazev }}</option>
                     {% endfor %}
                 </select>
             </div>
 
-            <div class="col-md-4">
-                <select class="form-select" data-model="operacniProgram">
+            <div class="col-md-4 mb-2">
+                <label for="program-select" class="form-label">Operační program:</label>
+                <select id="program-select" class="form-select" data-model="operacniProgram">
                     <option value="">Všechny operační programy</option>
                     {% for program in this.getOperacniProgramyItems() %}
                         <option value="{{ program.slug }}">{{ program.Nazev }}</option>
@@ -19,8 +21,9 @@
                 </select>
             </div>
 
-            <div class="col-md-4">
-                <select class="form-select" data-model="obec">
+            <div class="col-md-4 mb-2">
+                <label for="obec-select" class="form-label">Obec:</label>
+                <select id="obec-select" class="form-select" data-model="obec">
                     <option value="">Všechny obce</option>
                     {% for obecItem in this.getObceItems() %}
                         <option value="{{ obecItem.Nazev }}">{{ obecItem.Nazev }}</option>
@@ -31,6 +34,8 @@
     </div>
 
     <div class="mb-3">
+        <p class="mb-2">Řadit podle:</p>
+
         <button type="button"
                 class="mb-2 me-2 btn btn-project btn-sm {{ sortBy == 'Nejoblíbenější' ? 'active' : '' }}"
                 data-action="live#action"

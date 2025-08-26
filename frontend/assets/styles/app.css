@@ -790,6 +790,8 @@ a.project-item:hover {
 
 .form-select {
     border-color: #ccc;
+    padding: 14px 12px;
+    color: #666;
 }
 
 .project-grid {
