@@ -504,30 +504,58 @@ footer .colored-footer a:hover {
     background: var(--bs-primary);
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-    background: #fff;
-    color: #000;
-    font-size: 36px;
-    width: 60px;
+.homepage-carousel-navs-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.homepage-carousel-navs {
+    background: #214469;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}
+
+.homepage-carousel-navs button {
+    border: 0;
+    font-size: 30px;
+    transition: all 0.3s ease;
+    color: #fff;
+    background: transparent;
+    padding: 5px 15px;
+}
+
+.homepage-carousel-navs button.disabled {
+    opacity: 0.4;
+}
+
+.homepage-carousel-navs .divider {
+    display: inline-block;
+    width: 1px;
+    height: 30px;
+    background: #666;
+    margin: 0 5px;
+}
+
+.homepage-carousel-navs-inner {
+    background: var(--bs-primary);
     height: 60px;
     line-height: 60px;
-    border-radius: 50%;
-    top: 50%;
-    margin-top: -30px;
+    padding: 0 24px;
+    color: #fff;
+    font-size: 20px;
 }
 
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-    color: #000;
-}
-
-.carousel-control-prev {
-    left: 40px;
-}
-
-.carousel-control-next {
-    right: 40px;
+.homepage-carousel-navs-inner a,
+.homepage-carousel-navs-inner a:hover {
+    color: #fff;
 }
 
 .slide-title {
