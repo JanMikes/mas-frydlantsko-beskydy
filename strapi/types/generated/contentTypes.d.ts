@@ -722,7 +722,8 @@ export interface ApiMenuMenu extends Struct.CollectionTypeSchema {
     Navbar: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     Odkaz: Schema.Attribute.Component<'elementy.odkaz', false> &
       Schema.Attribute.Required;
-    Poradi: Schema.Attribute.Integer &
+    publishedAt: Schema.Attribute.DateTime;
+    rank: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
@@ -731,7 +732,6 @@ export interface ApiMenuMenu extends Struct.CollectionTypeSchema {
         number
       > &
       Schema.Attribute.DefaultTo<1>;
-    publishedAt: Schema.Attribute.DateTime;
     Sidebar: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

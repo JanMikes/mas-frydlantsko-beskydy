@@ -16,7 +16,7 @@
       "type": "string",
       "required": true
     },
-    "Poradi": {
+    "rank": {
       "type": "integer",
       "required": true,
       "default": 1,
