@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace MASFB\Web\Value\Content\Data;
 
 /**
+ * @phpstan-import-type FileDataArray from FileData
  * @phpstan-type OdkazDataArray array{
  *     sekce: null|array{slug: string},
  *     URL: null|string,
  *     Kotva: null|string,
+ *     Soubor: null|
  * }
  */
 readonly final class OdkazData
@@ -17,6 +19,7 @@ readonly final class OdkazData
         public null|string $sekceSlug,
         public null|string $url,
         public null|string $Kotva,
+        public null|FileData $Soubor,
     ) {
     }
 
@@ -44,6 +47,7 @@ readonly final class OdkazData
             sekceSlug: $slug,
             url: $url,
             Kotva: $data['Kotva'],
+            Soubor: $data['Soubor'] !== null ? FileData::createFromStrapiResponse($data['Soubor']) : null,
         );
     }
 }

@@ -22,6 +22,10 @@ final class Odkaz
     {
         assert($this->data !== null);
 
+        if ($this->data->Soubor !== null) {
+            return $this->data->Soubor->url;
+        }
+
         if ($this->data->sekceSlug !== null) {
             $url = $this->strapiLinkHelper->getLinkForSlug($this->data->sekceSlug);
         } else {
