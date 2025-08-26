@@ -283,6 +283,7 @@ export interface ElementyRozjizdeciObsah extends Struct.ComponentSchema {
     Lide: Schema.Attribute.Component<'komponenty.samosprava', false>;
     Nadpis: Schema.Attribute.String;
     Text: Schema.Attribute.Component<'elementy.rozjizdeci-obsah-text', false>;
+    Tlacitko: Schema.Attribute.Component<'elementy.tlacitko', false>;
     Vyzva: Schema.Attribute.Relation<'oneToOne', 'api::vyzvy.vyzvy'>;
   };
 }
