@@ -98,6 +98,12 @@
                             </p>
                         </div>
                     {% endif %}
+
+                    {% if item.Tlacitko %}
+                        <span class="d-inline-block my-2 {{ item.Tlacitko.Styl == 'Styl 1' ? 'button-style-1' : 'button-style-2' }} {{ loop.first != true ? 'ms-4' }}">
+                            <twig:Odkaz data="{{ item.Tlacitko.Odkaz }}">{{ item.Tlacitko.Text }}{{ item.Tlacitko.Styl == 'Styl 2' ? ' &raquo;' }}</twig:Odkaz>
+                        </span>
+                    {% endif %}
                 </div>
             </div>
         </div>
