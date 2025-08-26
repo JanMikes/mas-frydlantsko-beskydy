@@ -40,7 +40,7 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type VyzvaDataArray from VyzvaData
  * @phpstan-import-type SekceDataArray from SekceData
  * @phpstan-import-type HomepageDataArray from HomepageData
- * @phpstan-import-type FooterDataArray from HomepageData
+ * @phpstan-import-type FooterDataArray from FooterData
  * @phpstan-import-type TagDataArray from TagData
  * @phpstan-import-type UredniDeskaDataArray from UredniDeskaData
  * @phpstan-import-type KategorieUredniDeskyDataArray from KategorieUredniDeskyData
