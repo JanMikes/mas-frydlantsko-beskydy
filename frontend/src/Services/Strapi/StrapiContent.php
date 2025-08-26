@@ -219,7 +219,7 @@ readonly final class StrapiContent
     public function getMenu(): array
     {
         /** @var array{data: array<MenuDataArray>} $strapiResponse */
-        $strapiResponse = $this->strapiClient->getApiResource('menus', sort: ['Poradi']);
+        $strapiResponse = $this->strapiClient->getApiResource('menus', sort: ['rank']);
 
         return MenuData::createManyFromStrapiResponse($strapiResponse['data']);
     }
