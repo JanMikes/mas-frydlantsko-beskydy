@@ -27,7 +27,7 @@
                             {% for menuItem in footer.OdkazySluzby %}
                                 <li class="nav-item">
                                     <twig:Odkaz class="nav-link px-3" data="{{ menuItem.Odkaz }}">
-                                        {{ menuItem.Nadpis }}
+                                        {{ menuItem.Text }}
                                     </twig:Odkaz>
                                 </li>
                             {% endfor %}
@@ -43,7 +43,7 @@
                             {% for menuItem in footer.OdkazyVyzvy %}
                                 <li class="nav-item">
                                     <twig:Odkaz class="nav-link px-3" data="{{ menuItem.Odkaz }}">
-                                        {{ menuItem.Nadpis }}
+                                        {{ menuItem.Text }}
                                     </twig:Odkaz>
                                 </li>
                             {% endfor %}
