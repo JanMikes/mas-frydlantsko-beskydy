@@ -1,26 +1,32 @@
-<div {{ attributes.defaults({class: 'rozjizdeci-obsahy-component margin-component'}) }}>
-    <div class="mb-3">
-        <label for="obor" class="form-label">Filtrovat podle oboru:</label>
-        <select 
-            id="obor" 
-            name="obor" 
-            class="form-select" 
-            data-model="live" 
-            data-action="live#update"
-        >
-            <option value="">Všechny obory</option>
-            {% for oborItem in this.getOboryItems() %}
-                <option value="{{ oborItem.slug }}" {{ this.obor == oborItem.slug ? 'selected' : '' }}>
+<div class="rozjizdeci-obsahy-component margin-component" data-controller="vyzvy-filter">
+    {% if computed.getOboryItems()|length > 1 %}
+        <div class="mb-3">
+            <p class="mb-2">Filtrovat podle oboru:</p>
+
+            {# Instruction: The "Všechny" filter will be toggled when none of others is enabled, when clicked, disable all others and toggle just Všechny (it can not be untoggled when none other is toggled, and will be untoggled only when clicking (enabling) some other filter  #}
+            <button type="button" class="button-style-1 smaller me-2 mb-2 active" data-vyzvy-filter-target="allFilter" data-action="click->vyzvy-filter#toggleAllFilter">
+                Všechny
+            </button>
+
+            {# Instruction: Toggle for filter #}
+            {% for oborItem in computed.getOboryItems() %}
+                <button type="button" class="button-style-1 smaller me-2 mb-2" data-vyzvy-filter-target="filter" data-obor="{{ oborItem.slug }}" data-action="click->vyzvy-filter#toggleFilter">
                     {{ oborItem.Nazev }}
-                </option>
+                </button>
             {% endfor %}
-        </select>
-    </div>
+        </div>
+    {% endif %}
 
     {% for vyzva in this.getItems() %}
         {% set collapseId = 'rozjizdeci-obsah-' ~ loop.index ~ '-' ~ random(1000000) %}
 
-        <div>
+        {# Instruction: if filter is toggled, check that one of the obor.slug is included, if yes, show, note that single vyzva can have multiple "categories" #}
+        {% set oborSlugs = [] %}
+        {% for obor in vyzva.Obory %}
+            {% set oborSlugs = oborSlugs|merge([obor.slug]) %}
+        {% endfor %}
+
+        <div class="d-block" data-vyzvy-filter-target="item" data-obory="{{ oborSlugs|join(',') }}">
             {% if vyzva.Nazev %}
                 <div class="rozjizdeci-obsah-nadpis mb-0 collapse-toggle d-flex align-items-center justify-content-between collapsed w-100 rozjizdeci-obsah-nadpis-style-2" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}" style="cursor: pointer;">
                     <h4 class="h5 mb-0">{{ vyzva.Nazev }}</h4>

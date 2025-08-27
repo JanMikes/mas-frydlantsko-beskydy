@@ -8,6 +8,7 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-import-type VyzvyOperacniProgramDataArray from VyzvyOperacniProgramData
  * @phpstan-import-type SamospravaComponentDataArray from SamospravaComponentData
  * @phpstan-import-type SouborDataArray from SouborData
+ * @phpstan-import-type VyzvyOborDataArray from VyzvyOborData
  * @phpstan-type VyzvaDataArray array{
  *     Nazev: null|string,
  *     Zahajeni_vyzvy: null|string,
@@ -23,6 +24,7 @@ namespace MASFB\Web\Value\Content\Data;
  *     Lide: null|SamospravaComponentDataArray,
  *     Dokumenty: null|array{Pocet_sloupcu: string, Soubor: array<SouborDataArray>},
  *     slug: null|string,
+ *     Obory: array<VyzvyOborDataArray>
  * }
  */
 readonly final class VyzvaData
@@ -30,6 +32,9 @@ readonly final class VyzvaData
     /** @use CanCreateManyFromStrapiResponse<VyzvaDataArray> */
     use CanCreateManyFromStrapiResponse;
 
+    /**
+     * @param array<VyzvyOborData> $Obory
+     */
     public function __construct(
         public null|string $Nazev,
         public null|string $ZahajeniVyzvy,
@@ -45,6 +50,7 @@ readonly final class VyzvaData
         public null|SamospravaComponentData $Lide,
         public null|SouboryKeStazeniComponentData $Dokumenty,
         public null|string $slug,
+        public array $Obory,
     ) {
     }
 
@@ -74,6 +80,7 @@ readonly final class VyzvaData
                 ? null 
                 : SouboryKeStazeniComponentData::createFromStrapiResponse($data['Dokumenty']),
             slug: $data['slug'],
+            Obory: VyzvyOborData::createManyFromStrapiResponse($data['Obory']),
         );
     }
 }
