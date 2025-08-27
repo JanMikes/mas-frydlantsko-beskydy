@@ -8,7 +8,7 @@ use MASFB\Web\Value\Content\Data\FooterData;
 use MASFB\Web\Value\Content\Data\HomepageData;
 use MASFB\Web\Value\Content\Data\KalendarAkciData;
 use MASFB\Web\Value\Content\Data\KategorieKalendareData;
-use MASFB\Web\Value\Content\Data\VyzvyOborData;
+use MASFB\Web\Value\Content\Data\VyzvyKategorieData;
 use Psr\Clock\ClockInterface;
 use MASFB\Web\Value\Content\Data\AktualitaData;
 use MASFB\Web\Value\Content\Data\KategorieUredniDeskyData;
@@ -21,7 +21,6 @@ use MASFB\Web\Value\Content\Data\DlazdiceData;
 use MASFB\Web\Value\Content\Data\FileData;
 use MASFB\Web\Value\Content\Data\ImageData;
 use MASFB\Web\Value\Content\Data\ProjektData;
-use MASFB\Web\Value\Content\Data\ProjektyKategorieData;
 use MASFB\Web\Value\Content\Data\ProjektyObecData;
 use MASFB\Web\Value\Content\Data\VyzvyOperacniProgramData;
 use MASFB\Web\Value\Content\Data\VyzvaData;
@@ -35,10 +34,9 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type ImageDataArray from ImageData
  * @phpstan-import-type MenuDataArray from MenuData
  * @phpstan-import-type ProjektDataArray from ProjektData
- * @phpstan-import-type ProjektyKategorieDataArray from ProjektyKategorieData
  * @phpstan-import-type ProjektyObecDataArray from ProjektyObecData
  * @phpstan-import-type VyzvyOperacniProgramDataArray from VyzvyOperacniProgramData
- * @phpstan-import-type VyzvyOborDataArray from VyzvyOborData
+ * @phpstan-import-type VyzvyKategorieDataArray from VyzvyKategorieData
  * @phpstan-import-type VyzvaDataArray from VyzvaData
  * @phpstan-import-type SekceDataArray from SekceData
  * @phpstan-import-type HomepageDataArray from HomepageData
@@ -391,17 +389,6 @@ readonly final class StrapiContent
     }
 
     /**
-     * @return array<ProjektyKategorieData>
-     */
-    public function getProjektyKategorie(): array
-    {
-        /** @var array{data: array<ProjektyKategorieDataArray>} $strapiResponse */
-        $strapiResponse = $this->strapiClient->getApiResource('projekty-kategories');
-
-        return ProjektyKategorieData::createManyFromStrapiResponse($strapiResponse['data']);
-    }
-
-    /**
      * @return array<VyzvyOperacniProgramData>
      */
     public function getVyzvyOperacniProgramy(): array
@@ -413,24 +400,24 @@ readonly final class StrapiContent
     }
 
     /**
-     * @return array<VyzvyOborData>
+     * @return array<VyzvyKategorieData>
      */
-    public function getVyzvyObory(): array
+    public function getVyzvyKategorie(): array
     {
-        /** @var array{data: array<VyzvyOborDataArray>} $strapiResponse */
+        /** @var array{data: array<VyzvyKategorieDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('vyzvy-obories');
 
-        return VyzvyOborData::createManyFromStrapiResponse($strapiResponse['data']);
+        return VyzvyKategorieData::createManyFromStrapiResponse($strapiResponse['data']);
     }
 
     /**
      * @return array<VyzvaData>
      */
-    public function getVyzvy(null|string $Obor): array
+    public function getVyzvy(null|string $Kategorie): array
     {
         $filters = null;
 
-        if ($Obor !== null) {
+        if ($Kategorie !== null) {
             $filters = [];
         }
 

@@ -5,7 +5,7 @@
                 <label for="kategorie-select" class="form-label">Kategorie</label>
                 <select id="kategorie-select" class="form-select" data-model="kategorie">
                     <option value="">Všechny kategorie:</option>
-                    {% for kategorieItem in this.getKategorieItems() %}
+                    {% for kategorieItem in computed.getKategorieItems() %}
                         <option value="{{ kategorieItem.slug }}">{{ kategorieItem.Nazev }}</option>
                     {% endfor %}
                 </select>

@@ -739,36 +739,6 @@ export interface ApiMenuMenu extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiProjektyKategorieProjektyKategorie
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'projekty_kategories';
-  info: {
-    displayName: 'Projekty - Kategorie';
-    pluralName: 'projekty-kategories';
-    singularName: 'projekty-kategorie';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::projekty-kategorie.projekty-kategorie'
-    > &
-      Schema.Attribute.Private;
-    Nazev: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'Nazev'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiProjektyObecProjektyObec
   extends Struct.CollectionTypeSchema {
   collectionName: 'projekty_obecs';
@@ -844,8 +814,8 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Doba_realizace: Schema.Attribute.String;
     Kategorie: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::projekty-kategorie.projekty-kategorie'
+      'oneToMany',
+      'api::vyzvy-obory.vyzvy-obory'
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -990,7 +960,7 @@ export interface ApiTagyTagy extends Struct.CollectionTypeSchema {
 export interface ApiVyzvyOboryVyzvyObory extends Struct.CollectionTypeSchema {
   collectionName: 'vyzvy_obories';
   info: {
-    displayName: 'V\u00FDzvy - Obory';
+    displayName: 'V\u00FDzvy a projekty - kategorie';
     pluralName: 'vyzvy-obories';
     singularName: 'vyzvy-obory';
   };
@@ -1036,6 +1006,10 @@ export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
     >;
     Financni_alokace: Schema.Attribute.Integer;
     Informace: Schema.Attribute.RichText;
+    Kategorie: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::vyzvy-obory.vyzvy-obory'
+    >;
     Konec_vyzvy: Schema.Attribute.DateTime;
     Lide: Schema.Attribute.Component<'komponenty.samosprava', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1044,10 +1018,6 @@ export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
     Maximalni_vyse_nakladu: Schema.Attribute.Integer;
     Minimalni_vyse_nakladu: Schema.Attribute.Integer;
     Nazev: Schema.Attribute.String;
-    Obory: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::vyzvy-obory.vyzvy-obory'
-    >;
     Opatreni_sclld: Schema.Attribute.RichText;
     Opravneni_zadatele: Schema.Attribute.RichText;
     publishedAt: Schema.Attribute.DateTime;
@@ -1583,7 +1553,6 @@ declare module '@strapi/strapi' {
       'api::kalendar-akci.kalendar-akci': ApiKalendarAkciKalendarAkci;
       'api::lide.lide': ApiLideLide;
       'api::menu.menu': ApiMenuMenu;
-      'api::projekty-kategorie.projekty-kategorie': ApiProjektyKategorieProjektyKategorie;
       'api::projekty-obec.projekty-obec': ApiProjektyObecProjektyObec;
       'api::projekty-operacni-program.projekty-operacni-program': ApiProjektyOperacniProgramProjektyOperacniProgram;
       'api::projekty.projekty': ApiProjektyProjekty;

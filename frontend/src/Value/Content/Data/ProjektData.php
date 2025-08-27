@@ -6,7 +6,7 @@ namespace MASFB\Web\Value\Content\Data;
 
 /**
  * @phpstan-import-type ImageDataArray from ImageData
- * @phpstan-import-type ProjektyKategorieDataArray from ProjektyKategorieData
+ * @phpstan-import-type VyzvyKategorieDataArray from VyzvyKategorieData
  * @phpstan-import-type ProjektyObecDataArray from ProjektyObecData
  * @phpstan-import-type VyzvaDataArray from VyzvaData
  * @phpstan-type ProjektDataArray array{
@@ -14,7 +14,7 @@ namespace MASFB\Web\Value\Content\Data;
  *      slug: null|string,
  *      Vyzva: null|VyzvaDataArray,
  *      Obec: null|ProjektyObecDataArray,
- *      Kategorie: null|ProjektyKategorieDataArray,
+ *      Kategorie: array<VyzvyKategorieDataArray>,
  *      Prijemce_dotace: null|string,
  *      Vyse_dotace: null|int,
  *      Projekt_mas_fb: null|bool,
@@ -30,6 +30,7 @@ readonly final class ProjektData
     use CanCreateManyFromStrapiResponse;
 
     /**
+     * @param array<VyzvyKategorieData> $Kategorie
      * @param array<ProjektData> $SouvisejiciProjekty
      */
     public function __construct(
@@ -37,7 +38,7 @@ readonly final class ProjektData
         public null|string $slug,
         public null|VyzvaData $Vyzva,
         public null|ProjektyObecData $Obec,
-        public null|ProjektyKategorieData $Kategorie,
+        public array $Kategorie,
         public null|string $PrijemceDotace,
         public null|int $VyseDotace,
         public null|bool $ProjektMasFb,
@@ -55,7 +56,6 @@ readonly final class ProjektData
         $obrazek = $data['Obrazek'] !== null ? ImageData::createFromStrapiResponse($data['Obrazek']) : null;
         $vyzva = $data['Vyzva'] !== null ? VyzvaData::createFromStrapiResponse($data['Vyzva']) : null;
         $obec = $data['Obec'] !== null ? ProjektyObecData::createFromStrapiResponse($data['Obec']) : null;
-        $kategorie = $data['Kategorie'] !== null ? ProjektyKategorieData::createFromStrapiResponse($data['Kategorie']) : null;
 
         /** @phpstan-ignore-next-line */
         $souvisejiciProjekty = self::createManyFromStrapiResponse($data['Souvisejici_projekty'] ?? []);
@@ -65,7 +65,7 @@ readonly final class ProjektData
             slug: $data['slug'],
             Vyzva: $vyzva,
             Obec: $obec,
-            Kategorie: $kategorie,
+            Kategorie: VyzvyKategorieData::createManyFromStrapiResponse($data['Kategorie']),
             PrijemceDotace: $data['Prijemce_dotace'],
             VyseDotace: $data['Vyse_dotace'],
             ProjektMasFb: $data['Projekt_mas_fb'],

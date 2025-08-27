@@ -6,7 +6,7 @@ namespace MASFB\Web\Components;
 
 use MASFB\Web\Value\Content\Data\VyzvaComponentData;
 use MASFB\Web\Value\Content\Data\VyzvaData;
-use MASFB\Web\Value\Content\Data\VyzvyOborData;
+use MASFB\Web\Value\Content\Data\VyzvyKategorieData;
 use MASFB\Web\Services\Strapi\StrapiContent;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
@@ -21,11 +21,11 @@ final class Vyzvy
     }
 
     /**
-     * @return array<VyzvyOborData>
+     * @return array<VyzvyKategorieData>
      */
-    public function getOboryItems(): array
+    public function getKategorieItems(): array
     {
-        return $this->content->getVyzvyObory();
+        return $this->content->getVyzvyKategorie();
     }
 
     /**

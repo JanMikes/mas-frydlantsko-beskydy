@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace MASFB\Web\Components;
 
 use MASFB\Web\Value\Content\Data\ProjektyComponentData;
-use MASFB\Web\Value\Content\Data\ProjektyKategorieData;
 use MASFB\Web\Value\Content\Data\ProjektyObecData;
+use MASFB\Web\Value\Content\Data\VyzvyKategorieData;
 use MASFB\Web\Value\Content\Data\VyzvyOperacniProgramData;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
@@ -68,11 +68,11 @@ final class Projekty
     }
 
     /**
-     * @return array<ProjektyKategorieData>
+     * @return array<VyzvyKategorieData>
      */
     public function getKategorieItems(): array
     {
-        return $this->content->getProjektyKategorie();
+        return $this->content->getVyzvyKategorie();
     }
 
     /**

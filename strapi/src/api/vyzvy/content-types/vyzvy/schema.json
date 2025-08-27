@@ -60,7 +60,7 @@
       "type": "uid",
       "targetField": "Nazev"
     },
-    "Obory": {
+    "Kategorie": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::vyzvy-obory.vyzvy-obory"
