@@ -10,12 +10,29 @@ namespace MASFB\Web\Value\Content\Data;
 readonly final class SouboryKeStazeniComponentData
 {
     /**
+     * @var array<TagData>
+     */
+    public array $Tagy;
+
+    /**
      * @param array<SouborData> $Soubor
      */
     public function __construct(
         public int $Pocet_sloupcu,
         public array $Soubor,
-    ) {}
+    ) {
+        $Tagy = [];
+        $existingSlugs = [];
+
+        foreach ($this->Soubor as $soubor) {
+            if ($soubor->Tag !== null && !in_array($soubor->Tag->slug, $existingSlugs, true)) {
+                $Tagy[] = $soubor->Tag;
+                $existingSlugs[] = $soubor->Tag->slug;
+            }
+        }
+
+        $this->Tagy = $Tagy;
+    }
 
     /**
      * @param array{

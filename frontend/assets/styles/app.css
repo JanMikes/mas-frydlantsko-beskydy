@@ -471,7 +471,12 @@ footer .colored-footer a:hover {
     transition: all 0.3s ease;
 }
 
-.button-style-1 a:hover, button.button-style-1:hover, a.button-style-1:hover {
+.button-style-1.smaller a, button.button-style-1.smaller, a.button-style-1.smaller {
+    padding: 8px 15px;
+}
+
+.button-style-1 a:hover, button.button-style-1:hover, a.button-style-1:hover,
+.button-style-1.active a, button.button-style-1.active, a.button-style-1.active {
     background: var(--bs-secondary);
 }
 
