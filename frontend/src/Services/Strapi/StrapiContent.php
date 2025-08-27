@@ -105,6 +105,7 @@ readonly final class StrapiContent
 
         /** @var array{data: array<AktualitaDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('aktualities',
+            populateLevel: 6,
             filters: $filters,
             pagination: $pagination,
             sort: [
@@ -118,6 +119,7 @@ readonly final class StrapiContent
     {
         /** @var array{data: array<AktualitaDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('aktualities',
+            populateLevel: 6,
             filters: [
                 'Zobrazovat' => ['$eq' => true],
                 'slug' => ['$eq' => $slug]
