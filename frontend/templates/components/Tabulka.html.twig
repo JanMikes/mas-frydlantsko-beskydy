@@ -14,22 +14,34 @@
                 {% if data.Nadpis4 %}
                     <th class="text-nowrap">{{ data.Nadpis4 }}</th>
                 {% endif %}
+                {% if data.Nadpis5 %}
+                    <th class="text-nowrap">{{ data.Nadpis5 }}</th>
+                {% endif %}
+                {% if data.Nadpis6 %}
+                    <th class="text-nowrap">{{ data.Nadpis6 }}</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
             {% for radek in data.Radky %}
                 <tr>
                     {% if radek.Sloupec1 %}
-                        <td class="text-nowrap {{ radek.Sloupec1.Styl == 'Šedé pozadí' ? 'gray-cell' }}"><span>{{ radek.Sloupec1.Hodnota|newlines }}</span></td>
+                        <td class="text-nowrap">{{ radek.Sloupec1 }}</td>
                     {% endif %}
                     {% if radek.Sloupec2 %}
-                        <td class="text-nowrap {{ radek.Sloupec2.Styl == 'Šedé pozadí' ? 'gray-cell' }}"><span>{{ radek.Sloupec2.Hodnota|newlines }}</span></td>
+                        <td class="text-nowrap">{{ radek.Sloupec2 }}</td>
                     {% endif %}
                     {% if radek.Sloupec3 %}
-                        <td class="text-nowrap {{ radek.Sloupec3.Styl == 'Šedé pozadí' ? 'gray-cell' }}"><span>{{ radek.Sloupec3.Hodnota|newlines }}</span></td>
+                        <td class="text-nowrap">{{ radek.Sloupec3 }}</td>
                     {% endif %}
                     {% if radek.Sloupec4 %}
-                        <td class="text-nowrap {{ radek.Sloupec4.Styl == 'Šedé pozadí' ? 'gray-cell' }}"><span>{{ radek.Sloupec4.Hodnota|newlines }}</span></td>
+                        <td class="text-nowrap">{{ radek.Sloupec4 }}</td>
+                    {% endif %}
+                    {% if radek.Sloupec5 %}
+                        <td class="text-nowrap">{{ radek.Sloupec5 }}</td>
+                    {% endif %}
+                    {% if radek.Sloupec6 %}
+                        <td class="text-nowrap">{{ radek.Sloupec6 }}</td>
                     {% endif %}
                 </tr>
             {% endfor %}

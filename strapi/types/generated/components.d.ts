@@ -329,32 +329,19 @@ export interface ElementySoubor extends Struct.ComponentSchema {
   };
 }
 
-export interface ElementyTabulkaBunka extends Struct.ComponentSchema {
-  collectionName: 'components_elementy_tabulka_bunkas';
-  info: {
-    displayName: 'Tabulka - bu\u0148ka';
-    icon: 'apps';
-  };
-  attributes: {
-    Hodnota: Schema.Attribute.String;
-    Styl: Schema.Attribute.Enumeration<
-      ['Norm\u00E1ln\u00ED', '\u0160ed\u00E9 pozad\u00ED']
-    > &
-      Schema.Attribute.DefaultTo<'Norm\u00E1ln\u00ED'>;
-  };
-}
-
 export interface ElementyTabulkaRadek extends Struct.ComponentSchema {
   collectionName: 'components_elementy_tabulka_radeks';
   info: {
-    displayName: 'Tabulka - \u0159\u00E1dek';
-    icon: 'bulletList';
+    displayName: 'Tabulka - \u0158\u00E1dek';
+    icon: 'apps';
   };
   attributes: {
-    Sloupec_1: Schema.Attribute.Component<'elementy.tabulka-bunka', false>;
-    Sloupec_2: Schema.Attribute.Component<'elementy.tabulka-bunka', false>;
-    Sloupec_3: Schema.Attribute.Component<'elementy.tabulka-bunka', false>;
-    Sloupec_4: Schema.Attribute.Component<'elementy.tabulka-bunka', false>;
+    Sloupec_1: Schema.Attribute.String;
+    Sloupec_2: Schema.Attribute.String;
+    Sloupec_3: Schema.Attribute.String;
+    Sloupec_4: Schema.Attribute.String;
+    Sloupec_5: Schema.Attribute.String;
+    Sloupec_6: Schema.Attribute.String;
   };
 }
 
@@ -805,6 +792,8 @@ export interface KomponentyTabulka extends Struct.ComponentSchema {
     Nadpis_sloupec_2: Schema.Attribute.String;
     Nadpis_sloupec_3: Schema.Attribute.String;
     Nadpis_sloupec_4: Schema.Attribute.String;
+    Nadpis_sloupec_5: Schema.Attribute.String;
+    Nadpis_sloupec_6: Schema.Attribute.String;
     Radky: Schema.Attribute.Component<'elementy.tabulka-radek', true>;
   };
 }
@@ -926,7 +915,6 @@ declare module '@strapi/strapi' {
       'elementy.rozjizdeci-obsah-text': ElementyRozjizdeciObsahText;
       'elementy.slide': ElementySlide;
       'elementy.soubor': ElementySoubor;
-      'elementy.tabulka-bunka': ElementyTabulkaBunka;
       'elementy.tabulka-radek': ElementyTabulkaRadek;
       'elementy.telefon': ElementyTelefon;
       'elementy.termin-akce': ElementyTerminAkce;

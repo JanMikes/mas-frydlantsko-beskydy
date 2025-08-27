@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace MASFB\Web\Value\Content\Data;
 
 /**
- * @phpstan-import-type BunkaTabulkyDataArray from BunkaTabulkyData
  * @phpstan-type RadekTabulkyDataArray array{
- *     Sloupec_1: null|BunkaTabulkyDataArray,
- *     Sloupec_2: null|BunkaTabulkyDataArray,
- *     Sloupec_3: null|BunkaTabulkyDataArray,
- *     Sloupec_4: null|BunkaTabulkyDataArray,
+ *     Sloupec_1: null|string,
+ *     Sloupec_2: null|string,
+ *     Sloupec_3: null|string,
+ *     Sloupec_4: null|string,
+ *     Sloupec_5: null|string,
+ *     Sloupec_6: null|string,
  * }
  */
 readonly final class RadekTabulkyData
@@ -19,10 +20,12 @@ readonly final class RadekTabulkyData
     use CanCreateManyFromStrapiResponse;
 
     public function __construct(
-        public null|BunkaTabulkyData $Sloupec1,
-        public null|BunkaTabulkyData $Sloupec2,
-        public null|BunkaTabulkyData $Sloupec3,
-        public null|BunkaTabulkyData $Sloupec4,
+        public null|string $Sloupec1,
+        public null|string $Sloupec2,
+        public null|string $Sloupec3,
+        public null|string $Sloupec4,
+        public null|string $Sloupec5,
+        public null|string $Sloupec6,
     ) {
     }
 
@@ -32,10 +35,12 @@ readonly final class RadekTabulkyData
     public static function createFromStrapiResponse(array $data): self
     {
         return new self(
-            Sloupec1: $data['Sloupec_1'] !== null ? BunkaTabulkyData::createFromStrapiResponse($data['Sloupec_1']) : null,
-            Sloupec2: $data['Sloupec_2'] !== null ? BunkaTabulkyData::createFromStrapiResponse($data['Sloupec_2']) : null,
-            Sloupec3: $data['Sloupec_3'] !== null ? BunkaTabulkyData::createFromStrapiResponse($data['Sloupec_3']) : null,
-            Sloupec4: $data['Sloupec_4'] !== null ? BunkaTabulkyData::createFromStrapiResponse($data['Sloupec_4']) : null,
+            Sloupec1: $data['Sloupec_1'],
+            Sloupec2: $data['Sloupec_2'],
+            Sloupec3: $data['Sloupec_3'],
+            Sloupec4: $data['Sloupec_4'],
+            Sloupec5: $data['Sloupec_5'],
+            Sloupec6: $data['Sloupec_6'],
         );
     }
 }

@@ -18,6 +18,12 @@
     "Nadpis_sloupec_4": {
       "type": "string"
     },
+    "Nadpis_sloupec_5": {
+      "type": "string"
+    },
+    "Nadpis_sloupec_6": {
+      "type": "string"
+    },
     "Radky": {
       "type": "component",
       "component": "elementy.tabulka-radek",

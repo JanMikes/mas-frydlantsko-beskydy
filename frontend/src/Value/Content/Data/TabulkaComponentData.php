@@ -11,6 +11,8 @@ namespace MASFB\Web\Value\Content\Data;
  *     Nadpis_sloupec_2: null|string,
  *     Nadpis_sloupec_3: null|string,
  *     Nadpis_sloupec_4: null|string,
+ *     Nadpis_sloupec_5: null|string,
+ *     Nadpis_sloupec_6: null|string,
  *     Radky: array<RadekTabulkyDataArray>,
  * }
  */
@@ -21,6 +23,8 @@ readonly final class TabulkaComponentData
         public null|string $Nadpis2,
         public null|string $Nadpis3,
         public null|string $Nadpis4,
+        public null|string $Nadpis5,
+        public null|string $Nadpis6,
         /** @var array<RadekTabulkyData> */
         public array $Radky,
     )
@@ -37,6 +41,8 @@ readonly final class TabulkaComponentData
             Nadpis2: $data['Nadpis_sloupec_2'],
             Nadpis3: $data['Nadpis_sloupec_3'],
             Nadpis4: $data['Nadpis_sloupec_4'],
+            Nadpis5: $data['Nadpis_sloupec_5'],
+            Nadpis6: $data['Nadpis_sloupec_6'],
             Radky: RadekTabulkyData::createManyFromStrapiResponse($data['Radky']),
         );
     }
