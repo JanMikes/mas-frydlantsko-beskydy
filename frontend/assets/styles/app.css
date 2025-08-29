@@ -1029,7 +1029,7 @@ footer .nav-link {
 }
 
 th {
-    color: var(--bs-primary);
+    color: var(--bs-primary) !important;
 }
 
 b, strong {
