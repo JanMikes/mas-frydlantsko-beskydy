@@ -8,6 +8,7 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-type TagDataArray array{
  *     slug: string,
  *     Tag: string,
+ *     Zobrazovat_v_aktualitach: null|bool,
  * }
  */
 readonly final class TagData
@@ -18,6 +19,7 @@ readonly final class TagData
     public function __construct(
         public string $slug,
         public string $Tag,
+        public bool $Aktuality,
     ) {
     }
 
@@ -29,6 +31,7 @@ readonly final class TagData
         return new self(
             slug: $data['slug'],
             Tag: $data['Tag'],
+            Aktuality: $data['Zobrazovat_v_aktualitach'] ?? true,
         );
     }
 }

@@ -16,9 +16,11 @@
     {% if tagy %}
         <p class="tags">
             {% for Tag in tagy %}
-                <a href="{{ path('aktuality_tag_filter', {'tag': Tag.slug}) }}" class="tag {% if Tag.slug == active_tag %}active_tag{% endif %}">
-                    {{ Tag.Tag }}
-                </a>
+                {% if Tag.Aktuality %}
+                    <a href="{{ path('aktuality_tag_filter', {'tag': Tag.slug}) }}" class="tag {% if Tag.slug == active_tag %}active_tag{% endif %}">
+                        {{ Tag.Tag }}
+                    </a>
+                {% endif %}
             {% endfor %}
         </p>
     {% endif %}
