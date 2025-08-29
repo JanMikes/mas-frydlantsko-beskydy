@@ -812,7 +812,7 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Doba_realizace: Schema.Attribute.String;
+    Dokonceni_realizace: Schema.Attribute.Date;
     Kategorie: Schema.Attribute.Relation<
       'oneToMany',
       'api::vyzvy-obory.vyzvy-obory'
@@ -843,6 +843,7 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Vyse_dotace: Schema.Attribute.Integer;
     Vyzva: Schema.Attribute.Relation<'oneToOne', 'api::vyzvy.vyzvy'>;
+    Zacatek_realizace: Schema.Attribute.Date;
   };
 }
 

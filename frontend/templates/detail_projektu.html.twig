@@ -14,25 +14,51 @@
         <h1 class="mb-3 mb-lg-5"><span class="heading-border">{{ projekt.Nazev }}</span></h1>
 
         <div class="project-grid mb-4">
-            <div class="cell">
-                <strong>Operační program</strong><br>
-                {{ projekt.Vyzva.ZdrojFinancovani.Nazev }}
+            <div class="cell d-flex">
+                <img src="{{ asset('images/icon-operacni-program.svg') }}" alt="Operační program" class="me-3">
+                <div>
+                    <strong>Operační program</strong><br>
+                    {{ projekt.Vyzva.ZdrojFinancovani.Nazev }}
+                </div>
             </div>
-            <div class="cell">
-                <strong>Příjemce dotace</strong><br>
-                {{ projekt.PrijemceDotace }}
+            <div class="cell d-flex">
+                <img src="{{ asset('images/icon-prijemce-dotace.svg') }}" alt="Příjemce dotace" class="me-3">
+                <div>
+                    <strong>Příjemce dotace</strong><br>
+                    {{ projekt.PrijemceDotace }}
+                </div>
             </div>
-            <div class="cell">
-                <strong>Výše dotace</strong><br>
-                {{ projekt.VyseDotace|number_format(0, '', ' ') }} Kč
+            <div class="cell d-flex">
+                <img src="{{ asset('images/icon-vyse-dotace.svg') }}" alt="Výše dotace" class="me-3">
+                <div>
+                    <strong>Výše dotace</strong><br>
+                    {{ projekt.VyseDotace|number_format(0, '', ' ') }} Kč
+                </div>
             </div>
-            <div class="cell">
-                <strong>Projekt MAS-FB</strong><br>
-                {{ projekt.ProjektMasFb ? 'Ano' : 'ne' }}
+            <div class="cell d-flex">
+                <img src="{{ asset('images/icon-projekt-mas-fb.svg') }}" alt="Projekt mas-fb" class="me-3">
+                <div>
+                    <strong>Projekt MAS-FB</strong><br>
+                    {{ projekt.ProjektMasFb ? 'Ano' : 'ne' }}
+                </div>
             </div>
-            <div class="cell">
-                <strong>Doba realizace</strong><br>
-                {{ projekt.DobaRealizace }}
+            <div class="cell d-flex">
+                <img src="{{ asset('images/icon-doba-realizace.svg') }}" alt="Doba realizace" class="me-3">
+                <div>
+                    <strong>Doba realizace</strong><br>
+
+                    {% if projekt.ZacatekRealizace and projekt.DokonceniRealizace %}
+                        {% if projekt.ZacatekRealizace|date('Y') == projekt.DokonceniRealizace|date('Y') %}
+                            {{ projekt.ZacatekRealizace|date('d.m.') }} - {{ projekt.DokonceniRealizace|date('d.m.Y') }}
+                        {% else %}
+                            {{ projekt.ZacatekRealizace|date('d.m.Y') }} - {{ projekt.DokonceniRealizace|date('d.m.Y') }}
+                        {% endif %}
+                    {% elseif projekt.ZacatekRealizace %}
+                        {{ projekt.ZacatekRealizace|date('d.m.Y') }}
+                    {% elseif projekt.DokonceniRealizace %}
+                        {{ projekt.DokonceniRealizace|date('d.m.Y') }}
+                    {% endif %}
+                </div>
             </div>
         </div>
 

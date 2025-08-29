@@ -828,6 +828,10 @@ a.project-item:hover {
     color: #666;
 }
 
+.project-grid img {
+    max-width: 25px;
+}
+
 .project-grid {
     display: grid;
     /* 6 equal tracks: lets us do 50% (3/6) and 33% (2/6) */

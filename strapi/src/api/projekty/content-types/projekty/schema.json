@@ -38,8 +38,11 @@
     "Projekt_mas_fb": {
       "type": "boolean"
     },
-    "Doba_realizace": {
-      "type": "string"
+    "Zacatek_realizace": {
+      "type": "date"
+    },
+    "Dokonceni_realizace": {
+      "type": "date"
     },
     "Obrazek": {
       "type": "media",

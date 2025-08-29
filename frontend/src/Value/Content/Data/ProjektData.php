@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace MASFB\Web\Value\Content\Data;
 
+use DateTimeImmutable;
+
 /**
  * @phpstan-import-type ImageDataArray from ImageData
  * @phpstan-import-type VyzvyKategorieDataArray from VyzvyKategorieData
@@ -18,7 +20,8 @@ namespace MASFB\Web\Value\Content\Data;
  *      Prijemce_dotace: null|string,
  *      Vyse_dotace: null|int,
  *      Projekt_mas_fb: null|bool,
- *      Doba_realizace: null|string,
+ *      Zacatek_realizace: null|string,
+ *      Dokonceni_realizace: null|string,
  *      Obrazek: null|ImageDataArray,
  *      Text: null|string,
  *      Souvisejici_projekty: array<mixed>,
@@ -42,7 +45,8 @@ readonly final class ProjektData
         public null|string $PrijemceDotace,
         public null|int $VyseDotace,
         public null|bool $ProjektMasFb,
-        public null|string $DobaRealizace,
+        public null|DateTimeImmutable $ZacatekRealizace,
+        public null|DateTimeImmutable $DokonceniRealizace,
         public null|ImageData $Obrazek,
         public null|string $Text,
         public array $SouvisejiciProjekty,
@@ -69,7 +73,8 @@ readonly final class ProjektData
             PrijemceDotace: $data['Prijemce_dotace'],
             VyseDotace: $data['Vyse_dotace'],
             ProjektMasFb: $data['Projekt_mas_fb'],
-            DobaRealizace: $data['Doba_realizace'],
+            ZacatekRealizace: $data['Zacatek_realizace'] ? new DateTimeImmutable($data['Zacatek_realizace']) : null,
+            DokonceniRealizace: $data['Dokonceni_realizace'] ? new DateTimeImmutable($data['Dokonceni_realizace']) : null,
             Obrazek: $obrazek,
             Text: $data['Text'],
             SouvisejiciProjekty: $souvisejiciProjekty,
