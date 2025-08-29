@@ -729,11 +729,11 @@ footer .colored-footer a:hover {
     font-weight: normal;
 }
 
-.detail-vyzvy-link {
+a.button-style-2, .button-style-2 a, button.button-style-2, .button-style-2 button {
     margin-top: 15px;
     margin-bottom: 0;
     font-weight: bold;
-    color: var(--bs-secondary);
+    color: #146085;
 }
 
 
