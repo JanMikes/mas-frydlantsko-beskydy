@@ -3,7 +3,7 @@
         <div class="mb-3">
             {% for tag in data.Tagy %}
                 <button type="button"
-                        class="button-style-1 smaller me-2 mb-2"
+                        class="button-style-filter me-2 mb-2"
                         data-files-tag-filter-target="filter"
                         data-tag="{{ tag.slug }}"
                         data-action="click->files-tag-filter#toggleFilter">

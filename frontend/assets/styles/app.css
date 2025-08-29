@@ -480,6 +480,36 @@ footer .colored-footer a:hover {
     background: var(--bs-secondary);
 }
 
+
+.button-style-filter a, button.button-style-filter, a.button-style-filter {
+    text-decoration: none;
+    background: #fff;
+    padding: 8px 15px;
+    border: 1px solid var(--bs-primary);
+    color: var(--bs-primary);
+    border-radius: 7px;
+    text-transform: uppercase;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.button-style-filter:hover {
+    background: var(--bs-primary);
+    border: 1px solid var(--bs-primary);
+    color: #fff;
+}
+
+.button-style-filter.active {
+    background: var(--bs-secondary);
+    border: 1px solid var(--bs-secondary);
+    color: #fff;
+}
+
+.button-style-filter.active:hover {
+    background: var(--bs-secondary);
+    border: 1px solid var(--bs-secondary);
+}
+
 .carousel {
     margin-top: -107px;
 }
@@ -1000,4 +1030,8 @@ footer .nav-link {
 
 th {
     color: var(--bs-primary);
+}
+
+b, strong {
+    font-weight: 600;
 }

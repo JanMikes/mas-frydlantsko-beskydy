@@ -4,13 +4,13 @@
             <p class="mb-2">Filtrovat podle kategorie:</p>
 
             {# Instruction: The "Všechny" filter will be toggled when none of others is enabled, when clicked, disable all others and toggle just Všechny (it can not be untoggled when none other is toggled, and will be untoggled only when clicking (enabling) some other filter  #}
-            <button type="button" class="button-style-1 smaller me-2 mb-2 active" data-vyzvy-filter-target="allFilter" data-action="click->vyzvy-filter#toggleAllFilter">
+            <button type="button" class="button-style-filter me-2 mb-2 active" data-vyzvy-filter-target="allFilter" data-action="click->vyzvy-filter#toggleAllFilter">
                 Všechny
             </button>
 
             {# Instruction: Toggle for filter #}
             {% for kategorieItem in computed.getKategorieItems() %}
-                <button type="button" class="button-style-1 smaller me-2 mb-2" data-vyzvy-filter-target="filter" data-kategorie="{{ kategorieItem.slug }}" data-action="click->vyzvy-filter#toggleFilter">
+                <button type="button" class="button-style-filter me-2 mb-2" data-vyzvy-filter-target="filter" data-kategorie="{{ kategorieItem.slug }}" data-action="click->vyzvy-filter#toggleFilter">
                     {{ kategorieItem.Nazev }}
                 </button>
             {% endfor %}
