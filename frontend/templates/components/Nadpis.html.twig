@@ -1,1 +1,8 @@
-<{{ data.Typ }} class="margin-heading {% if data.Styl == 'S oddělovníkem' %}with-border{% endif %}" {% if data.Kotva %}id="{{ data.Kotva }}"{% endif %}><span class="heading-border">{{ data.Nadpis }}</span></{{ data.Typ }}>
+{% if data.Odkaz %}
+    <twig:Odkaz data="{{ data.Odkaz }}" parentData="{{ data }}">
+        <{{ parentData.Typ }} class="margin-heading {% if parentData.Styl == 'S oddělovníkem' %}with-border{% endif %}" {% if parentData.Kotva %}id="{{ parentData.Kotva }}"{% endif %}><span class="heading-border">{{ parentData.Nadpis }}</span></{{ parentData.Typ }}>
+    </twig:Odkaz>
+{% else %}
+    <{{ data.Typ }} class="margin-heading {% if data.Styl == 'S oddělovníkem' %}with-border{% endif %}" {% if data.Kotva %}id="{{ data.Kotva }}"{% endif %}><span class="heading-border">{{ data.Nadpis }}</span></{{ data.Typ }}>
+{% endif %}
+

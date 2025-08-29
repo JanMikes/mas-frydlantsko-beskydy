@@ -592,6 +592,7 @@ export interface KomponentyNadpis extends Struct.ComponentSchema {
   attributes: {
     Kotva: Schema.Attribute.String;
     Nadpis: Schema.Attribute.String & Schema.Attribute.Required;
+    Odkaz: Schema.Attribute.Component<'elementy.odkaz', false>;
     Styl: Schema.Attribute.Enumeration<
       ['Norm\u00E1ln\u00ED', 'S odd\u011Blovn\u00EDkem']
     > &

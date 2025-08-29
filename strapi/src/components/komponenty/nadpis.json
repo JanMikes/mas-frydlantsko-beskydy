@@ -32,6 +32,11 @@
         "Normální",
         "S oddělovníkem"
       ]
+    },
+    "Odkaz": {
+      "type": "component",
+      "component": "elementy.odkaz",
+      "repeatable": false
     }
   }
 }

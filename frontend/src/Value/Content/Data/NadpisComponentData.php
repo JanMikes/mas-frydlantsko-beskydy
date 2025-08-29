@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace MASFB\Web\Value\Content\Data;
 
 /**
+ * @phpstan-import-type OdkazDataArray from OdkazData
  * @phpstan-type NadpisComponentDataArray array{
  *     Nadpis: string,
  *     Typ: string,
  *     Kotva: null|string,
  *     Styl: null|string,
+ *     Odkaz: null|OdkazDataArray,
  * }
  */
 readonly final class NadpisComponentData
@@ -19,6 +21,7 @@ readonly final class NadpisComponentData
         public string $Typ,
         public null|string $Kotva,
         public null|string $Styl,
+        public null|OdkazData $Odkaz,
     ) {}
 
     /**
@@ -31,6 +34,7 @@ readonly final class NadpisComponentData
             Typ: $data['Typ'],
             Kotva: $data['Kotva'],
             Styl: $data['Styl'],
+            Odkaz: $data['Odkaz'] !== null ? OdkazData::createFromStrapiResponse($data['Odkaz']) : null,
         );
     }
 }
