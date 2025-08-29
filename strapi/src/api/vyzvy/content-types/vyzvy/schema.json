@@ -32,7 +32,7 @@
     "Maximalni_vyse_nakladu": {
       "type": "integer"
     },
-    "Zdroj_financovani": {
+    "Operacni_program": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::projekty-operacni-program.projekty-operacni-program"

@@ -17,7 +17,7 @@ namespace MASFB\Web\Value\Content\Data;
  *     Financni_alokace: null|int,
  *     Minimalni_vyse_nakladu: null|int,
  *     Maximalni_vyse_nakladu: null|int,
- *     Zdroj_financovani: null|VyzvyOperacniProgramDataArray,
+ *     Operacni_program: null|VyzvyOperacniProgramDataArray,
  *     Opatreni_sclld: null|string,
  *     Opravneni_zadatele: null|string,
  *     Informace: null|string,
@@ -43,7 +43,7 @@ readonly final class VyzvaData
         public null|int $FinancniAlokace,
         public null|int $MinimalniVyseNakladu,
         public null|int $MaximalniVyseNakladu,
-        public null|VyzvyOperacniProgramData $ZdrojFinancovani,
+        public null|VyzvyOperacniProgramData $OperacniProgram,
         public null|string $OpatreniSclld,
         public null|string $OpravneniZadatele,
         public null|string $Informace,
@@ -67,9 +67,9 @@ readonly final class VyzvaData
             FinancniAlokace: $data['Financni_alokace'],
             MinimalniVyseNakladu: $data['Minimalni_vyse_nakladu'],
             MaximalniVyseNakladu: $data['Maximalni_vyse_nakladu'],
-            ZdrojFinancovani: $data['Zdroj_financovani'] === null
+            OperacniProgram: $data['Operacni_program'] === null
                 ? null 
-                : VyzvyOperacniProgramData::createFromStrapiResponse($data['Zdroj_financovani']),
+                : VyzvyOperacniProgramData::createFromStrapiResponse($data['Operacni_program']),
             OpatreniSclld: $data['Opatreni_sclld'],
             OpravneniZadatele: $data['Opravneni_zadatele'],
             Informace: $data['Informace'],

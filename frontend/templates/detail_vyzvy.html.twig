@@ -39,8 +39,8 @@
                 <div class="vyzva-table-row"><strong>Maximální výše celkových způsobilých výdajů na jeden projekt:</strong> {{ vyzva.MaximalniVyseNakladu|number_format(0, '', ' ') }} Kč</div>
             {% endif %}
 
-            {% if vyzva.ZdrojFinancovani %}
-                <div class="vyzva-table-row"><strong>Zdroj financování:</strong> {{ vyzva.ZdrojFinancovani.Nazev }}</div>
+            {% if vyzva.OperacniProgram %}
+                <div class="vyzva-table-row"><strong>Zdroj financování:</strong> {{ vyzva.OperacniProgram.Nazev }}</div>
             {% endif %}
 
             {% if vyzva.OpravneniZadatele %}

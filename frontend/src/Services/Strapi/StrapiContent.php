@@ -87,12 +87,12 @@ readonly final class StrapiContent
         }
 
         $filters = [
-            'Zobrazovat' => ['$eq' => true],
+            'Zobrazovat' => ['$eqi' => true],
 
         ];
 
         if (is_string($tag)) {
-           $filters['tags'] = ['slug' => ['$eq' => $tag]];
+           $filters['tags'] = ['slug' => ['$eqi' => $tag]];
         }
 
         if (is_array($tag)) {
@@ -119,8 +119,8 @@ readonly final class StrapiContent
         $strapiResponse = $this->strapiClient->getApiResource('aktualities',
             populateLevel: 6,
             filters: [
-                'Zobrazovat' => ['$eq' => true],
-                'slug' => ['$eq' => $slug]
+                'Zobrazovat' => ['$eqi' => true],
+                'slug' => ['$eqi' => $slug]
             ]);
 
         return AktualitaData::createFromStrapiResponse(
@@ -143,7 +143,7 @@ readonly final class StrapiContent
 
         if ($shouldHideIfExpired === true) {
             $filters = [
-                'Zobrazovat' => ['$eq' => true],
+                'Zobrazovat' => ['$eqi' => true],
                 '$or' => [
                     ['Datum_stazeni' => ['$null' => true]],
                     ['Datum_stazeni' => ['$gte' => $now->format('Y-m-d')]],
@@ -152,7 +152,7 @@ readonly final class StrapiContent
         }
 
         if (is_string($category)) {
-            $filters['categories'] = ['slug' => ['$eq' => $category]];
+            $filters['categories'] = ['slug' => ['$eqi' => $category]];
         }
 
         if (is_array($category)) {
@@ -185,7 +185,7 @@ readonly final class StrapiContent
         /** @var array{data: array<UredniDeskaDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('uredni-deskas',
             filters: [
-                'slug' => ['$eq' => $slug],
+                'slug' => ['$eqi' => $slug],
             ]);
 
         return UredniDeskaData::createFromStrapiResponse(
@@ -232,7 +232,7 @@ readonly final class StrapiContent
         $strapiResponse = $this->strapiClient->getApiResource('sekces',
             populateLevel: 8,
             filters: [
-            'slug' => ['$eq' => $slug]
+            'slug' => ['$eqi' => $slug]
         ]);
 
         return SekceData::createFromStrapiResponse(
@@ -288,7 +288,7 @@ readonly final class StrapiContent
         $filters = [];
 
         if (is_string($category)) {
-            $filters['Kategorie'] = ['slug' => ['$eq' => $category]];
+            $filters['Kategorie'] = ['slug' => ['$eqi' => $category]];
         }
 
         if (is_array($category)) {
@@ -332,34 +332,52 @@ readonly final class StrapiContent
         null|string $obecFilter,
     ): array
     {
+        $sort = null;
+
         if ($sortBy === 'Nejoblíbenější') {
-            // TODO: Implement sorting by popularity
-        } elseif ($sortBy === 'Nejnovější') {
-            /*
-            $sort = [
-                'Datum_zverejneni:desc'
-            ];
-            */
-        } elseif ($sortBy === 'Nejstarší') {
-            /*
-            $sort = [
-                'Datum_zverejneni:desc'
-            ];
-            */
-        } elseif ($sortBy === 'Nejdražší') {
-            $sort = [
-                'Vyse_dotace:desc'
-            ];
-        } elseif ($sortBy === 'Nejlevnější') {
-            $sort = [
-                'Vyse_dotace:asc'
-            ];
-        } else {
-            $sort = null;
+            // TODO?
+        }
+
+        if ($sortBy === 'Nejnovější') {
+            $sort = ['Zacatek_realizace:desc'];
+        }
+
+        if ($sortBy === 'Nejstarší') {
+            $sort = ['Zacatek_realizace:asc'];
+        }
+
+        if ($sortBy === 'Nejdražší') {
+            $sort = ['Vyse_dotace:desc'];
+        }
+
+        if ($sortBy === 'Nejlevnější') {
+            $sort = ['Vyse_dotace:asc'];
+        }
+
+        $filters = [];
+
+        if (($kategorieFilter ?? '') !== '') {
+            $filters['Kategorie']['slug']['$in'][] = $kategorieFilter;
+        }
+
+        if (($operacniProgramFilter ?? '') !== '') {
+            $filters['Vyzva']['Operacni_program']['slug']['$eqi'] = $operacniProgramFilter;
+        }
+
+        if (($obecFilter ?? '') !== '') {
+            $filters['Obec']['Nazev']['$eqi'] = $obecFilter;
+        }
+
+        if ($filters === []) {
+            $filters = null;
         }
 
         /** @var array{data: array<ProjektDataArray>} $strapiResponse */
-        $strapiResponse = $this->strapiClient->getApiResource('projekties', populateLevel: 6);
+        $strapiResponse = $this->strapiClient->getApiResource('projekties',
+            populateLevel: 6,
+            filters: $filters,
+            sort: $sort,
+        );
 
         return ProjektData::createManyFromStrapiResponse($strapiResponse['data']);
     }
@@ -369,7 +387,7 @@ readonly final class StrapiContent
         /** @var array{data: array<ProjektDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('projekties',
             filters: [
-                'slug' => ['$eq' => $slug]
+                'slug' => ['$eqi' => $slug]
             ]);
 
         return ProjektData::createFromStrapiResponse(
@@ -436,7 +454,7 @@ readonly final class StrapiContent
         $strapiResponse = $this->strapiClient->getApiResource('vyzvies',
             populateLevel: 5,
             filters: [
-                'slug' => ['$eq' => $slug]
+                'slug' => ['$eqi' => $slug]
             ]);
 
         return VyzvaData::createFromStrapiResponse(
@@ -450,7 +468,7 @@ readonly final class StrapiContent
         $strapiResponse = $this->strapiClient->getApiResource('projekties',
             populateLevel: 6,
             filters: [
-                'slug' => ['$eq' => $slug]
+                'slug' => ['$eqi' => $slug]
             ]);
 
         return ProjektData::createFromStrapiResponse(

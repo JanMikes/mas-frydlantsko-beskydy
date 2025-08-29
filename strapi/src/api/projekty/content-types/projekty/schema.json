@@ -35,9 +35,6 @@
     "Vyse_dotace": {
       "type": "integer"
     },
-    "Projekt_mas_fb": {
-      "type": "boolean"
-    },
     "Zacatek_realizace": {
       "type": "date"
     },

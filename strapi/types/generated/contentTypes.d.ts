@@ -830,7 +830,6 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
     >;
     Obrazek: Schema.Attribute.Media<'images'>;
     Prijemce_dotace: Schema.Attribute.String;
-    Projekt_mas_fb: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
     Souvisejici_projekty: Schema.Attribute.Relation<
@@ -1020,6 +1019,10 @@ export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
     Minimalni_vyse_nakladu: Schema.Attribute.Integer;
     Nazev: Schema.Attribute.String;
     Opatreni_sclld: Schema.Attribute.RichText;
+    Operacni_program: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::projekty-operacni-program.projekty-operacni-program'
+    >;
     Opravneni_zadatele: Schema.Attribute.RichText;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Nazev'>;
@@ -1028,10 +1031,6 @@ export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Zahajeni_prijmu_zadosti: Schema.Attribute.DateTime;
     Zahajeni_vyzvy: Schema.Attribute.DateTime;
-    Zdroj_financovani: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::projekty-operacni-program.projekty-operacni-program'
-    >;
   };
 }
 
