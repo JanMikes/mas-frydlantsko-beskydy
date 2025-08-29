@@ -357,15 +357,15 @@ readonly final class StrapiContent
         $filters = [];
 
         if (($kategorieFilter ?? '') !== '') {
-            $filters['Kategorie']['slug']['$in'][] = $kategorieFilter;
+            $filters['Kategorie'] = ['slug' => ['$in' => $kategorieFilter]];
         }
 
         if (($operacniProgramFilter ?? '') !== '') {
-            $filters['Vyzva']['Operacni_program']['slug']['$eqi'] = $operacniProgramFilter;
+            $filters['Vyzva'] = ['Operacni_program' => ['slug' => ['$eqi' => $operacniProgramFilter ]]];
         }
 
         if (($obecFilter ?? '') !== '') {
-            $filters['Obec']['Nazev']['$eqi'] = $obecFilter;
+            $filters['Obec'] = ['Nazev' => ['$eqi' => $obecFilter]];
         }
 
         if ($filters === []) {
