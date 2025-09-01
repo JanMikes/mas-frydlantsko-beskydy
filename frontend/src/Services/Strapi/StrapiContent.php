@@ -87,7 +87,7 @@ readonly final class StrapiContent
         }
 
         $filters = [
-            'Zobrazovat' => ['$eqi' => true],
+            'Zobrazovat' => ['$eq' => true],
 
         ];
 
@@ -119,7 +119,7 @@ readonly final class StrapiContent
         $strapiResponse = $this->strapiClient->getApiResource('aktualities',
             populateLevel: 6,
             filters: [
-                'Zobrazovat' => ['$eqi' => true],
+                'Zobrazovat' => ['$eq' => true],
                 'slug' => ['$eqi' => $slug]
             ]);
 
@@ -143,7 +143,7 @@ readonly final class StrapiContent
 
         if ($shouldHideIfExpired === true) {
             $filters = [
-                'Zobrazovat' => ['$eqi' => true],
+                'Zobrazovat' => ['$eq' => true],
                 '$or' => [
                     ['Datum_stazeni' => ['$null' => true]],
                     ['Datum_stazeni' => ['$gte' => $now->format('Y-m-d')]],
