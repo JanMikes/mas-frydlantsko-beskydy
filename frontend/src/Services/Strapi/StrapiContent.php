@@ -431,12 +431,20 @@ readonly final class StrapiContent
     /**
      * @return array<VyzvaData>
      */
-    public function getVyzvy(null|string $Kategorie): array
+    public function getVyzvy(null|string $Kategorie, bool $isArchiv): array
     {
-        $filters = null;
+        $filters = [];
 
         if ($Kategorie !== null) {
             $filters = [];
+        }
+
+        $now = $this->clock->now();
+
+        if ($isArchiv === true) {
+            $filters['Konec_vyzvy'] = ['$lt' => $now->format('Y-m-d')];
+        } else {
+            $filters['Konec_vyzvy'] = ['$gte' => $now->format('Y-m-d')];
         }
 
         /** @var array{data: array<VyzvaDataArray>} $strapiResponse */

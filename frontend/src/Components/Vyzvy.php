@@ -33,6 +33,6 @@ final class Vyzvy
      */
     public function getItems(): array
     {
-        return $this->content->getVyzvy(null);
+        return $this->content->getVyzvy(null, false);
     }
 }
