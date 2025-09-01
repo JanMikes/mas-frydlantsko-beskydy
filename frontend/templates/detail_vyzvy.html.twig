@@ -43,7 +43,7 @@
                 <div class="vyzva-table-row"><strong>Zdroj financování:</strong> {{ vyzva.OperacniProgram.Nazev }}</div>
             {% endif %}
 
-            {% if vyzva.OpravneniZadatele %}
+            {% if vyzva.OpatreniSclld %}
                 <div class="vyzva-table-row">
                     <strong>Opatření/fiche SCLLD:</strong>
                     {{ vyzva.OpatreniSclld|markdown_to_html|newlines }}
