@@ -813,6 +813,7 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Dokonceni_realizace: Schema.Attribute.Date;
+    Galerie: Schema.Attribute.Component<'komponenty.galerie', false>;
     Kategorie: Schema.Attribute.Relation<
       'oneToMany',
       'api::vyzvy-obory.vyzvy-obory'

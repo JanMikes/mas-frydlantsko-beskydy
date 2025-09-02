@@ -60,6 +60,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::vyzvy-obory.vyzvy-obory"
+    },
+    "Galerie": {
+      "type": "component",
+      "component": "komponenty.galerie",
+      "repeatable": false
     }
   }
 }
