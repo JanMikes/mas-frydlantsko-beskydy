@@ -11,6 +11,7 @@ use DateTimeImmutable;
  * @phpstan-import-type VyzvyKategorieDataArray from VyzvyKategorieData
  * @phpstan-import-type ProjektyObecDataArray from ProjektyObecData
  * @phpstan-import-type VyzvaDataArray from VyzvaData
+ * @phpstan-import-type GalerieComponentDataArray from GalerieComponentData
  * @phpstan-type ProjektDataArray array{
  *      Nazev: null|string,
  *      slug: null|string,
@@ -24,6 +25,7 @@ use DateTimeImmutable;
  *      Obrazek: null|ImageDataArray,
  *      Text: null|string,
  *      Souvisejici_projekty: array<mixed>,
+ *      Galerie: null|GalerieComponentDataArray,
  *  }
  */
 readonly final class ProjektData
@@ -48,6 +50,7 @@ readonly final class ProjektData
         public null|ImageData $Obrazek,
         public null|string $Text,
         public array $SouvisejiciProjekty,
+        public null|GalerieComponentData $Galerie,
     ) {}
 
     /**
@@ -75,6 +78,7 @@ readonly final class ProjektData
             Obrazek: $obrazek,
             Text: $data['Text'],
             SouvisejiciProjekty: $souvisejiciProjekty,
+            Galerie: $data['Galerie'] !== null ? GalerieComponentData::createFromStrapiResponse($data['Galerie']) : null,
         );
     }
 }

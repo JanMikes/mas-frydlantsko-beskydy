@@ -69,5 +69,12 @@
         {% if projekt.Text %}
             {{ projekt.Text|markdown_to_html|newlines }}
         {% endif %}
+
+        {% if projekt.Galerie %}
+            {{ component('Galerie', {
+                data: projekt.Galerie,
+                hasPanel: false,
+            }) }}
+        {% endif %}
     </div>
 {% endblock %}
