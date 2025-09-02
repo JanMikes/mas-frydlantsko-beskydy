@@ -836,9 +836,14 @@ a.project-item:hover {
     display: grid;
     /* 6 equal tracks: lets us do 50% (3/6) and 33% (2/6) */
     grid-template-columns: repeat(6, minmax(0, 1fr));
+    /*
     grid-template-areas:
     "a a a b b b"
     "c c d d e e";
+    */
+    grid-template-areas:
+    "a a a b b b"
+    "c c c d d d";
     border: 1px solid #ccc;
     border-radius: 10px;
 }
