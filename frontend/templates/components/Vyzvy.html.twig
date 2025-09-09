@@ -1,18 +1,20 @@
-<div class="rozjizdeci-obsahy-component margin-component" {{ attributes }}>
-    {% if computed.getKategorieItems()|length > 1 %}
-        <div class="mb-3">
-            <p class="mb-2">Filtrovat podle kategorie:</p>
+<div {{ attributes }} class="rozjizdeci-obsahy-component margin-component" data-loading="addClass(opacity-50)">
+    {% if not this.hideFilters %}
+        {% if computed.getKategorieItems()|length > 1 %}
+            <div class="mb-3">
+                <p class="mb-2">Filtrovat podle kategorie:</p>
 
-            <button type="button" class="button-style-filter me-2 mb-2 {{ categories|length == 0 ? 'active' : '' }}" data-action="live#action" data-live-action-param="clearFilters">
-                Všechny
-            </button>
-
-            {% for kategorieItem in computed.getKategorieItems() %}
-                <button type="button" class="button-style-filter me-2 mb-2 {{ kategorieItem.slug in categories ? 'active' : '' }}" data-action="live#action" data-live-action-param="toggleCategory" data-live-category-slug-param="{{ kategorieItem.slug }}">
-                    {{ kategorieItem.Nazev }}
+                <button type="button" class="button-style-filter me-2 mb-2 {{ categories|length == 0 ? 'active' : '' }}" data-action="live#action" data-live-action-param="clearFilters">
+                    Všechny
                 </button>
-            {% endfor %}
-        </div>
+
+                {% for kategorieItem in computed.getKategorieItems() %}
+                    <button type="button" class="button-style-filter me-2 mb-2 {{ kategorieItem.slug in categories ? 'active' : '' }}" data-action="live#action" data-live-action-param="toggleCategory" data-live-category-slug-param="{{ kategorieItem.slug }}">
+                        {{ kategorieItem.Nazev }}
+                    </button>
+                {% endfor %}
+            </div>
+        {% endif %}
     {% endif %}
 
     {% if computed.getItems()|length == 0 %}

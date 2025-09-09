@@ -13,7 +13,9 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
+use Symfony\UX\LiveComponent\Attribute\PreReRender;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
+use Symfony\UX\TwigComponent\Attribute\PostMount;
 
 #[AsLiveComponent]
 final class Vyzvy
@@ -28,9 +30,25 @@ final class Vyzvy
 
     public null|VyzvaComponentData $data = null;
 
+    public bool $hideFilters = false;
+
     public function __construct(
         readonly private StrapiContent $content,
     ) {
+    }
+
+    #[PostMount]
+    #[PreReRender]
+    public function populate(): void
+    {
+        if (($this->data?->Kategorie ?? []) !== []) {
+            $this->categories = array_map(
+                callback: fn (VyzvyKategorieData $data): string => $data->slug,
+                array: $this->data->Kategorie,
+            );
+
+            $this->hideFilters = true;
+        }
     }
 
     #[LiveAction]
