@@ -323,11 +323,12 @@ readonly final class StrapiContent
     }
 
     /**
+     * @param null|string|array<string> $kategorieFilter
      * @return array<ProjektData>
      */
     public function getProjektyData(
         string $sortBy,
-        null|string $kategorieFilter,
+        null|string|array $kategorieFilter,
         null|string $operacniProgramFilter,
         null|string $obecFilter,
     ): array
@@ -356,7 +357,7 @@ readonly final class StrapiContent
 
         $filters = [];
 
-        if (($kategorieFilter ?? '') !== '') {
+        if ((is_array($kategorieFilter) && count($kategorieFilter) > 0) || ($kategorieFilter ?? '') !== '') {
             $filters['Kategorie'] = ['slug' => ['$in' => $kategorieFilter]];
         }
 
@@ -429,14 +430,16 @@ readonly final class StrapiContent
     }
 
     /**
+     * @param null|string|array<string> $Kategorie
      * @return array<VyzvaData>
      */
-    public function getVyzvy(null|string $Kategorie, bool $isArchiv): array
+    public function getVyzvy(null|array|string $Kategorie, bool $isArchiv): array
     {
         $filters = [];
 
-        if ($Kategorie !== null) {
-            $filters = [];
+        if ($Kategorie !== null && $Kategorie !== [] && $Kategorie !== '') {
+            $kategorieArray = is_array($Kategorie) ? $Kategorie : [$Kategorie];
+            $filters['Kategorie'] = ['slug' => ['$in' => $kategorieArray]];
         }
 
         $now = $this->clock->now();

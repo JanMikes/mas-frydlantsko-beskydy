@@ -79,23 +79,7 @@
 
     <div class="row">
         {% for projekt in computed.getItems() %}
-            <div class="col-sm-6 col-md-4 my-3">
-                <a href="{{ path('detail_projektu', {'slug': projekt.slug}) }}" class="text-decoration-none project-item">
-                    <img class="img-fluid {{ projekt.Obrazek ? '' : 'placeholder-image' }}" src="{{ projekt.Obrazek ? projekt.Obrazek.url : asset('images/logo-symbol.svg') }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
-
-                    <div class="project-item-inner p-3">
-                        {% if projekt.Kategorie|length > 0 %}
-                            <p class="mb-3">
-                                {% for kategorie in projekt.Kategorie %}
-                                    <span class="tag">{{ kategorie.Nazev }}</span>
-                                {% endfor %}
-                            </p>
-                        {% endif %}
-
-                        <h3 class="h6 m-0" id="projekt-{{ projekt.slug }}">{{ projekt.Nazev }}</h3>
-                    </div>
-                </a>
-            </div>
+            {{ include('_projekt_list_item.html.twig') }}
         {% endfor %}
     </div>
 </div>
