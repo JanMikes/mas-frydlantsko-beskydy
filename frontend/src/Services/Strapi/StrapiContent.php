@@ -25,6 +25,7 @@ use MASFB\Web\Value\Content\Data\ProjektyObecData;
 use MASFB\Web\Value\Content\Data\VyzvyOperacniProgramData;
 use MASFB\Web\Value\Content\Data\VyzvaData;
 use MASFB\Web\Value\Content\Data\TagData;
+use MASFB\Web\Value\Content\Data\PaginationMeta;
 
 /**
  * @phpstan-import-type AktualitaDataArray from AktualitaData
@@ -46,6 +47,7 @@ use MASFB\Web\Value\Content\Data\TagData;
  * @phpstan-import-type KategorieUredniDeskyDataArray from KategorieUredniDeskyData
  * @phpstan-import-type KalendarAkciDataArray from KalendarAkciData
  * @phpstan-import-type KategorieKalendareDataArray from KategorieKalendareData
+ * @phpstan-import-type PaginationMetaArray from PaginationMeta
  */
 readonly final class StrapiContent
 {
@@ -324,13 +326,15 @@ readonly final class StrapiContent
 
     /**
      * @param null|string|array<string> $kategorieFilter
-     * @return array<ProjektData>
+     * @return array{0: array<ProjektData>, 1: PaginationMeta}
      */
     public function getProjektyData(
         string $sortBy,
         null|string|array $kategorieFilter,
         null|string $operacniProgramFilter,
         null|string $obecFilter,
+        int $limit = 50,
+        int $start = 0,
     ): array
     {
         $sort = null;
@@ -373,14 +377,23 @@ readonly final class StrapiContent
             $filters = null;
         }
 
-        /** @var array{data: array<ProjektDataArray>} $strapiResponse */
+        $pagination = [
+            'start' => $start,
+            'limit' => $limit,
+        ];
+
+        /** @var array{data: array<ProjektDataArray>, meta: array{pagination: PaginationMetaArray}} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('projekties',
             populateLevel: 6,
             filters: $filters,
+            pagination: $pagination,
             sort: $sort,
         );
 
-        return ProjektData::createManyFromStrapiResponse($strapiResponse['data']);
+        return [
+            ProjektData::createManyFromStrapiResponse($strapiResponse['data']),
+            PaginationMeta::createFromStrapiResponse($strapiResponse['meta']['pagination']),
+        ];
     }
 
     public function getProjektData(string $slug): ProjektData

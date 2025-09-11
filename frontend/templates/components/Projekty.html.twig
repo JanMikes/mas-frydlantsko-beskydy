@@ -5,7 +5,7 @@
                 <label for="kategorie-select" class="form-label">Kategorie</label>
                 <select id="kategorie-select" class="form-select" data-model="kategorie">
                     <option value="">Všechny kategorie</option>
-                    {% for kategorieItem in computed.getKategorieItems() %}
+                    {% for kategorieItem in kategorieItems %}
                         <option value="{{ kategorieItem.slug }}">{{ kategorieItem.Nazev }}</option>
                     {% endfor %}
                 </select>
@@ -15,7 +15,7 @@
                 <label for="program-select" class="form-label">Operační program:</label>
                 <select id="program-select" class="form-select" data-model="operacniProgram">
                     <option value="">Všechny operační programy</option>
-                    {% for program in computed.getOperacniProgramyItems() %}
+                    {% for program in operacniProgramyItems %}
                         <option value="{{ program.slug }}">{{ program.Nazev }}</option>
                     {% endfor %}
                 </select>
@@ -25,7 +25,7 @@
                 <label for="obec-select" class="form-label">Obec:</label>
                 <select id="obec-select" class="form-select" data-model="obec">
                     <option value="">Všechny obce</option>
-                    {% for obecItem in computed.getObceItems() %}
+                    {% for obecItem in obceItems %}
                         <option value="{{ obecItem.Nazev }}">{{ obecItem.Nazev }}</option>
                     {% endfor %}
                 </select>
@@ -78,8 +78,110 @@
     </div>
 
     <div class="row">
-        {% for projekt in computed.getItems() %}
+        {% for projekt in items %}
             {{ include('_projekt_list_item.html.twig') }}
         {% endfor %}
     </div>
+
+    {% set paginationMeta = this.paginationMeta %}
+    {% if paginationMeta.totalPages > 1 %}
+        <nav aria-label="Stránkování projektů" class="mt-4">
+            <ul class="pagination justify-content-center">
+                {# Previous button #}
+                {% if paginationMeta.hasPreviousPage() %}
+                    <li class="page-item">
+                        <button type="button"
+                                class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="{{ paginationMeta.currentPage - 1 }}"
+                                aria-label="Předchozí stránka">
+                            &laquo;
+                        </button>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">&laquo;</span>
+                    </li>
+                {% endif %}
+
+                {# Page numbers #}
+                {% set startPage = max(1, paginationMeta.currentPage - 2) %}
+                {% set endPage = min(paginationMeta.totalPages, paginationMeta.currentPage + 2) %}
+
+                {% if startPage > 1 %}
+                    <li class="page-item">
+                        <button type="button"
+                                class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="1">
+                            1
+                        </button>
+                    </li>
+                    {% if startPage > 2 %}
+                        <li class="page-item disabled">
+                            <span class="page-link">...</span>
+                        </li>
+                    {% endif %}
+                {% endif %}
+
+                {% for pageNumber in startPage..endPage %}
+                    <li class="page-item {{ pageNumber == paginationMeta.currentPage ? 'active' : '' }}">
+                        {% if pageNumber == paginationMeta.currentPage %}
+                            <span class="page-link">{{ pageNumber }}</span>
+                        {% else %}
+                            <button type="button"
+                                    class="page-link"
+                                    data-action="live#action"
+                                    data-live-action-param="changePage"
+                                    data-live-page-param="{{ pageNumber }}">
+                                {{ pageNumber }}
+                            </button>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+
+                {% if endPage < paginationMeta.totalPages %}
+                    {% if endPage < paginationMeta.totalPages - 1 %}
+                        <li class="page-item disabled">
+                            <span class="page-link">...</span>
+                        </li>
+                    {% endif %}
+                    <li class="page-item">
+                        <button type="button"
+                                class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="{{ paginationMeta.totalPages }}">
+                            {{ paginationMeta.totalPages }}
+                        </button>
+                    </li>
+                {% endif %}
+
+                {# Next button #}
+                {% if paginationMeta.hasNextPage() %}
+                    <li class="page-item">
+                        <button type="button"
+                                class="page-link"
+                                data-action="live#action"
+                                data-live-action-param="changePage"
+                                data-live-page-param="{{ paginationMeta.currentPage + 1 }}"
+                                aria-label="Následující stránka">
+                            &raquo;
+                        </button>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">&raquo;</span>
+                    </li>
+                {% endif %}
+            </ul>
+
+            {# Pagination info #}
+            <div class="text-center text-muted small mt-2">
+                Stránka {{ paginationMeta.currentPage }} z {{ paginationMeta.totalPages }}
+            </div>
+        </nav>
+    {% endif %}
 </div>

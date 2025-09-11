@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MASFB\Web\Components;
 
+use MASFB\Web\Value\Content\Data\PaginationMeta;
 use MASFB\Web\Value\Content\Data\ProjektyComponentData;
 use MASFB\Web\Value\Content\Data\ProjektyObecData;
 use MASFB\Web\Value\Content\Data\VyzvyKategorieData;
@@ -15,6 +16,7 @@ use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use MASFB\Web\Services\Strapi\StrapiContent;
 use MASFB\Web\Value\Content\Data\ProjektData;
+use Symfony\UX\TwigComponent\Attribute\PreMount;
 
 #[AsLiveComponent]
 final class Projekty
@@ -23,6 +25,9 @@ final class Projekty
 
     #[LiveProp(writable: true)]
     public string $sortBy = 'Nejoblíbenější';
+
+    #[LiveProp(writable: true)]
+    public int $page = 1;
 
     #[LiveProp(writable: true)]
     public null|string $kategorie = null;
@@ -35,6 +40,28 @@ final class Projekty
 
     public null|ProjektyComponentData $data = null;
 
+    /**
+     * @var array<ProjektData>
+     */
+    public array $items = [];
+
+    public null|PaginationMeta $paginationMeta = null;
+
+    /**
+     * @var array<ProjektyObecData>
+     */
+    public array $obceItems = [];
+
+    /**
+     * @var array<VyzvyKategorieData>
+     */
+    public array $kategorieItems = [];
+
+    /**
+     * @var array<VyzvyOperacniProgramData>
+     */
+    public array $operacniProgramyItems = [];
+
     public function __construct(
         readonly private StrapiContent $content,
     ) {
@@ -44,42 +71,28 @@ final class Projekty
     public function sort(#[LiveArg] string $sort): void
     {
         $this->sortBy = $sort;
+        $this->page = 1;
     }
 
-    /**
-     * @return array<ProjektData>
-     */
-    public function getItems(): array
+    #[LiveAction]
+    public function changePage(#[LiveArg] int $page): void
     {
-        return $this->content->getProjektyData(
+        $this->page = $page;
+    }
+
+    #[PreMount]
+    public function populateData(): void
+    {
+        [$this->items, $this->paginationMeta] = $this->content->getProjektyData(
             $this->sortBy,
             $this->kategorie,
             $this->operacniProgram,
             $this->obec,
+            start: ($this->page - 1) * 50,
         );
-    }
 
-    /**
-     * @return array<ProjektyObecData>
-     */
-    public function getObceItems(): array
-    {
-        return $this->content->getProjektyObce();
-    }
-
-    /**
-     * @return array<VyzvyKategorieData>
-     */
-    public function getKategorieItems(): array
-    {
-        return $this->content->getVyzvyKategorie();
-    }
-
-    /**
-     * @return array<VyzvyOperacniProgramData>
-     */
-    public function getOperacniProgramyItems(): array
-    {
-        return $this->content->getVyzvyOperacniProgramy();
+        $this->obceItems = $this->content->getProjektyObce();
+        $this->kategorieItems = $this->content->getVyzvyKategorie();
+        $this->operacniProgramyItems = $this->content->getVyzvyOperacniProgramy();
     }
 }

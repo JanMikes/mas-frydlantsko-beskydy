@@ -88,11 +88,13 @@ final class Vyzvy
      */
     public function getPodporeneProjekty(): array
     {
-        return $this->content->getProjektyData(
+        [$data, $_] = $this->content->getProjektyData(
             'Nejnovější',
             $this->categories,
             null,
             null,
         );
+
+        return $data;
     }
 }
