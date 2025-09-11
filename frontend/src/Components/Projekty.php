@@ -13,6 +13,7 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
+use Symfony\UX\LiveComponent\Attribute\PreReRender;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use MASFB\Web\Services\Strapi\StrapiContent;
 use MASFB\Web\Value\Content\Data\ProjektData;
@@ -81,6 +82,7 @@ final class Projekty
     }
 
     #[PreMount]
+    #[PreReRender]
     public function populateData(): void
     {
         [$this->items, $this->paginationMeta] = $this->content->getProjektyData(
