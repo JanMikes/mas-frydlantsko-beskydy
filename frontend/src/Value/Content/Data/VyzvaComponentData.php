@@ -21,7 +21,7 @@ readonly final class VyzvaComponentData
     }
 
     /**
-     * @param array{} $data
+     * @param array{Obory: array<VyzvyKategorieDataArray>} $data
      */
     public static function createFromStrapiResponse(array $data): self
     {

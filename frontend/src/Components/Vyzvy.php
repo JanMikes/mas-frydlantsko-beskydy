@@ -41,9 +41,9 @@ final class Vyzvy
     #[PreReRender]
     public function populate(): void
     {
-        if (($this->data?->Kategorie ?? []) !== []) {
+        if (($this->data?->Kategorie) !== null) {
             $this->categories = array_map(
-                callback: fn (VyzvyKategorieData $data): string => $data->slug,
+                callback: fn (VyzvyKategorieData $data): string => $data->slug ?? '',
                 array: $this->data->Kategorie,
             );
 
