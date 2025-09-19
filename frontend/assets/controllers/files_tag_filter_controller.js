@@ -1,11 +1,20 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = ['filter', 'item'];
+    static targets = ['filter', 'item', 'hiddenTags', 'showMoreButton'];
     static values = { activeTags: Array };
 
     connect() {
         this.activeTagsValue = [];
+
+        // If there are at least 2 filters, activate the first one by default
+        if (this.filterTargets.length >= 2) {
+            const firstFilter = this.filterTargets[0];
+            const firstTagSlug = firstFilter.dataset.tag;
+            this.activeTagsValue = [firstTagSlug];
+            firstFilter.classList.add('active');
+        }
+
         this.updateItems();
     }
 
@@ -25,16 +34,30 @@ export default class extends Controller {
         this.updateItems();
     }
 
+    showMoreTags(event) {
+        event.preventDefault();
+
+        // Show hidden tags
+        if (this.hasHiddenTagsTarget) {
+            this.hiddenTagsTarget.classList.remove('d-none');
+        }
+
+        // Hide the "show more" button
+        if (this.hasShowMoreButtonTarget) {
+            this.showMoreButtonTarget.classList.add('d-none');
+        }
+    }
+
     updateItems() {
         this.itemTargets.forEach(item => {
             const itemTags = item.dataset.tags ? item.dataset.tags.split(',') : [];
-            
+
             if (this.activeTagsValue.length === 0) {
                 item.classList.remove('d-none');
                 item.classList.add('d-block');
             } else {
                 const hasMatchingTag = this.activeTagsValue.some(activeTag => itemTags.includes(activeTag));
-                
+
                 if (hasMatchingTag) {
                     item.classList.remove('d-none');
                     item.classList.add('d-block');
