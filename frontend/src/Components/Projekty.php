@@ -83,7 +83,7 @@ final class Projekty
     #[PostMount]
     public function populateData(): void
     {
-        $kategorie = $this->data?->kategorie?->slug ?? $this->kategorie;
+        $kategorie = $this->data?->kategorie->slug ?? $this->kategorie;
 
         [$this->items, $this->paginationMeta] = $this->content->getProjektyData(
             $this->sortBy,

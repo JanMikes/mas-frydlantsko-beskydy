@@ -18,7 +18,7 @@ readonly final class ProjektyComponentData
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param ProjektyComponentDataArray $data
      */
     public static function createFromStrapiResponse(array $data): self
     {
