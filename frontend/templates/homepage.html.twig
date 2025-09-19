@@ -5,7 +5,7 @@
 {% block content %}
     {% if homepage and homepage.Slider %}
         <div class="carousel-wrapper position-relative">
-            <div id="home-carousel" class="carousel slide carousel-fade">
+            <div id="home-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="7500">
                 <div class="carousel-inner">
                     {% for slide in homepage.Slider %}
                         <div class="carousel-item {% if loop.first %}active{% endif %}" {% if slide.Obrazek %}style="background-image: url('{{ slide.Obrazek.url }}');"{% endif %}>
