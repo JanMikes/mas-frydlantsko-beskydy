@@ -40,6 +40,7 @@ export default class extends Controller {
         // Show hidden tags
         if (this.hasHiddenTagsTarget) {
             this.hiddenTagsTarget.classList.remove('d-none');
+            this.hiddenTagsTarget.classList.add('d-inline-block');
         }
 
         // Hide the "show more" button
