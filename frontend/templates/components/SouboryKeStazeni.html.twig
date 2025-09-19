@@ -15,17 +15,19 @@
 
     <div class="row">
         {% for soubor in data.Soubor %}
-            <div class="d-block {{ data.Pocet_sloupcu == 2 ? 'col-sm-6' : 'col-sm-12' }}"
-                 {% if soubor.Tag %}data-tags="{{ soubor.Tag.slug }}"{% endif %}
-                 data-files-tag-filter-target="item"
-            >
-                <a href="{{ soubor.Soubor.url }}" class="text-decoration-none mt-2" target="_blank">
-                    <i class="bi-file-earmark-image fs-4"></i>
-                    <strong>{{ soubor.Nadpis }}</strong>
-                    <small class="ms-2">({{ soubor.Soubor.size }}kb)</small>
-                    <i class="bi-download"></i>
-                </a>
-            </div>
+            {% if soubor.Soubor %}
+                <div class="d-block {{ data.Pocet_sloupcu == 2 ? 'col-sm-6' : 'col-sm-12' }}"
+                     {% if soubor.Tag %}data-tags="{{ soubor.Tag.slug }}"{% endif %}
+                     data-files-tag-filter-target="item"
+                >
+                    <a href="{{ soubor.Soubor.url }}" class="text-decoration-none mt-2" target="_blank">
+                        <i class="bi-file-earmark-image fs-4"></i>
+                        <strong>{{ soubor.Nadpis }}</strong>
+                        <small class="ms-2">({{ soubor.Soubor.size }}kb)</small>
+                        <i class="bi-download"></i>
+                    </a>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 </div>

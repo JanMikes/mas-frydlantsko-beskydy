@@ -9,7 +9,7 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-import-type TagDataArray from TagData
  * @phpstan-type SouborDataArray array{
  *     Nadpis: string,
- *     Soubor: FileDataArray,
+ *     Soubor: null|FileDataArray,
  *     Tag: null|TagDataArray,
  * }
  */
@@ -20,7 +20,7 @@ readonly final class SouborData
 
     public function __construct(
         public string $Nadpis,
-        public FileData $Soubor,
+        public null|FileData $Soubor,
         public null|TagData $Tag,
     ) {
     }
@@ -32,7 +32,7 @@ readonly final class SouborData
     {
         return new self(
             Nadpis: $data['Nadpis'],
-            Soubor: FileData::createFromStrapiResponse($data['Soubor']),
+            Soubor: $data['Soubor'] !== null ? FileData::createFromStrapiResponse($data['Soubor']) : null,
             Tag: $data['Tag'] !== null ? TagData::createFromStrapiResponse($data['Tag']) : null,
         );
     }
