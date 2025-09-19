@@ -907,7 +907,7 @@ a.project-item:hover {
     margin: -10px -10px 0 -10px;
 }
 
-.navbar-nav {
+.navbar-nav.w-100 {
     margin-right: 120px;
 }
 
