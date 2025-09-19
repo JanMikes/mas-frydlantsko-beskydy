@@ -685,7 +685,12 @@ export interface KomponentyProjekty extends Struct.ComponentSchema {
     displayName: 'Projekty';
     icon: 'briefcase';
   };
-  attributes: {};
+  attributes: {
+    Kategorie: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::vyzvy-obory.vyzvy-obory'
+    >;
+  };
 }
 
 export interface KomponentyRozdelovnik extends Struct.ComponentSchema {

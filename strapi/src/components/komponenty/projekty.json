@@ -5,6 +5,12 @@
     "icon": "briefcase"
   },
   "options": {},
-  "attributes": {},
+  "attributes": {
+    "Kategorie": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::vyzvy-obory.vyzvy-obory"
+    }
+  },
   "config": {}
 }

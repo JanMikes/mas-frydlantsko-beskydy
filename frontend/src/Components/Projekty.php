@@ -13,11 +13,10 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
-use Symfony\UX\LiveComponent\Attribute\PreReRender;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use MASFB\Web\Services\Strapi\StrapiContent;
 use MASFB\Web\Value\Content\Data\ProjektData;
-use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Symfony\UX\TwigComponent\Attribute\PostMount;
 
 #[AsLiveComponent]
 final class Projekty
@@ -25,7 +24,7 @@ final class Projekty
     use DefaultActionTrait;
 
     #[LiveProp(writable: true)]
-    public string $sortBy = 'Nejoblíbenější';
+    public string $sortBy = 'Nejnovější';
 
     #[LiveProp(writable: true)]
     public int $page = 1;
@@ -81,13 +80,14 @@ final class Projekty
         $this->page = $page;
     }
 
-    #[PreMount]
-    #[PreReRender]
+    #[PostMount]
     public function populateData(): void
     {
+        $kategorie = $this->data?->kategorie?->slug ?? $this->kategorie;
+
         [$this->items, $this->paginationMeta] = $this->content->getProjektyData(
             $this->sortBy,
-            $this->kategorie,
+            $kategorie,
             $this->operacniProgram,
             $this->obec,
             start: ($this->page - 1) * 50,

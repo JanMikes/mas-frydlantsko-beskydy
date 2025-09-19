@@ -339,10 +339,6 @@ readonly final class StrapiContent
     {
         $sort = null;
 
-        if ($sortBy === 'Nejoblíbenější') {
-            // TODO?
-        }
-
         if ($sortBy === 'Nejnovější') {
             $sort = ['Zacatek_realizace:desc'];
         }
