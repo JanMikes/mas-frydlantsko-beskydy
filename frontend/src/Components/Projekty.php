@@ -17,6 +17,7 @@ use Symfony\UX\LiveComponent\DefaultActionTrait;
 use MASFB\Web\Services\Strapi\StrapiContent;
 use MASFB\Web\Value\Content\Data\ProjektData;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
+use Symfony\UX\LiveComponent\Attribute\PreReRender;
 
 #[AsLiveComponent]
 final class Projekty
@@ -38,6 +39,7 @@ final class Projekty
     #[LiveProp(writable: true)]
     public null|string $obec = null;
 
+    #[LiveProp(useSerializerForHydration: true)]
     public null|ProjektyComponentData $data = null;
 
     /**
@@ -81,6 +83,7 @@ final class Projekty
     }
 
     #[PostMount]
+    #[PreReRender]
     public function populateData(): void
     {
         $kategorie = $this->data?->kategorie->slug ?? $this->kategorie;
