@@ -474,6 +474,16 @@ footer .colored-footer a:hover {
     font-size: 20px;
 }
 
+.homepage-karty > div {
+    @media (max-width: 992px) {
+        width: 50%;
+    }
+
+    @media (max-width: 576px) {
+        width: 100%;
+    }
+}
+
 .button-style-1 a, button.button-style-1, a.button-style-1 {
     text-decoration: none;
     background: var(--bs-primary);
