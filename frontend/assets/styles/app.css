@@ -565,12 +565,18 @@ footer .colored-footer a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    right: 50%;
+    right: 0;
     bottom: 0;
-    backdrop-filter: blur(17px);
-    -webkit-backdrop-filter: blur(17px);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     background: rgba(0, 0, 0, 0.15);
     pointer-events: none;
+
+    @media (min-width: 992px) {
+        right: 50%;
+        backdrop-filter: blur(17px);
+        -webkit-backdrop-filter: blur(17px);
+    }
 }
 
 .carousel {
