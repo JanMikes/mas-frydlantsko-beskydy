@@ -258,10 +258,13 @@ h1 .heading-border,
 }
 
 .column-karta-s-argumenty {
-    flex: 1 1 calc((100% - 6rem) / 4);
     max-width: 400px;
     border: 1px solid #CCCCCC;
     border-radius: 10px;
+
+    @media (min-width: 768px) {
+        flex: 1 1 calc((100% - 6rem) / 4);
+    }
 }
 
 .column-karta-s-argumenty .button-style-1 {
