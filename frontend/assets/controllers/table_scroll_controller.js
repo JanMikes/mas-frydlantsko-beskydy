@@ -1,100 +1,83 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = ['scrollable'];
+    static targets = ['wrapper', 'container'];
 
     connect() {
-        this.checkScrollable();
-        this.addEventListeners();
-        this.throttledScroll = this.throttle(this.handleScroll.bind(this), 16);
-        this.throttledResize = this.throttle(this.checkScrollable.bind(this), 100);
+        this.checkScrollability();
+        this.addScrollListeners();
 
-        // Debug info
-        console.log('Table scroll controller connected', {
-            element: this.element,
-            scrollableTarget: this.scrollableTarget
-        });
+        // Check scrollability after a short delay to ensure elements are rendered
+        setTimeout(() => {
+            this.checkScrollability();
+        }, 100);
+
+        // Add resize listener to handle window resize
+        this.boundResizeHandler = this.handleResize.bind(this);
+        window.addEventListener('resize', this.boundResizeHandler);
     }
 
     disconnect() {
-        this.removeEventListeners();
+        this.removeScrollListeners();
+        window.removeEventListener('resize', this.boundResizeHandler);
     }
 
-    addEventListeners() {
-        if (this.hasScrollableTarget) {
-            this.scrollableTarget.addEventListener('scroll', this.throttledScroll);
-        }
-        window.addEventListener('resize', this.throttledResize);
-    }
+    checkScrollability() {
+        const container = this.containerTarget;
+        const wrapper = this.wrapperTarget;
+        const isScrollable = container.scrollWidth > container.clientWidth;
 
-    removeEventListeners() {
-        if (this.hasScrollableTarget) {
-            this.scrollableTarget.removeEventListener('scroll', this.throttledScroll);
-        }
-        window.removeEventListener('resize', this.throttledResize);
-    }
-
-    checkScrollable() {
-        if (!this.hasScrollableTarget) return;
-
-        const scrollableElement = this.scrollableTarget;
-        const isScrollable = scrollableElement.scrollWidth > scrollableElement.clientWidth;
-
-        console.log('Checking scrollable:', {
-            scrollWidth: scrollableElement.scrollWidth,
-            clientWidth: scrollableElement.clientWidth,
-            isScrollable
-        });
-
-        this.element.classList.toggle('is-scrollable', isScrollable);
+        // Add or remove scrollable class on wrapper for shadows
+        wrapper.classList.toggle('table-scrollable', isScrollable);
+        // Add class to container for scrollbar styling
+        container.classList.toggle('table-scrollable', isScrollable);
 
         if (isScrollable) {
-            this.updateScrollIndicators();
-        } else {
-            this.element.classList.remove('show-left-shadow', 'show-right-shadow');
-        }
-    }
-
-    handleScroll() {
-        if (this.element.classList.contains('is-scrollable')) {
             this.updateScrollIndicators();
         }
     }
 
     updateScrollIndicators() {
-        if (!this.hasScrollableTarget) return;
+        const container = this.containerTarget;
+        const wrapper = this.wrapperTarget;
+        const scrollLeft = container.scrollLeft;
+        const maxScroll = container.scrollWidth - container.clientWidth;
 
-        const scrollableElement = this.scrollableTarget;
-        const scrollLeft = scrollableElement.scrollLeft;
-        const maxScrollLeft = scrollableElement.scrollWidth - scrollableElement.clientWidth;
+        // Determine if we're at the start, middle, or end
+        const isAtStart = scrollLeft <= 5; // Small threshold for precision
+        const isAtEnd = scrollLeft >= maxScroll - 5;
 
-        // Show left shadow when scrolled away from the start
-        const showLeftShadow = scrollLeft > 5;
-
-        // Show right shadow when there's more content to scroll to the right
-        const showRightShadow = scrollLeft < maxScrollLeft - 5;
-
-        console.log('Updating indicators:', {
-            scrollLeft,
-            maxScrollLeft,
-            showLeftShadow,
-            showRightShadow
-        });
-
-        this.element.classList.toggle('show-left-shadow', showLeftShadow);
-        this.element.classList.toggle('show-right-shadow', showRightShadow);
+        // Update CSS classes on wrapper for shadow positioning
+        // Left shadow: hide only when at start, show everywhere else
+        wrapper.classList.toggle('scroll-at-start', isAtStart);
+        // Right shadow: hide only when at end, show everywhere else
+        wrapper.classList.toggle('scroll-at-end', isAtEnd);
+        // Middle state: when not at start AND not at end
+        wrapper.classList.toggle('scroll-in-middle', !isAtStart && !isAtEnd);
     }
 
-    throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
+    addScrollListeners() {
+        if (this.hasContainerTarget) {
+            this.boundScrollHandler = this.handleScroll.bind(this);
+            this.containerTarget.addEventListener('scroll', this.boundScrollHandler);
         }
+    }
+
+    removeScrollListeners() {
+        if (this.hasContainerTarget && this.boundScrollHandler) {
+            this.containerTarget.removeEventListener('scroll', this.boundScrollHandler);
+        }
+    }
+
+    handleScroll() {
+        this.updateScrollIndicators();
+    }
+
+    handleResize() {
+        // Debounce resize events
+        clearTimeout(this.resizeTimeout);
+        this.resizeTimeout = setTimeout(() => {
+            this.checkScrollability();
+        }, 150);
     }
 }

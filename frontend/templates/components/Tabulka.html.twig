@@ -1,5 +1,6 @@
-<div class="margin-component table-component table-scroll-container" data-controller="table-scroll">
-    <div class="table-responsive" data-table-scroll-table-target="scrollable">
+<div class="margin-component table-component">
+    <div class="table-scroll-wrapper" data-controller="table-scroll" data-table-scroll-target="wrapper">
+        <div class="table-responsive" data-table-scroll-target="container">
         <table class="table table-borderless table-striped">
         <thead>
             <tr>
@@ -48,5 +49,6 @@
             {% endfor %}
         </tbody>
         </table>
+        </div>
     </div>
 </div>

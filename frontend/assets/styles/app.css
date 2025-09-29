@@ -1151,116 +1151,119 @@ b, strong {
     border: 1px solid #ccc;
 }
 
-/* Table scroll indicators */
-.table-responsive {
+.offcanvas {
+    max-width: 90% !important;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(7px);
+    background: rgba(255, 255, 255, .85);
+}
+
+/* Table Scrolling Enhancements */
+.table-component .table-scroll-wrapper {
     position: relative;
+}
+
+.table-component .table-responsive {
     overflow-x: auto;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #9CB523 #f1f1f1; /* Firefox */
 }
 
-/* Fixed overlay shadows that stay at container edges */
-.table-responsive.is-scrollable::before,
-.table-responsive.is-scrollable::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 20px;
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+/* Force scrollbar to always be visible on webkit browsers */
+.table-component .table-responsive.table-scrollable {
+    /* Force scrollbar to always show on macOS */
+    overflow-x: scroll !important;
 }
 
-.table-responsive.is-scrollable::before {
-    left: 0;
-    background: linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 60%, transparent 100%);
-    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+.table-component .table-responsive.table-scrollable::-webkit-scrollbar {
+    height: 12px;
+    background-color: #f1f1f1;
+    border-radius: 6px;
+    -webkit-appearance: none;
 }
 
-.table-responsive.is-scrollable::after {
-    right: 0;
-    background: linear-gradient(to left, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 60%, transparent 100%);
-    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+.table-component .table-responsive.table-scrollable::-webkit-scrollbar:horizontal {
+    height: 12px;
 }
 
-.table-responsive.show-left-shadow::before {
-    opacity: 1;
+.table-component .table-responsive.table-scrollable::-webkit-scrollbar-thumb {
+    background-color: #9CB523;
+    border-radius: 6px;
+    border: 2px solid #f1f1f1;
+    -webkit-appearance: none;
 }
 
-.table-responsive.show-right-shadow::after {
-    opacity: 1;
+.table-component .table-responsive.table-scrollable::-webkit-scrollbar-thumb:hover {
+    background-color: #132F4D;
 }
 
-/* Alternative approach with container-relative positioning */
-.table-scroll-container {
-    position: relative;
-    overflow: hidden;
+/* Force scrollbar to always show */
+.table-component .table-responsive.table-scrollable::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 6px;
+    -webkit-appearance: none;
 }
 
-.table-scroll-container .table-responsive {
-    overflow-x: auto;
-    margin: 0;
-}
-
-.table-scroll-container.is-scrollable::before,
-.table-scroll-container.is-scrollable::after {
+/* Scroll indicators with shadows on wrapper */
+.table-component .table-scroll-wrapper.table-scrollable::before,
+.table-component .table-scroll-wrapper.table-scrollable::after {
     content: '';
     position: absolute;
     top: 0;
     bottom: 0;
     width: 20px;
     pointer-events: none;
-    z-index: 10;
-    opacity: 0;
+    z-index: 2;
     transition: opacity 0.3s ease;
 }
 
-.table-scroll-container.is-scrollable::before {
+/* Left shadow indicator */
+.table-component .table-scroll-wrapper.table-scrollable::before {
     left: 0;
-    background: linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 60%, transparent 100%);
-    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%);
+    opacity: 1; /* Show by default */
 }
 
-.table-scroll-container.is-scrollable::after {
+/* Right shadow indicator */
+.table-component .table-scroll-wrapper.table-scrollable::after {
     right: 0;
-    background: linear-gradient(to left, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 60%, transparent 100%);
-    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, transparent 100%);
+    opacity: 1; /* Show by default */
 }
 
-.table-scroll-container.show-left-shadow::before {
-    opacity: 1;
+/* Hide left shadow only when at start */
+.table-component .table-scroll-wrapper.table-scrollable.scroll-at-start::before {
+    opacity: 0;
 }
 
-.table-scroll-container.show-right-shadow::after {
-    opacity: 1;
+/* Hide right shadow only when at end */
+.table-component .table-scroll-wrapper.table-scrollable.scroll-at-end::after {
+    opacity: 0;
 }
 
-/* Mobile-specific improvements */
+/* Mobile enhancements */
 @media (max-width: 768px) {
-    .table-responsive.is-scrollable::before,
-    .table-responsive.is-scrollable::after,
-    .table-scroll-container.is-scrollable::before,
-    .table-scroll-container.is-scrollable::after {
+    .table-component .table-scroll-wrapper.table-scrollable::before,
+    .table-component .table-scroll-wrapper.table-scrollable::after {
         width: 15px;
+        /* Use same colors as desktop */
     }
 
-    .table-responsive.is-scrollable::before,
-    .table-scroll-container.is-scrollable::before {
-        background: linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 50%, transparent 100%);
-        box-shadow: 2px 0 6px rgba(0,0,0,0.15);
+    .table-component .table-scroll-wrapper.table-scrollable::before {
+        background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, transparent 100%);
     }
 
-    .table-responsive.is-scrollable::after,
-    .table-scroll-container.is-scrollable::after {
-        background: linear-gradient(to left, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 50%, transparent 100%);
-        box-shadow: -2px 0 6px rgba(0,0,0,0.15);
+    .table-component .table-scroll-wrapper.table-scrollable::after {
+        background: linear-gradient(to left, rgba(0,0,0,0.15) 0%, transparent 100%);
     }
-}
 
-.offcanvas {
-    max-width: 90% !important;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(7px);
-    background: rgba(255, 255, 255, .85);
+    /* Force scrollbar to always be visible on mobile */
+    .table-component .table-responsive.table-scrollable::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .table-component .table-responsive {
+        scrollbar-width: auto; /* Firefox - show default width on mobile */
+    }
 }
 
