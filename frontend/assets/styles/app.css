@@ -470,11 +470,20 @@ footer .colored-footer a:hover {
     font-size: 40px;
     display: inline-block;
     margin-bottom: 15px;
+
+    @media (max-width: 992px) {
+        margin-bottom: 0;
+        font-size: 30px;
+    }
 }
 
 .homepage-karty .home-info-text {
     color: var(--bs-secondary);
     font-size: 20px;
+}
+
+.home-info-text p {
+    margin-bottom: 0;
 }
 
 .homepage-karty > div {
