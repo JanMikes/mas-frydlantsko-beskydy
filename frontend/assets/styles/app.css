@@ -1126,3 +1126,7 @@ b, strong {
     background-color: #ffffff !important;
     border-color: #dee2e6 !important;
 }
+
+.actuality-detail {
+    border: 1px solid #ccc;
+}
