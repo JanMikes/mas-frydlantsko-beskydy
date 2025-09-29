@@ -1,5 +1,6 @@
-<div class="margin-component table-component table-responsive" data-controller="table-scroll" data-table-scroll-table-target="table">
-    <table class="table table-borderless table-striped">
+<div class="margin-component table-component table-scroll-container" data-controller="table-scroll">
+    <div class="table-responsive" data-table-scroll-table-target="scrollable">
+        <table class="table table-borderless table-striped">
         <thead>
             <tr>
                 {% if data.Nadpis1 %}
@@ -46,5 +47,6 @@
                 </tr>
             {% endfor %}
         </tbody>
-    </table>
+        </table>
+    </div>
 </div>
