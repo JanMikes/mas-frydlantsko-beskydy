@@ -1,5 +1,5 @@
 <div class="col-sm-6 col-md-4 my-3">
-    <a href="{{ path('detail_projektu', {'slug': projekt.slug}) }}" class="text-decoration-none project-item">
+    <a href="{{ path('detail_projektu', {'slug': projekt.slug}) }}" class="text-decoration-none project-item h-100">
         <img class="img-fluid {{ projekt.Obrazek ? '' : 'placeholder-image' }}" src="{{ projekt.Obrazek ? projekt.Obrazek.url : asset('images/logo-symbol.svg') }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
 
         <div class="project-item-inner p-3">
