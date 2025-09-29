@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_komponenty_nova_komponentas",
+  "info": {
+    "displayName": "Nová komponenta"
+  },
+  "options": {},
+  "attributes": {
+    "Textove_pole": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

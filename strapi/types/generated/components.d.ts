@@ -603,6 +603,16 @@ export interface KomponentyNadpis extends Struct.ComponentSchema {
   };
 }
 
+export interface KomponentyNovaKomponenta extends Struct.ComponentSchema {
+  collectionName: 'components_komponenty_nova_komponentas';
+  info: {
+    displayName: 'Nov\u00E1 komponenta';
+  };
+  attributes: {
+    Textove_pole: Schema.Attribute.String;
+  };
+}
+
 export interface KomponentyObrazek extends Struct.ComponentSchema {
   collectionName: 'components_komponenty_obrazeks';
   info: {
@@ -940,6 +950,7 @@ declare module '@strapi/strapi' {
       'komponenty.karty': KomponentyKarty;
       'komponenty.mapa': KomponentyMapa;
       'komponenty.nadpis': KomponentyNadpis;
+      'komponenty.nova-komponenta': KomponentyNovaKomponenta;
       'komponenty.obrazek': KomponentyObrazek;
       'komponenty.organizace-skolniho-roku': KomponentyOrganizaceSkolnihoRoku;
       'komponenty.pas-karet-s-argumenty': KomponentyPasKaretSArgumenty;

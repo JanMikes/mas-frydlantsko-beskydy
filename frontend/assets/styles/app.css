@@ -652,6 +652,12 @@ footer .colored-footer a:hover {
     border-radius: 15px;
     position: relative;
     text-align: center;
+    transition: all 0.3s ease;
+}
+
+a:hover > .kalendar-akci {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.025);
 }
 
 .kalendar-akci-date {
