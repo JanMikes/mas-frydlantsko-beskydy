@@ -2,14 +2,14 @@
     {% set czechMonths = ['Leden','Únor','Březen','Duben','Květen','Červen','Červenec','Srpen','Září','Říjen','Listopad','Prosinec'] %}
 
     <div class="aktuality-carousel" data-controller="carousel">
-        <div class="carousel-container" data-carousel-target="container">
+        <div class="carousel-container align-items-stretch" data-carousel-target="container">
             {% for akce in this.getItems(data.Kategorie) %}
                 <div class="carousel-item-wrapper" data-carousel-target="item">
                     {% if akce.Aktualita %}
-                        <a href="{{ path('detail_aktuality', {'slug': akce.Aktualita.slug}) }}" class="text-decoration-none">
+                        <a href="{{ path('detail_aktuality', {'slug': akce.Aktualita.slug}) }}" class="text-decoration-none h-100">
                     {% endif %}
 
-                    <div class="kalendar-akci">
+                    <div class="kalendar-akci h-100">
                         <div class="kalendar-akci-image">
                             <img class="img-fluid {{ akce.Fotka ? '' : 'placeholder-image' }}" src="{{ akce.Fotka ? akce.Fotka.url : asset('images/logo-symbol.svg') }}" alt="">
                         </div>
