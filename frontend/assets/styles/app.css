@@ -1130,3 +1130,61 @@ b, strong {
 .actuality-detail {
     border: 1px solid #ccc;
 }
+
+/* Table scroll indicators */
+.table-responsive {
+    position: relative;
+}
+
+.table-responsive.is-scrollable {
+    overflow-x: auto;
+}
+
+.table-responsive.is-scrollable::before,
+.table-responsive.is-scrollable::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.table-responsive.is-scrollable::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255,255,255,0.9), transparent);
+}
+
+.table-responsive.is-scrollable::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
+}
+
+.table-responsive.show-left-shadow::before {
+    opacity: 1;
+    box-shadow: inset 10px 0 8px -8px rgba(0,0,0,0.15);
+}
+
+.table-responsive.show-right-shadow::after {
+    opacity: 1;
+    box-shadow: inset -10px 0 8px -8px rgba(0,0,0,0.15);
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+    .table-responsive.is-scrollable::before,
+    .table-responsive.is-scrollable::after {
+        width: 15px;
+    }
+
+    .table-responsive.is-scrollable::after {
+        background: linear-gradient(to left, rgba(255,255,255,0.95), transparent);
+    }
+
+    .table-responsive.show-right-shadow::after {
+        box-shadow: inset -8px 0 6px -6px rgba(0,0,0,0.2);
+    }
+}
