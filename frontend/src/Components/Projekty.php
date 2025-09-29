@@ -93,7 +93,8 @@ final class Projekty
             $kategorie,
             $this->operacniProgram,
             $this->obec,
-            start: ($this->page - 1) * 50,
+            limit: 12,
+            start: ($this->page - 1) * 12,
         );
 
         $this->obceItems = $this->content->getProjektyObce();

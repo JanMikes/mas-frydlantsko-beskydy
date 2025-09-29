@@ -1164,22 +1164,22 @@ b, strong {
 
 .table-responsive.is-scrollable::before {
     left: 0;
-    background: linear-gradient(to right, rgba(255,255,255,0.9), transparent);
+    background: linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 60%, transparent 100%);
+    box-shadow: inset 10px 0 8px -8px rgba(0,0,0,0.15);
 }
 
 .table-responsive.is-scrollable::after {
     right: 0;
-    background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
+    background: linear-gradient(to left, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 60%, transparent 100%);
+    box-shadow: inset -10px 0 8px -8px rgba(0,0,0,0.15);
 }
 
 .table-responsive.show-left-shadow::before {
     opacity: 1;
-    box-shadow: inset 10px 0 8px -8px rgba(0,0,0,0.15);
 }
 
 .table-responsive.show-right-shadow::after {
     opacity: 1;
-    box-shadow: inset -10px 0 8px -8px rgba(0,0,0,0.15);
 }
 
 /* Mobile-specific improvements */
@@ -1189,11 +1189,13 @@ b, strong {
         width: 15px;
     }
 
-    .table-responsive.is-scrollable::after {
-        background: linear-gradient(to left, rgba(255,255,255,0.95), transparent);
+    .table-responsive.is-scrollable::before {
+        background: linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 50%, transparent 100%);
+        box-shadow: inset 8px 0 6px -6px rgba(0,0,0,0.2);
     }
 
-    .table-responsive.show-right-shadow::after {
+    .table-responsive.is-scrollable::after {
+        background: linear-gradient(to left, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 50%, transparent 100%);
         box-shadow: inset -8px 0 6px -6px rgba(0,0,0,0.2);
     }
 }

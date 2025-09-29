@@ -46,8 +46,11 @@ export default class extends Controller {
         const scrollLeft = this.element.scrollLeft;
         const maxScrollLeft = this.element.scrollWidth - this.element.clientWidth;
 
-        const showLeftShadow = scrollLeft > 10;
-        const showRightShadow = scrollLeft < maxScrollLeft - 10;
+        // Show left shadow when scrolled away from the start
+        const showLeftShadow = scrollLeft > 5;
+
+        // Show right shadow when there's more content to scroll to the right
+        const showRightShadow = scrollLeft < maxScrollLeft - 5;
 
         this.element.classList.toggle('show-left-shadow', showLeftShadow);
         this.element.classList.toggle('show-right-shadow', showRightShadow);
