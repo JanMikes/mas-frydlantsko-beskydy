@@ -528,6 +528,11 @@ footer .colored-footer a:hover {
     text-transform: uppercase;
     font-size: 13px;
     transition: all 0.3s ease;
+
+    @media (max-width: 992px) {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
 }
 
 .button-style-filter.button-style-filter-inverse {

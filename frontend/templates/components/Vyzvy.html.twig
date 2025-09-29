@@ -4,12 +4,12 @@
             <div class="mb-3">
                 <p class="mb-2">Filtrovat podle kategorie:</p>
 
-                <button type="button" class="button-style-filter me-2 mb-2 {{ categories|length == 0 ? 'active' : '' }}" data-action="live#action" data-live-action-param="clearFilters">
+                <button type="button" class="button-style-filter me-1 me-md-2 mb-1 mb-md-2 {{ categories|length == 0 ? 'active' : '' }}" data-action="live#action" data-live-action-param="clearFilters">
                     Všechny
                 </button>
 
                 {% for kategorieItem in computed.getKategorieItems() %}
-                    <button type="button" class="button-style-filter me-2 mb-2 {{ kategorieItem.slug in categories ? 'active' : '' }}" data-action="live#action" data-live-action-param="toggleCategory" data-live-category-slug-param="{{ kategorieItem.slug }}">
+                    <button type="button" class="button-style-filter me-1 me-md-2 mb-1 mb-md-2 {{ kategorieItem.slug in categories ? 'active' : '' }}" data-action="live#action" data-live-action-param="toggleCategory" data-live-category-slug-param="{{ kategorieItem.slug }}">
                         {{ kategorieItem.Nazev }}
                     </button>
                 {% endfor %}
@@ -27,7 +27,7 @@
         <div class="d-block">
             {% if vyzva.Nazev %}
                 <div class="rozjizdeci-obsah-nadpis mb-0 collapse-toggle d-flex align-items-center justify-content-between collapsed w-100 rozjizdeci-obsah-nadpis-style-2" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}" style="cursor: pointer;">
-                    <h4 class="h5 mb-0">{{ vyzva.Nazev }}</h4>
+                    <h4 class="h6 mb-0">{{ vyzva.Nazev }}</h4>
                     <i class="bi bi-chevron-down"></i>
                 </div>
             {% endif %}
