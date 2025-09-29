@@ -18,7 +18,7 @@
         <h1 class="mb-3 mb-lg-5"><span class="heading-border">{{ sekce.Nazev }}</span></h1>
 
         <div class="row gx-lg-5">
-            <div class="{{ sekce.Komponenty_panel ? 'col-lg-8' : 'col-lg-12' }}">
+            <div class="{{ sekce.Komponenty_panel ? 'col-lg-8' : 'col-lg-12 mx-auto' }}" style="{{ sekce.Komponenty_panel ? '' : 'max-width: 900px;' }}">
                 <div class="section-content-wrapper">
                     {% for komponenta in sekce.Komponenty %}
                         {{ component(komponenta.type, {
