@@ -1188,3 +1188,11 @@ b, strong {
         box-shadow: inset -8px 0 6px -6px rgba(0,0,0,0.2);
     }
 }
+
+.offcanvas {
+    max-width: 90% !important;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(7px);
+    background: rgba(255, 255, 255, .85);
+}
+
