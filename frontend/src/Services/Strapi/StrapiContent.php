@@ -285,7 +285,7 @@ readonly final class StrapiContent
             populateLevel: 5,
             filters: $filters,
             sort: [
-                'Datum:desc'
+                'Datum:asc'
             ],
         );
 
