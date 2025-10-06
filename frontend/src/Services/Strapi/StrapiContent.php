@@ -271,9 +271,22 @@ readonly final class StrapiContent
      */
     public function getKalendarAkciData(): array
     {
+        $now = $this->clock->now();
+
+        $filters = [
+            '$or' => [
+                ['Datum' => ['$null' => true]],
+                ['Datum' => ['$gte' => $now->format('Y-m-d')]],
+            ],
+        ];
+
         /** @var array{data: array<KalendarAkciDataArray>} $strapiResponse */
         $strapiResponse = $this->strapiClient->getApiResource('kalendar-akcis',
             populateLevel: 5,
+            filters: $filters,
+            sort: [
+                'Datum:desc'
+            ],
         );
 
         return KalendarAkciData::createManyFromStrapiResponse(
