@@ -10,12 +10,31 @@ namespace MASFB\Web\Value\Content\Data;
 readonly final class RozjizdeciObsahyComponentData
 {
     /**
+     * @var array<TagData>
+     */
+    public array $Tagy;
+
+    /**
      * @param array<RozjizdeciObsahData> $Polozky
      */
     public function __construct(
         public array $Polozky,
         public string $Styl,
-    ) {}
+    ) {
+        $tags = [];
+        $existingTags = [];
+
+        foreach ($this->Polozky as $polozka) {
+            foreach ($polozka->Tagy as $tag) {
+                if (!in_array($tag->slug, $existingTags, true)) {
+                    $tags[] = $tag;
+                    $existingTags[] = $tag->slug;
+                }
+            }
+        }
+
+        $this->Tagy = $tags;
+    }
 
     /**
      * @param array{

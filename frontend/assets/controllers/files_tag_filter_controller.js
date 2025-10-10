@@ -2,13 +2,16 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     static targets = ['filter', 'item', 'hiddenTags', 'showMoreButton'];
-    static values = { activeTags: Array };
+    static values = {
+        activeTags: Array,
+        autoSelectFirst: { type: Boolean, default: true }
+    };
 
     connect() {
         this.activeTagsValue = [];
 
-        // If there are at least 2 filters, activate the first one by default
-        if (this.filterTargets.length >= 2) {
+        // If there are at least 2 filters and autoSelectFirst is enabled, activate the first one by default
+        if (this.autoSelectFirstValue && this.filterTargets.length >= 2) {
             const firstFilter = this.filterTargets[0];
             const firstTagSlug = firstFilter.dataset.tag;
             this.activeTagsValue = [firstTagSlug];
