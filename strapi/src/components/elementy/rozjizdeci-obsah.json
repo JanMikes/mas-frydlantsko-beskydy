@@ -33,6 +33,11 @@
       "type": "component",
       "component": "elementy.tlacitko",
       "repeatable": false
+    },
+    "Tagy": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tagy.tagy"
     }
   },
   "config": {}
