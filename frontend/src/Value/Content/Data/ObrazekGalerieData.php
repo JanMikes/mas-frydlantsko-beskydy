@@ -17,7 +17,7 @@ readonly final class ObrazekGalerieData
     use CanCreateManyFromStrapiResponse;
 
     public function __construct(
-        public ImageData $Obrazek,
+        public null|ImageData $Obrazek,
         public null|string $Popis,
     ) {
     }
@@ -28,7 +28,7 @@ readonly final class ObrazekGalerieData
     public static function createFromStrapiResponse(array $data): self
     {
         return new self(
-            ImageData::createFromStrapiResponse($data['Obrazek']),
+            $data['Obrazek'] !== null ? ImageData::createFromStrapiResponse($data['Obrazek']) : null,
             $data['Popis'],
         );
     }

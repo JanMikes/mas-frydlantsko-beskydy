@@ -40,13 +40,16 @@
 
     {% for item in data.Polozky %}
         {% set collapseId = 'rozjizdeci-obsah-' ~ loop.index ~ '-' ~ random(1000000) %}
+        {% set hasContent = item.hasCollapsibleContent() %}
 
         <div {% if item.Tagy %}data-tags="{{ item.Tagy|map(t => t.slug)|join(',') }}"{% endif %}
              data-files-tag-filter-target="item">
             {% if item.Nadpis %}
-                <div class="rozjizdeci-obsah-nadpis mb-0 collapse-toggle d-flex align-items-center justify-content-between collapsed w-100 {{ data.Styl == 'Styl 2' ? 'rozjizdeci-obsah-nadpis-style-2' }}" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}" style="cursor: pointer;">
+                <div class="rozjizdeci-obsah-nadpis mb-0 {{ hasContent ? 'collapse-toggle collapsed' : '' }} d-flex align-items-center justify-content-between w-100 {{ data.Styl == 'Styl 2' ? 'rozjizdeci-obsah-nadpis-style-2' }}" {% if hasContent %}data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}" style="cursor: pointer;"{% endif %}>
                     <h4 class="h6 mb-0">{{ item.Nadpis }}</h4>
-                    <i class="bi bi-chevron-down"></i>
+                    {% if hasContent %}
+                        <i class="bi bi-chevron-down"></i>
+                    {% endif %}
                 </div>
             {% endif %}
 

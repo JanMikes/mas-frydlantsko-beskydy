@@ -40,6 +40,15 @@ readonly final class RozjizdeciObsahData
     ) {
     }
 
+    public function hasCollapsibleContent(): bool
+    {
+        return $this->Text !== null
+            || $this->Lide !== null
+            || $this->Dokumenty !== null
+            || $this->Vyzva !== null
+            || $this->Tlacitko !== null;
+    }
+
     /**
      * @param RozjizdeciObsahDataArray $data
      */
@@ -52,14 +61,14 @@ readonly final class RozjizdeciObsahData
             Text: $data['Text'] === null
                 ? null
                 : RozjizdeciObsahTextData::createFromStrapiResponse($data['Text']),
-            Lide: $data['Lide'] === null 
-                ? null 
+            Lide: $data['Lide'] === null
+                ? null
                 : SamospravaComponentData::createFromStrapiResponse($data['Lide']),
-            Dokumenty: $data['Dokumenty'] === null 
-                ? null 
+            Dokumenty: $data['Dokumenty'] === null
+                ? null
                 : SouboryKeStazeniComponentData::createFromStrapiResponse($data['Dokumenty']),
-            Vyzva: $data['Vyzva'] === null 
-                ? null 
+            Vyzva: $data['Vyzva'] === null
+                ? null
                 : VyzvaData::createFromStrapiResponse($data['Vyzva']),
             Tlacitko: $data['Tlacitko'] === null
                 ? null

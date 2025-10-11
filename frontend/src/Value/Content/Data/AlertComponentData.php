@@ -6,13 +6,13 @@ namespace MASFB\Web\Value\Content\Data;
 
 /**
  * @phpstan-type AlertDataArray array{
- *     Text: string,
+ *     Text: null|string,
  * }
  */
 readonly final class AlertComponentData
 {
     public function __construct(
-        public string $Text,
+        public null|string $Text,
     ) {}
 
     /**
