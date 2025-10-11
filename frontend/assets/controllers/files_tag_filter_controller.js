@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = ['filter', 'item', 'hiddenTags', 'showMoreButton'];
+    static targets = ['filter', 'item', 'hiddenTags', 'showMoreButton', 'allButton', 'clearFiltersLink'];
     static values = {
         activeTags: Array,
         autoSelectFirst: { type: Boolean, default: true }
@@ -10,12 +10,22 @@ export default class extends Controller {
     connect() {
         this.activeTagsValue = [];
 
+        // If autoSelectFirst is disabled, activate the "Všechny" button by default
+        if (!this.autoSelectFirstValue) {
+            if (this.hasAllButtonTarget) {
+                this.allButtonTarget.classList.add('active');
+            }
+        }
         // If there are at least 2 filters and autoSelectFirst is enabled, activate the first one by default
-        if (this.autoSelectFirstValue && this.filterTargets.length >= 2) {
+        else if (this.autoSelectFirstValue && this.filterTargets.length >= 2) {
             const firstFilter = this.filterTargets[0];
             const firstTagSlug = firstFilter.dataset.tag;
             this.activeTagsValue = [firstTagSlug];
             firstFilter.classList.add('active');
+        }
+        // Otherwise, activate "Všechny" button
+        else if (this.hasAllButtonTarget) {
+            this.allButtonTarget.classList.add('active');
         }
 
         this.updateItems();
@@ -29,9 +39,38 @@ export default class extends Controller {
         if (this.activeTagsValue.includes(tagSlug)) {
             this.activeTagsValue = this.activeTagsValue.filter(tag => tag !== tagSlug);
             button.classList.remove('active');
+
+            // If no filters are active, activate "Všechny" button
+            if (this.activeTagsValue.length === 0 && this.hasAllButtonTarget) {
+                this.allButtonTarget.classList.add('active');
+            }
         } else {
             this.activeTagsValue = [...this.activeTagsValue, tagSlug];
             button.classList.add('active');
+
+            // Deactivate "Všechny" button when any filter is selected
+            if (this.hasAllButtonTarget) {
+                this.allButtonTarget.classList.remove('active');
+            }
+        }
+
+        this.updateItems();
+    }
+
+    clearFilters(event) {
+        event.preventDefault();
+
+        // Deactivate all filter buttons
+        this.filterTargets.forEach(button => {
+            button.classList.remove('active');
+        });
+
+        // Clear active tags
+        this.activeTagsValue = [];
+
+        // Activate "Všechny" button
+        if (this.hasAllButtonTarget) {
+            this.allButtonTarget.classList.add('active');
         }
 
         this.updateItems();
@@ -71,5 +110,14 @@ export default class extends Controller {
                 }
             }
         });
+
+        // Show/hide clear filters link based on active filters
+        if (this.hasClearFiltersLinkTarget) {
+            if (this.activeTagsValue.length > 0) {
+                this.clearFiltersLinkTarget.classList.remove('d-none');
+            } else {
+                this.clearFiltersLinkTarget.classList.add('d-none');
+            }
+        }
     }
 }

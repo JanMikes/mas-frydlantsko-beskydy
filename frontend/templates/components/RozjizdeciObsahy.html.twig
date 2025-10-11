@@ -1,6 +1,12 @@
 <div class="rozjizdeci-obsahy-component margin-component" data-controller="files-tag-filter" data-files-tag-filter-auto-select-first-value="false">
     {% if data.Tagy|length > 1 %}
         <div class="mb-3">
+            <button type="button"
+                    class="button-style-filter me-2 mb-2"
+                    data-files-tag-filter-target="allButton"
+                    data-action="click->files-tag-filter#clearFilters">
+                Všechny
+            </button>
             {% for tag in data.Tagy %}
                 {% if loop.index <= 5 %}
                     <button type="button"
@@ -35,6 +41,13 @@
                     <i class="bi bi-plus-circle"></i> Více
                 </button>
             {% endif %}
+
+            <a href="#"
+               class="d-none ms-2 small text-decoration-underline"
+               data-files-tag-filter-target="clearFiltersLink"
+               data-action="click->files-tag-filter#clearFilters">
+                zrušit filtrování
+            </a>
         </div>
     {% endif %}
 
