@@ -88,6 +88,7 @@ final class Vyzvy
      */
     public function getPodporeneProjekty(): array
     {
+
         [$data, $_] = $this->content->getProjektyData(
             'Nejnovější',
             $this->categories,
@@ -95,6 +96,7 @@ final class Vyzvy
             null,
         );
 
-        return $data;
+        // Currently disabled
+        return []; // return $data;
     }
 }
