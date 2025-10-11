@@ -48,5 +48,9 @@
   "Calendar.day.short.thursday": "Čt",
   "Calendar.day.short.friday": "Pá",
   "Calendar.day.short.saturday": "So",
-  "Calendar.day.short.sunday": "Ne"
+  "Calendar.day.short.sunday": "Ne",
+  "app.components.ToggleCheckbox.on-label": "Ano",
+  "app.components.ToggleCheckbox.off-label": "Ne",
+  "true": "Ano",
+  "false": "Ne"
 }

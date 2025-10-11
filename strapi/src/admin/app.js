@@ -7,6 +7,11 @@ export default {
         'global.dateFormat': 'd.M.yyyy',
         'global.timeFormat': 'HH:mm',
         'global.dateTimeFormat': 'd.M.yyyy HH:mm',
+        // Boolean translations
+        'app.components.ToggleCheckbox.on-label': 'Ano',
+        'app.components.ToggleCheckbox.off-label': 'Ne',
+        'true': 'Ano',
+        'false': 'Ne',
       },
     },
   },
