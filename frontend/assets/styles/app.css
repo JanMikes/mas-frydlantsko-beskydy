@@ -1267,3 +1267,6 @@ b, strong {
     }
 }
 
+th, td {
+    font-size: 14px;
+}
