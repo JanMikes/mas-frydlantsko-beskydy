@@ -33,6 +33,25 @@ readonly final class RozjizdeciObsahyComponentData
             }
         }
 
+        // Sort tags: numeric descending (2025, 2024...), then alphabetic ascending (A, B...)
+        usort($tags, static function (TagData $a, TagData $b): int {
+            $aIsNumeric = is_numeric($a->slug);
+            $bIsNumeric = is_numeric($b->slug);
+
+            // Both numeric - sort descending (newest first)
+            if ($aIsNumeric && $bIsNumeric) {
+                return (int) $b->slug <=> (int) $a->slug;
+            }
+
+            // Both non-numeric - sort alphabetically ascending
+            if (!$aIsNumeric && !$bIsNumeric) {
+                return $a->slug <=> $b->slug;
+            }
+
+            // Mixed - numeric comes before non-numeric
+            return $aIsNumeric ? -1 : 1;
+        });
+
         $this->Tagy = $tags;
     }
 
