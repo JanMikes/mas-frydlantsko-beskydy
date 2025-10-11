@@ -7,7 +7,7 @@ namespace MASFB\Web\Value\Content\Data;
 /**
  * @phpstan-import-type ImageDataArray from ImageData
  * @phpstan-type ObrazekGalerieDataArray array{
- *     Obrazek: ImageDataArray,
+ *     Obrazek: null|ImageDataArray,
  *     Popis: null|string,
  * }
  */

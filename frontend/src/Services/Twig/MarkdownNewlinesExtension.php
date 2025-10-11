@@ -22,8 +22,8 @@ final class MarkdownNewlinesExtension extends AbstractExtension
 
     public function formatNewlines(string $text): Markup
     {
-        // Remove \n that immediately follow a closing HTML tag
-        $formatted = preg_replace('/(<\/[^>]+>)\n/', '$1', $text);
+        // Remove \n that immediately follow a closing block-level HTML tag
+        $formatted = preg_replace('/(<\/(ul|ol|li|p|div|h[1-6]|blockquote|table|tr|td|th)>)\n/', '$1', $text);
         $formatted = str_replace("\n", "<br>", $formatted ?? '');
 
         // Remove <br> that immediately follow <ul> or <li>
