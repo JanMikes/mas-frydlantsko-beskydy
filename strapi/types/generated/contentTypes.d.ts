@@ -887,6 +887,10 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
       'api::projekty-obec.projekty-obec'
     >;
     Obrazek: Schema.Attribute.Media<'images'>;
+    Operacni_program: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::projekty-operacni-program.projekty-operacni-program'
+    >;
     Prijemce_dotace: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
