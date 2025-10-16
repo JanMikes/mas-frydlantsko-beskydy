@@ -9,6 +9,7 @@ use DateTimeImmutable;
 /**
  * @phpstan-import-type ImageDataArray from ImageData
  * @phpstan-import-type VyzvyKategorieDataArray from VyzvyKategorieData
+ * @phpstan-import-type VyzvyOperacniProgramDataArray from VyzvyOperacniProgramData
  * @phpstan-import-type ProjektyObecDataArray from ProjektyObecData
  * @phpstan-import-type VyzvaDataArray from VyzvaData
  * @phpstan-import-type GalerieComponentDataArray from GalerieComponentData
@@ -16,6 +17,7 @@ use DateTimeImmutable;
  *      Nazev: null|string,
  *      slug: null|string,
  *      Vyzva: null|VyzvaDataArray,
+ *      Operacni_program: null|VyzvyOperacniProgramDataArray,
  *      Obec: null|ProjektyObecDataArray,
  *      Kategorie: array<VyzvyKategorieDataArray>,
  *      Prijemce_dotace: null|string,
@@ -41,6 +43,7 @@ readonly final class ProjektData
         public null|string $Nazev,
         public null|string $slug,
         public null|VyzvaData $Vyzva,
+        public null|VyzvyOperacniProgramData $OperacniProgram,
         public null|ProjektyObecData $Obec,
         public array $Kategorie,
         public null|string $PrijemceDotace,
@@ -61,6 +64,7 @@ readonly final class ProjektData
         $obrazek = $data['Obrazek'] !== null ? ImageData::createFromStrapiResponse($data['Obrazek']) : null;
         $vyzva = $data['Vyzva'] !== null ? VyzvaData::createFromStrapiResponse($data['Vyzva']) : null;
         $obec = $data['Obec'] !== null ? ProjektyObecData::createFromStrapiResponse($data['Obec']) : null;
+        $operacniProgram = $data['Operacni_program'] !== null ? VyzvyOperacniProgramData::createFromStrapiResponse($data['Operacni_program']) : null;
 
         /** @phpstan-ignore-next-line */
         $souvisejiciProjekty = self::createManyFromStrapiResponse($data['Souvisejici_projekty'] ?? []);
@@ -69,6 +73,7 @@ readonly final class ProjektData
             Nazev: $data['Nazev'],
             slug: $data['slug'],
             Vyzva: $vyzva,
+            OperacniProgram: $operacniProgram,
             Obec: $obec,
             Kategorie: VyzvyKategorieData::createManyFromStrapiResponse($data['Kategorie']),
             PrijemceDotace: $data['Prijemce_dotace'],

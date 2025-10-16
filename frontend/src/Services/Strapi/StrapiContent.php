@@ -375,7 +375,10 @@ readonly final class StrapiContent
         }
 
         if (($operacniProgramFilter ?? '') !== '') {
-            $filters['Vyzva'] = ['Operacni_program' => ['slug' => ['$eqi' => $operacniProgramFilter ]]];
+            $filters['$or'] = [
+                ['Vyzva' => ['Operacni_program' => ['slug' => ['$eqi' => $operacniProgramFilter]]]],
+                ['Operacni_program' => ['slug' => ['$eqi' => $operacniProgramFilter]]],
+            ];
         }
 
         if (($obecFilter ?? '') !== '') {
