@@ -88,10 +88,12 @@ readonly final class StrapiContent
             ];
         }
 
-        $filters = [
-            'Zobrazovat' => ['$eq' => true],
+        if ($tag === null) {
+            $filters = [
+                'Zobrazovat' => ['$eq' => true],
 
-        ];
+            ];
+        }
 
         if (is_string($tag)) {
            $filters['tags'] = ['slug' => ['$eqi' => $tag]];
