@@ -14,19 +14,17 @@
         <h1 class="mb-3 mb-lg-5"><span class="heading-border">{{ projekt.Nazev }}</span></h1>
 
         <div class="project-grid mb-4">
-            {% if projekt.Vyzva or projekt.OperacniProgram %}
-                <div class="cell d-flex">
-                    <img src="{{ asset('images/icon-operacni-program.svg') }}" alt="Operační program" class="me-3">
-                    <div>
-                        <strong>Operační program</strong><br>
-                        {% if projekt.Vyzva %}
-                            {{ projekt.Vyzva.OperacniProgram.Nazev }}
-                        {% else %}
-                            {{ projekt.OperacniProgram.Nazev }}
-                        {% endif %}
-                    </div>
+            <div class="cell d-flex">
+                <img src="{{ asset('images/icon-operacni-program.svg') }}" alt="Operační program" class="me-3">
+                <div>
+                    <strong>Operační program</strong><br>
+                    {% if projekt.Vyzva %}
+                        {{ projekt.Vyzva.OperacniProgram.Nazev }}
+                    {% elseif projekt.OperacniProgram %}
+                        {{ projekt.OperacniProgram.Nazev }}
+                    {% endif %}
                 </div>
-            {% endif %}
+            </div>
             <div class="cell d-flex">
                 <img src="{{ asset('images/icon-prijemce-dotace.svg') }}" alt="Příjemce dotace" class="me-3">
                 <div>
