@@ -9,6 +9,7 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-type FooterDataArray array{
  *     Odkazy_sluzby: array<OdkazSTextemDataArray>,
  *     Odkazy_vyzvy: array<OdkazSTextemDataArray>,
+ *     Kontakt: null|string,
  *  }
  */
 readonly final class FooterData
@@ -20,6 +21,7 @@ readonly final class FooterData
     public function __construct(
         public array $OdkazySluzby,
         public array $OdkazyVyzvy,
+        public null|string $Kontakt,
     ) {}
 
     /**
@@ -30,6 +32,7 @@ readonly final class FooterData
         return new self(
             OdkazySluzby: OdkazSTextemData::createManyFromStrapiResponse($data['Odkazy_sluzby']),
             OdkazyVyzvy: OdkazSTextemData::createManyFromStrapiResponse($data['Odkazy_vyzvy']),
+            Kontakt: $data['Kontakt'],
         );
     }
 }

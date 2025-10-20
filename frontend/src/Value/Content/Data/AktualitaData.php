@@ -57,11 +57,11 @@ readonly final class AktualitaData
     public static function createFromStrapiResponse(array $data): self
     {
         $datumZverejneni = new DateTimeImmutable($data['Datum_zverejneni']);
-        $tags = TagData::createManyFromStrapiResponse($data['tags']);
+        $tags = TagData::createManyFromStrapiResponse($data['tags'] ?? []);
         $zverejnil = $data['Zverejnil'] !== null ? ClovekData::createFromStrapiResponse($data['Zverejnil']) : null;
         $soubory = FileData::createManyFromStrapiResponse($data['Soubory'] ?? []);
         $galerie = ImageData::createManyFromStrapiResponse($data['Galerie'] ?? []);
-        $obrazek = $data['Obrazek'] !== null ? ImageData::createFromStrapiResponse($data['Obrazek']) : null;
+        $obrazek = ($data['Obrazek'] ?? null) !== null ? ImageData::createFromStrapiResponse($data['Obrazek']) : null;
 
         /** @phpstan-ignore-next-line */
         $souvisejiciAktuality = self::createManyFromStrapiResponse($data['Souvisejici_aktuality'] ?? []);

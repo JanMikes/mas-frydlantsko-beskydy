@@ -20,6 +20,9 @@
       "type": "component",
       "component": "elementy.odkaz-s-textem",
       "repeatable": true
+    },
+    "Kontakt": {
+      "type": "richtext"
     }
   }
 }

@@ -45,7 +45,7 @@ readonly final class ClovekData
             $data['Email'],
             $data['Telefon'],
             $data['Pohlavi'],
-            $data['Fotka'] !== null ? ImageData::createFromStrapiResponse($data['Fotka']) : null,
+            ($data['Fotka'] ?? null) !== null ? ImageData::createFromStrapiResponse($data['Fotka']) : null,
         );
     }
 }
