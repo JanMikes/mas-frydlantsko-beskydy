@@ -21,7 +21,7 @@ use DateTimeImmutable;
  *      Obrazek: null|ImageDataArray,
  *      Galerie: null|array<ImageDataArray>,
  *      Zverejnil: null|ClovekDataArray,
- *      tags: array<TagDataArray>,
+ *      tags?: array<TagDataArray>,
  *      Soubory: null|array<FileDataArray>,
  *      Souvisejici_aktuality: array<mixed>,
  *  }
