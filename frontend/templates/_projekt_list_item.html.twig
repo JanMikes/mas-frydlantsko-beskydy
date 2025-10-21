@@ -11,6 +11,22 @@
                 </p>
             {% endif %}
 
+            {% if projekt.ZacatekRealizace or projekt.DokonceniRealizace %}
+                <p class="small text-secondary mb-1 mt-0">
+                    {% if projekt.ZacatekRealizace and projekt.DokonceniRealizace %}
+                        {% if projekt.ZacatekRealizace|date('Y') == projekt.DokonceniRealizace|date('Y') %}
+                            {{ projekt.ZacatekRealizace|date('d.m.') }} - {{ projekt.DokonceniRealizace|date('d.m.Y') }}
+                        {% else %}
+                            {{ projekt.ZacatekRealizace|date('d.m.Y') }} - {{ projekt.DokonceniRealizace|date('d.m.Y') }}
+                        {% endif %}
+                    {% elseif projekt.ZacatekRealizace %}
+                        {{ projekt.ZacatekRealizace|date('d.m.Y') }}
+                    {% elseif projekt.DokonceniRealizace %}
+                        {{ projekt.DokonceniRealizace|date('d.m.Y') }}
+                    {% endif %}
+                </p>
+            {% endif %}
+
             <h3 class="h6 m-0" id="projekt-{{ projekt.slug }}">{{ projekt.Nazev }}</h3>
         </div>
     </a>
