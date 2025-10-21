@@ -21,8 +21,8 @@ use DateTimeImmutable;
  *     Fotka: null|ImageDataArray,
  *     Fotka_detail: null|ImageDataArray,
  *     Video_youtube: null|string,
- *     Galerie: null|array<GalerieComponentDataArray>,
- *     Tagy: array<TagDataArray>,
+ *     Galerie: null|GalerieComponentDataArray,
+ *     Tagy?: array<TagDataArray>,
  *     Dokumenty: null|SouboryKeStazeniComponentDataArray,
  * }
  */
@@ -33,7 +33,6 @@ readonly final class KalendarAkciData
 
     /**
      * @param array<TagData> $Tagy
-     * @param array<FileData> $Dokumenty
      */
     public function __construct(
         public null|DateTimeImmutable $Datum,
