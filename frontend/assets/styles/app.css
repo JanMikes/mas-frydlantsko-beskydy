@@ -904,62 +904,33 @@ a.project-item:hover {
 
 .project-grid {
     display: grid;
-    /* Default: 2x2 grid when 4 cells */
     grid-template-columns: repeat(2, 1fr);
     border: 1px solid #ccc;
     border-radius: 10px;
 }
 
-/* When 5 cells present: 2-3 layout */
-.project-grid {
-    /* 6 equal tracks: lets us do 50% (3/6) and 33% (2/6) */
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-template-areas:
-    "a a a b b b"
-    "c c c d d d";
-}
-
-/* When 5 cells present: 2-3 layout */
-.project-grid:has(.cell:nth-child(5)) {
-    /* 6 equal tracks: lets us do 50% (3/6) and 33% (2/6) */
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-template-areas:
-    "a a a b b b"
-    "c c d d e e";
-}
-
-.project-grid:has(.cell:nth-child(5)) > .cell:nth-child(1) { grid-area: a; }
-.project-grid:has(.cell:nth-child(5)) > .cell:nth-child(2) { grid-area: b; }
-.project-grid:has(.cell:nth-child(5)) > .cell:nth-child(3) { grid-area: c; }
-.project-grid:has(.cell:nth-child(5)) > .cell:nth-child(4) { grid-area: d; }
-.project-grid:has(.cell:nth-child(5)) > .cell:nth-child(5) { grid-area: e; }
-
 .project-grid .cell {
-    border: 1px solid #ccc; /* inner borders */
+    border: none;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     padding: 0.75rem;
     box-sizing: border-box;
 }
 
-/* place cells */
-.project-grid .cell:nth-child(1) { grid-area: a;border-bottom: 0;border-right: 0; } /* 50% */
-.project-grid .cell:nth-child(2) { grid-area: b;border-bottom: 0; } /* 50% */
-.project-grid .cell:nth-child(3) { grid-area: c;border-right: 0; } /* 33% */
-.project-grid .cell:nth-child(4) { grid-area: d;border-right: 0; } /* 33% */
-.project-grid .cell:nth-child(5) { grid-area: e; } /* 33% */
+/* Remove right border from right column (even children) */
+.project-grid .cell:nth-child(even) {
+    border-right: none;
+}
 
-/* OPTIONAL: keep only one outer border (no double edge lines) */
-.project-grid .cell:nth-child(1),
-.project-grid .cell:nth-child(2) { border-top: none; }
+/* Remove bottom border from last row */
+.project-grid .cell:last-child {
+    border-bottom: none;
+}
 
-.project-grid .cell:nth-child(3),
-.project-grid .cell:nth-child(4),
-.project-grid .cell:nth-child(5) { border-bottom: none; }
-
-.project-grid .cell:nth-child(1),
-.project-grid .cell:nth-child(3) { border-left: none; }
-
-.project-grid .cell:nth-child(2),
-.project-grid .cell:nth-child(5) { border-right: none; }
+/* If last child is even (full last row with 2 cells), also remove bottom from previous cell */
+.project-grid:has(.cell:last-child:nth-child(even)) .cell:nth-last-child(2) {
+    border-bottom: none;
+}
 
 /* Horizontal Scrolling Carousel */
 .aktuality-carousel {
