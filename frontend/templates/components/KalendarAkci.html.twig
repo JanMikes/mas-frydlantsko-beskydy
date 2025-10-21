@@ -5,9 +5,6 @@
         <div class="carousel-container align-items-stretch" data-carousel-target="container">
             {% for akce in this.getItems(data.Kategorie) %}
                 <div class="carousel-item-wrapper" data-carousel-target="item">
-                    {% if akce.Aktualita %}
-                        <a href="{{ path('detail_aktuality', {'slug': akce.Aktualita.slug}) }}" class="text-decoration-none h-100">
-                    {% endif %}
 
                     <div class="kalendar-akci h-100">
                         <div class="kalendar-akci-image">
@@ -40,9 +37,6 @@
                         </div>
                     </div>
 
-                    {% if akce.Aktualita %}
-                        </a>
-                    {% endif %}
                 </div>
             {% endfor %}
         </div>

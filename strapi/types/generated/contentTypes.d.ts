@@ -696,10 +696,6 @@ export interface ApiKalendarAkciKalendarAkci
     draftAndPublish: false;
   };
   attributes: {
-    Aktualita: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::aktuality.aktuality'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

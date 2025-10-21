@@ -23,11 +23,6 @@
     "Poradatel": {
       "type": "string"
     },
-    "Aktualita": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::aktuality.aktuality"
-    },
     "Fotka": {
       "type": "media",
       "multiple": false,

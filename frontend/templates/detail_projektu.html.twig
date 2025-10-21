@@ -39,48 +39,56 @@
                     {{ projekt.VyseDotace|number_format(0, '', ' ') }} Kč
                 </div>
             </div>
-            {#
             <div class="cell d-flex">
                 <img src="{{ asset('images/icon-projekt-mas-fb.svg') }}" alt="Projekt mas-fb" class="me-3">
                 <div>
-                    <strong>Projekt MAS-FB</strong><br>
-                    {{ projekt.ProjektMasFb ? 'Ano' : 'ne' }}
-                </div>
-            </div>
-            #}
-            <div class="cell d-flex">
-                <img src="{{ asset('images/icon-doba-realizace.svg') }}" alt="Doba realizace" class="me-3">
-                <div>
-                    <strong>Doba realizace</strong><br>
-
-                    {% if projekt.ZacatekRealizace and projekt.DokonceniRealizace %}
-                        {% if projekt.ZacatekRealizace|date('Y') == projekt.DokonceniRealizace|date('Y') %}
-                            {{ projekt.ZacatekRealizace|date('d.m.') }} - {{ projekt.DokonceniRealizace|date('d.m.Y') }}
-                        {% else %}
-                            {{ projekt.ZacatekRealizace|date('d.m.Y') }} - {{ projekt.DokonceniRealizace|date('d.m.Y') }}
-                        {% endif %}
-                    {% elseif projekt.ZacatekRealizace %}
-                        {{ projekt.ZacatekRealizace|date('d.m.Y') }}
-                    {% elseif projekt.DokonceniRealizace %}
-                        {{ projekt.DokonceniRealizace|date('d.m.Y') }}
+                    <strong>Místo realizace</strong><br>
+                    {% if projekt.Obec %}
+                        {{ projekt.Obec.Nazev }}
                     {% endif %}
                 </div>
             </div>
+            {% if projekt.ZacatekRealizace or projekt.DokonceniRealizace %}
+                <div class="cell d-flex">
+                    <img src="{{ asset('images/icon-doba-realizace.svg') }}" alt="Doba realizace" class="me-3">
+                    <div>
+                        <strong>Doba realizace</strong><br>
+
+                        {% if projekt.ZacatekRealizace and projekt.DokonceniRealizace %}
+                            {% if projekt.ZacatekRealizace|date('Y') == projekt.DokonceniRealizace|date('Y') %}
+                                {{ projekt.ZacatekRealizace|date('d.m.') }} - {{ projekt.DokonceniRealizace|date('d.m.Y') }}
+                            {% else %}
+                                {{ projekt.ZacatekRealizace|date('d.m.Y') }} - {{ projekt.DokonceniRealizace|date('d.m.Y') }}
+                            {% endif %}
+                        {% elseif projekt.ZacatekRealizace %}
+                            {{ projekt.ZacatekRealizace|date('d.m.Y') }}
+                        {% elseif projekt.DokonceniRealizace %}
+                            {{ projekt.DokonceniRealizace|date('d.m.Y') }}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
         </div>
 
-        {% if projekt.Obrazek %}
-            <img class="img-fluid mb-4" src="{{ projekt.Obrazek.url }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
-        {% endif %}
+        <div class="row">
+            {% if projekt.Obrazek %}
+                <div class="col-md-6">
+                    <img class="img-fluid mb-4" src="{{ projekt.Obrazek.url }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
 
-        {% if projekt.Text %}
-            {{ projekt.Text|markdown_to_html|newlines }}
-        {% endif %}
+                    {% if projekt.Galerie %}
+                        {{ component('Galerie', {
+                            data: projekt.Galerie,
+                            hasPanel: false,
+                        }) }}
+                    {% endif %}
+                </div>
+            {% endif %}
 
-        {% if projekt.Galerie %}
-            {{ component('Galerie', {
-                data: projekt.Galerie,
-                hasPanel: false,
-            }) }}
-        {% endif %}
+            <div class="{{ projekt.Obrazek ? 'col-md-6' : 'col-md-12' }}">
+                {% if projekt.Text %}
+                    {{ projekt.Text|markdown_to_html|newlines }}
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %}
