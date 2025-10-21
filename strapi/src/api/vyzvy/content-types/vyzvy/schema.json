@@ -64,6 +64,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::vyzvy-obory.vyzvy-obory"
+    },
+    "Tagy": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tagy.tagy"
     }
   }
 }

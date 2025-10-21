@@ -705,7 +705,13 @@ export interface ApiKalendarAkciKalendarAkci
       Schema.Attribute.Private;
     Datum: Schema.Attribute.DateTime;
     Datum_do: Schema.Attribute.DateTime;
+    Dokumenty: Schema.Attribute.Component<
+      'komponenty.soubory-ke-stazeni',
+      false
+    >;
     Fotka: Schema.Attribute.Media<'images'>;
+    Fotka_detail: Schema.Attribute.Media<'images'>;
+    Galerie: Schema.Attribute.Component<'komponenty.galerie', false>;
     Kategorie: Schema.Attribute.Relation<
       'oneToOne',
       'api::kalendar-akci-kategorie.kalendar-akci-kategorie'
@@ -716,6 +722,7 @@ export interface ApiKalendarAkciKalendarAkci
       'api::kalendar-akci.kalendar-akci'
     > &
       Schema.Attribute.Private;
+    Misto_konani: Schema.Attribute.String;
     Nazev: Schema.Attribute.String;
     Popis: Schema.Attribute.RichText;
     Poradatel: Schema.Attribute.String;
@@ -723,6 +730,7 @@ export interface ApiKalendarAkciKalendarAkci
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Video_youtube: Schema.Attribute.String;
   };
 }
 
@@ -1089,6 +1097,7 @@ export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
     Opravneni_zadatele: Schema.Attribute.RichText;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Nazev'>;
+    Tagy: Schema.Attribute.Relation<'oneToMany', 'api::tagy.tagy'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
