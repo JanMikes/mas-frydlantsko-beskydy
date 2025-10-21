@@ -363,14 +363,6 @@ readonly final class StrapiContent
             $sort = ['Zacatek_realizace:asc'];
         }
 
-        if ($sortBy === 'Nejdražší') {
-            $sort = ['Vyse_dotace:desc'];
-        }
-
-        if ($sortBy === 'Nejlevnější') {
-            $sort = ['Vyse_dotace:asc'];
-        }
-
         $filters = [];
 
         if ((is_array($kategorieFilter) && count($kategorieFilter) > 0) || ($kategorieFilter ?? '') !== '') {
