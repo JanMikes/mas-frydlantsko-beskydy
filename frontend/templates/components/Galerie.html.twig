@@ -3,8 +3,8 @@
         {% for obrazek in data.Obrazek %}
             {% if obrazek.Obrazek %}
                 <div class="col {{ loop.index > data.Pocet_zobrazenych ? 'd-none' }}" data-gallery-target="item">
-                    <a href="{{ obrazek.Obrazek.large.url ? obrazek.Obrazek.large.url : obrazek.Obrazek.url }}" class="glightbox" {% if obrazek.Popis %}data-glightbox="description: {{ obrazek.Popis }}"{% endif %}>
-                        <img class="img-fluid" src="{{ obrazek.Obrazek.thumbnail ? obrazek.Obrazek.thumbnail.url : obrazek.Obrazek.url }}" alt="{{ obrazek.Popis }}" title="{{ obrazek.Popis }}">
+                    <a href="{{ obrazek.Obrazek.large.url ? obrazek.Obrazek.large.url : obrazek.Obrazek.url }}" class="glightbox d-block ratio ratio-4x3" {% if obrazek.Popis %}data-glightbox="description: {{ obrazek.Popis }}"{% endif %}>
+                        <img class="object-fit-cover" src="{{ obrazek.Obrazek.thumbnail ? obrazek.Obrazek.thumbnail.url : obrazek.Obrazek.url }}" alt="{{ obrazek.Popis }}" title="{{ obrazek.Popis }}">
                     </a>
                 </div>
             {% endif %}
