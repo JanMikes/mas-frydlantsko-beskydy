@@ -18,11 +18,11 @@ use DateTimeImmutable;
  *      Popis: null|string,
  *      Zobrazovat: bool,
  *      slug: string,
- *      Obrazek: null|ImageDataArray,
- *      Galerie: null|array<ImageDataArray>,
- *      Zverejnil: null|ClovekDataArray,
+ *      Obrazek?: null|ImageDataArray,
+ *      Galerie?: null|array<ImageDataArray>,
+ *      Zverejnil?: null|ClovekDataArray,
  *      tags?: array<TagDataArray>,
- *      Soubory: null|array<FileDataArray>,
+ *      Soubory?: null|array<FileDataArray>,
  *      Souvisejici_aktuality: array<mixed>,
  *  }
  */
@@ -58,7 +58,7 @@ readonly final class AktualitaData
     {
         $datumZverejneni = new DateTimeImmutable($data['Datum_zverejneni']);
         $tags = TagData::createManyFromStrapiResponse($data['tags'] ?? []);
-        $zverejnil = $data['Zverejnil'] !== null ? ClovekData::createFromStrapiResponse($data['Zverejnil']) : null;
+        $zverejnil = ($data['Zverejnil'] ?? null) !== null ? ClovekData::createFromStrapiResponse($data['Zverejnil']) : null;
         $soubory = FileData::createManyFromStrapiResponse($data['Soubory'] ?? []);
         $galerie = ImageData::createManyFromStrapiResponse($data['Galerie'] ?? []);
         $obrazek = ($data['Obrazek'] ?? null) !== null ? ImageData::createFromStrapiResponse($data['Obrazek']) : null;
