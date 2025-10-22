@@ -723,6 +723,7 @@ export interface ApiKalendarAkciKalendarAkci
     Popis: Schema.Attribute.RichText;
     Poradatel: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

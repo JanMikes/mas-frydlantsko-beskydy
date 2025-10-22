@@ -60,6 +60,11 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Nazev",
+      "required": true
     }
   }
 }
