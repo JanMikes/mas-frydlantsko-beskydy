@@ -297,6 +297,21 @@ readonly final class StrapiContent
         );
     }
 
+    public function getDetailAkceData(string $slug): KalendarAkciData
+    {
+        /** @var array{data: array<KalendarAkciDataArray>} $strapiResponse */
+        $strapiResponse = $this->strapiClient->getApiResource('kalendar-akcis',
+            populateLevel: 5,
+            filters: [
+                'slug' => ['$eqi' => $slug],
+            ]
+        );
+
+        return KalendarAkciData::createFromStrapiResponse(
+            $strapiResponse['data'][0] ?? throw new NotFound
+        );
+    }
+
     /**
      * @param string|array<string> $category
      * @return array<KalendarAkciData>

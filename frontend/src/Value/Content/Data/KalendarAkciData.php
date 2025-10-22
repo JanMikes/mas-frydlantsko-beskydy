@@ -15,6 +15,7 @@ use DateTimeImmutable;
  * @phpstan-type KalendarAkciDataArray array{
  *     Datum: null|string,
  *     Nazev: null|string,
+ *     slug: null|string,
  *     Poradatel: null|string,
  *     Misto_konani: null|string,
  *     Popis: null|string,
@@ -37,6 +38,7 @@ readonly final class KalendarAkciData
     public function __construct(
         public null|DateTimeImmutable $Datum,
         public null|string $Nazev,
+        public null|string $slug,
         public null|string $Poradatel,
         public null|string $Popis,
         public null|string $MistoKonani,
@@ -75,6 +77,7 @@ readonly final class KalendarAkciData
         return new self(
             Datum: $datum,
             Nazev: $data['Nazev'],
+            slug: $data['slug'],
             Poradatel: $data['Poradatel'],
             Popis: $data['Popis'],
             MistoKonani: $data['Misto_konani'],

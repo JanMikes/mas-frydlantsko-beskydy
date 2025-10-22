@@ -687,6 +687,20 @@ a:hover > .kalendar-akci {
     text-align: center;
 }
 
+.kalendar-akci-time {
+    position: absolute;
+    display: block;
+    width: 80px;
+    padding: 15px 5px;
+    left: 20px;
+    top: 105px;
+    font-size: 13px;
+    background: rgba(156, 181, 35, .8);
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+}
+
 .kalendar-akci-date .day-number {
     display: block;
     font-size: 22px;

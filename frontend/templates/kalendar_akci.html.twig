@@ -16,44 +16,50 @@
         {% set czechMonths = ['Leden','Únor','Březen','Duben','Květen','Červen','Červenec','Srpen','Září','Říjen','Listopad','Prosinec'] %}
 
         <div class="row align-items-stretch">
-            {% for akce in kalendar_akci %}
+            {% for event in kalendar_akci %}
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-                    {% if event.Aktualita %}
-                        <a href="{{ path('detail_aktuality', {'slug': event.Aktualita.slug}) }}" class="text-decoration-none h-100">
+                    {% if event.slug and ((event.Dokumenty ?? []) or (event.Galerie ?? []) or event.Popis or event.FotkaDetail) %}
+                        <a href="{{ path('detail_akce', {'slug': event.slug}) }}" class="text-decoration-none h-100">
                     {% endif %}
 
                     <div class="kalendar-akci h-100">
                         <div class="kalendar-akci-image">
-                            <img class="img-fluid {{ akce.Fotka ? '' : 'placeholder-image' }}" src="{{ akce.Fotka ? akce.Fotka.url : asset('images/logo-symbol.svg') }}" alt="">
+                            <img class="img-fluid {{ event.Fotka ? '' : 'placeholder-image' }}" src="{{ event.Fotka ? event.Fotka.url : asset('images/logo-symbol.svg') }}" alt="">
                         </div>
 
-                        {% if akce.Datum %}
+                        {% if event.Datum %}
                             <span class="kalendar-akci-date">
-                            {% set monthName = czechMonths[akce.Datum|date('n') - 1] %}
-                            <span class="day-number">{{ akce.Datum|date('d') }}</span>
-                            <span class="month-name">{{ monthName }}</span>
-                        </span>
+                                {% set monthName = czechMonths[event.Datum|date('n') - 1] %}
+                                <span class="day-number">{{ event.Datum|date('d') }}</span>
+                                <span class="month-name">{{ monthName }}</span>
+                            </span>
+
+                            {% if event.Datum|date('H:i') != '00:00' %}
+                                <span class="kalendar-akci-time">
+                                    {{ event.Datum|date('H:i') }}
+                                </span>
+                            {% endif %}
                         {% endif %}
 
                         <div class="kalendar-akci-content p-4">
-                            {% if akce.Nazev %}
-                                <h4 class="fw-bold h5 mt-0 mb-2">{{ akce.Nazev }}</h4>
+                            {% if event.Nazev %}
+                                <h4 class="fw-bold h5 mt-0 mb-2">{{ event.Nazev }}</h4>
                             {% endif %}
 
-                            {% if akce.Popis %}
-                                <p class="kalendar-akci-description">{{ akce.Popis }}</p>
+                            {% if event.MistoKonani %}
+                                <p class="kalendar-akci-description">{{ event.MistoKonani }}</p>
                             {% endif %}
 
-                            {% if akce.Poradatel %}
+                            {% if event.Poradatel %}
                                 <p class="kalendar-akci-typ mb-0">
-                                    <strong>Typ události:</strong> {{ akce.Poradatel }}
+                                    <strong>Typ události:</strong> {{ event.Poradatel }}
                                 </p>
                             {% endif %}
 
                         </div>
                     </div>
 
-                    {% if event.Aktualita %}
+                    {% if event.slug and ((event.Dokumenty ?? []) or (event.Galerie ?? []) or event.Popis or event.FotkaDetail) %}
                         </a>
                     {% endif %}
                 </div>
