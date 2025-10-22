@@ -62,12 +62,10 @@
                         <i class="bi-file-earmark-image fs-4"></i>
                         <strong>{{ soubor.Nadpis }}</strong>
 
-                        {#
-                            {% if not isPanel %}
-                                <small class="ms-2">({{ soubor.Soubor.size }}kb)</small>
-                                <i class="bi-download"></i>
-                            {% endif %}
-                        #}
+                        {% if not hasPanel %}
+                            <small class="ms-2">({{ soubor.Soubor.size }}kb)</small>
+                            <i class="bi-download"></i>
+                        {% endif %}
                     </a>
                 </div>
             {% endif %}

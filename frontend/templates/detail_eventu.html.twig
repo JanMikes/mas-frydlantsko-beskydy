@@ -51,17 +51,10 @@
                 {% endif %}
 
                 {% if event.Dokumenty %}
-                    <ul class="files-list">
-                        {% for file in event.Dokumenty %}
-                            <li>
-                                <a class="file-link" href="{{ file.url }}">
-                                    <span class="file-caption">{{ file.caption ?? file.name }}</span>
-                                    <span class="file-info">({{ file.size }}kb)</span>
-                                    <span class="icon-download"></span>
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
+                    {{ component('SouboryKeStazeni', {
+                        data: event.Dokumenty,
+                        hasPanel: false,
+                    }) }}
                 {% endif %}
 
                 {% if event.Galerie %}
