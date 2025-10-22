@@ -73,9 +73,11 @@
                             <h5 class="mt-0">{{ item.Text.Nadpis }}</h5>
                         {% endif %}
 
-                        <div>
-                            {{ item.Text.Text|markdown_to_html|newlines }}
-                        </div>
+                        {% if item.Text and item.Text.Text %}
+                            <div>
+                                {{ item.Text.Text|markdown_to_html|newlines }}
+                            </div>
+                        {% endif %}
                     {% endif %}
 
                     {% if item.Lide %}
