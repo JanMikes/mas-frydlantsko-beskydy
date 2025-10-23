@@ -23,7 +23,7 @@
                     </button>
 
                     {% for kategorieItem in kategorie %}
-                        <button type="button" class="button-style-filter me-1 me-md-2 mb-1 mb-md-2" data-files-tag-filter-target="filter" data-tag="{{ kategorieItem.slug }}" data-action="click->files-tag-filter#toggleFilter">
+                        <button type="button" class="button-style-filter me-1 me-md-2 mb-1 mb-md-2" data-files-tag-filter-target="filter" data-tag="{{ kategorieItem.slug }}" data-filter-type="category" data-action="click->files-tag-filter#toggleFilter">
                             {{ kategorieItem.Nazev }}
                         </button>
                     {% endfor %}
@@ -41,7 +41,7 @@
                 <hr>
                 <div class="mb-3">
                     {% for tag in tags %}
-                        <button type="button" class="button-style-filter me-1 me-md-2 mb-1 mb-md-2" data-files-tag-filter-target="filter" data-tag="{{ tag.slug }}" data-action="click->files-tag-filter#toggleFilter">
+                        <button type="button" class="button-style-filter me-1 me-md-2 mb-1 mb-md-2" data-files-tag-filter-target="filter" data-tag="{{ tag.slug }}" data-filter-type="tag" data-action="click->files-tag-filter#toggleFilter">
                             {{ tag.Tag }}
                         </button>
                     {% endfor %}
