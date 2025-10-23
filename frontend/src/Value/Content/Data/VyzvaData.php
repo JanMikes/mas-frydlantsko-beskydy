@@ -9,6 +9,7 @@ namespace MASFB\Web\Value\Content\Data;
  * @phpstan-import-type SamospravaComponentDataArray from SamospravaComponentData
  * @phpstan-import-type SouborDataArray from SouborData
  * @phpstan-import-type VyzvyKategorieDataArray from VyzvyKategorieData
+ * @phpstan-import-type TagDataArray from TagData
  * @phpstan-type VyzvaDataArray array{
  *     Nazev: null|string,
  *     Zahajeni_vyzvy: null|string,
@@ -25,6 +26,7 @@ namespace MASFB\Web\Value\Content\Data;
  *     Dokumenty: null|array{Pocet_sloupcu: string, Soubor: array<SouborDataArray>},
  *     slug: null|string,
  *     Kategorie: array<VyzvyKategorieDataArray>
+ *     Tagy?: array<TagDataArray>,
  * }
  */
 readonly final class VyzvaData
@@ -34,6 +36,7 @@ readonly final class VyzvaData
 
     /**
      * @param array<VyzvyKategorieData> $Kategorie
+     * @param array<TagData> $Tagy
      */
     public function __construct(
         public null|string $Nazev,
@@ -51,6 +54,7 @@ readonly final class VyzvaData
         public null|SouboryKeStazeniComponentData $Dokumenty,
         public null|string $slug,
         public array $Kategorie,
+        public array $Tagy,
     ) {
     }
 
@@ -59,6 +63,8 @@ readonly final class VyzvaData
      */
     public static function createFromStrapiResponse(array $data): self
     {
+        $tags = TagData::createManyFromStrapiResponse($data['Tagy'] ?? []);
+
         return new self(
             Nazev: $data['Nazev'],
             ZahajeniVyzvy: $data['Zahajeni_vyzvy'],
@@ -81,6 +87,7 @@ readonly final class VyzvaData
                 : SouboryKeStazeniComponentData::createFromStrapiResponse($data['Dokumenty']),
             slug: $data['slug'],
             Kategorie: VyzvyKategorieData::createManyFromStrapiResponse($data['Kategorie']),
+            Tagy: $tags,
         );
     }
 }

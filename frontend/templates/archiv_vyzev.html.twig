@@ -37,6 +37,17 @@
                 </div>
             {% endif %}
 
+            {% if tags|length > 0 %}
+                <hr>
+                <div class="mb-3">
+                    {% for tag in tags %}
+                        <button type="button" class="button-style-filter me-1 me-md-2 mb-1 mb-md-2" data-files-tag-filter-target="filter" data-tag="{{ tag.slug }}" data-action="click->files-tag-filter#toggleFilter">
+                            {{ tag.Tag }}
+                        </button>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
             {% for vyzva in vyzvy %}
                 {% set collapseId = 'rozjizdeci-obsah-' ~ loop.index ~ '-' ~ random(1000000) %}
 
@@ -45,7 +56,14 @@
                     {% set kategorieSlugs = kategorieSlugs|merge([kategorie.slug]) %}
                 {% endfor %}
 
-                <div class="d-block" data-files-tag-filter-target="item" data-tags="{{ kategorieSlugs|join(',') }}">
+                {% set tagSlugs = [] %}
+                {% for tag in vyzva.Tagy %}
+                    {% set tagSlugs = tagSlugs|merge([tag.slug]) %}
+                {% endfor %}
+
+                {% set allSlugs = kategorieSlugs|merge(tagSlugs) %}
+
+                <div class="d-block" data-files-tag-filter-target="item" data-tags="{{ allSlugs|join(',') }}">
                     {% if vyzva.Nazev %}
                         <div class="rozjizdeci-obsah-nadpis mb-0 collapse-toggle d-flex align-items-center justify-content-between collapsed w-100 rozjizdeci-obsah-nadpis-style-2" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}" style="cursor: pointer;">
                             <h4 class="h6 mb-0">{{ vyzva.Nazev }}</h4>
