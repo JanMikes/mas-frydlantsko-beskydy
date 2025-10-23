@@ -35,6 +35,8 @@ final class ArchivVyzevController extends AbstractController
             }
         }
 
+        usort($tags, fn(TagData $a, TagData $b) => $a->slug <=> $b->slug);
+
         return $this->render('archiv_vyzev.html.twig', [
             'tags' => $tags,
             'vyzvy' => $vyzvy,
