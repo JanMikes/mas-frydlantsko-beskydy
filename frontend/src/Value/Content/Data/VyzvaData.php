@@ -25,7 +25,7 @@ namespace MASFB\Web\Value\Content\Data;
  *     Lide: null|SamospravaComponentDataArray,
  *     Dokumenty: null|array{Pocet_sloupcu: string, Soubor: array<SouborDataArray>},
  *     slug: null|string,
- *     Kategorie: array<VyzvyKategorieDataArray>
+ *     Kategorie: array<VyzvyKategorieDataArray>,
  *     Tagy?: array<TagDataArray>,
  * }
  */
