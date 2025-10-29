@@ -25,6 +25,7 @@ use DateTimeImmutable;
  *     Galerie: null|GalerieComponentDataArray,
  *     Tagy?: array<TagDataArray>,
  *     Dokumenty: null|SouboryKeStazeniComponentDataArray,
+ *     Top?: null|bool,
  * }
  */
 readonly final class KalendarAkciData
@@ -48,6 +49,7 @@ readonly final class KalendarAkciData
         public null|GalerieComponentData $Galerie,
         public array $Tagy,
         public null|SouboryKeStazeniComponentData $Dokumenty,
+        public null|bool $Top,
     ) {
     }
 
@@ -87,6 +89,7 @@ readonly final class KalendarAkciData
             Galerie: $gallery,
             Tagy: $tags,
             Dokumenty: $documents,
+            Top: $data['Top'] ?? false,
         );
     }
 }
