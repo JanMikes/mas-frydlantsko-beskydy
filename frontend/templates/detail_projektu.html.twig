@@ -76,11 +76,25 @@
                     <img class="img-fluid mb-4" src="{{ projekt.Obrazek.url }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
 
                     {% if projekt.Galerie %}
-                        {{ component('Galerie', {
-                            data: projekt.Galerie,
-                            hasPanel: false,
-                        }) }}
+                        <div data-controller="gallery" class="margin-component">
+                            <div class="row row-cols-2 g-3">
+                                {% for obrazek in projekt.Galerie.Obrazek %}
+                                    {% if obrazek.Obrazek %}
+                                        <div class="col {{ loop.index > projekt.Galerie.Pocet_zobrazenych ? 'd-none' }}" data-gallery-target="item">
+                                            <a href="{{ obrazek.Obrazek.large.url ? obrazek.Obrazek.large.url : obrazek.Obrazek.url }}" class="glightbox d-block img-fluid w-100" {% if obrazek.Popis %}data-glightbox="description: {{ obrazek.Popis }}"{% endif %}>
+                                                <img src="{{ obrazek.Obrazek.thumbnail ? obrazek.Obrazek.thumbnail.url : obrazek.Obrazek.url }}" alt="{{ obrazek.Popis }}" title="{{ obrazek.Popis }}">
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            {% if projekt.Galerie.Obrazek|length > projekt.Galerie.Pocet_zobrazenych %}
+                                <button class="btn btn-primary mt-3" data-gallery-target="button" data-action="click->gallery#showMore">Zobrazit více</button>
+                            {% endif %}
+                        </div>
                     {% endif %}
+
                 </div>
             {% endif %}
 
