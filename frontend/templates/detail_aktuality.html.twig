@@ -59,10 +59,22 @@
             {% endif %}
 
             {% if aktualita.Galerie %}
-                {{ component('Galerie', {
-                    data: aktualita.Galerie,
-                    hasPanel: false,
-                }) }}
+                <div data-controller="gallery" class="margin-component">
+                    <div class="row row-cols-6 g-3">
+                        {% for obrazek in aktualita.Galerie %}
+                            <div class="col {{ loop.index > 6 ? 'd-none' }}" data-gallery-target="item">
+                                <a href="{{ obrazek.large.url ? obrazek.large.url : obrazek.url }}" class="glightbox d-block ratio ratio-4x3" {% if obrazek.caption %}data-glightbox="description: {{ obrazek.caption }}"{% endif %}>
+                                    <img class="object-fit-cover" src="{{ obrazek.thumbnail ? obrazek.thumbnail.url : obrazek.url }}" alt="{{ obrazek.caption }}" title="{{ obrazek.caption }}">
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    {% if aktualita.Galerie|length > 6 %}
+                        <button class="btn btn-primary mt-3" data-gallery-target="button" data-action="click->gallery#showMore">Zobrazit více</button>
+                    {% endif %}
+                </div>
+
             {% endif %}
         </article>
     </section>
