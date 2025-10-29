@@ -10,7 +10,10 @@
                         <a href="{{ path('detail_akce', {'slug': event.slug}) }}" class="text-decoration-none h-100">
                     {% endif %}
 
-                    <div class="kalendar-akci h-100">
+                    <div class="kalendar-akci h-100{{ event.Top ? ' top-event' : '' }}">
+                        {% if event.Top %}
+                            <span class="kalendar-akci-top-badge">TOP</span>
+                        {% endif %}
                         <div class="kalendar-akci-image">
                             <img class="img-fluid {{ event.Fotka ? '' : 'placeholder-image' }}" src="{{ event.Fotka ? event.Fotka.url : asset('images/logo-symbol.svg') }}" alt="">
                         </div>

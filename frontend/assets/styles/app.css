@@ -733,6 +733,25 @@ a:hover > .kalendar-akci {
     color: var(--bs-primary);
 }
 
+.kalendar-akci.top-event {
+    border: 3px solid var(--bs-secondary);
+}
+
+.kalendar-akci-top-badge {
+    position: absolute;
+    display: block;
+    top: 20px;
+    right: 20px;
+    padding: 8px 16px;
+    background: var(--bs-secondary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 8px;
+    z-index: 10;
+}
+
 
 .actuality-panel > a {
     display: block;

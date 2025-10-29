@@ -278,6 +278,7 @@ readonly final class StrapiContent
 
         $filters = [
             '$or' => [
+                ['Top' => ['$eq' => true]],
                 ['Datum' => ['$null' => true]],
                 ['Datum' => ['$gte' => $now->format('Y-m-d')]],
             ],
@@ -288,6 +289,7 @@ readonly final class StrapiContent
             populateLevel: 5,
             filters: $filters,
             sort: [
+                'Top:desc',
                 'Datum:asc'
             ],
         );
@@ -348,6 +350,10 @@ readonly final class StrapiContent
             populateLevel: 5,
             filters: $filters,
             pagination: $pagination,
+            sort: [
+                'Top:desc',
+                'Datum:asc'
+            ],
         );
 
         return KalendarAkciData::createManyFromStrapiResponse(
