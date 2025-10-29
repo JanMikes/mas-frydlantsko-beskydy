@@ -57,6 +57,13 @@
                     {% endfor %}
                 </ul>
             {% endif %}
+
+            {% if event.Galerie %}
+                {{ component('Galerie', {
+                    data: event.Galerie,
+                    hasPanel: false,
+                }) }}
+            {% endif %}
         </article>
     </section>
 </div>
