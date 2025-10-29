@@ -80,8 +80,8 @@
                             <div class="row row-cols-2 g-3">
                                 {% for obrazek in projekt.Galerie.Obrazek %}
                                     {% if obrazek.Obrazek %}
-                                        <div class="col {{ loop.index > projekt.Galerie.Pocet_zobrazenych ? 'd-none' }}" data-gallery-target="item">
-                                            <a href="{{ obrazek.Obrazek.large.url ? obrazek.Obrazek.large.url : obrazek.Obrazek.url }}" class="glightbox d-block img-fluid w-100" {% if obrazek.Popis %}data-glightbox="description: {{ obrazek.Popis }}"{% endif %}>
+                                        <div class="col d-flex align-items-center justify-content-center {{ loop.index > projekt.Galerie.Pocet_zobrazenych ? 'd-none' }}" data-gallery-target="item">
+                                            <a href="{{ obrazek.Obrazek.large.url ? obrazek.Obrazek.large.url : obrazek.Obrazek.url }}" class="glightbox d-block img-fluid" {% if obrazek.Popis %}data-glightbox="description: {{ obrazek.Popis }}"{% endif %}>
                                                 <img src="{{ obrazek.Obrazek.thumbnail ? obrazek.Obrazek.thumbnail.url : obrazek.Obrazek.url }}" alt="{{ obrazek.Popis }}" title="{{ obrazek.Popis }}">
                                             </a>
                                         </div>
