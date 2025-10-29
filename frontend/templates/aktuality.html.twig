@@ -28,7 +28,7 @@
     <div class="row align-items-stretch">
         {% for aktualita in aktuality %}
             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                <a href="{{ path('detail_aktuality', {'slug': aktualita.slug}) }}" class="text-decoration-none actuality-item d-flex align-items-stretch flex-column h-100">
+                <a href="{{ path('detail_aktuality', {'slug': aktualita.slug}) }}" class="text-decoration-none actuality-item d-flex align-items-stretch flex-column h-100 w-100">
                     <img class="img-fluid {{ aktualita.Obrazek ? '' : 'placeholder-image' }}" src="{{ aktualita.Obrazek ? aktualita.Obrazek.url : asset('images/logo-symbol.svg') }}" alt="" aria-labelledby="aktualita-{{ aktualita.slug }}">
 
                     <div class="p-3">
