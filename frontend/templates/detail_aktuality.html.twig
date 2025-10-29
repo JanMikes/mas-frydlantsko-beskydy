@@ -58,9 +58,9 @@
                 </ul>
             {% endif %}
 
-            {% if event.Galerie %}
+            {% if aktualita.Galerie %}
                 {{ component('Galerie', {
-                    data: event.Galerie,
+                    data: aktualita.Galerie,
                     hasPanel: false,
                 }) }}
             {% endif %}
