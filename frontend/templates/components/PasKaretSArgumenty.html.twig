@@ -1,4 +1,4 @@
-<div class="d-flex flex-wrap gap-5 justify-content-around align-items-stretch margin-component">
+<div class="d-flex flex-wrap gap-5 justify-content-around align-items-stretch margin-component{{ data.Karty|length >= 4 ? ' pas-karet-4-columns' : '' }}">
     {% for karta in data.Karty %}
         <div class="column-karta-s-argumenty d-flex flex-column align-items-center text-center px-3 py-4">
             {% if karta.Nadpis and karta.Umisteni_nadpisu != 'pod obrázkem' %}

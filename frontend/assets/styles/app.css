@@ -263,7 +263,13 @@ h1 .heading-border,
     border-radius: 10px;
 
     @media (min-width: 768px) {
-        flex: 1 1 calc((100% - 6rem) / 4);
+        flex: 1 1 calc((100% - 6rem) / 3);
+    }
+}
+
+.pas-karet-4-columns .column-karta-s-argumenty {
+    @media (min-width: 768px) {
+        flex: 1 1 calc((100% - 9rem) / 4);
     }
 }
 
@@ -282,6 +288,10 @@ h1 .heading-border,
     height: auto;
     object-fit: contain;
     object-position: center center;
+}
+
+.pas-karet-4-columns .column-karta-s-argumenty img {
+    width: 80px;
 }
 
 .column-dlazdice:hover {
