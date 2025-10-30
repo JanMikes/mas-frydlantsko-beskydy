@@ -289,7 +289,7 @@ readonly final class StrapiContent
             populateLevel: 5,
             filters: $filters,
             sort: [
-                'Top:desc',
+                'Top:asc',
                 'Datum:asc'
             ],
         );
@@ -351,7 +351,7 @@ readonly final class StrapiContent
             filters: $filters,
             pagination: $pagination,
             sort: [
-                'Top:desc',
+                'Top:asc',
                 'Datum:asc'
             ],
         );
