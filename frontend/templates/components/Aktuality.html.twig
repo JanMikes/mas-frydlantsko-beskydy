@@ -15,7 +15,7 @@
             <div class="carousel-container align-items-stretch" data-carousel-target="container">
                 {% for aktualita in this.getItems(data.Pocet, data.kategorie) %}
                     <div class="carousel-item-wrapper d-flex align-items-stretch" data-carousel-target="item">
-                        <a href="{{ path('detail_aktuality', {'slug': aktualita.slug}) }}" class="text-decoration-none actuality-item">
+                        <a href="{{ path('detail_aktuality', {'slug': aktualita.slug}) }}" class="text-decoration-none actuality-item w-100">
                             <img class="img-fluid {{ aktualita.Obrazek ? '' : 'placeholder-image' }}" src="{{ aktualita.Obrazek ? aktualita.Obrazek.url : asset('images/logo-symbol.svg') }}" alt="" aria-labelledby="aktualita-{{ aktualita.slug }}">
 
                             <div class="p-3">
