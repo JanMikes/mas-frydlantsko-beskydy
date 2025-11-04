@@ -22,11 +22,11 @@ final class SectionController extends AbstractController
     public function __invoke(string $path): Response
     {
         $breadcrumbLinks = [];
-        $breadcrumbs = explode('/', $path);
+        $breadcrumbs = explode('/', trim($path, '/'));
         $currentSectionSlug = array_pop($breadcrumbs);
 
         // Build the correct full URL path from Strapi data
-        $correctPath = ltrim($this->strapiLinkHelper->getLinkForSlug($currentSectionSlug), '/');
+        $correctPath = trim($this->strapiLinkHelper->getLinkForSlug($currentSectionSlug), '/');
 
         // If the paths don't match, redirect to the correct URL
         if ($path !== $correctPath) {

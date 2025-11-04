@@ -16,12 +16,22 @@ final class AktualityController extends AbstractController
     ) {}
 
     #[Route('/aktuality', name: 'aktuality')]
-    public function __invoke(): Response
+    #[Route('/aktuality/kategorie/{tags}', name: 'aktuality_kategorie')]
+    public function __invoke(string|null $tags = null): Response
     {
+        // Parse comma-separated tags into array
+        $tagsArray = null;
+        $activeTags = [];
+
+        if ($tags !== null && $tags !== '') {
+            $tagsArray = array_filter(array_map('trim', explode(',', $tags)));
+            $activeTags = $tagsArray;
+        }
+
         return $this->render('aktuality.html.twig', [
             'tagy' => $this->content->getTagy(),
-            'active_tag' => null,
-            'aktuality' => $this->content->getAktualityData(),
+            'active_tags' => $activeTags,
+            'aktuality' => $this->content->getAktualityData(tag: $tagsArray),
         ]);
     }
 }

@@ -27,7 +27,7 @@
             {% if aktualita.Tagy %}
                 <p class="tags my-3">
                     {% for Tag in aktualita.Tagy %}
-                        <a href="{{ path('aktuality_tag_filter', {'tag': Tag.slug}) }}" class="tag">
+                        <a href="{{ path('aktuality_kategorie', {'tags': Tag.slug}) }}" class="tag">
                             {{ Tag.Tag }}
                         </a>
                     {% endfor %}

@@ -90,7 +90,7 @@ readonly final class StrapiContent
 
         $filters = null;
 
-        if ($tag === null) {
+        if ($tag === null || $tag === []) {
             $filters = [
                 'Zobrazovat' => ['$eq' => true],
             ];
@@ -124,7 +124,6 @@ readonly final class StrapiContent
         $strapiResponse = $this->strapiClient->getApiResource('aktualities',
             populateLevel: 6,
             filters: [
-                'Zobrazovat' => ['$eq' => true],
                 'slug' => ['$eqi' => $slug]
             ]);
 

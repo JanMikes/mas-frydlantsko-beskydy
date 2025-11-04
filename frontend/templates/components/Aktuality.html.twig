@@ -49,7 +49,7 @@
                     </button>
                 </div>
 
-                <a class="show-all-link button-style-1" href="{{ path('aktuality') }}">Všechny aktuality</a>
+                <a class="show-all-link button-style-1" href="{% if data.kategorie and data.kategorie|length > 0 %}{{ path('aktuality_kategorie', {'tags': data.kategorie|map(k => k.slug)|join(',')}) }}{% else %}{{ path('aktuality') }}{% endif %}">Všechny aktuality</a>
             </div>
         </div>
     </div>
