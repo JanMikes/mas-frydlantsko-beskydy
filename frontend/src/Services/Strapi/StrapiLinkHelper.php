@@ -18,6 +18,7 @@ final class StrapiLinkHelper
 
     public function getLinkForSlug(string $slug): string
     {
+        $slug = trim($slug, '/');
         $sections = $this->getSections();
         $path = [];
         $currentSlug = $slug;
