@@ -889,7 +889,7 @@ img.placeholder-image {
     text-decoration: none;
 }
 
-a.tag:hover, .tag.active, .tag.active-tag {
+a.tag:hover, .tag.active, .tag.active-tag, .tag.active_tag {
     background: var(--bs-secondary);
 }
 
