@@ -32,6 +32,15 @@
                     </select>
                 </div>
             </div>
+
+            {% if kategorie or operacniProgram or obec %}
+                <button type="button"
+                        class="ms-2 small text-decoration-underline btn btn-link text-black p-0"
+                        data-action="live#action"
+                        data-live-action-param="clearFilters">
+                    zrušit filtrování
+                </button>
+            {% endif %}
         </div>
     {% endif %}
 

@@ -82,6 +82,15 @@ final class Projekty
         $this->page = $page;
     }
 
+    #[LiveAction]
+    public function clearFilters(): void
+    {
+        $this->kategorie = null;
+        $this->operacniProgram = null;
+        $this->obec = null;
+        $this->page = 1;
+    }
+
     #[PostMount]
     #[PreReRender]
     public function populateData(): void
