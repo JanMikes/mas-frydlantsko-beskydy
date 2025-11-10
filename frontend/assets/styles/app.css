@@ -724,7 +724,7 @@ a:hover > .kalendar-akci {
 
 .kalendar-akci-image img {
     width: 100%;
-    height: 220px;
+    height: 220px !important;
     object-fit: cover;
     object-position: center center;
     display: block;
