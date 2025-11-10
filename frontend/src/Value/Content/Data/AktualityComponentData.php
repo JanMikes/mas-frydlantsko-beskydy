@@ -15,19 +15,22 @@ readonly final class AktualityComponentData
     public function __construct(
         public int $Pocet,
         public array $kategorie,
+        public null|string $TextTlacitkaVsechnyAktuality,
     ) {}
 
     /**
      * @param array{
      *     Pocet: int,
      *     kategories: array<TagDataArray>,
+     *     Text_tlacitka_vsechny_aktuality?: null|string,
      * } $data
      */
     public static function createFromStrapiResponse(array $data): self
     {
         return new self(
-            $data['Pocet'],
-            TagData::createManyFromStrapiResponse($data['kategories']),
+            Pocet: $data['Pocet'],
+            kategorie: TagData::createManyFromStrapiResponse($data['kategories']),
+            TextTlacitkaVsechnyAktuality: $data['Text_tlacitka_vsechny_aktuality'] ?? null,
         );
     }
 }
