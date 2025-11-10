@@ -14,9 +14,12 @@
     },
     "Pocet": {
       "type": "integer",
-      "default": 3,
       "required": true,
+      "default": 3,
       "min": 1
+    },
+    "Text_tlacitka_vsechny_aktuality": {
+      "type": "string"
     }
   }
 }

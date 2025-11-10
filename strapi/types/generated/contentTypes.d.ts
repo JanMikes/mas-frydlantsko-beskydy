@@ -824,7 +824,7 @@ export interface ApiProjektyObecProjektyObec
       'api::projekty-obec.projekty-obec'
     > &
       Schema.Attribute.Private;
-    Nazev: Schema.Attribute.String;
+    Nazev: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -853,9 +853,9 @@ export interface ApiProjektyOperacniProgramProjektyOperacniProgram
       'api::projekty-operacni-program.projekty-operacni-program'
     > &
       Schema.Attribute.Private;
-    Nazev: Schema.Attribute.String;
+    Nazev: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'Nazev'>;
+    slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1046,7 +1046,7 @@ export interface ApiVyzvyOboryVyzvyObory extends Struct.CollectionTypeSchema {
       'api::vyzvy-obory.vyzvy-obory'
     > &
       Schema.Attribute.Private;
-    Nazev: Schema.Attribute.String;
+    Nazev: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Nazev'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;

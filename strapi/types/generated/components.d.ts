@@ -443,6 +443,7 @@ export interface KomponentyAktuality extends Struct.ComponentSchema {
         number
       > &
       Schema.Attribute.DefaultTo<3>;
+    Text_tlacitka_vsechny_aktuality: Schema.Attribute.String;
   };
 }
 
