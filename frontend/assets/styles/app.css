@@ -1300,3 +1300,10 @@ b, strong {
 th, td {
     font-size: 14px;
 }
+
+@media (max-width: 1024px) {
+    .actuality-detail {
+        padding-left: 72px !important;
+        padding-right: 72px !important;
+    }
+}
