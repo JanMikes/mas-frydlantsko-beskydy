@@ -24,14 +24,6 @@
                                 <h3 class="h5 mt-0 mb-1">{{ aktualita.Nadpis }}</h3>
 
                                 <time class="small text-secondary">{{ aktualita.DatumZverejneni|date('d.m.Y') }}</time>
-
-                                {% if aktualita.Tagy %}
-                                    <p class="mb-0 mt-2">
-                                        {% for Tag in aktualita.Tagy %}
-                                            <span class="tag">{{ Tag.Tag }}</span>
-                                        {% endfor %}
-                                    </p>
-                                {% endif %}
                             </div>
                         </a>
                     </div>

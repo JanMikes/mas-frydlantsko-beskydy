@@ -891,6 +891,7 @@ img.placeholder-image {
 
 a.tag:hover, .tag.active, .tag.active-tag, .tag.active_tag {
     background: var(--bs-secondary);
+    color: #fff;
 }
 
 .project-item img {
