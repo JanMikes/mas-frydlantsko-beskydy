@@ -139,7 +139,7 @@ html {
 }
 
 @media (max-width: 767.98px) {
-    .breadcrumb-item a {
+    .breadcrumb-item {
         display: inline-block;
         max-width: 40ch;
         overflow: hidden;
