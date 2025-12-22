@@ -138,6 +138,17 @@ html {
     }
 }
 
+@media (max-width: 767.98px) {
+    .breadcrumb-item a {
+        display: inline-block;
+        max-width: 40ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: bottom;
+    }
+}
+
 .navbar a {
     font-weight: bold;
     color: var(--bs-primary);
@@ -896,7 +907,7 @@ a.tag:hover, .tag.active, .tag.active-tag, .tag.active_tag {
 
 .project-item img {
     width: 100%;
-    height: 160px;
+    height: 220px;
     object-fit: cover;
     object-position: center center;
     display: block;
@@ -948,32 +959,42 @@ a.project-item:hover {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     border: 1px solid #ccc;
     border-radius: 10px;
 }
 
 .project-grid .cell {
     border: none;
-    border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     padding: 0.75rem;
     box-sizing: border-box;
 }
 
-/* Remove right border from right column (even children) */
-.project-grid .cell:nth-child(even) {
-    border-right: none;
-}
-
-/* Remove bottom border from last row */
+/* Remove bottom border from last cell */
 .project-grid .cell:last-child {
     border-bottom: none;
 }
 
-/* If last child is even (full last row with 2 cells), also remove bottom from previous cell */
-.project-grid:has(.cell:last-child:nth-child(even)) .cell:nth-last-child(2) {
-    border-bottom: none;
+/* md breakpoint and up: 2 columns */
+@media (min-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-grid .cell {
+        border-right: 1px solid #ccc;
+    }
+
+    /* Remove right border from right column (even children) */
+    .project-grid .cell:nth-child(even) {
+        border-right: none;
+    }
+
+    /* If last child is even (full last row with 2 cells), also remove bottom from previous cell */
+    .project-grid:has(.cell:last-child:nth-child(even)) .cell:nth-last-child(2) {
+        border-bottom: none;
+    }
 }
 
 /* Horizontal Scrolling Carousel */
