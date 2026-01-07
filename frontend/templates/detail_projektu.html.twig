@@ -72,9 +72,11 @@
         </div>
 
         <div class="row">
-            {% if projekt.Obrazek %}
+            {% if projekt.Obrazek or projekt.Galerie %}
                 <div class="col-md-6">
-                    <img class="img-fluid mb-4" src="{{ projekt.Obrazek.url }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
+                    {% if projekt.Obrazek %}
+                        <img class="img-fluid mb-4" src="{{ projekt.Obrazek.url }}" alt="" aria-labelledby="projekt-{{ projekt.slug }}">
+                    {% endif %}
 
                     {% if projekt.Galerie %}
                         <div data-controller="gallery" class="margin-component">
@@ -99,7 +101,7 @@
                 </div>
             {% endif %}
 
-            <div class="{{ projekt.Obrazek ? 'col-md-6' : 'col-md-12' }}">
+            <div class="{{ projekt.Obrazek or projekt.Galerie ? 'col-md-6' : 'col-md-12' }}">
                 {% if projekt.Text %}
                     {{ projekt.Text|markdown_to_html|newlines }}
                 {% endif %}
