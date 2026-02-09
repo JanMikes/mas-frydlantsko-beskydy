@@ -28,6 +28,7 @@ use DateTimeImmutable;
  *      Text: null|string,
  *      Souvisejici_projekty: array<mixed>,
  *      Galerie: null|GalerieComponentDataArray,
+ *      Loga: null|GalerieComponentDataArray,
  *  }
  */
 readonly final class ProjektData
@@ -54,6 +55,7 @@ readonly final class ProjektData
         public null|string $Text,
         public array $SouvisejiciProjekty,
         public null|GalerieComponentData $Galerie,
+        public null|GalerieComponentData $Loga,
     ) {}
 
     /**
@@ -84,6 +86,7 @@ readonly final class ProjektData
             Text: $data['Text'],
             SouvisejiciProjekty: $souvisejiciProjekty,
             Galerie: $data['Galerie'] !== null ? GalerieComponentData::createFromStrapiResponse($data['Galerie']) : null,
+            Loga: ($data['Loga'] ?? null) !== null ? GalerieComponentData::createFromStrapiResponse($data['Loga']) : null,
         );
     }
 }

@@ -888,6 +888,7 @@ export interface ApiProjektyProjekty extends Struct.CollectionTypeSchema {
       'api::projekty.projekty'
     > &
       Schema.Attribute.Private;
+    Loga: Schema.Attribute.Component<'komponenty.galerie', false>;
     Nazev: Schema.Attribute.String;
     Obec: Schema.Attribute.Relation<
       'oneToOne',

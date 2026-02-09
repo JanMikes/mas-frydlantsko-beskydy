@@ -70,6 +70,11 @@
       "type": "component",
       "component": "komponenty.galerie",
       "repeatable": false
+    },
+    "Loga": {
+      "type": "component",
+      "component": "komponenty.galerie",
+      "repeatable": false
     }
   }
 }
