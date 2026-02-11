@@ -76,6 +76,22 @@
                 </div>
 
             {% endif %}
+
+            {% if aktualita.Loga and aktualita.Loga.Obrazek|length > 0 %}
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                            {% for obrazek in aktualita.Loga.Obrazek %}
+                                {% if obrazek.Obrazek %}
+                                    <div class="col d-flex align-items-center justify-content-center">
+                                        <img src="{{ obrazek.Obrazek.url }}" alt="{{ obrazek.Popis }}" style="max-height: 250px; object-fit: contain; max-width: 100%;">
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         </article>
     </section>
 </div>

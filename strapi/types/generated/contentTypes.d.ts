@@ -453,6 +453,7 @@ export interface ApiAktualityAktuality extends Struct.CollectionTypeSchema {
       'api::aktuality.aktuality'
     > &
       Schema.Attribute.Private;
+    Loga: Schema.Attribute.Component<'komponenty.galerie', false>;
     Nadpis: Schema.Attribute.String & Schema.Attribute.Required;
     Obrazek: Schema.Attribute.Media<'images'>;
     Popis: Schema.Attribute.RichText;

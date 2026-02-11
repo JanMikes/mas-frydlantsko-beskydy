@@ -11,6 +11,7 @@ use DateTimeImmutable;
  * @phpstan-import-type FileDataArray from FileData
  * @phpstan-import-type TagDataArray from TagData
  * @phpstan-import-type ClovekDataArray from ClovekData
+ * @phpstan-import-type GalerieComponentDataArray from GalerieComponentData
  * @phpstan-type AktualitaDataArray array{
  *      Nadpis: string,
  *      Datum_zverejneni: string,
@@ -24,6 +25,7 @@ use DateTimeImmutable;
  *      tags?: array<TagDataArray>,
  *      Soubory?: null|array<FileDataArray>,
  *      Souvisejici_aktuality: array<mixed>,
+ *      Loga: null|GalerieComponentDataArray,
  *  }
  */
 readonly final class AktualitaData
@@ -49,6 +51,7 @@ readonly final class AktualitaData
         public null|string $slug,
         public array $Soubory,
         public array $SouvisejiciAktuality,
+        public null|GalerieComponentData $Loga,
     ) {}
 
     /**
@@ -78,6 +81,7 @@ readonly final class AktualitaData
             $data['slug'],
             $soubory,
             $souvisejiciAktuality,
+            ($data['Loga'] ?? null) !== null ? GalerieComponentData::createFromStrapiResponse($data['Loga']) : null,
         );
     }
 }
