@@ -97,27 +97,27 @@
                 {% if projekt.Text %}
                     {{ projekt.Text|markdown_to_html|newlines }}
                 {% endif %}
-            </div>
-        </div>
 
-        {% if projekt.Galerie and projekt.Galerie.Obrazek|length > 0 %}
-            <div data-controller="gallery" class="margin-component mt-4">
-                <div class="row row-cols-2 row-cols-md-3 g-3">
-                    {% for obrazek in projekt.Galerie.Obrazek %}
-                        {% if obrazek.Obrazek %}
-                            <div class="col {{ loop.index > projekt.Galerie.Pocet_zobrazenych ? 'd-none' }}" data-gallery-target="item">
-                                <a href="{{ obrazek.Obrazek.large.url ? obrazek.Obrazek.large.url : obrazek.Obrazek.url }}" class="glightbox d-block ratio ratio-4x3" {% if obrazek.Popis %}data-glightbox="description: {{ obrazek.Popis }}"{% endif %}>
-                                    <img class="object-fit-cover" src="{{ obrazek.Obrazek.thumbnail ? obrazek.Obrazek.thumbnail.url : obrazek.Obrazek.url }}" alt="{{ obrazek.Popis }}" title="{{ obrazek.Popis }}">
-                                </a>
-                            </div>
+                {% if projekt.Galerie and projekt.Galerie.Obrazek|length > 0 %}
+                    <div data-controller="gallery" class="margin-component mt-4">
+                        <div class="row row-cols-2 g-3">
+                            {% for obrazek in projekt.Galerie.Obrazek %}
+                                {% if obrazek.Obrazek %}
+                                    <div class="col {{ loop.index > projekt.Galerie.Pocet_zobrazenych ? 'd-none' }}" data-gallery-target="item">
+                                        <a href="{{ obrazek.Obrazek.large.url ? obrazek.Obrazek.large.url : obrazek.Obrazek.url }}" class="glightbox d-block ratio ratio-4x3" {% if obrazek.Popis %}data-glightbox="description: {{ obrazek.Popis }}"{% endif %}>
+                                            <img class="object-fit-cover" src="{{ obrazek.Obrazek.thumbnail ? obrazek.Obrazek.thumbnail.url : obrazek.Obrazek.url }}" alt="{{ obrazek.Popis }}" title="{{ obrazek.Popis }}">
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        {% if projekt.Galerie.Obrazek|length > projekt.Galerie.Pocet_zobrazenych %}
+                            <button class="btn btn-primary mt-3" data-gallery-target="button" data-action="click->gallery#showMore">Zobrazit více</button>
                         {% endif %}
-                    {% endfor %}
-                </div>
-
-                {% if projekt.Galerie.Obrazek|length > projekt.Galerie.Pocet_zobrazenych %}
-                    <button class="btn btn-primary mt-3" data-gallery-target="button" data-action="click->gallery#showMore">Zobrazit více</button>
+                    </div>
                 {% endif %}
             </div>
-        {% endif %}
+        </div>
     </div>
 {% endblock %}
