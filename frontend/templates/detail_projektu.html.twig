@@ -100,7 +100,7 @@
 
                 {% if projekt.Galerie and projekt.Galerie.Obrazek|length > 0 %}
                     <div data-controller="gallery" class="margin-component mt-4">
-                        <div class="row row-cols-2 g-3">
+                        <div class="row row-cols-2 row-cols-md-3 g-3">
                             {% for obrazek in projekt.Galerie.Obrazek %}
                                 {% if obrazek.Obrazek %}
                                     <div class="col {{ loop.index > projekt.Galerie.Pocet_zobrazenych ? 'd-none' }}" data-gallery-target="item">
