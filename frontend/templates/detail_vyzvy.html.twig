@@ -16,15 +16,19 @@
 
         <div class="vyzva-table">
             {% if vyzva.ZahajeniVyzvy %}
-                <div class="vyzva-table-row"><strong>Zahájení výzvy:</strong> {{ vyzva.ZahajeniVyzvy|date('d.m.Y H:i') }}</div>
+                <div class="vyzva-table-row"><strong>Zahájení výzvy:</strong> {{ vyzva.ZahajeniVyzvy|date(vyzva.ZobrazitCasZahajeniVyzvy is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
             {% endif %}
 
             {% if vyzva.ZahajeniPrijmuZadosti %}
-                <div class="vyzva-table-row"><strong>Zahájení příjmu žádostí o podporu:</strong> {{ vyzva.ZahajeniPrijmuZadosti|date('d.m.Y H:i') }}</div>
+                <div class="vyzva-table-row"><strong>Zahájení příjmu žádostí o podporu:</strong> {{ vyzva.ZahajeniPrijmuZadosti|date(vyzva.ZobrazitCasZahajeniPrijmuZadosti is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
+            {% endif %}
+
+            {% if vyzva.UkonceniPrijmuZadosti %}
+                <div class="vyzva-table-row"><strong>Ukončení příjmu Žádostí o dotaci na MAS:</strong> {{ vyzva.UkonceniPrijmuZadosti|date(vyzva.ZobrazitCasUkonceniPrijmuZadosti is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
             {% endif %}
 
             {% if vyzva.KonecVyzvy %}
-                <div class="vyzva-table-row"><strong>Konec výzvy:</strong> {{ vyzva.KonecVyzvy|date('d.m.Y H:i') }}</div>
+                <div class="vyzva-table-row"><strong>Konec výzvy:</strong> {{ vyzva.KonecVyzvy|date(vyzva.ZobrazitCasKonecVyzvy is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
             {% endif %}
 
             {% if vyzva.FinancniAlokace %}

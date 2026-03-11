@@ -17,11 +17,30 @@
     "Zahajeni_vyzvy": {
       "type": "datetime"
     },
+    "Zobrazit_cas_zahajeni_vyzvy": {
+      "type": "boolean",
+      "default": true
+    },
     "Zahajeni_prijmu_zadosti": {
       "type": "datetime"
     },
+    "Zobrazit_cas_zahajeni_prijmu_zadosti": {
+      "type": "boolean",
+      "default": true
+    },
+    "Ukonceni_prijmu_zadosti": {
+      "type": "datetime"
+    },
+    "Zobrazit_cas_ukonceni_prijmu_zadosti": {
+      "type": "boolean",
+      "default": true
+    },
     "Konec_vyzvy": {
       "type": "datetime"
+    },
+    "Zobrazit_cas_konec_vyzvy": {
+      "type": "boolean",
+      "default": true
     },
     "Financni_alokace": {
       "type": "integer"

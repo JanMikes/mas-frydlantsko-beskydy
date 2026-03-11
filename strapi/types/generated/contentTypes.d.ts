@@ -1098,11 +1098,20 @@ export interface ApiVyzvyVyzvy extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Nazev'>;
     Tagy: Schema.Attribute.Relation<'oneToMany', 'api::tagy.tagy'>;
+    Ukonceni_prijmu_zadosti: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Zahajeni_prijmu_zadosti: Schema.Attribute.DateTime;
     Zahajeni_vyzvy: Schema.Attribute.DateTime;
+    Zobrazit_cas_konec_vyzvy: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    Zobrazit_cas_ukonceni_prijmu_zadosti: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    Zobrazit_cas_zahajeni_prijmu_zadosti: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    Zobrazit_cas_zahajeni_vyzvy: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
   };
 }
 

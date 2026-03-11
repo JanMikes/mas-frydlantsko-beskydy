@@ -102,15 +102,19 @@
                         <div class="pt-3">
                             <div class="vyzva-table">
                                 {% if item.Vyzva.ZahajeniVyzvy %}
-                                    <div class="vyzva-table-row"><strong>Zahájení výzvy:</strong> {{ item.Vyzva.ZahajeniVyzvy|date('d.m.Y H:i') }}</div>
+                                    <div class="vyzva-table-row"><strong>Zahájení výzvy:</strong> {{ item.Vyzva.ZahajeniVyzvy|date(item.Vyzva.ZobrazitCasZahajeniVyzvy is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
                                 {% endif %}
 
                                 {% if item.Vyzva.ZahajeniPrijmuZadosti %}
-                                    <div class="vyzva-table-row"><strong>Zahájení příjmu žádostí o podporu:</strong> {{ item.Vyzva.ZahajeniPrijmuZadosti|date('d.m.Y H:i') }}</div>
+                                    <div class="vyzva-table-row"><strong>Zahájení příjmu žádostí o podporu:</strong> {{ item.Vyzva.ZahajeniPrijmuZadosti|date(item.Vyzva.ZobrazitCasZahajeniPrijmuZadosti is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
+                                {% endif %}
+
+                                {% if item.Vyzva.UkonceniPrijmuZadosti %}
+                                    <div class="vyzva-table-row"><strong>Ukončení příjmu Žádostí o dotaci na MAS:</strong> {{ item.Vyzva.UkonceniPrijmuZadosti|date(item.Vyzva.ZobrazitCasUkonceniPrijmuZadosti is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
                                 {% endif %}
 
                                 {% if item.Vyzva.KonecVyzvy %}
-                                    <div class="vyzva-table-row"><strong>Konec výzvy:</strong> {{ item.Vyzva.KonecVyzvy|date('d.m.Y H:i') }}</div>
+                                    <div class="vyzva-table-row"><strong>Konec výzvy:</strong> {{ item.Vyzva.KonecVyzvy|date(item.Vyzva.ZobrazitCasKonecVyzvy is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
                                 {% endif %}
 
                                 {% if item.Vyzva.FinancniAlokace %}
