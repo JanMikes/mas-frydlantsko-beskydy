@@ -106,11 +106,11 @@
                                 {% endif %}
 
                                 {% if item.Vyzva.ZahajeniPrijmuZadosti %}
-                                    <div class="vyzva-table-row"><strong>Zahájení příjmu žádostí o podporu:</strong> {{ item.Vyzva.ZahajeniPrijmuZadosti|date(item.Vyzva.ZobrazitCasZahajeniPrijmuZadosti is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
+                                    <div class="vyzva-table-row"><strong>Zahájení příjmu žádostí na MAS:</strong> {{ item.Vyzva.ZahajeniPrijmuZadosti|date(item.Vyzva.ZobrazitCasZahajeniPrijmuZadosti is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
                                 {% endif %}
 
                                 {% if item.Vyzva.UkonceniPrijmuZadosti %}
-                                    <div class="vyzva-table-row"><strong>Ukončení příjmu Žádostí o dotaci na MAS:</strong> {{ item.Vyzva.UkonceniPrijmuZadosti|date(item.Vyzva.ZobrazitCasUkonceniPrijmuZadosti is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
+                                    <div class="vyzva-table-row"><strong>Ukončení příjmu žádostí na MAS:</strong> {{ item.Vyzva.UkonceniPrijmuZadosti|date(item.Vyzva.ZobrazitCasUkonceniPrijmuZadosti is not same as(false) ? 'd.m.Y H:i' : 'd.m.Y') }}</div>
                                 {% endif %}
 
                                 {% if item.Vyzva.KonecVyzvy %}
