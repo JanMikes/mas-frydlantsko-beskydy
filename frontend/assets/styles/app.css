@@ -650,7 +650,8 @@ footer .colored-footer a:hover {
     opacity: 0.4;
 }
 
-.homepage-carousel-navs .divider {
+.homepage-carousel-navs .divider,
+.homepage-carousel-navs-inner .divider {
     display: inline-block;
     width: 1px;
     height: 30px;
@@ -660,16 +661,20 @@ footer .colored-footer a:hover {
 
 .homepage-carousel-navs-inner {
     background: var(--bs-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 60px;
-    line-height: 60px;
-    padding: 0 24px;
     color: #fff;
-    font-size: 20px;
+    font-size: 28px;
 }
 
 .homepage-carousel-navs-inner a,
 .homepage-carousel-navs-inner a:hover {
     color: #fff;
+    text-decoration: none;
+    padding: 5px 15px;
+    line-height: 1;
 }
 
 .slide-title {
